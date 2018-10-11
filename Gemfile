@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.0'
 
-
+gem 'mysql2'
 gem 'rails', '~> 5.2.1'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
@@ -40,8 +40,8 @@ gem 'gritter', '1.2.0'
 gem 'devise', '~> 4.5'
 gem 'sqlite3', '~> 1.3', '>= 1.3.13'
 gem 'bootsnap', '~> 1.3', '>= 1.3.2'
-#gem 'administrate', "~> 0.10.0"
-#gem 'bourbon'
+# gem 'administrate', "~> 0.10.0"
+# gem 'bourbon'
 # gem 'pundit', '~> 1.1'
 # gem 'twilio-ruby', '~> 4.11', '>= 4.11.1'
 # gem 'dotenv-rails', :groups => [:development, :test]
