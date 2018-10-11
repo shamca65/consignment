@@ -13,5 +13,9 @@
       <first-sync>true</first-sync>
       <user-name>root</user-name>
     </data-source>
+    <data-source name="test" uuid="257c2974-691e-4227-84ed-e2d540af37f7">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="SQLITE" exact-version="0.0" />
+      <auth-required>false</auth-required>
+    </data-source>
   </component>
 </project>

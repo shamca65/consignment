@@ -1,0 +1,3 @@
+class TestUser < User
+
+end
