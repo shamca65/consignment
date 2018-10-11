@@ -13,3 +13,10 @@
  *= require_tree .
  *= require_self
  */
+/* app/assets/stylesheets/application.css.scss */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "customers.scss";
+@import "items.scss";
+@import "users.scss";
