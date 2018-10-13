@@ -1,3 +1,0 @@
-class TestUser < User
-
-end
