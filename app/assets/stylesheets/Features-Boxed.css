@@ -9,8 +9,8 @@
 
 .features-boxed h2 {
   font-weight: bold;
-  margin-bottom: 40px;
-  padding-top: 40px;
+  margin-bottom: 10px;
+  padding-top: 10px;
   color: inherit;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .features-boxed .intro {
-  font-size: 16px;
+  font-size: 1px;
   max-width: 500px;
   margin: 0 auto;
 }
@@ -42,8 +42,6 @@
 
 .features-boxed .item .box:hover {
   background-color: #56c6c6;
-  /*padding: 30px;*/
-  /*margin-bottom: 30px;*/
 }
 
 .features-boxed .item .box {

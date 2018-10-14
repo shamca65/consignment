@@ -4,7 +4,7 @@ class StaticController < ApplicationController
 
   end
 
-  def homepage
+  def index
 
   end
 end
