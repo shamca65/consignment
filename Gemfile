@@ -38,3 +38,4 @@ gem 'gritter', '1.2.0'
 gem 'devise', '~> 4.5'
 gem 'sqlite3', '~> 1.3', '>= 1.3.13'
 gem 'bootsnap', '~> 1.3', '>= 1.3.2'
+gem "gritter", "1.2.0"

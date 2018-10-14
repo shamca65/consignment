@@ -5,31 +5,12 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
   </head>
   <body class="container">
-    <nav class="navbar navbar-light navbar-expand-md navbar-nav">
-      <div class="container">
-        <a class="navbar-brand" href="#">Company Name</a>
-        <div class="collapse navbar-collapse" id="navcol-1">
-          <ul class="nav navbar-nav">
-            <li><%= link_to 'Home', root_path %></li>
-            <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Link 1</a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Link 2</a></li>
-            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Link 3</a></li>
-          </ul>
-        </div>
-        <div class="nav navbar-nav">
-          <div class="btn btn-primary"
-          <% if user_signed_in? %>
-            Signed In: <%= current_user.name %>
-            <%= link_to 'Sign Out', destroy_user_session_path %>
-          <%else %>
-            <%= link_to 'Sign In', new_user_session_path %>
-          <%end %>
-          </div>
-        </ul>
-    </nav>
     <%= yield %>
+    <%= js add_gritter(flash[:notice], title: "Notification", sticky: false) %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </body>
