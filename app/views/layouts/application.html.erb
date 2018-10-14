@@ -4,10 +4,23 @@
     <title>Consignment</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body class="container">
+    <nav class="navbar navbar-light navbar-expand-md navbar-nav">
+      <div class="container"><a class="navbar-brand" href="#">Company Name</a><button class="navbar-toggler" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'Home', root_path %></li>
+            <li class="nav-item" role="presentation"><a class="nav-link active" href="#">Link 1</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Link 2</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" href="#">Link 3</a></li>
+          </ul>
+          <div align="right">
+            <a class="btn btn-light action-button" role="button" href="#">Sign In</a>
+          </div>
+        </div>
+    </nav>
     <%= yield %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
