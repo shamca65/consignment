@@ -16,7 +16,10 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 #
 Rails.application.config.assets.precompile += %w( jquery_ujs.js )
 Rails.application.config.assets.precompile += %w( jquery.min.js )
-Rails.application.config.assets.precompile += %w( bootstrap.min.js )
+Rails.application.config.assets.precompile += %w( bootstrap.js )
+Rails.application.config.assets.precompile += %w( bootstrap.css )
+Rails.application.config.assets.precompile += %w( toastr.js )
+Rails.application.config.assets.precompile += %w( toastr.css )
 
 
 
