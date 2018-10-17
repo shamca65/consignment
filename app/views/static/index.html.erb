@@ -4,6 +4,14 @@
     <div class="intro" style="height: 110px;">
       <h3 class="text-center" style="color: rgb(20,133,238);font-size: 60px;"><strong>T</strong><strong>ake In Station</strong></h3>
     </div>
+    <%= link_to new_customer_path do %>
+      <div class="col-sm-6 col-md-5 col-lg-4 item">
+        <div class="box"><i class="fa fa-paper-plane-o icon"></i>
+          <h3 class="name">Add New Customer</h3>
+          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+        </div>
+      </div>
+    <%end %>
     <div class="row justify-content-center features" style="padding: 16px;">
       <div class="col-sm-6 col-md-5 col-lg-4 item">
         <div class="box"><i class="fa fa-group icon"></i>
@@ -11,21 +19,17 @@
           <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
         </div>
       </div>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-female icon"></i>
-          <h3 class="name">Item Search</h3>
-          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-        </div>
-      </div>
+      <%= link_to new_item_path do %>
       <div class="col-sm-6 col-md-5 col-lg-4 item">
         <div class="box"><i class="fa fa-list-ul icon"></i>
           <h3 class="name">Take In</h3>
           <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
         </div>
       </div>
+      <%end %>
       <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-paper-plane-o icon"></i>
-          <h3 class="name">Add New Customer</h3>
+        <div class="box"><i class="fa fa-female icon"></i>
+          <h3 class="name">Item Search</h3>
           <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
         </div>
       </div>
