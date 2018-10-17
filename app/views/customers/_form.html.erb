@@ -2,7 +2,6 @@
   <% if customer.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-
       <ul>
       <% customer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -10,18 +9,10 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <div class="form-icon"><span><i class="icon-user icon"></i></span></div>
+  <div class="form-group"><input class="form-control item" type="text" id="first_name" placeholder="First Name"></div>
+  <div class="form-group"><input class="form-control item" type="text" id="last_name" placeholder="Last Name"></div>
+  <div class="form-group"><input class="form-control item" type="text" id="email" placeholder="Email"></div>
+  <div class="form-group"><input class="form-control item" type="text" id="phone" placeholder="Phone Number"></div>
+  <div class="form-group"><%= form.submit :Submit, class: 'btn btn-primary btn-block create-account'%> </button></div>
 <% end %>
