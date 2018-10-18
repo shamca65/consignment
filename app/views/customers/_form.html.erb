@@ -10,25 +10,24 @@
     </div>
   <% end %>
   <div class="form-icon"><span><i class="icon-user icon"></i></span></div>
+  <div class="registration-form">
 
-  <div class="form-control item">
-    <%= form.label :first_name %>
-    <%= form.text_field :first_name %>
-  </div>
+    <div class="form-group">
+      <%= form.text_field :first_name, class: "form-control item", type: "text", placeholder: "First Name" %>
+    </div>
 
-  <div class="form-control item">
-    <%= form.label :last_name %>
-    <%= form.text_field :last_name %>
-  </div>
+    <div class="form-group">
+      <%= form.text_field :last_name, class: "form-control item", type: "text", placeholder: "Last Name" %>
+    </div>
 
-  <div class="form-control item">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
+    <div class="form-group">
+      <%= form.text_field :email, class: "form-control item", type: "email", placeholder: "Email Address" %>
+    </div>
 
-  <div class="form-control item">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+    <div class="form-group">
+      <%= form.text_field :phone, class: "form-control item", type: "phone", placeholder: "Phone" %>
+    </div>
+
   </div>
 
   <div class="form-group"><%= form.submit :Submit, class: 'btn btn-primary btn-block create-account'%> </button></div>
