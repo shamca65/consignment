@@ -25,16 +25,13 @@ class CustomersController < ApplicationController
   # POST /customers
   # POST /customers.json
   def create
+    # whitelist params
     @customer = Customer.new(customer_params)
 
-    respond_to do |format|
-      if @customer.save
-        format.html { redirect_to @customer, notice: 'Customer was successfully created.' }
-        format.json { render :show, status: :created, location: @customer }
-      else
-        format.html { render :new }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
-      end
+    if @customer.save
+      redirect_to @customers, notice: 'Account was created successfully'
+    else
+      render :new, notice: 'Account was not saved'
     end
   end
 
