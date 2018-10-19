@@ -30,6 +30,8 @@ group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  # Programmatically start and stop ES for tests
+  gem 'elasticsearch-extensions'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -41,3 +43,6 @@ gem 'gritter', '1.2.0'
 gem 'administrate', '~> 0.11.0'
 gem 'bourbon', '~> 5.1'
 
+# Elasticsearch integration
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
