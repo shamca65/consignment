@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>nav_table</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr></tr>
+                <tr>
+                    <td style="font-size: 30px;width: 221px;">Consignment</td>
+                    <td style="width: 101px;">
+                        <%= link_to('Home', root_path) %>
+                    </td>
+                    <td style="width: 105px;">
+                        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+                    </td>
+                    <td style="width: 121px;">Link 2</td>
+                    <td style="width: 121px;">Link 2</td>
+                    <td style="width: 121px;">Spacer</td>
+                    <td>
+                        <form class="form-inline mr-auto" target="_self">
+                            <div class="form-group ">
+                                <label for="search-field"><i class="fa fa-search"></i></label>
+                                <input class="form-control search-field" type="search" name="search" id="search-field">
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
