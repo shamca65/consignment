@@ -1,18 +1,22 @@
-<div class="table-responsive">
+<div class="table">
   <table width="100%" >
     <tbody>
     <tr class="center-cell" >
       <td class="title">Consignment</td>
       <td class="spacer"></td>
-      <td>
-        <a class="btn btn-light action-button" role="button" href="/">Home</a>
-      </td>
+      <%if !current_page?('/') %>
+        <td>
+          <a class="btn btn-light action-button" role="button" href="/">Home</a>
+        </td>
+      <%end %>
       <td class="spacer"></td>
       <td class="spacer"></td>
       <td class="mover-right">
-        <span class="navbar-text actions">
-          <a class="btn btn-light action-button align-items-end" role="button" href="/">Log Out</a>
-        </span>
+        <% if user_signed_in? %>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-light action-button") %>
+        <%else %>
+          <%= link_to('Login', new_user_session_path, class: "btn btn-light action-button" )  %>
+        <%end %>
       </td>
     </tr>
     </tbody>
