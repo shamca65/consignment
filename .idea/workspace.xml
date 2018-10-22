@@ -54,7 +54,7 @@
     <session id="792134751">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
@@ -677,18 +677,17 @@
       <workItem from="1539875786118" duration="16551000" />
       <workItem from="1539964640007" duration="2694000" />
       <workItem from="1539986261213" duration="1547000" />
-      <workItem from="1540083410678" duration="10199000" />
+      <workItem from="1540083410678" duration="10304000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="90938000" />
+    <option name="totallyTimeSpent" value="91043000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26190478" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -701,7 +700,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" sideWeight="0.49893504" weight="0.32949308" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.74603176" visible="true" weight="0.18386108" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.74603176" visible="true" weight="0.18386108" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.25396827" side_tool="true" weight="0.18386108" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32923833" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
