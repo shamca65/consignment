@@ -1,15 +1,4 @@
-<%= render 'shared/navbar' %>
 <%= form_for Customer.new do |form| %>
-  <% if customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
-      <ul>
-        <% customer.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="form-icon"><span><i class="icon-user icon"></i></span></div>
   <h3 style="text-align: center;">New Account</h3>
   <hr>
