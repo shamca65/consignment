@@ -1,6 +1,7 @@
 # config/routes.rb
 #
 Rails.application.routes.draw do
+  resources :event_logs
   root to: 'static#index'
 
   resources :items

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Event Logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Integer,</th>
+      <th>Event description</th>
+      <th>String</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_logs.each do |event_log| %>
+      <tr>
+        <td><%= event_log.event_id %></td>
+        <td><%= event_log.integer, %></td>
+        <td><%= event_log.event_description %></td>
+        <td><%= event_log.string %></td>
+        <td><%= link_to 'Show', event_log %></td>
+        <td><%= link_to 'Edit', edit_event_log_path(event_log) %></td>
+        <td><%= link_to 'Destroy', event_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event Log', new_event_log_path %>

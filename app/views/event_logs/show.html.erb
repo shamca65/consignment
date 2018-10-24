@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @event_log.event_id %>
+</p>
+
+<p>
+  <strong>Integer,:</strong>
+  <%= @event_log.integer, %>
+</p>
+
+<p>
+  <strong>Event description:</strong>
+  <%= @event_log.event_description %>
+</p>
+
+<p>
+  <strong>String:</strong>
+  <%= @event_log.string %>
+</p>
+
+<%= link_to 'Edit', edit_event_log_path(@event_log) %> |
+<%= link_to 'Back', event_logs_path %>

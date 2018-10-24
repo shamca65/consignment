@@ -12,6 +12,7 @@ module Consignment
     config.assets.enabled = true
     config.load_defaults 5.2
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.autoload_paths += %W(#{config.root}/lib)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
