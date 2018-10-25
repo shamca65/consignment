@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  include EventLogger
+
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   # GET /customers
@@ -27,9 +29,9 @@ class CustomersController < ApplicationController
   def create
     # whitelist params
     @customer = Customer.new(customer_params)
-
     if @customer.save
       redirect_to @customers, notice: 'Account was created successfully'
+
     else
       render :new, notice: 'Account was not saved'
     end
