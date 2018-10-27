@@ -30,7 +30,7 @@ class CustomersController < ApplicationController
     # whitelist params
     @customer = Customer.new(customer_params)
     if @customer.save
-      redirect_to @customers, notice: 'Account was created successfully'
+      redirect_to customers_path, notice: 'Account was created successfully'
 
     else
       render :new, notice: 'Account was not saved'
