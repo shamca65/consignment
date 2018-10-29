@@ -1,8 +1,12 @@
 <tbody>
 <% @items.each do |item| %>
   <tr>
+    <td><%= item.id %></td>
+    <td><%= item.customer_id %></td>
+    <td><%= item.customer.full_name %></td>
     <td><%= item.size %></td>
     <td><%= item.description %></td>
+    <td><%= item.price %></td>
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>

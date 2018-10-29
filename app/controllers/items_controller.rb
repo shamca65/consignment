@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
+  include EventLogger
+
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+
 
   # GET /items
   # GET /items.json
@@ -21,6 +24,7 @@ class ItemsController < ApplicationController
   def edit
   end
 
+
   # POST /items
   # POST /items.json
   def create
@@ -28,7 +32,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -61,6 +65,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_item
@@ -69,6 +74,10 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:size, :description)
+      params.require(:item).permit(:size, :description, :price, :customer_id)
     end
+
+
+
+
 end

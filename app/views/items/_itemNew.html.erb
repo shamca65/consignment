@@ -4,19 +4,27 @@
         <h2><%= pluralize(item.errors.count, "error") %> prohibited this item from being saved:</h2>
         <ul>
           <% item.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+            <li><%= "shithead:" + message %></li>
           <% end %>
         </ul>
       </div>
     <% end %>
+
   <div class="field">
-    <%= form.label :size %>
-    <%= form.text_field :size %>
+    <%= form.number_field :customer_id, class: "form-control item", placeholder: "Customer_id ?" %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :size, class: "form-control item", type: "text", placeholder: "Size" %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :description, class: "form-control item", type: "text", placeholder: "Description" %>
+  </div>
+
+
+  <div class="field">
+    <%= form.text_field :price, id: "currency", class: "form-control item", type: "currency", placeholder: "Price" %>
   </div>
 
   <div class="actions">

@@ -2,204 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3f7dd828-c8ff-43ed-870a-9323d05017fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/models/admin_user.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/customers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/customers_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BSDesigns/Exports/NewAccount/assets/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/BSDesigns/Exports/NewAccount/assets/js/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/items_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/items_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/customer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/customer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/item.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/item.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/items/_itemEdit.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/_itemEdit.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/items/_itemIndex.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/_itemIndex.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/items/_itemNew.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/_itemNew.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/items/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/items/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/LICENSE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/NOTICE.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/README.textile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-cli" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-cli.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-env" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-env.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-keystore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-keystore.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-plugin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-plugin.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-service-mgr.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-service-x64.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-service.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-translog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch-translog.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/bin/elasticsearch.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/config/elasticsearch.keystore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/config/elasticsearch.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/config/jvm.options" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/config/log4j2.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/_state/global-0.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/_state/node-0.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/0/_state/state-0.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/0/index/segments_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/0/index/write.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/0/translog/translog-1.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/0/translog/translog-1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/0/translog/translog-2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/0/translog/translog.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/_state/state-0.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_0.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_0.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_0.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_1.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_1.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_1.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_2.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_2.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/_2.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/segments_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/index/write.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog-1.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog-1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog-2.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog-2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog-3.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog-3.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog-4.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/1/translog/translog.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/_state/state-0.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/_0.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/_0.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/_0.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/_1.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/_1.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/_1.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/segments_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/index/write.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/translog/translog-1.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/translog/translog-1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/translog/translog-2.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/translog/translog-2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/translog/translog-3.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/2/translog/translog.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/_state/state-0.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/index/_0.cfe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/index/_0.cfs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/index/_0.si" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/index/segments_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/index/write.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/translog/translog-1.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/translog/translog-1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/translog/translog-2.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/translog/translog-2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/translog/translog-3.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/3/translog/translog.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/4/_state/state-0.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/4/index/segments_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/4/index/write.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/4/translog/translog-1.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/4/translog/translog-1.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/4/translog/translog-2.tlog" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/4/translog/translog.ckp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/indices/oIZIMc5mRh-tyLPa2_JKWA/_state/state-3.st" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/data/nodes/0/node.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/HdrHistogram-2.1.9.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/elasticsearch-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/elasticsearch-cli-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/elasticsearch-core-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/elasticsearch-launchers-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/elasticsearch-secure-sm-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/elasticsearch-x-content-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/hppc-0.7.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/jackson-core-2.8.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/jackson-dataformat-cbor-2.8.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/jackson-dataformat-smile-2.8.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/jackson-dataformat-yaml-2.8.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/java-version-checker-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/jna-4.5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/joda-time-2.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/jopt-simple-5.0.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/jts-core-1.15.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/log4j-1.2-api-2.11.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/log4j-api-2.11.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/log4j-core-2.11.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-analyzers-common-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-backward-codecs-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-core-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-grouping-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-highlighter-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-join-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-memory-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-misc-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-queries-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-queryparser-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-sandbox-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-spatial-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-spatial-extras-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-spatial3d-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/lucene-suggest-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/plugin-classloader-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/snakeyaml-1.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/spatial4j-0.7.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/t-digest-3.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/tools/plugin-cli/bcpg-jdk15on-1.59.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/tools/plugin-cli/bcprov-jdk15on-1.59.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/lib/tools/plugin-cli/elasticsearch-plugin-cli-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/logs/elasticsearch.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/logs/elasticsearch_deprecation.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/logs/elasticsearch_index_indexing_slowlog.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/logs/elasticsearch_index_search_slowlog.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/aggs-matrix-stats/aggs-matrix-stats-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/aggs-matrix-stats/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/analysis-common/analysis-common-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/analysis-common/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/ingest-common/elasticsearch-grok-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/ingest-common/ingest-common-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/ingest-common/jcodings-1.0.12.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/ingest-common/joni-2.1.6.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/ingest-common/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/antlr4-runtime-4.5.1-1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/asm-5.0.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/asm-commons-5.0.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/asm-tree-5.0.4.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/lang-expression-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/lucene-expressions-7.4.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-expression/plugin-security.policy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-mustache/compiler-0.9.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-mustache/lang-mustache-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-mustache/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-mustache/plugin-security.policy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-painless/antlr4-runtime-4.5.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-painless/asm-debug-all-5.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-painless/elasticsearch-scripting-painless-spi-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-painless/lang-painless-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-painless/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/lang-painless/plugin-security.policy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/mapper-extras/mapper-extras-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/mapper-extras/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/parent-join/parent-join-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/parent-join/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/percolator/percolator-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/percolator/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/rank-eval/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/rank-eval/rank-eval-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/commons-codec-1.10.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/commons-logging-1.1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/elasticsearch-rest-client-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/httpasyncclient-4.1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/httpclient-4.5.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/httpcore-4.4.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/httpcore-nio-4.4.5.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/plugin-security.policy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/reindex/reindex-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/repository-url/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/repository-url/plugin-security.policy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/repository-url/repository-url-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/netty-buffer-4.1.16.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/netty-codec-4.1.16.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/netty-codec-http-4.1.16.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/netty-common-4.1.16.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/netty-handler-4.1.16.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/netty-resolver-4.1.16.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/netty-transport-4.1.16.Final.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/plugin-security.policy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/transport-netty4/transport-netty4-6.4.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/tribe/plugin-descriptor.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/elasticsearch-6.4.2/modules/tribe/tribe-6.4.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/event_logger.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/event_logger.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -240,24 +56,25 @@
     <session id="792134751">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="11" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.open.time.6" value="5" />
-          <entry key="project.open.time.7" value="2" />
+          <entry key="project.open.time.6" value="9" />
+          <entry key="project.open.time.7" value="4" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Gemfile" value="34" />
           <entry key="css" value="12" />
-          <entry key="erb" value="831" />
+          <entry key="erb" value="1234" />
           <entry key="html" value="13" />
-          <entry key="rb" value="444" />
+          <entry key="js" value="16" />
+          <entry key="rb" value="2277" />
           <entry key="scss" value="202" />
           <entry key="txt" value="13" />
           <entry key="yml" value="1" />
@@ -267,9 +84,10 @@
         <counts>
           <entry key="CSS" value="12" />
           <entry key="HTML" value="13" />
+          <entry key="JavaScript" value="16" />
           <entry key="PLAIN_TEXT" value="13" />
-          <entry key="RHTML" value="831" />
-          <entry key="Ruby" value="478" />
+          <entry key="RHTML" value="1234" />
+          <entry key="Ruby" value="2311" />
           <entry key="SCSS" value="202" />
           <entry key="YAML" value="1" />
         </counts>
@@ -277,11 +95,12 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="Gemfile" value="2" />
-          <entry key="css" value="5" />
-          <entry key="erb" value="29" />
+          <entry key="css" value="8" />
+          <entry key="erb" value="41" />
           <entry key="html" value="9" />
+          <entry key="js" value="3" />
           <entry key="orig" value="1" />
-          <entry key="rb" value="27" />
+          <entry key="rb" value="53" />
           <entry key="scss" value="2" />
           <entry key="sql" value="1" />
           <entry key="yml" value="1" />
@@ -289,11 +108,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="5" />
+          <entry key="CSS" value="8" />
           <entry key="HTML" value="9" />
+          <entry key="JavaScript" value="3" />
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="RHTML" value="29" />
-          <entry key="Ruby" value="29" />
+          <entry key="RHTML" value="41" />
+          <entry key="Ruby" value="55" />
           <entry key="SCSS" value="2" />
           <entry key="Scratch" value="1" />
           <entry key="YAML" value="1" />
@@ -445,11 +265,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/customers_controller.rb">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/item.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+            <state relative-caret-position="127">
+              <caret line="7" column="34" lean-forward="true" selection-start-line="4" selection-end-line="7" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/customer.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="38" column="5" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="38" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -457,8 +295,44 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+            <state relative-caret-position="1482">
+              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/application.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/event_logger.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="87" selection-start-line="3" selection-start-column="87" selection-end-line="3" selection-end-column="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/items/index.html.erb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/customers_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="19">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -475,6 +349,8 @@
       <find>hover</find>
       <find>justify</find>
       <find>registration-form</find>
+      <find>Customer must exist</find>
+      <find>log_event</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/app/assets/stylesheets</dir>
@@ -488,11 +364,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/config/database.yml" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20181017172824_add_phone_and_email_to_customer.rb" />
-        <option value="$PROJECT_DIR$/app/views/customers/new.html.erb.orig" />
-        <option value="$PROJECT_DIR$/app/assets/javascripts/script.min.js" />
         <option value="$PROJECT_DIR$/app/views/customers/_customerList.html.erb" />
         <option value="$PROJECT_DIR$/app/views/customers/_customer.html.erb" />
         <option value="$PROJECT_DIR$/app/views/customers/_newCustomer.html.erb" />
@@ -500,16 +371,12 @@
         <option value="$PROJECT_DIR$/app/views/customers/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/customers/_customer.json.jbuilder" />
         <option value="$PROJECT_DIR$/app/views/customers/_customerShow.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/items/_itemIndex.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/items/index.html.erb" />
         <option value="$PROJECT_DIR$/app/views/customers/_customerEdit.html.erb" />
         <option value="$PROJECT_DIR$/config/initializers/elasticsearch.rb" />
         <option value="$PROJECT_DIR$/app/controllers/api/v1/customers_controller.rb" />
-        <option value="$PROJECT_DIR$/app/views/items/_itemNew.html.erb" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.erb" />
         <option value="$PROJECT_DIR$/BSDesigns/Exports/table-nav/index.html" />
         <option value="$PROJECT_DIR$/app/views/items/_itemShow.html.erb" />
-        <option value="$PROJECT_DIR$/app/views/items/_itemEdit.html.erb" />
         <option value="$PROJECT_DIR$/BSDesigns/Exports/table-nav/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
@@ -527,18 +394,27 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/styles.css" />
         <option value="$PROJECT_DIR$/app/views/customers/new.html.erb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
-        <option value="$PROJECT_DIR$/config/application.rb" />
         <option value="$PROJECT_DIR$/app/models/event_log.rb" />
-        <option value="$PROJECT_DIR$/app/models/customer.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20181024005001_create_event_logs.rb" />
-        <option value="$PROJECT_DIR$/lib/event_logger.rb" />
         <option value="$PROJECT_DIR$/config/elasticsearch.yml" />
         <option value="$PROJECT_DIR$/db/schema.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20181027005842_add_fkto_items.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20181027212110_add_type_column_to_users.rb" />
         <option value="$PROJECT_DIR$/app/models/admin_user.rb" />
-        <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/controllers/customers_controller.rb" />
+        <option value="$PROJECT_DIR$/BSDesigns/Exports/NewAccount/assets/js/script.js" />
+        <option value="$PROJECT_DIR$/app/views/items/_itemNew.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/items/_itemEdit.html.erb" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
+        <option value="$PROJECT_DIR$/app/views/items/index.html.erb" />
+        <option value="$PROJECT_DIR$/app/views/items/_itemIndex.html.erb" />
+        <option value="$PROJECT_DIR$/config/application.rb" />
+        <option value="$PROJECT_DIR$/app/controllers/items_controller.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20181028230955_refactor_logging_columns_type.rb" />
+        <option value="$PROJECT_DIR$/lib/event_logger.rb" />
+        <option value="$PROJECT_DIR$/app/models/item.rb" />
+        <option value="$PROJECT_DIR$/app/models/customer.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
       </list>
     </option>
   </component>
@@ -566,6 +442,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
@@ -594,13 +471,18 @@
             <path>
               <item name="consignment" type="b2602c69:ProjectViewProjectNode" />
               <item name="consignment" type="462c0819:PsiDirectoryNode" />
-              <item name="db" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="consignment" type="b2602c69:ProjectViewProjectNode" />
+              <item name="consignment" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -768,18 +650,24 @@
       <workItem from="1540424805812" duration="1801000" />
       <workItem from="1540661963101" duration="149000" />
       <workItem from="1540673903492" duration="1653000" />
-      <workItem from="1540677327142" duration="28000" />
+      <workItem from="1540677327142" duration="2151000" />
+      <workItem from="1540684609282" duration="1269000" />
+      <workItem from="1540735861546" duration="4508000" />
+      <workItem from="1540745287138" duration="1421000" />
+      <workItem from="1540748777154" duration="34000" />
+      <workItem from="1540758317557" duration="5439000" />
+      <workItem from="1540770894551" duration="356000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99082000" />
+    <option name="totallyTimeSpent" value="114232000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1680" height="947" extended-state="6" />
+    <frame x="0" y="23" width="1680" height="947" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16544567" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35592186" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -792,7 +680,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" sideWeight="0.49893504" weight="0.32949308" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.74603176" visible="true" weight="0.42037472" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.74603176" visible="true" weight="0.3290398" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.25396827" side_tool="true" weight="0.18386108" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32923833" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -830,101 +718,10 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="16" lean-forward="true" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_navbar_search.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="23" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/customers/_customerShow.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/static/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_navbar.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="10" lean-forward="true" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/shared/_navbar_links.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="4" selection-start-column="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/customers/show.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/customers/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/customers/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/edit.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/items/index.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="8" selection-start-column="8" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -936,16 +733,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/users.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/customers/_customerNew.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/styles.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/scaffolds.scss">
@@ -978,9 +765,6 @@
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/featureBanner.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/event_logs_controller.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/Features-Boxed.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="715">
@@ -1010,19 +794,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/customer.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/item.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20181013192524_devise_create_users.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -1030,29 +801,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/event_log.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/event_logger.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="3" column="57" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/puma.rb">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/application.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/elasticsearch.yml">
       <provider selected="true" editor-type-id="text-editor">
@@ -1075,13 +825,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1112,24 +855,155 @@
     <entry file="file://$PROJECT_DIR$/db/migrate/20181027000955_change_column_name.rb">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/styles.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BSDesigns/Exports/NewAccount/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-104" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BSDesigns/Exports/NewAccount/assets/bootstrap/js/bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BSDesigns/Exports/NewAccount/assets/js/jquery.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/BSDesigns/Exports/NewAccount/assets/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/styles.min.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/customers/_customerNew.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="15" column="118" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/customers/_customerEdit.html.erb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/edit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/_itemNew.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="95" selection-start-line="13" selection-start-column="95" selection-end-line="13" selection-end-column="95" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/event_log.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/event_logs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="-25">
           <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/_itemEdit.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/_itemIndex.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20181028230955_refactor_logging_columns_type.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/items_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
+        <state relative-caret-position="1482">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/application.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="68" selection-start-line="13" selection-start-column="68" selection-end-line="13" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/event_logger.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="87" selection-start-line="3" selection-start-column="87" selection-end-line="3" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/items/index.html.erb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="19" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/customers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        <state relative-caret-position="19">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/item.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="7" column="34" lean-forward="true" selection-start-line="4" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/customer.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="38" column="5" lean-forward="true" selection-start-line="28" selection-start-column="1" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
         </state>
       </provider>
     </entry>
