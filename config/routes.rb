@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :items
   resources :customers
+  get "search", to: "api/v1/customers_controller#search"
 
   namespace :admin do
       resources :users
