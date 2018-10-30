@@ -13,8 +13,15 @@ class CustomersController < ApplicationController
 
   # GET /customers
   # GET /customers.json
+  #
   def index
-    @customers = Customer.all
+    if params[:query]
+      puts "*********** query time!"
+      @customers = Customer.where('last_name LIKE ?', "%#{params[:query]}%")
+    else
+      puts "***********no query term"
+      @customers = Customer.all
+    end
   end
 
   # GET /customers/1
@@ -68,6 +75,23 @@ class CustomersController < ApplicationController
     end
   end
 
+  def search
+    puts "*********Searching mofo "
+    response = Book.__elasticsearch__.search(
+        query: {
+            multi_match: {
+                query: params[:query],
+                fields: ['name', 'author.first_name', 'author.last_name', 'isbn']
+            }
+        }
+    ).results
+
+    render json: {
+        results: response.results,
+        total: response.total
+    }
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
@@ -76,6 +100,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :phone)
+      params.require(:customer).permit(:first_name, :last_name, :phone, :query)
     end
 end
