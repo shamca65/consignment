@@ -24,7 +24,6 @@ class ItemsController < ApplicationController
   def edit
   end
 
-
   # POST /items
   # POST /items.json
   def create
@@ -76,8 +75,6 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:size, :description, :price, :customer_id)
     end
-
-
 
 
 end

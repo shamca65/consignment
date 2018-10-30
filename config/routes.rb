@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   root to: 'static#index'
 
   resources :items
-  resources :customers
-  get "search", to: "api/v1/customers_controller#search"
+
+  resources :customers do
+    collection do
+      get :search
+    end
+  end
 
   namespace :admin do
       resources :users

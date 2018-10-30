@@ -1,6 +1,4 @@
-<%= form_for :term, url: search_path, method: :get do |form| %>
-  <p>
-    <%= text_field_tag :term, params[:term] %>
-    <%= submit_tag "Search", name: nil %>
-  </p>
+<%= form_for :search_customers, url: search_customers_path, method: :get do |form| %>
+  <%= form.text_field :query, value: params[:search_customers].presence && params[:search_customers][:query] %>
+  <%= form.submit 'Search' %>
 <% end %>

@@ -3,6 +3,14 @@ class CustomersController < ApplicationController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
+  def search
+    query = params[:search_customers].presence && params[:search_customer][:query]
+
+    if query
+      @customers = Customer.search_published(query)
+    end
+  end
+
   # GET /customers
   # GET /customers.json
   def index
@@ -31,7 +39,6 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     if @customer.save
       redirect_to customers_path, notice: 'Account was created successfully'
-
     else
       render :new, notice: 'Account was not saved'
     end

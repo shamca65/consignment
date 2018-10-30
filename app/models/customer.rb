@@ -15,10 +15,26 @@ class Customer < ApplicationRecord
   # ElasticSearch Index
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
-      indexes :first_name, analyzer: 'english'
-      indexes :last_name, analyzer: 'english'
-      indexes :email, analyzer: 'english'
+      indexes :first_name, type: :text, analyzer: 'english'
+      indexes :last_name, type: :text, analyzer: 'english'
+      indexes :email, type: :text, analyzer: 'english'
     end
+  end
+
+  def self.search_published(query)
+    self.search({
+                    query: {
+                        bool: {
+                            must: [
+                                {
+                                    multi_match: {
+                                        query: query,
+                                        fields: [:fist_name, :last_name, :email]
+                                    }
+                                }]
+                        }
+                    }
+                })
   end
 
   def full_name
