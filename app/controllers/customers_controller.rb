@@ -4,12 +4,12 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def search
-    puts "***************** in search action"
     query = params[:search_customers].presence && params[:search_customers][:query]
 
     if query
       puts "***************** query found : " + params[:search_customers][:query].to_s
       @customers = Customer.search_published(query)
+      puts "Query count : " + Customer.search_published(query).size.to_s
     end
 
     respond_to do |format|
