@@ -1,5 +1,7 @@
 # Consignment App
 
 ## To Do
-### Add validattions to models
+### Add validations to models
+### Think about return path approach for Search Results
+### Clean up edit page
 ### 

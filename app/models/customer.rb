@@ -29,7 +29,12 @@ class Customer < ApplicationRecord
                                 {
                                     multi_match: {
                                         query: query,
-                                        fields: [:fist_name, :last_name, :email]
+                                        fields: [:author, :title, :body, :tags]
+                                    }
+                                },
+                                {
+                                    match: {
+                                        published: true
                                     }
                                 }]
                         }

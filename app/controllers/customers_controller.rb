@@ -4,24 +4,29 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def search
-    query = params[:search_customers].presence && params[:search_customer][:query]
+
+    query = params[:search_customers].presence && params[:search_customers][:query]
 
     if query
       @customers = Customer.search_published(query)
     end
+
+    respond_to do |format|
+        if Customer.search_published(query)
+          format.html { redirect_to customers_path }
+          format.json { render :show, status: :ok, location: customers_path }
+        else
+          format.html { render :edit }
+          format.json { render json: @customer.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
   # GET /customers
   # GET /customers.json
   #
   def index
-    if params[:query]
-      puts "*********** query time!"
-      @customers = Customer.where('last_name LIKE ?', "%#{params[:query]}%")
-    else
-      puts "***********no query term"
       @customers = Customer.all
-    end
   end
 
   # GET /customers/1
@@ -73,23 +78,6 @@ class CustomersController < ApplicationController
       format.html { redirect_to customers_url, notice: 'Customer was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def search
-    puts "*********Searching mofo "
-    response = Book.__elasticsearch__.search(
-        query: {
-            multi_match: {
-                query: params[:query],
-                fields: ['name', 'author.first_name', 'author.last_name', 'isbn']
-            }
-        }
-    ).results
-
-    render json: {
-        results: response.results,
-        total: response.total
-    }
   end
 
   private

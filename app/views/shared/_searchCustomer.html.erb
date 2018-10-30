@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 <%= form_for :search_customers, url: search_customers_path, method: :get do |form| %>
   <%= form.text_field :query, value: params[:search_customers].presence && params[:search_customers][:query] %>
-  <%= form.submit 'Search' %>
-=======
-<%= form_tag(customers_path method: :get) do %>
-  Store <%= text_field_tag :query %>
-  <%= submit_tag 'Search' %>
->>>>>>> cd351e47f7a5dff2d4cba12bc1eb4b39db6402b9
+  <%= form.submit 'Search Customers' %>
 <% end %>
