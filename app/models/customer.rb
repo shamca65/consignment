@@ -18,6 +18,7 @@ class Customer < ApplicationRecord
       indexes :first_name, type: :text, analyzer: 'english'
       indexes :last_name, type: :text, analyzer: 'english'
       indexes :email, type: :text, analyzer: 'english'
+      indexes :active, type: :boolean
     end
   end
 
@@ -29,12 +30,12 @@ class Customer < ApplicationRecord
                                 {
                                     multi_match: {
                                         query: query,
-                                        fields: [:author, :title, :body, :tags]
+                                        fields: [:first_name, :last_name, :email]
                                     }
                                 },
                                 {
                                     match: {
-                                        published: true
+                                        active: true
                                     }
                                 }]
                         }

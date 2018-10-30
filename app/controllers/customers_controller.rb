@@ -4,20 +4,22 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def search
-
+    puts "***************** in search action"
     query = params[:search_customers].presence && params[:search_customers][:query]
 
     if query
+      puts "***************** query found : " + params[:search_customers][:query].to_s
       @customers = Customer.search_published(query)
     end
 
     respond_to do |format|
         if Customer.search_published(query)
+          puts "***************** responding with HTML"
           format.html { redirect_to customers_path }
-          format.json { render :show, status: :ok, location: customers_path }
+          #format.json { render :show, status: :ok, location: customers_path }
         else
-          format.html { render :edit }
-          format.json { render json: @customer.errors, status: :unprocessable_entity }
+          #format.html { render :edit }
+          #format.json { render json: @customer.errors, status: :unprocessable_entity }
         end
       end
   end
