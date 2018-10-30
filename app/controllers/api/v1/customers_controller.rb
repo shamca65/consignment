@@ -3,6 +3,7 @@ module Api
   module V1
     class CustomersController < ApplicationController
       def search
+        puts "*********Searching mofo "
         if params[:term].nil?
           @customers = []
         else
