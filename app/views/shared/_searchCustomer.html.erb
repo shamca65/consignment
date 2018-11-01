@@ -1,4 +1,5 @@
-<%= form_for :search_customers, url: search_customers_path, method: :get do |form| %>
+
+<%= form_for :search_customers, url: search_results_customers_path, method: :get do |form| %>
   <%= form.text_field :query, value: params[:search_customers].presence && params[:search_customers][:query] %>
   <%= form.submit 'Search Customers' %>
 <% end %>

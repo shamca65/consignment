@@ -4,6 +4,10 @@ class CustomersController < ApplicationController
   before_action :set_customer, only: [:show, :edit, :update, :destroy]
 
   def search
+
+  end
+
+  def search_results
     query = params[:search_customers].presence && params[:search_customers][:query]
 
     if query
@@ -12,16 +16,6 @@ class CustomersController < ApplicationController
       puts "Query count : " + Customer.search_published(query).size.to_s
     end
 
-    respond_to do |format|
-        if Customer.search_published(query)
-          puts "***************** responding with HTML"
-          format.html { redirect_to customers_path }
-          #format.json { render :show, status: :ok, location: customers_path }
-        else
-          #format.html { render :edit }
-          #format.json { render json: @customer.errors, status: :unprocessable_entity }
-        end
-      end
   end
 
   # GET /customers
@@ -90,6 +84,6 @@ class CustomersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
-      params.require(:customer).permit(:first_name, :last_name, :phone, :query)
+      params.require(:customer).permit(:first_name, :last_name, :phone, :query, :search_customers)
     end
 end
