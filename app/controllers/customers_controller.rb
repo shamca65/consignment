@@ -23,7 +23,7 @@ class CustomersController < ApplicationController
 
     if query
       puts "***************** customer#customer_items : " + params[:search_customers][:query].to_s
-      @customerItems = @customer.by_customerId
+      @customerItems = @customer.items_by_id()
     end
 
   end

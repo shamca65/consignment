@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
 
-  has_many :items, dependent: :destroy
+  has_many :items, dependent: :destroy, :order => 'customer_id', :foreign_key => "customer_id"
 
   include EventLogger
   include Elasticsearch::Model
@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
 
   validates_presence_of :first_name, :last_name, :phone
 
-  scope :item_list, lambda{|customer_id| where(:item_list_id =>  customer_id)}
+  scope :customer_items, -> (customer_id) { where(customer_id: customer_id) }
 
   # ElasticSearch Index
   settings index: { number_of_shards: 1 } do
