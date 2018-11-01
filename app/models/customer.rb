@@ -12,6 +12,8 @@ class Customer < ApplicationRecord
 
   validates_presence_of :first_name, :last_name, :phone
 
+  scope :item_list, lambda{|customer_id| where(:item_list_id =>  customer_id)}
+
   # ElasticSearch Index
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
