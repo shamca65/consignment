@@ -21,6 +21,7 @@ class CustomersController < ApplicationController
   def items
       puts "***************** customer#customer_items : " + params[:query].to_s
       @customerItems = Item.find_by "customer_id = ?",params[:query]
+      puts "********* customer item size: "
       respond_to do |format|  ## Add this
         format.html { render :'customers/Items', notice: 'Photo was successfully created.' }
         end
