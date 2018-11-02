@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
 
-  has_many :items, dependent: :destroy, :order => 'customer_id', :foreign_key => "customer_id"
+  has_many :items, dependent: :destroy
 
   include EventLogger
   include Elasticsearch::Model
@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
 
   validates_presence_of :first_name, :last_name, :phone
 
-  scope :customer_items, -> (customer_id) { where(customer_id: customer_id) }
+  scope :by_customer_id, ->(customer_id) { where("customer_id = ?", customer_id)
 
   # ElasticSearch Index
   settings index: { number_of_shards: 1 } do
@@ -20,10 +20,12 @@ class Customer < ApplicationRecord
       indexes :first_name, type: :text, analyzer: 'english'
       indexes :last_name, type: :text, analyzer: 'english'
       indexes :email, type: :text, analyzer: 'english'
-      indexes :active, type: :boolean
+      indexes :active, type: :boolean, analyzer: 'keyword'
+      indexes :id, type: :integer, analyzer: 'keyword'
     end
   end
 
+  # TODO Need to refactor this and possibly get rid of 'active' parameter
   def self.search_published(query)
     self.search({
                     query: {
@@ -42,6 +44,13 @@ class Customer < ApplicationRecord
                                 }]
                         }
                     }
+                })
+  end
+
+  def self.search_id(query)
+    self.search({
+                    query: query,
+                    fields: [:id]
                 })
   end
 

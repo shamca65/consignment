@@ -11,7 +11,7 @@ class CustomersController < ApplicationController
     query = params[:search_customers].presence && params[:search_customers][:query]
 
     if query
-      puts "***************** customer#search_results : " + params[:search_customers][:query].to_s
+      puts "***************** query : " + params[:search_customers][:query].to_s
       @customers = Customer.search_published(query)
       puts "Query count : " + Customer.search_published(query).size.to_s
     end
@@ -19,13 +19,13 @@ class CustomersController < ApplicationController
   end
 
   def customer_items
-    query = params[:attached_items].presence && params[:attached_items][:customer_id]
+    query = params[:attached_items].presence && params[:attached_items][:query]
 
     if query
       puts "***************** customer#customer_items : " + params[:search_customers][:query].to_s
-      @customerItems = @customer.items_by_id()
+      @customerItems = @customer.by_customer_id(query)
+      puts "***************** items found : " + @customerItems.size.to_s
     end
-
   end
 
   # GET /customers
