@@ -1,7 +1,7 @@
 class CustomersController < ApplicationController
   include EventLogger
 
-  before_action :set_customer, only: [:show, :edit, :update, :destroy]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :items]
 
   def search
 
@@ -18,14 +18,12 @@ class CustomersController < ApplicationController
 
   end
 
-  def customer_items
-    query = params[:attached_items].presence && params[:attached_items][:query]
-
-    if query
-      puts "***************** customer#customer_items : " + params[:search_customers][:query].to_s
-      @customerItems = @customer.by_customer_id(query)
-      puts "***************** items found : " + @customerItems.size.to_s
-    end
+  def items
+      puts "***************** customer#customer_items : " + params[:query].to_s
+      @customerItems = Item.find_by "customer_id = ?",params[:query]
+      respond_to do |format|  ## Add this
+        format.html { render :'customers/Items', notice: 'Photo was successfully created.' }
+        end
   end
 
   # GET /customers

@@ -12,7 +12,6 @@ class Customer < ApplicationRecord
 
   validates_presence_of :first_name, :last_name, :phone
 
-  scope :by_customer_id, ->(customer_id) { where("customer_id = ?", customer_id)
 
   # ElasticSearch Index
   settings index: { number_of_shards: 1 } do
@@ -44,13 +43,6 @@ class Customer < ApplicationRecord
                                 }]
                         }
                     }
-                })
-  end
-
-  def self.search_id(query)
-    self.search({
-                    query: query,
-                    fields: [:id]
                 })
   end
 

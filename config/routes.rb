@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     collection do
       get :search
       get 'search_results' => 'customers#search_results', as: :search_results
-      post 'items' => 'customers#items', as: :items
+      #get 'items' => 'customers#items', as: :items
+      get '/items/:id', to: 'customers#items', as: 'items'
     end
   end
 
