@@ -12,17 +12,22 @@
 #Customer.create!(first_name: "2-Biff", last_name: "McFarter", email: "biff@anus.com", phone: "555-555-1212")
 #Customer.create!(first_name: "3-Chiff", last_name: "McFarter", email: "chiff@anus.com", phone: "555-555-1212")
 
+Item.create!(size: "XXL", description: "Customer-1", customer_id: 1, price: "12.34")
+
+Item.create!(size: "XXL", description: "Customer-2", customer_id: 2, price: "12.34")
+Item.create!(size: "XXL", description: "Customer-2", customer_id: 2, price: "12.34")
 
 Item.create!(size: "XXL", description: "Customer-3", customer_id: 3, price: "12.34")
 Item.create!(size: "XXL", description: "Customer-3", customer_id: 3, price: "12.34")
 Item.create!(size: "XXL", description: "Customer-3", customer_id: 3, price: "12.34")
-Item.create!(size: "XXL", description: "Customer-3", customer_id: 3, price: "12.34")
-Item.create!(size: "XXL", description: "Customer-3", customer_id: 3, price: "12.34")
-Item.create!(size: "XXL", description: "Customer-3", customer_id: 3, price: "12.34")
 
 Item.create!(size: "L", description: "Customer-4", customer_id: 4, price: "12.34")
 Item.create!(size: "L", description: "Customer-4", customer_id: 4, price: "12.34")
 Item.create!(size: "L", description: "Customer-4", customer_id: 4, price: "12.34")
 Item.create!(size: "L", description: "Customer-4", customer_id: 4, price: "12.34")
-Item.create!(size: "L", description: "Customer-4", customer_id: 4, price: "12.34")
-Item.create!(size: "L", description: "Customer-4", customer_id: 4, price: "12.34")
+
+Item.create!(size: "L", description: "Customer-5", customer_id: 5, price: "12.34")
+Item.create!(size: "L", description: "Customer-5", customer_id: 5, price: "12.34")
+Item.create!(size: "L", description: "Customer-5", customer_id: 5, price: "12.34")
+Item.create!(size: "L", description: "Customer-5", customer_id: 5, price: "12.34")
+Item.create!(size: "L", description: "Customer-5", customer_id: 5, price: "12.34")

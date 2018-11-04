@@ -1,4 +1,7 @@
 <%= render 'shared/navbar' %>
 <h1>Editing Customer</h1>
 <%= render 'customerEdit', customer: @customer %>
-<%= link_to 'Back to Customer List', customers_path %>
+<div class="btn-group" role="group" aria-label="Navigation">
+  <%= link_to 'Home', root_path, type: "button", class: "btn btn-warning" %>
+  <%= link_to 'Back', :back, type: "button", class: "btn btn-info" %>
+</div>

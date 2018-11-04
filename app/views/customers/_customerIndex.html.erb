@@ -6,7 +6,10 @@
     <td><%= customer.phone %></td>
     <td><%= customer.email %></td>
     <td >
-      <%= link_to ' ', items_customers_path(customer), class: 'fa fa-group icon' %>
+      <%= link_to ' ', items_customers_path(customer.id), class: 'fa fa-lg fa-list-ol icon' %>
+    </td>
+    <td>
+      <%= link_to ' ', edit_customer_path(customer.id), class: 'fa fa-lg fa-id-card-o' %>
     </td>
   </tr>
 <% end %>
