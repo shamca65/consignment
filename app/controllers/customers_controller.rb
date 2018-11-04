@@ -12,16 +12,16 @@ class CustomersController < ApplicationController
 
     if query
       puts "***************** query : " + params[:search_customers][:query].to_s
-      @customers = Customer.search_published(query)
-      puts "Query count : " + Customer.search_published(query).size.to_s
+      @customers = Customer.search(query)
+      puts "Query count : " + Customer.search(query).size.to_s
     end
 
   end
 
   def items
       puts "***************** customer#customer_items : " + params[:query].to_s
-      @customerItems = Item.find_by "customer_id = ?",params[:query]
-      puts "********* customer item size: "
+      @customerItems = Item.customer_items(3)
+      puts "********* customer item size: " + Item.customer_items(3).count
       respond_to do |format|  ## Add this
         format.html { render :'customers/Items', notice: 'Photo was successfully created.' }
         end

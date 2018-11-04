@@ -12,16 +12,26 @@ class Customer < ApplicationRecord
 
   validates_presence_of :first_name, :last_name, :phone
 
-
   # ElasticSearch Index
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :first_name, type: :text, analyzer: 'english'
       indexes :last_name, type: :text, analyzer: 'english'
       indexes :email, type: :text, analyzer: 'english'
-      indexes :active, type: :boolean, analyzer: 'keyword'
-      indexes :id, type: :integer, analyzer: 'keyword'
     end
+  end
+
+  def self.search(query)
+    __elasticsearch__.search(
+        {
+            query: {
+                multi_match: {
+                    query: query,
+                    fields: ['first_name', 'last_name', 'email', 'id']
+                }
+            }
+        }
+    )
   end
 
   # TODO Need to refactor this and possibly get rid of 'active' parameter

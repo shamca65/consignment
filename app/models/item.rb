@@ -7,6 +7,9 @@ class Item < ApplicationRecord
   after_update :log_update_event
   after_destroy :log_destroy_event
 
+  scope :customer_items, -> (id ){where("customer_id = ?", id)}
+
+  end
 
   def log_create_event
     log_event("Item",self.id,"created")
