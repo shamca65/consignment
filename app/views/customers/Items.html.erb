@@ -1,4 +1,3 @@
-<%= render 'shared/navbar' %>
 <%# #TODO move styling into a css sheet%>
 
 <table class="table width: 100%;">
@@ -52,7 +51,4 @@
   </thead>
   <%= render 'customerItems' %>
 </table>
-<div class="btn-group" role="group" aria-label="Navigation">
-  <%= link_to 'Home', root_path, type: "button", class: "btn btn-warning" %>
-  <%= link_to 'Back to Customer List', customers_path, type: "button", class: "btn btn-info" %>
-</div>
+<%= render 'shared/footerlinks' %>

@@ -1,9 +1,2 @@
-<%= render 'shared/navbar' %>
-<h1>Editing Item</h1>
 <%= render 'itemEdit', item: @item %>
-
-<div class="btn-group" role="group" aria-label="Navigation">
-  <%= link_to 'Home', root_path, type: "button", class: "btn btn-warning" %>
-  <%= link_to 'Items List', items_path, type: "button", class: "btn btn-info" %>
-  <%= link_to 'Back', :back, type: "button", class: "btn btn-warning" %>
-</div>
+<%= render 'shared/footerlinks' %>
