@@ -7,8 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="container">
-  <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar' %>
     <%= yield %>
-    <%= js add_gritter(flash[:notice], title: "Overtime App Notification", sticky: false) %>
   </body>
 </html>
