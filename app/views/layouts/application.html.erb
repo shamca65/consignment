@@ -6,8 +6,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
     <%= csrf_meta_tags %>
   </head>
-  <body class="container">
-    <%= render 'shared/navbar' %>
-    <%= yield %>
+  <body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <%= render 'shared/navbar' %>
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
   </body>
 </html>

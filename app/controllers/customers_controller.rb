@@ -3,9 +3,6 @@ class CustomersController < ApplicationController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy, :items]
 
-  def search
-
-  end
 
   def search_results
     query = params[:search_customers].presence && params[:search_customers][:query]
@@ -31,6 +28,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
+
       @customers = Customer.all
   end
 

@@ -1,0 +1,18 @@
+<% flash.each do |type, message| %>
+
+  $.notify({
+  // options
+  message: ”
+  },{
+  // settings
+  type: ”,
+  placement: {
+  align: “center”
+  },
+  animate: {
+  enter: ‘animated bounce’,
+  exit: ‘animated bounce’
+  }
+  });
+
+<% end %>
