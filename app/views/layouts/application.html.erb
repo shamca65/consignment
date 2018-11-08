@@ -3,10 +3,14 @@
   <head>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
     <%= csrf_meta_tags %>
   </head>
   <body>
+  <% if notice %>
+    <p id="notice" style="display: none;">
+      <%= notice %>
+    </p>
+  <% end %>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -15,6 +19,16 @@
       </div>
     </div>
   </div>
-
+  <script>
+      // from: 'top/bottom'
+      // align: 'left/center/right'
+      $.notify($("#notice").html(), {
+          allow_dismiss: false,
+          placement: {
+              from: 'bottom',
+              align: 'left'
+          }
+      });
+  </script>
   </body>
 </html>

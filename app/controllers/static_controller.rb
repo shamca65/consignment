@@ -5,7 +5,7 @@ class StaticController < ApplicationController
   end
 
   def index
-
+      flash[:success] = "Welcome to notify-on-rails"
   end
 
 end

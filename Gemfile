@@ -43,7 +43,7 @@ gem 'administrate', '~> 0.11.0'
 gem 'bourbon', '~> 5.1'
 
 #notifications
-gem 'gritter', '1.2.0'
+gem 'notify-on-rails', '~> 3.1', '>= 3.1.3'
 
 # Elasticsearch
 gem 'elasticsearch-model'
