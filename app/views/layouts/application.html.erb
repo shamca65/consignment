@@ -3,11 +3,15 @@
   <head>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'jquery.gritter.js' %>
+    <%= stylesheet_link_tag 'jquery.gritter.css' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <%= csrf_meta_tags %>
   </head>
   <body>
-
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -16,6 +20,5 @@
       </div>
     </div>
   </div>
-
   </body>
 </html>
