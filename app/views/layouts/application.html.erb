@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+  <div class="modal" style="display:none;">
+  </div>
   <% if notice %>
     <p id="notice" style="display: none;">
       <%= notice %>
@@ -20,13 +22,25 @@
     </div>
   </div>
   <script>
-      // from: 'top/bottom'
-      // align: 'left/center/right'
       $.notify($("#notice").html(), {
           allow_dismiss: false,
           placement: {
-              from: 'bottom',
-              align: 'left'
+              from: 'top',
+              align: 'right'
+          }
+      });
+      $.notify($("#warning").html(), {
+          allow_dismiss: false,
+          placement: {
+              from: 'top',
+              align: 'right'
+          }
+      });
+      $.notify($("#info").html(), {
+          allow_dismiss: false,
+          placement: {
+              from: 'top',
+              align: 'right'
           }
       });
   </script>

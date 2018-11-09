@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   include Elasticsearch::Model::Callbacks
 
   after_create  :log_create_event
-  after_update :log_update_event
+  after_update  :log_update_event
   after_destroy :log_destroy_event
 
   validates_presence_of :first_name, :last_name, :phone

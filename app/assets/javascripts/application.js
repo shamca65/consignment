@@ -17,3 +17,4 @@
 //= require notify-on-rails
 //= require turbolinks
 //= require_tree .
+jQuery.noConflict()
