@@ -1,2 +1,21 @@
+<div id='jqxWidget'></div>
 <%= render 'itemEdit', item: @item %>
 <%= render 'shared/footerlinks' %>
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Create calendar.
+        jQuery("#jqxWidget").jqxCalendar({ enableTooltips: true, width: 220, height: 220});
+
+        // Create Date objects.
+        var date1 = new Date();
+        var date2 = new Date();
+        var date3 = new Date();
+        date1.setDate(5);
+        date2.setDate(15);
+        date3.setDate(16);
+        // Add special dates by invoking the addSpecialDate method.
+        jQuery("#jqxWidget").jqxCalendar('addSpecialDate', date1, '', 'Special Date1');
+        jQuery("#jqxWidget").jqxCalendar('addSpecialDate', date2, '', 'Special Date2');
+        jQuery("#jqxWidget").jqxCalendar('addSpecialDate', date3, '', 'Special Date3');
+    });
+</script>

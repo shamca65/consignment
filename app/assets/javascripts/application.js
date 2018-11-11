@@ -11,10 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require jquery-ui
-//= require bootstrap-sprockets
 //= require notify-on-rails
-//= require turbolinks
 //= require_tree .
 jQuery.noConflict()

@@ -7,7 +7,6 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    flash[:notice] = "Welcome to The Items Page"
     @items = Item.all
   end
 
