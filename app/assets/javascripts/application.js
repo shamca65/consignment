@@ -14,3 +14,15 @@
 //= require notify-on-rails
 //= require_tree .
 jQuery.noConflict()
+jQuery(document).ready(function () {
+    jQuery("#jqxNotification").jqxNotification({
+        width: "600",
+        position: "top-right",
+        opacity: 1.0,
+        template: null,
+        icon: { width: 80,
+            height: 60,
+            url: 'assets/jqwidgets/images/star.png',
+            padding: 5} });
+    jQuery("#jqxNotification").jqxNotification("open");
+    });

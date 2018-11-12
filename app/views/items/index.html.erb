@@ -1,5 +1,5 @@
 <h3>Items</h3>
-
+<%= render :partial => 'shared/notifications' %>
 <table class="table table-striped table-hover">
   <thead>
   <tr>
@@ -26,3 +26,6 @@
 <%= render 'itemIndex' %>
 </table>
 <%= render 'shared/footerlinks' %>
+<script>
+    jQuery("#jqxNotification").jqxNotification("open");
+</script>
