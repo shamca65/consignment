@@ -2,7 +2,8 @@
 #
 Rails.application.routes.draw do
 
-  devise_for :users, skip: [:registrations]
+  devise_for :users, controllers: {sessions: 'users/sessions'}
+
   root to: 'static#index'
 
   resources :event_logs
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
       resources :users
       resources :customers
       resources :items
-      root to: "users#index"
+      #root to: "users#index"
   end
 
 end
