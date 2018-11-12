@@ -4,7 +4,7 @@ class User < ApplicationRecord
   #
 
   include EventLogger
-  devise :database_authenticatable, :rememberable
+  devise :database_authenticatable, :rememberable, :timeoutable, :trackable
 
   validates_presence_of :first_name, :last_name, :phone, :email
 

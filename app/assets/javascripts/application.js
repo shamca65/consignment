@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require notify-on-rails
 //= require_tree .
 jQuery.noConflict()
 jQuery(document).ready(function () {

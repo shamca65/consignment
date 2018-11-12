@@ -1,17 +1,17 @@
 # config/routes.rb
 #
 Rails.application.routes.draw do
-  resources :event_logs
+
+  devise_for :users, skip: [:registrations]
   root to: 'static#index'
 
+  resources :event_logs
   resources :items
-
 
   resources :customers do
     collection do
       get :search
       get 'search_results' => 'customers#search_results', as: :search_results
-      #get 'items' => 'customers#items', as: :items
       get '/items/:id', to: 'customers#items', as: 'items'
     end
   end
@@ -24,7 +24,5 @@ Rails.application.routes.draw do
       resources :items
       root to: "users#index"
   end
-
-  devise_for :users, skip: [:registrations]
 
 end

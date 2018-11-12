@@ -8,9 +8,9 @@
       <td class="spacer"></td>
       <td class="mover-right">
         <% if user_signed_in? %>
-          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-light action-button") %>
+          <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "btn btn-light action-button" %>
         <%else %>
-          <%= link_to('Login', new_user_session_path, class: "btn btn-light action-button" )  %>
+          <%= link_to('Sign In', new_user_session_path, class: "btn btn-light action-button" )  %>
         <%end %>
       </td>
     </tr>

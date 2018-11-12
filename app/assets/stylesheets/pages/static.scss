@@ -1,3 +1,175 @@
+// Place all the styles related to the Static controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.col-md-3 {
+  padding-right: 3px;
+  padding-left: 3px;
+  min-width: 240px;
+  max-width: 240px;
+  margin: 5px;
+}
+
+@media (max-width: 600px) {
+  .col-md-3 {
+    padding-right: 3px;
+    padding-left: 3px;
+    min-width: 240px;
+    max-width: 80%;
+    margin: 5px;
+  }
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+.container {
+  background: #fff;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+.container {
+  background: #fff;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+* {
+  outline: none;
+}
+
+.features-boxed {
+  color: #313437;
+  background-color: #eef4f7;
+}
+
+.features-boxed p {
+  color: #7d8285;
+}
+
+.features-boxed h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  color: inherit;
+}
+
+@media (max-width:767px) {
+  .features-boxed h2 {
+    margin-bottom: 25px;
+    padding-top: 25px;
+    font-size: 24px;
+  }
+}
+
+.features-boxed .intro {
+  font-size: 1px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.features-boxed .intro p {
+  margin-bottom: 0;
+}
+
+.features-boxed .features {
+  padding: 50px 0;
+}
+
+.features-boxed .item {
+  text-align: center;
+}
+
+.features-boxed .item .box:hover {
+  background-color: #56c6c6;
+}
+
+.features-boxed .item .box {
+  text-align: center;
+  padding: 30px;
+  background-color: rgb(230,230,230);
+  margin-bottom: 30px;
+}
+
+.features-boxed .item .icon {
+  font-size: 60px;
+  color: #1485ee;
+  margin-top: 20px;
+  margin-bottom: 35px;
+}
+
+.features-boxed .item .name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+  margin-top: 0;
+  color: inherit;
+}
+
+.features-boxed .item .description {
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
 .navigation-clean-button {
   background: #fff;
   padding-top: .75rem;
@@ -107,4 +279,3 @@
 .navigation-clean-button .navbar-text .action-button:hover {
   background: #66d7d7;
 }
-
