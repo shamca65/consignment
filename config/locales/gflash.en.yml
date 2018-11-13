@@ -9,6 +9,7 @@ en:
       warning: "Warning"
       error: "Error"
       progress: "Progress"
+      info: "Information"
     #
     # Add default gflash messages:
     # defaults:
