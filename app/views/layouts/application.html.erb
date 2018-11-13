@@ -3,28 +3,18 @@
   <head>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <script>
-      jQuery(document).ready(function () {
-          jQuery("#jqxNotification").jqxNotification({
-              width: "400",
-              position: "top-right",
-              opacity: 1.0,
-              template: null,
-              icon: { width: 80,
-                  height: 60,
-                  url: 'assets/jqwidgets/images/star.png',
-                  padding: 5} });
-      });
 
-    </script>
     <%= csrf_meta_tags %>
   </head>
   <body>
   <div class="container">
     <div class="row">
       <div class="col-md-12">
+        <div id='js-ajax-response'>
+        </div>
         <%= render 'shared/navbar' %>
         <%= yield %>
+        <%= insert_paloma_hook %>
       </div>
     </div>
   </div>

@@ -11,5 +11,44 @@
 // about supported directives.
 //
 //= require jquery
+//= require paloma
 //= require_tree .
-jQuery.noConflict()
+
+// jQuery.noConflict()
+
+var blank = function(){};
+
+Paloma.controller('Application', {
+
+    // before: [
+    //   'all -> logRequest',
+    //   'show index -> askUser changeBackground'
+    // ],
+
+    before: [
+        'all -> performThis'
+    ],
+
+    performThis: function(){
+        console.log('Perform this action !');
+    }
+
+});
+
+Paloma.controller('Static < Application', {
+    index: blank,
+    show: blank
+});
+
+$(document).ready(function(){
+    Paloma.start();
+
+    $('#js-ajax-link').on('click', function(e){
+        e.preventDefault();
+
+        $.get($(this).prop('href'), function(response){
+            $('#js-ajax-response').html(response);
+            Paloma.start();
+        });
+    });
+});
