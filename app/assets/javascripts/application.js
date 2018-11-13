@@ -14,29 +14,23 @@
 //= require paloma
 //= require_tree .
 
-// jQuery.noConflict()
-
 var blank = function(){};
 
 Paloma.controller('Application', {
-
-    // before: [
-    //   'all -> logRequest',
-    //   'show index -> askUser changeBackground'
-    // ],
 
     before: [
         'all -> performThis'
     ],
 
     performThis: function(){
-        console.log('Perform this action !');
+        console.log('Paloma executing\n');
     }
-
 });
 
 Paloma.controller('Static < Application', {
-    index: blank,
+    index: function(){
+        $('#jqxNotification').jqxNotification('open');
+    },
     show: blank
 });
 
@@ -51,4 +45,6 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
+
+
 });
