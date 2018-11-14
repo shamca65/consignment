@@ -5,6 +5,5 @@ Paloma.controller('Application', {
     ],
 
     performThis: function(){
-        console.log('Paloma executing\n');
     }
 });
