@@ -14,36 +14,6 @@
 //= require paloma
 //= require_tree .
 
-var blank = function(){};
-
-Paloma.controller('Application', {
-
-    before: [
-        'all -> performThis'
-    ],
-
-    performThis: function(){
-        console.log('Paloma executing\n');
-    }
-});
-
-Paloma.controller('Static < Application', {
-    index: function(){
-        var notificationWidth = 300;
-        $("#timerNotification").jqxNotification(
-            { width: notificationWidth,
-                position: "top-right",
-                autoOpen: true,
-                closeOnClick: true,
-                autoClose: true,
-                showCloseButton: false,
-                template: "success",
-             });
-        $("#timertNotification").jqxNotification("open");
-    },
-    show: blank,
-    mega: blank
-});
 
 $(document).ready(function(){
     Paloma.start();
@@ -56,6 +26,5 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
-
 
 });
