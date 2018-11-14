@@ -29,9 +29,20 @@ Paloma.controller('Application', {
 
 Paloma.controller('Static < Application', {
     index: function(){
-        $('#jqxNotification').jqxNotification('open');
+        var notificationWidth = 300;
+        $("#timerNotification").jqxNotification(
+            { width: notificationWidth,
+                position: "top-right",
+                autoOpen: true,
+                closeOnClick: true,
+                autoClose: true,
+                showCloseButton: false,
+                template: "success",
+             });
+        $("#timertNotification").jqxNotification("open");
     },
-    show: blank
+    show: blank,
+    mega: blank
 });
 
 $(document).ready(function(){
