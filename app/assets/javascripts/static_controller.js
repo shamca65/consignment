@@ -8,6 +8,7 @@ Paloma.controller('Static < Application', {
 
         $("#jq-notificationWin").jqxNotification(
             {   width: 300,
+                height: 100,
                 position: "top-right",
                 autoOpen: true,
                 closeOnClick: true,
