@@ -4,10 +4,9 @@ Paloma.controller('Static < Application', {
     index: blank,
     mega: function(){
         var msg = this.params['msg'];
-        var element = document.querySelector('div.msg');
-        element.textContent = msg;
+        document.getElementById("jqmsg").innerHTML=msg;
 
-        $("#timerNotification").jqxNotification(
+        $("#jq-notificationWin").jqxNotification(
             {   width: 300,
                 position: "top-right",
                 autoOpen: true,
@@ -16,7 +15,5 @@ Paloma.controller('Static < Application', {
                 showCloseButton: true,
                 template: "success",
             });
-        $("#timertNotification").jqxNotification("open");
-    },
-    show: blank
+    }
 });

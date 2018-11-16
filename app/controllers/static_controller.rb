@@ -1,7 +1,7 @@
 class StaticController < ApplicationController
 
   def index
-    js :mega, :msg => 'test message'
+    #js :mega, :msg => 'Hack to testing'
   end
 
 end

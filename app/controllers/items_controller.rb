@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    js 'Static#mega', :msg => 'Crack to test'
     @items = Item.all
   end
 
@@ -30,6 +31,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
+
         format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
