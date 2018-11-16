@@ -1,3 +1,4 @@
+<% content_for :title, 'Customers' %>
 <%= render 'shared/navbar' %>
 <h1> Customer Show</h1>
 <table class="table table-striped table-hover">
@@ -22,5 +23,3 @@
   </thead>
   <%= render 'customerShow', customer: @customer%>
 </table>
-
-<%= link_to 'Back to Customer List', customers_path %>
