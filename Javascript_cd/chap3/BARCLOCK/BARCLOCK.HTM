@@ -1,0 +1,88 @@
+<html>
+
+<head>
+
+<title>JavaScript Warehouse - Status Clock</title>
+
+</head>
+
+<body bgcolor="White" text="Black" link="Blue" vlink="Purple" alink="Red" onLoad="startclock()">
+
+
+
+<center><h2>Status Clock</h2></center>
+
+
+
+<hr align="center" size="3">
+
+
+
+<script Language="JavaScript">
+
+// Navigation - Stop
+
+// Netscapes Clock - Start
+
+// this code was taken from Netscapes JavaScript documentation at
+
+// www.netscape.com on Jan.25.96
+
+var timerID = null;
+
+var timerRunning = false;
+
+function stopclock (){
+
+	if(timerRunning)
+
+		clearTimeout(timerID);
+
+	timerRunning = false;
+
+}
+
+function showtime () {
+
+	var now = new Date();
+
+	var hours = now.getHours();
+
+	var minutes = now.getMinutes();
+
+	var seconds = now.getSeconds()
+
+	var timeValue = "" + ((hours >12) ? hours -12 :hours)
+
+	timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+
+	timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+
+	timeValue += (hours >= 12) ? " P.M." : " A.M."
+
+	window.status = timeValue;
+
+	timerID = setTimeout("showtime()",1000);
+
+	timerRunning = true;
+
+}
+
+function startclock () {
+
+	// Make sure the clock is stopped
+
+	stopclock();
+
+	showtime();
+
+}
+
+</script>
+
+<center>Look in your status bar!</center>
+
+</body>
+
+</html>
+

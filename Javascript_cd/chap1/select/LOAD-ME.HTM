@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+<SCRIPT Language='JavaScript'>
+<!-- JavaScript Follows 
+function newwin(windower) {
+
+var myindex=windower.selector.selectedIndex;
+var place=windower.selector.options[myindex].value;
+msg=open(place,"","location=yes");
+}
+//JavaScript Ends -->
+</SCRIPT>
+</HEAD>
+<BODY>
+
+
+<form name="windower">
+<select name="selector">
+<option value="1.html">First window
+<option value="2.html">Second window
+<option value="3.html">Third window
+</select>
+<INPUT TYPE="button" value="open" onClick="newwin(this.form);">
+</FORM>
+</BODY>
+</HTML>

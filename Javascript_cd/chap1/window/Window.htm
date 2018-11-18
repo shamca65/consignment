@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<TITLE></TITLE>
+</HEAD>
+
+<SCRIPT Language='JavaScript'>
+<!-- JavaScript Follows 
+function winmsg () {
+var Message=document.message.txt.value;
+msg=open("","NewWindow","toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=260");
+msg.document.write("<HEAD><TITLE>Hello</TITLE></HEAD>");
+msg.document.write("<center><B>This is what you were saying:</B><p>", Message, "</center>");
+msg.document.write("<CENTER><FORM><INPUT TYPE='BUTTON' VALUE='Okay'" +                   "onClick='self.close()'></FORM><CENTER>");
+} 
+//JavaScript Ends -->
+</SCRIPT>
+<BODY BGCOLOR="FF0000">
+<form name="message"><input type="text" name="txt" size="30">
+<input type="button" value="open" onClick="winmsg()">
+<input type="reset" value="reset">
+</form>
+</BODY>
+</HTML>

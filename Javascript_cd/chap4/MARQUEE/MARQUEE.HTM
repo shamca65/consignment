@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Scrolling Marquee</title>
+
+<script language="JavaScript1.1">
+
+//Email the author at:poland@sapien.net
+//All contents copyright 
+//1996 Nucleus Communications.</font>
+
+
+var id,pause=0,position=0;
+function banner() {
+   var i,k,msg=document.form1.message.value;
+   k=(66/msg.length)+1;
+   for(i=0;i<=k;i++) msg+=" "+msg;
+   document.form1.banner.value=msg.substring(position,position+70);
+   if(position++==document.form1.message.value.length) position=0;
+   id=setTimeout("banner()",200); 
+}
+
+</script>
+</head>
+
+<body bgcolor="336666" background="images/" text="87cdcd" alink="ffffff" vlink="333399" link="ffffff" onLoad="banner()">
+
+
+<form name="form1">
+<input type="hidden" name="message" value='Football is back!  Chicago Bears, Michigan Wolverines & Detroit Lions. '>
+<input type="text" name="banner" size="40">
+</form>
+
+
+</body>
+</html>

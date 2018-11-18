@@ -1,0 +1,83 @@
+<html>
+<head>
+<title></title>
+
+<script>
+function properName (obj)
+{
+   var first = obj.value.charAt (0);
+   var rest  = obj.value.substring (1, obj.value.length);
+
+   obj.value = first.toUpperCase () + rest;
+}
+
+function emptyValue (value, fieldname)
+{
+   if (value == null || value == "")
+   {
+      alert (fieldname + " cannot be empty.")
+      return (true)
+   }
+   return (false)
+}
+
+function validateData ()
+{
+   properName (top.frame3.document.form.fname);
+   properName (top.frame3.document.form.lname);
+
+   if (emptyValue (top.frame3.document.form.fname.value, "First Name"))
+      return (false);
+
+   if (emptyValue (top.frame3.document.form.lname.value, "Last Name"))
+      return (false);
+
+   return (true);
+}
+
+function doSave ()
+{
+   if (! validateData ())
+      return (false);
+
+   top.frame3.document.form.op.value = "SAVE";
+   top.frame3.document.form.submit ();
+   return (true);
+}
+
+function doNew ()
+{
+   top.frame3.location = "frame3.html?id=0";
+
+   return (true)
+}
+
+function doDelete ()
+{
+   if (! confirm ("Are you sure you want to delete this item?"))
+      return (false);
+
+   top.frame3.document.form.op.value = "DELETE";
+   top.frame3.document.form.submit ();
+
+   return (true);
+}
+</script>
+</head>
+
+<body bgcolor="#ffffff">
+
+<form name="form" method="POST">
+
+<center>
+
+<input type="button" name="save" value="Save" onClick="return (doSave ())">
+<input type="button" name="add"  value="New" onClick="return (doNew ())">
+<input type="button" name="del"  value="Delete" onClick="return (doDelete ())">
+
+</center>
+
+</form>
+
+</body>
+</html>

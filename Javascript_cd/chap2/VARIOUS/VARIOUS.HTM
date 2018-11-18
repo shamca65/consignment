@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Your Web Page Title</TITLE>
+   <META NAME="GENERATOR" CONTENT="Mozilla/3.01Gold (Win95; I) [Netscape]">
+<SCRIPT LANGUAGE="JavaScript">
+<!--Hide JavaScript from Java-Impaired Browsers
+
+function test_it() {
+  ent1 = document.isnform.question1.value
+  if (ent1 != null && ent1.length != 0) {
+    ent1 = "" + eval(ent1);
+    }
+}
+
+function alertBox() {
+  if (ent1 < 10) {
+    alert("I'm sorry. The number you entered: "+ ent1 
+    + ", must be more than 9");
+    }
+  }
+
+function confirmBox() {
+  if (confirm("Are you sure you REALLY want to go to our Home Page?")) {
+    location.href = "index.htm";
+    }
+  }
+
+function promptBox() {
+  entry = "";
+  if (prompt("I'm Sorry. I forgot to ask.  How many shirts "
+    + "do you wish to order?",entry)) {
+    // process here
+    }
+}
+// -->
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<P><!-- Cut-N-Paste JavaScript from ISN Toolbox 
+Copyright 1996, Infohiway Server Network.  Restricted use is hereby
+granted (commercial and personal OK so long as this code is not 
+*directly* sold) providing this notice is buried somewhere deep
+in your HTML document.  A link to http://www.infohiway.com is always 
+appreciated, but is absolutely and positively not necessary. :-) --><!--Your page goes here --></P>
+
+<P><FORM NAME="isnform">Type a number less than 10 here: <INPUT TYPE="text" NAME="question1" SIZE=2 
+VALUE="" onChange="test_it(this)"><INPUT TYPE ="button" VALUE = "Then Click Here" 
+onClick="alertBox(this.form)"></FORM></P>
+
+<P><FORM>I'm ready to transfer you to our Home Page. <INPUT TYPE ="button" VALUE = "Just Click Here" 
+onClick="confirmBox()"></FORM></P>
+
+<P><FORM NAME="isnform1">I'm ready to process your order: <INPUT TYPE ="button" VALUE = "Just Click Here" onClick="promptBox()"></FORM></P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,332 @@
+<HTML>
+<HEAD>
+<TITLE>New Window Options Viewer</TITLE>
+<SCRIPT LANGUAGE="JavaScript">
+// Copyright 1997, Henry Sobotka; released to public domain
+x = navigator.appVersion.charAt(0);
+varN = '';
+fileName = '';
+winName = '';
+newCode = '';
+codeLine = '';
+msgWindow = null;
+boogWin = null;
+var a, b, c, d, e, f, g, h, i, j, k, l, m, n, o;
+var q = '"';
+
+function newWin() {
+with (document.Switcher) {
+fileName = fileN.value;
+winName = winN.value;
+if (eval(WinH.value) > 0 ) a = 'height=' +  WinH.value + ',';
+else a = '';
+if (eval(WinW.value) > 0 ) b = 'width=' +  WinW.value + ',';
+else b = '';
+if (MenuB[0].checked == true) c = "menubar,";
+else c = '';
+if (ToolB[0].checked == true) d = "toolbar,";
+else d = '';
+if (DirB[0].checked == true) e = "directories,";
+else e = '';
+if (LocF[0].checked == true) f = "location,";
+else f = '';
+if (ScrollB[0].checked == true) g = "scrollbars,";
+else g = '';
+if (StatusB[0].checked == true) h = "status,";
+else h = '';
+if (rSize[0].checked == true) i = "resizable,";
+else i = '';
+if (eval(innerW.value) > 0 || recChng[0].checked == true ) j = 'innerWidth=' +  innerW.value + ',';
+else j = '';
+if ( eval(innerH.value) > 0 || recChng[0].checked == true ) k = 'innerHeight=' +  innerH.value + ',';
+else k = '';
+if (eval(outerW.value) > 0 || recChng[0].checked == true ) l = 'outerWidth=' +  outerW.value + ',';
+else l = '';
+if ( eval(outerH.value) > 0 || recChng[0].checked == true ) m = 'outerHeight=' +  outerH.value + ',';
+else m = '';
+if ( eval(scrX.value) > 0 || recChng[0].checked == true ) n = 'screenX=' +  scrX.value + ',';
+else n = '';
+if ( eval(scrY.value) > 0 || recChng[0].checked == true ) o = 'screenY=' +  scrY.value + ',';
+else o = '';
+   }
+}
+
+function showWin() {
+msgWindow = window.open(fileName, winName, a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + q);
+msgWindow.focus();
+}
+
+function genCode() {
+if (varN == "") { varN = 'newWin'; }
+else { varN = document.Switcher.vName.value; }
+codeLine = '<SCRI' + 'PT>' + varN + '=window.open("' + fileName + '", "' + winName + '", "' + a + b + c + d + e + f + g + h + i;
+if (eval(x) > 3) { codeLine += j + k + l + m + n + o; }
+if ( codeLine.charAt(codeLine.length - 1) == ',') { newCode = codeLine.substring(0, codeLine.length - 1) }
+   else { newCode = codeLine }
+newCode += '")</SCRI' + 'PT>';
+document.Switcher.codeOut.value = newCode;
+}
+
+function gNav4(){
+   alert("This function requires Navigator 4.x!");
+}
+</SCRIPT>
+<SCRIPT LANGUAGE="JavaScript1.2">
+
+function makeWin() {
+     if(confirm('Create a child window?') )
+        msgWindow = window.open("","", "width=300,height=300,resizable");
+     msgWindow.focus();
+}
+
+function moveWinBy() {
+ with (document.Switcher) {
+ LR =  eval(moveLR.value)
+ UD =  eval(moveUD.value)
+ if (winMeth[0].checked == true) {
+   if (msgWindow == null) { makeWin(); }
+       msgWindow.focus()
+       msgWindow.moveBy(LR, UD);
+       if (recChng[0].checked == true) { 
+           cnt1 = eval(leftV.value); cnt1 += eval(LR); leftV.value = cnt1;
+           cnt2 = eval(topV.value); cnt2 += eval(UD); topV.value = cnt2; }
+      }
+   else self.moveBy(LR, UD);
+   }
+}
+
+function moveWinTo() {
+ with (document.Switcher) {
+ HA =  eval(hAxis.value)
+ VA =  eval(vAxis.value)
+  if (winMeth[0].checked == true) {
+     if (msgWindow == null ) { makeWin(); }
+    msgWindow.focus()
+    msgWindow.moveTo(HA, VA)
+       if (recChng[0].checked == true ) { 
+                     scrX.value = eval(HA);
+                     scrY.value = eval(VA); }
+    }
+    else self.moveTo(HA, VA);
+   }
+}
+
+function sizeWinBy() {
+with (document.Switcher) {
+if (rSize[1].checked == true)
+     { alert('You have to set resizable to "yes" before you can resize a window.') }
+ rbh =  eval(rsizbH.value)
+ rbv =  eval(rsizbV.value)
+if(winMeth[0].checked == true) {
+   if( msgWindow == null ) { makeWin(); }
+   msgWindow.focus()
+   msgWindow.resizeBy(rbh, rbv)
+  if ( recChng[0].checked == true ) { 
+                     cnt3 = eval(outerW.value); cnt3 += eval(rbh); outerW.value = cnt3;
+                     cnt4 = eval(outerH.value); cnt4 += eval(rbv); outerH.value = cnt4; }
+   }
+else self.resizeBy(rbh, rbv)
+  }
+}
+
+function sizeWinTo() {
+with (document.Switcher) {
+if (rSize[1].checked == true)
+     { alert('You have to set resizable to "yes" before you can resize a window.') }
+ rth =  eval(rsiztH.value)
+ rtv =  eval(rsiztV.value)
+if(winMeth[0].checked == true) {
+   if( msgWindow == null ) { makeWin(); }
+   msgWindow.focus()
+   msgWindow.resizeTo(rth, rtv)
+  if ( recChng[0].checked == true ) { 
+                    outerW.value = eval(rth);
+                    outerH.value = eval(rtv); }
+   }
+else self.resizeTo(rth, rtv)
+  }
+}
+
+function armWnd(){
+   window.captureEvents(Event.CLICK);
+   window.onClick = setWnd;
+}
+
+var clickCount = 0;
+
+function setWnd(e){
+   var x = e.screenX;
+   var y = e.screenY;
+   if( msgWindow == null ) { makeWin(); }
+   msgWindow.focus();
+   msgWindow.moveTo(x,y);
+   clickCount++;
+   if (clickCount==5) {
+       clickCount = 0;
+       window.releaseEvents(Event.CLICK);
+   }
+   return false;
+}
+
+function winDance() {
+    boogWin = window.open("", "", "outerWidth=150,outerHeight=150,screenX=50,screenY=50,resizable");
+    with (boogWin) {
+    for (var i = 0; i < 400; i++) {
+         if ( i % 5 == 0 ) { resizeBy( 5, 5); }
+         if ( i % 10 == 0 ) { resizeBy( -15, -15); }
+         if ( i < 100 )  moveBy(4, 0);
+         if ( i > 100 && i < 200 ) moveBy(0, 4);
+         if ( i > 200 && i < 300 ) moveBy(-4, 0);
+         if ( i > 300 && i < 400 ) moveBy(0, -4);
+     }
+   }
+}
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#87cefa">
+<SCRIPT>
+with (document) {
+
+ht1 = '<FORM NAME=Switcher><TABLE WIDTH="100%" CELLPADDING=15><TR><TD>';
+ht2 = '</TD><TD BGCOLOR=blue><FONT SIZE=+3 COLOR=gold>';
+ht3 = '<B>Window<BR>Creation<BR>Options';
+ht4 = '</B></FONT></TD></TR>';
+ht5 = '</TABLE><BR><CENTER>';
+tx1 = 'This page allows you to explore and test the various options available when creating a new window, as well as the <I>moveBy</I>, <I>moveTo</I>, <I>resizeBy</I>, and <I>resizeTo</I> methods introduced with JavaScript 1.2 for Navigator 4.0.<BR>It can also generate the JavaScript code for creating your window.';
+
+write(ht1 + tx1 + ht2 + ht3 + ht4 + ht5);
+
+mt1= '<TABLE BORDER=0 WIDTH="95%" CELLSPACING=3 CELLPADDING=7><TR>';
+trs = '<TD ROWSPAN=';
+th1 = ' BGCOLOR=blue ALIGN=RIGHT><FONT COLOR=gold SIZE=+1><B>';
+th2 = '</B></FONT></TD>';
+tf1 = '<TD ALIGN=CENTER COLSPAN=2><INPUT TYPE=TEXT NAME=';
+tf2 = ' SIZE=30></TD><TD COLSPAN=2><I>';
+tf3 = '</I></TD></TR><TR>';
+
+write(mt1 + trs + 3 + th1 + 'NAMES' + th2 + tf1 + 'vName' + tf2);
+write('Window object name for JavaScript references.');
+write(tf3 + tf1 + 'fileN' + tf2);
+write('Name of file to load.');
+write(tf3 + tf1 + 'winN' + tf2);
+write('Window name for &lt;TARGET=...&gt; in tags and target property.');
+write(tf3 + trs + 2 + th1 + 'SIZING' + th2);
+
+tf4 = '<TD ALIGN=RIGHT WIDTH=125>';
+tf5 = '<INPUT TYPE=TEXT NAME=';
+tf6= ' SIZE=5 VALUE=0></TD>';
+tc1 = ' COLSPAN=2 VALIGN=TOP><I>';
+tx2 = 'Both height and width values must be set for either to work. These dimensions apply solely to the document area of the new window.';
+
+write(tf4 + 'Height:' + tf5 + 'WinH' + tf6 + tf4 + 'Width:' + tf5 + 'WinW' + tf6);
+write(trs + 2 + tc1 + tx2 + tf3 + tf4 + 'Resizable?');
+
+rb1 = '</TD><TD ALIGN=CENTER WIDTH=125>Yes <INPUT TYPE=RADIO NAME=';
+rb2 = '> No<INPUT TYPE=RADIO NAME=';
+rb3 = ' CHECKED></TD>';
+rc1 = '</TR><TR>';
+tc2= '<TD ROWSPAN=2 VALIGN=TOP>';
+th3 = '<TD ALIGN=CENTER BGCOLOR=blue><FONT SIZE=+2 COLOR=gold><B>';
+th4 = '<TD ROWSPAN=3 ALIGN=CENTER>';
+ta1 = '<TEXTAREA COLS=45 ROWS=6 NAME=';
+ta2 = ' VALUE="" WRAP=physical></TEXTAREA></TD>';
+te1 = '</TR></TABLE>';
+tx3 = '<I>With Microsoft\'s Internet Explorer, the toolbar, location and directories options function as a unit.  Select "toolbar" for all three; the other two cannot be selected separately.';
+
+write(rb1 + 'rSize' + rb2 + 'rSize' + rb3 + rc1);
+write(trs + 6 + th1 + 'APPEARANCE' + th2 + tf4);
+write('Menubar?' + rb1 + 'MenuB' + rb2 + 'MenuB' + rb3);
+write(tc2 + tx3 + tf3 + tf4);
+write('Toolbar?' + rb1 + 'ToolB' + rb2 + 'ToolB' + rb3);
+write(rc1 + tf4);
+write('Location field?' + rb1 + 'LocF' + rb2 + 'LocF' + rb3);
+write(th3 + 'Code Viewer' + th2 + rc1 + tf4);
+write('Directories?' + rb1 + 'DirB' + rb2 + 'DirB' + rb3);
+write(th4 + ta1 + 'codeOut' + ta2 + rc1 + tf4);
+write('Scrollbars?' + rb1 + 'ScrollB' + rb2 + 'ScrollB' + rb3);
+write(rc1 + tf4);
+write('Statusbar?' + rb1 + 'StatusB' + rb2 + 'StatusB' + rb3);
+write(te1+ '<BR>');
+
+fb1 = '<INPUT TYPE=BUTTON  VALUE="';
+fb2 = '" ONCLICK="';
+sp1 = '<SPACER TYPE=HORIZONTAL SIZE=15>';
+
+write(fb1 + 'Show Window' + fb2 + 'newWin();showWin()' + '">' + sp1);
+write(fb1 + 'Close Window' + fb2 + 'msgWindow.close()' + '">' + sp1);
+write(fb1 + 'Generate Code' + fb2 + 'newWin();genCode()' + '"><BR><BR>');
+
+th5 = '<TD COLSPAN=4 ALIGN=CENTER BGCOLOR=blue><FONT SIZE=+2 COLOR=gold><B>';
+th6 = '<TR><TD ROWSPAN=2 ALIGN=RIGHT BGCOLOR=blue><FONT COLOR=gold SIZE=+1><B>';
+tw1 = '<TD WIDTH=125 ALIGN=LEFT>';
+tv1 = '<TD VALIGN=TOP ALIGN=LEFT>';
+tv2 = '<TD ALIGN=RIGHT>';
+rb4 = '<INPUT TYPE=RADIO NAME=';
+rb5 = ' ONCLICK="';
+rb6 = ' CHECKED ONCLICK="';
+rb7 = '</TD><TD ALIGN=CENTER><NOBR>Yes ';
+tn1 = '</NOBR></TD>';
+
+write(mt1 + th5);
+write('New in JavaScript 1.2 / Navigator 4.0');
+write(ht4 + th6 + 'SIZE' + th2 + tf4);
+write('innerWidth<BR>' + tf5 + 'innerW' + tf6 + tw1);
+write('innerHeight<BR>' + tf5 + 'innerH' + tf6 + tv1);
+write('Sets the dimensions of the document area of the window (same as <i>width</i> and <i>height</i>.</TD></TR>' + tf4)
+write('outerWidth<BR>' + tf5 + 'outerW' + tf6 + tw1);
+write('outerHeight<BR>' + tf5 + 'outerH' + tf6 + tv1);
+write('Sets the dimensions of the full size of the window.</TD></TR>')
+write(th6 + 'LOCATION' + th2 + tv2);
+write('screenX<BR>' + tf5 + 'scrX' + tf6 + '<TD>');
+write('screenY<BR>' + tf5 + 'scrY' + tf6 + tv1);
+write('Determines where the window will open, measured in pixels from the top left corner of the screen.</TD>');
+write(te1+ '<BR>');
+
+tr2 = '<TR><TD COLSPAN=8>';
+wh1 = 'Width:<BR>Height:</TD><TD>';
+tv3 = '<TR ALIGN=CENTER>';
+th7 = '<TD COLSPAN=2>';
+th8 = '<TD COLSPAN=4>';
+th9 = '<TD COLSPAN=8 ALIGN=CENTER BGCOLOR=blue><FONT SIZE=+2 COLOR=gold><B>';
+tf7= ' SIZE=5 VALUE=0><BR>';
+tx5 = 'These buttons allow you to see how the new resize and move methods work with either your browser or a new window by selecting either the parent or child radio button below.  By setting "Record size / position changes?" to yes, adjustments you make to a child window\'s size and position with these buttons will be reflected in the script produced by pressing "Generate Code".<BR><B>NOTE:</B> For resize to work, the resizable option for your new window must be set to "yes".</TD>';
+hr1 = tr2 + '<HR>' + rc1;
+
+write(mt1 + th9);
+write('New JavaScript 1.2 Window Methods');
+write(ht4 + tr2 + tx5 + rc1);
+write(tv2 + '+ right, - left:<BR>- up, + down:</TD><TD>');
+write(tf5 + 'moveLR' + tf7);
+write(tf5 + 'moveUD' + tf6);
+write(tv2 + 'From left:<BR>From top:</TD><TD>');
+write(tf5 + 'hAxis' + tf7);
+write(tf5 + 'vAxis' + tf6);
+write(tv2 + wh1);
+write(tf5 + 'rsizbH' + tf7);
+write(tf5 + 'rsizbV' + tf6);
+write(tv2 + wh1);
+write(tf5 + 'rsiztH' + tf7);
+write(tf5 + 'rsiztV' + tf6 + '</TR>' + tv3);
+write(th7 + fb1 + 'moveBy' + fb2 + 'if( eval(x) > 3) moveWinBy();else gNav4()"></TD>');
+write(th7 + fb1 + 'moveTo' + fb2 + 'if( eval(x) > 3) moveWinTo();else gNav4()"></TD>');
+write(th7 + fb1 + 'resizeBy' + fb2 + 'if( eval(x) > 3) sizeWinBy();else gNav4()"></TD>');
+write(th7 + fb1 + 'resizeTo' + fb2 + 'if( eval(x) > 3) sizeWinTo();else gNav4()"></TD></TR>');
+write(tv3 + th8 + 'Child: ' + rb4 + 'winMeth CHECKED>Parent: ');
+write(rb4 + 'winMeth><BR></TD>');
+write(th8 + 'Record size / position changes?  Yes ');
+write(rb4 + 'recChng> No ' + rb4 + 'recChng' + rb3 + rc1 + hr1 + th8);
+
+tx6 = 'The "Arm 5 clicks" button makes the main browser window capture clicks and move the child window to the location pointed at by the tip of your cursor. After five clicks, the window will automatically become disarmed. Otherwise the onClick event handlers of the buttons on the page would remain shortcircuited.</TD>';
+tx7 = 'If a click doesn\'t move the child window, it doesn\'t count. After the fifth click, the child window vanishes behind the browser.<BR><BR><CENTER>';
+tx8= 'And for a bit of fun, here\'s a very primitive version of a dancing window made by combining <I>moveBy</I> and <I>resizeBy</I> with "for" and "if" statements.  The trail it leaves on the screen will vanish when it stops.<BR><BR><CENTER>';
+
+write(tx6 + th8 + tx7);
+write(fb1 + 'Arm 5 clicks' + fb2 + 'if( eval(x) > 3) armWnd();else gNav4()"></CENTER></TD></TR>' + hr1);
+write(th6 + 'WINDOW<BR> BOOGIE</B></FONT></TD><TD COLSPAN=7>');
+write(tx8 + fb1 + 'Boogie!' + fb2 + 'if( eval(x) > 3) winDance();else gNav4()">' + sp1);
+write(fb1 + '  Close  ' + fb2 + 'if( eval(x) > 3 && boogWin != null) boogWin.close();else gNav4()">');
+write('</CENTER></TD>' + te1 +'</FORM></CENTER>');
+}
+</SCRIPT>
+</BODY>
+</HTML>

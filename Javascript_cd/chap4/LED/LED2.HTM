@@ -1,0 +1,198 @@
+<HTML>
+<HEAD>
+<TITLE>LED banner</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<SCRIPT LANGUAGE="JavaScript1.1">
+<!--// Copyright 1996 - Tomer and Yehuda Shiran
+    // adapted 1997 by Henry Sobotka
+var messages = new Array()
+messages[0] = "this is hs's short"
+messages[1] = "array version of the"
+messages[2] = "original led script"
+messages[3] = "number test: 1234567890"
+var space = 1
+var height = 5
+var width = 3
+var on = new Image(5, 5)
+var off = new Image(5, 5)
+on.src = "ledon.gif"
+off.src = "ledoff.gif"
+var imageNum = document.images.length
+var boardWidth = 0
+
+for (var i = 0; i < messages.length; ++i) {	
+	var lengthWithNoSpaces = messages[i].split(" ").join("").length	
+	var numberOfSpaces = messages[i].length - lengthWithNoSpaces	
+	var currentBoardWidth = lengthWithNoSpaces * (width + space) - space + numberOfSpaces * space * 2	
+	if (boardWidth < currentBoardWidth)		
+		boardWidth = currentBoardWidth
+}
+var running = false
+var timerID = null
+
+astArray = new Array()
+astArray[0] = '*  '
+astArray[1] = ' * '
+astArray[2] = '  *'
+astArray[3] = '** '
+astArray[4] = '* *'
+astArray[5] = ' **'
+astArray[6] = '***'
+astArray[7] = '   '
+
+function makeLetter(code) {
+   letstr = ''
+   for (var y = 0; y < code.length; y++)
+         letstr += astArray[code.charAt(y)]  // .substring(z, z+1)
+   return letstr
+}
+
+letters = new Array()
+letters['a'] = makeLetter('14644')
+letters['b'] = makeLetter('34343')
+letters['c'] = makeLetter('60006')
+letters['d'] = makeLetter('34443')
+letters['e'] = makeLetter('60606')
+letters['f'] = makeLetter('60600')
+letters['g'] = makeLetter('60646')
+letters['h'] = makeLetter('44644')
+letters['i'] = makeLetter('61116')
+letters['j'] = makeLetter('22246')
+letters['k'] = makeLetter('44344')
+letters['l'] = makeLetter('00006')
+letters['m'] = makeLetter('46644')
+letters['n'] = makeLetter('46664')
+letters['o'] = makeLetter('64446')
+letters['p'] = makeLetter('34300')
+letters['q'] = makeLetter('64466')
+letters['r'] = makeLetter('34344')
+letters['s'] = makeLetter('60626')
+letters['t'] = makeLetter('61111')
+letters['u'] = makeLetter('44446')
+letters['v'] = makeLetter('44441')
+letters['w'] = makeLetter('44666')
+letters['x'] = makeLetter('44144')
+letters['y'] = makeLetter('44611')
+letters['z'] = makeLetter('62106')
+letters['!'] = makeLetter('11171')
+letters[':'] = makeLetter('71717')
+letters['.'] = makeLetter('77771')
+letters['='] = makeLetter('76767')
+letters['+'] = makeLetter('71617')
+letters['-'] = makeLetter('77677')
+letters['/'] = makeLetter('22100')
+letters['\\'] = makeLetter('00122')
+letters['"'] = makeLetter('44777')
+letters["'"] = makeLetter('11777')
+letters['('] = makeLetter('21112')
+letters[')'] = makeLetter('01110')
+letters['*'] = makeLetter('76667')
+letters['?'] = makeLetter('32171')
+letters['0'] = makeLetter('64446')
+letters['1'] = makeLetter('11111')
+letters['2'] = makeLetter('62606')
+letters['3'] = makeLetter('62626')
+letters['4'] = makeLetter('44622')
+letters['5'] = makeLetter('60623')
+letters['6'] = makeLetter('30646')
+letters['7'] = makeLetter('62100')
+letters['8'] = makeLetter('64646')
+letters['9'] = makeLetter('64626')
+
+function drawBlank() {	
+	var gt = unescape("%3e")	
+	document.write('<TABLE BORDER=2 CELLPADDING=8' + gt + '<TR' + gt + '<TD WIDTH=468 BGCOLOR ALIGN="center" VALIGN="center"' + gt)	
+	for (var y = 0; y < height; ++y) {		
+		for (var x = 0; x < boardWidth; ++x) {			
+			document.write('<IMG SRC="' + off.src + '" HEIGHT=5 WIDTH=5' + gt)		
+		}		
+		document.write('<BR' + gt)	
+	}	
+	document.write('</TD' + gt + '</TR' + gt + '</TABLE' + gt)
+}
+
+function setLight(state, x, y) {	
+	if (state)		
+		document.images[computeIndex(x, y)].src = on.src	
+	else		
+		document.images[computeIndex(x, y)].src = off.src
+}
+
+function drawLetter(letter, startX) {
+	for (var x = 0; x < width; ++x) {		
+		for (var y = 0; y < height; ++y) {			
+			setLight(letters[letter].charAt((y*width)+x)=="*",startX+x, y)
+		}	
+	}
+}
+
+function drawSpace(startX) {	
+	for (var x = 0; x < space; ++x) {		
+		for (var y = 0; y < height; ++y) {			
+			setLight(false, startX + x, y)		
+		}	
+	}
+}
+
+function computeIndex(x, y) {	
+	return (y * boardWidth + x) + imageNum
+}
+
+function floodBoard(startX) {	
+	for (var x = startX; x < boardWidth; ++x) {		
+		for (var y = 0; y < height; ++y) {			
+			setLight(false, x, y)		
+		}	
+	}
+}
+
+function drawMessage(num) {	
+	var text = messages[num]		
+	var i = 0	
+	var j = 0	
+	while (1) {		
+		if (text.charAt(j) != " ") {			
+			drawLetter(text.charAt(j), i)				
+			i += width		
+		} 
+		else {			
+			drawSpace(i)			
+			i += space		
+		}		
+		if (j < text.length - 1) {			
+			drawSpace(i)			
+			i += space		
+		} 
+		else 
+			break		
+			++j	
+		}	
+		floodBoard(i)	
+		if (num < messages.length - 1)		
+			val = ++num	
+		else		
+			val = 0
+			timerID = setTimeout("drawMessage(val)", 3000)
+		}
+		document.write('<FORM>')
+		drawBlank()
+
+function startSign() {  
+	drawMessage(0)  
+	running = true
+}
+
+function stopSign() {  
+	if(running)    
+		clearTimeout(timerID)  
+		running = false
+	}
+	document.write('<INPUT TYPE="button" VALUE="start" onClick="startSign()">')
+	document.write('<INPUT TYPE="button" VALUE="stop" onClick="stopSign(); floodBoard(0)">')
+	document.write('</FORM>')
+// -->
+</SCRIPT>
+</body>
+</HTML>

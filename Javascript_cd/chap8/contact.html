@@ -1,0 +1,76 @@
+<html>
+<head>
+<title></title>
+</head>
+
+<server>
+function saveContact ()
+{
+   var id = 0;
+   var code = 0;
+   var sql = "select * from contact where id='" + request.id + "'";
+   if (recordExists (sql))
+   {
+      sql = "update contact set " +
+            "fname="      + checkForNull (replaceChar (request.fname, "'", "''"))     +
+            "lname="      + checkForNull (replaceChar (request.lname, "'", "''"))     +
+            "street="     + checkForNull (replaceChar (request.street, "'", "''"))    +
+            "city="       + checkForNull (replaceChar (request.city, "'", "''"))      +
+            "state="      + checkForNull (replaceChar (request.state, "'", "''"))     +
+            "zipcode="    + checkForNull (replaceChar (request.zipcode, "'", "''"))   +
+            "homephone="  + checkForNull (replaceChar (request.homephone, "'", "''")) +
+            "workphone="  + checkForNull (replaceChar (request.workphone, "'", "''")) +
+            "notes="      + checkForNull (replaceChar (request.notes, "'", "''"))     +
+            "lastupdate=" + "'" + getTodaysTimeStamp() + "'"            +
+            " where id='" + request.id + "'";
+      code = database.execute (sql);
+      checkDBCode (code);
+      id = request.id;
+   }
+   else
+   {
+      sql = "insert into contact (" +
+            "fname, lname, street, city, state, zipcode," + 
+            "homephone, workphone, notes, lastupdate) values (" +
+            checkForNull (replaceChar (request.fname, "'", "''")) +
+            checkForNull (replaceChar (request.lname, "'", "''")) +
+            checkForNull (replaceChar (request.street, "'", "''")) +
+            checkForNull (replaceChar (request.city, "'", "''")) +
+            checkForNull (replaceChar (request.state, "'", "''")) +
+            checkForNull (replaceChar (request.zipcode, "'", "''")) +
+            checkForNull (replaceChar (request.homephone, "'", "''")) +
+            checkForNull (replaceChar (request.workphone, "'", "''")) +
+            checkForNull (replaceChar (request.notes, "'", "''")) +
+            "'" + getTodaysTimeStamp() + "')";
+      id =  getSerialFromInsert (sql);
+   }
+   return (id);
+}
+
+function deleteContact ()
+{
+   var sql = "delete from contact where id='" + request.id + "'";
+   var code = database.execute (sql);
+   checkDBCode (code);
+   return (0);
+}
+</server>
+
+<server>
+var id = 0;
+
+if (request.op == "SAVE")
+   id = saveContact ();
+else if (request.op == "DELETE")
+   id = deleteContact ();
+
+writeln ('<script>')
+writeln ('<!--- Hide script from old browsers.')
+writeln ('top.location = "index.html?id=' + id + '"')
+writeln ('// End the hiding here. -->')
+writeln ('</script>')
+</server>
+
+<body bgcolor="#ffffff">
+</body>
+</html>

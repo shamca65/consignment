@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>RemoteWWW</title>
+<script language="javascript">
+//this script is called up by the links on this page.  it tells netscape
+//to open up the URL in the main window instead of the remote.
+
+function navigate(loc) {
+  opener.location.href = loc;
+  self.blur();
+}
+</script>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#ffgg44">
+
+<center>
+
+<!-- each URL is passed through the function navigate above. -->
+<!-- hopefully, this is fairly self-explanatory. -->
+<!-- just look at the samples below. -->
+
+<a
+href="javascript:navigate('')"><img 
+src="remote.gif" border=0 alt="RemoteWWW" width=120
+height=22></a>
+<table border=1>
+<tr valign=top>
+<td width=33%><font size = 2><a href="javascript:navigate('http://www.yahoo.com/')">Ya-<br>hoo!</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://altavista.digital.com/')">Alta<br>Vista</a></font></td>
+<td width=33%><font size = 1><a href="javascript:navigate('http://www.uroulette.com:8000/')">URou-<br>Lette</a></font></td>
+</tr>
+<tr valign=top>
+<td width=33%><font size = 2><a href="javascript:navigate('http://www.sped.ukans.edu/')">SPED</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://www.lycos.com/')">Ly-<br>cos</a></font></td>
+<td width=33%><font size = 1><a href="javascript:navigate('http://www.apple.com/')">Apple</a></font></td>
+</tr>
+<tr valign=top>
+<td width=33%><font size = 1><a href="javascript:navigate('http://www.pollstar.com/')">Poll-<br>Star</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://www.blairlake.com/')">Blair-<br>Lake</a></font></td>
+<td width=33%><font size = 1><a href="javascript:navigate('http://www.vidgames.com/')">PSX<br>Galleria</a></font></td>
+</tr>
+<tr valign=top>
+<td width=33%><font size = 1><a href="javascript:navigate('http://www.macintouch.com/')">Macin-<br>touch</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://hyperarchive.lcs.mit.edu/HyperArchive.html')">Info-<br>Mac</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://www.ziff.com/~macweek/')">Mac<br>Week</a></font></td>
+</tr>
+<tr valign=top>
+<td width=33%><font size = 1><a href="javascript:navigate('http://www.macromedia.com/')">Macro-<br>media</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://www.gamelan.com/')">Game-<br>lan</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://cnn.com/')">CNN</a></font></td>
+</tr>
+<tr valign=top>
+<td width=33%><font size = 2><a href="javascript:navigate('http://espnet.sportszone.com/')">ESPN</a></font></td>
+<td width=33%><font size = 2><a href="javascript:navigate('http://www.mapquest.com/')">Map-<br>Quest</a></font></td>
+<td width=33%><font size = 1><a href="javascript:navigate('http://www.majorleaguebaseball.com/')">MLB<br>@BAT</a></font></td>
+</tr>
+</table>
+<form>
+<font size = 1>Go to:</font><br>
+<input type="text" name="goUrl" onBlur="navigate(this.value)" size=18 value="http://">
+</form>
+<form>
+<nobr>
+<input type="button" value="&lt;-" onClick="opener.history.back()">
+<input type="button" value="-&gt;" onClick="opener.history.forward()">
+<input type="button" value="Off" onClick="self.close()">
+</nobr> </form> <font size = 1>1996, <a 
+href="javascript:navigate('http://lark.cc.ukans.edu/~asumner/')">Aaron Sumner</a></font>
+</center>
+</body>
+</html>

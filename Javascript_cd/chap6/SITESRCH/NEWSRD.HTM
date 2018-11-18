@@ -1,0 +1,107 @@
+<HTML><HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!--Hide JavaScript from Java-Impaired Browsers
+function initArray(){
+ this.length=initArray.arguments.length;
+ for (var i=0;i<this.length;i++){
+  this[i]=initArray.arguments[i];
+ }
+}
+var sr=new initArray("4b","5b","8b","8b");
+function doSrch(){
+ if (sr[0]=="4b"){
+  parStr();
+ }
+ findw = parent.main.document.searcher.findword.value
+ findw=findw.toLowerCase();
+ disp = "";
+ /* Important! In the document.write below you'll find
+    an image source not specified here.  Put your own
+    URL and logo .gif file names, your gif's height and 
+    width (along with your own ALT language) into this
+    write statement. */
+ document.write('<HTML><BODY BGCOLOR="white">'
+  +'<CENTER><FORM NAME="isn"><TABLE BORDER=0 '
+  +'WIDTH=486><TR><TD VALIGN=TOP><A HREF="you'
+  +'rhomepage.htm" TARGET="_top"><IMG SRC="yo'
+  +'urlogo.gif" BORDER=0 HEIGHT=xx WIDTH=xx A'
+  +'LT="Your Text Description of image"></A><'
+  +'/TD><TD><SELECT NAME="isn1" SIZE=6>');
+ flg=2; // Set flag to "no matches found"
+ for (i=0;i<stp;i++){
+  fold=sr[i].toLowerCase();
+  if (fold.indexOf(findw)>-1){
+   pos=sr[i].indexOf("~");
+   pos1=sr[i].indexOf("|");
+   disp="<OPTION VALUE='"+sr[i].substring(0,pos);
+   if (flg!=3){
+//    disp+='<TD><SELECT NAME="isn1" SIZE=6>'+disp;
+    disp+="' onClick='' SELECTED>";
+   }
+   else{
+    disp+="' onClick=''>";
+   }
+  disp+=sr[i].substring(pos+1,pos1);
+  document.write(disp);
+  flg=3; // Set flag to "matches found"
+   }
+  }
+  if (flg!=2){
+   document.write('</SELECT></TD><TD VALIGN=TOP'
+   +'><INPUT TYPE="button" NAME="button" Value'
+   +'=" Select and Go " onClick="doloc(this.fo'
+   +'rm)">');
+  }
+  document.write('<BR><FONT COLOR="red" SIZE=1><B>');
+  if (flg!=3){
+   document.write('</TD><TD VALIGN=CENTER><FONT '
+   +'COLOR="red"><B>I am sorry.  I found no matches'
+   +' on "'+findw+'". Feel free to search for an'
+   +'other word!</B></FONT>');
+  }
+  else{
+   document.write('The selection(s) at left w'
+   +'ere found using "'+findw+'".');
+  }
+  document.write('</B></FONT></TD></TR></TABLE>'
+   +'</FORM></BODY></HTML><P>');
+ }
+ 
+function parStr() {
+ srs=parent.document.searcher.find.value;
+ var i=0;
+ while (srs.indexOf("*")>0){
+  pos=srs.indexOf("*");
+  sr[i]=srs.substring(0,pos);
+  srs=srs.substring(pos+1,srs.length);
+  i++;
+  stp=i;
+  }
+ }
+
+function doloc(){
+ durl=(document.isn.isn1.options[document.isn.isn1.selectedIndex].value);
+/* This next line will target the selection to the main
+   pane of your frameset. */
+  parent.main.location.href=durl;
+  /* But if you wish to target the selection to the top
+     (just as you would use <A HREF="filenm" TARGET="_top">)
+     simply uncomment this next line and use it instead:
+     parent.location.href=durl;  
+     and comment out the line now being used above. */
+} 
+// End Hiding -->
+</SCRIPT>
+<BODY BGCOLOR="white">
+<SCRIPT LANGUAGE="JavaScript">
+<!-- Hide from JavaScript-Impaired Browsers
+/* The test value is set at "a" in nwsrc.htm until a
+   search is actually sought.  Then it is changed. All
+   this does is to keep this pane blank until first
+   search is performed. */
+if (parent.document.searcher.test.value != "a"){
+ doSrch();
+}
+// End Hiding -->
+</SCRIPT>
+</BODY></HTML>

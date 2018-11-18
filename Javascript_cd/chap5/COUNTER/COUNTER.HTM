@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Cookie counter</title>
+<script>
+cookie_name = "Counter_Cookie";
+
+function doCookie() {
+        if(document.cookie) {
+                index = document.cookie.indexOf(cookie_name);
+        } else {
+                index = -1;
+        }
+
+        if (index == -1) {
+                document.cookie=cookie_name+"=1; expires=Tuesday, 01-Apr-1999 08:00:00 GMT";
+        } else {
+                countbegin = (document.cookie.indexOf("=", index) + 1);
+                countend = document.cookie.indexOf(";", index);
+                if (countend == -1) {
+                        countend = document.cookie.length;
+                }
+                count = eval(document.cookie.substring(countbegin, countend)) + 1;
+                document.cookie=cookie_name+"="+count+"; expires=Tuesday, 01-Apr-1999 08:00:00 GMT";
+        }
+}
+
+function gettimes() {
+    if(document.cookie) {
+        index = document.cookie.indexOf(cookie_name);
+        if (index != -1) {
+            countbegin = (document.cookie.indexOf("=", index) + 1);
+            countend = document.cookie.indexOf(";", index);
+                if (countend == -1) {
+                    countend = document.cookie.length;
+                }
+            count = document.cookie.substring(countbegin, countend);
+            if (count == 1) {
+                return (count+" time");
+            } else {
+                return (count+" times");
+            }
+        }
+    }
+    return ("0 times");
+}
+</script>
+</head>
+
+<body bgcolor="#BCBCBC" onLoad="doCookie()">
+
+<h3>Here is a cookie:</h3>
+
+<center>
+<script>
+    document.write("<b>You have been to this page "+gettimes()+" before.</b>");
+</script>
+</center>
+
+<p>
+&nbsp;&nbsp;Go ahead and re-load this page... see how the counter above
+updates.
+
+</body>
+</html>

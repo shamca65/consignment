@@ -1,0 +1,52 @@
+
+/* 
+ This deceptively simple application demonstrates saving re-useable form
+information to a Magic Cookie. All elements are stored in one Cookie, and
+restored on loading of the form. The data can be stored for any length of
+time, editable in the JavaScript source. One of each of the form elements
+that Netscape allows to be read are demonstrated here. All data
+are stored on the client machine, there is no Server CGI involved. 
+All the work is done by JavaScript, except serving up the original form
+and script below. 
+
+ Some minor bugs and gotchas:
+1.)Macintoshes "onSubmit" submits the form before executing all the scripts
+   so you need to push the save button ONCE first before pushing the "Order
+   Book NOW". Or execute the "Order Book NOW" twice.
+2.)If using a radio button you must put a "dummy" onClick=0 in each
+   button. (see example). If you don't it will still work fine, but the 
+   answers will be out of order, when the Client changes from Netscape 2.0
+   to 3.0.
+3.)If you have any IMG tags, *any* *at* *all* including little dividers
+   or icons used as buttons, YOU MUST HAVE a HEIGHT and WIDTH argrument
+   for EACH ONE!!! JavaScript simple does NOT work with out them!!!
+4.)ENCTYPE=text/plain fails on all Mac platforms in the Form ACTION.
+   So for now it is commented out.
+5.)UNIX platforms do not correctly restore the SELECT and MULTIPLE SELECT
+   fields. These problems seem to be fixed in Atlas and 3.xx versions.
+6.)Netscape does not allow saving or restoring a "password" form element 
+   type with javascript.
+
+ Future enhancments:
+In the newest version of Netscape's 3.0, JavaScript will allow one
+to detect what type of form element is being used. So I will eventually
+allow you to just LIST the elements that you would like to save and
+restore. That will make adding these routines to a form MUCH MUCH
+easier. 'Till then, here is at least is the functionality. 
+*/
+
+
+<P><b>Note:</b> Using Netscape on a Macintosh
+you will have to submit (i.e., Order Book NOW) twice, the first will fail, or you
+can push the "Save Changes and/or Set New Expiration" then Submit.
+<BR><b>Note:</b> UNIX versions of Netscape 2.xx do NOT restore the SELECT and
+MULTIPLE SELECT fields correctly. However, the fields are saved and 
+mailed correctly. This problem seems to be fixed in Atlas and 3.xx 
+versions. 
+<BR><b>Neither</b> of these bugs affect its use in a 
+<A HREF="/www/test/illbook.html"><EM>real world</EM> example</A>.
+<p>Questions or Comments: 
+<A HREF="mailto:inglis@axsnet.com?Subject=Comment from JavaScript Cookie form"
+>inglis@axsnet.com</A>
+
+

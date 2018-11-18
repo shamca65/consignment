@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>Riddle</title>
+<script>// language="JavaScript">
+/* Copyright 1997, Henry Sobotka; hereby released to public domain */
+var wDays = new Array("Sunday", "Monday", "Tuesday", "Wednesday",
+                      "Thursday", "Friday", "Saturday");
+var today = new Date();
+var Rtitl = "<title>" + wDays[today.getDay()] + "'s Riddle</title>";
+var Rhead = "<center><font size=+4>" +
+            "Riddle of the Day</font></center>";
+var Rform1 = "<br><form name=Rform>Please enter your name: " +
+             "<input type=text name=Gname size=29>";
+var Rque = "<p><b>Why did the rabbit cross the road?</b><p>";
+var Rans = "Because it was stapled to the chicken!";
+var key1 = "stapled";
+var key2 = "chicken";
+var key3 = "staple";
+var Rform2 = "<input type=text name=Gans size=50>" +
+             "<p><center><input type=button value='    OK    '" +
+             "onClick='opener.CheckAns(this.form)'>" +
+             "<spacer type=horizontal size=25>" +
+             "<input type=button value='   Hint   ' " +
+             "onClick='opener.Hint(this.form)'>" +
+             "<spacer type=horizontal size=25>" +
+             "<input type=button value=Cancel onClick='opener.NoAns()'>" +
+             "</center></form>";
+var Rpage = Rtitl + Rhead.fontcolor("blanchedAlmond") + Rform1 + Rque + Rform2;
+var NewTry = "<center><form>" +
+             "<input type=button value='Try again?' " +
+             "onClick=\"self.location='riddle.htm'\">";
+var showA = "<spacer type=horizontal size=50>" +
+            "<input type=button value='Show answer' " +
+            "onClick=\"document.write('<body bgColor=peachpuff><center>" +
+            "<font size=+4 color=crimson>" +
+            "Because it was stapled to the chicken!</font></center><p>')\">";
+var fEnd = "</form></center>";
+var hintCount = 0;
+
+function openRbox() {
+   Rbox = window.open("","","width=500,height=300");
+   Rbox.document.open();
+   Rbox.document.write(Rpage);
+   if (document.cookie) {
+       Rbox.document.Rform.Gname.value = document.cookie;
+       Rbox.document.Rform.Gans.focus();
+   }
+   else Rbox.document.Rform.Gname.focus();
+   Rbox.document.bgColor = "lightcoral";
+   Rbox.document.close();
+}
+
+function CheckAns(form) {
+   var Gname = form.Gname.value;
+   var Gans = form.Gans.value.toLowerCase();
+   document.cookie = Gname;
+   Rbox.close();
+   if (Gans.indexOf(key1) != -1 && Gans.indexOf(key2) != -1 &&
+       Gans.indexOf(key2) > Gans.indexOf(key1) &&
+       (Gans.indexOf(key2) - Gans.indexOf(key1)) > 10 &&
+       (Gans.length < (Gans.indexOf(key2) + key2.length + 3) ||
+        Gans.indexOf(key2 + "'s") != -1))
+       document.write("<title>Ding!</title>" + Rhead.fontcolor("crimson") +
+                      "<center><h2>Right, " + Gname + "!<p>" + 
+                      Gans.fontcolor("crimson") + "!</h2></center>");
+   else if (Gans.indexOf(key3) != -1 || Gans.indexOf(key2) != -1)
+       document.write("<title>Bzzzt!</title>" + Rhead.fontcolor("crimson") +
+                      "<center><h2>Wrong, " + Gname + "!<p>" +
+                      "You answered: " + Gans.fontcolor("crimson") + "!<p>" +
+                      "<b>Warm! But no banana...</b><p>" +
+                      NewTry + showA + fEnd + "</h2></center>");
+   else
+       document.write("<title>Bzzzt!</title>" + Rhead.fontcolor("crimson") +
+                      "<center><h2>Wrong, " + Gname + "!<p>" +
+                      "You answered: " + Gans.fontcolor("crimson") + "!" +
+                      NewTry + showA + fEnd + "</h2></center>")
+   document.bgColor = "peachpuff";
+   document.close();
+}
+
+function Hint(form) {
+   var hintStr = Rans.split(' ');
+   if (hintCount == hintStr.length) {
+      hintCount = 0;
+      form.Gans.value = hintStr[hintCount];
+      hintCount++;
+   }
+   else form.Gans.value += ' ' + hintStr[hintCount++];
+}
+
+function NoAns(){
+   Rbox.close();
+   document.write("<title>Main Page</title>" +
+                   Rhead + NewTry + showA + fEnd);
+   document.bgColor = "peachpuff";
+   document.close();
+}
+</script>
+</head>
+<body onLoad='openRbox()' bgColor=peachpuff>
+</body>
+</html>

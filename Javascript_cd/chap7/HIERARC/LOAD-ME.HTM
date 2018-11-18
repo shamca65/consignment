@@ -1,0 +1,352 @@
+<!--
+
+You are free to copy the "Folder-Tree" script as long as you keep this copyright notice:
+
+   * 
+   * Script found in: http://www.geocities.com/Paris/LeftBank/2178/
+   *
+   * Author: Marcelino Alves Martins (martins@hks.com)
+   *
+
+
+Version control:  Creation: January '97.
+                  Last changes: June '97
+
+
+Instructions:
+  - You only have to touch in function generateTree()
+  - Nodes with other folders inside are created with folderNode(<folder name>)
+  - Nodes with documents inside are created with leafNode(<folder name>)
+  - Documents are nodes created with generateDocEntry(<new window?>, <doc name>, <doc link>)
+  - You cannot have 'mixed' folders (folders with other folders _and_ with documents)
+
+For other information refer to http://www.geocities.com/Paris/LeftBank/2178/foldertree.html
+
+-->
+
+<HTML>
+<HEAD>
+<title>Marcelino Martins' Home Page</title>
+
+<script LANGUAGE="JavaScript">
+
+
+<!--  to hide script contents from old browsers
+
+
+//each node in the tree is an Array with 4+n positions 
+//  node[0] is 0/1 when the node is closed/open
+//  node[1] is 0/1 when the folder is closed/open
+//  node[2] is 1 if the children of the node are documents 
+//  node[3] is the name of the folder
+//  node[4]...node[4+n] are the n children nodes
+
+
+// ***************
+// Building the data in the tree
+
+function generateTree()
+{
+var aux1, aux2, aux3
+
+        foldersTree = folderNode("Start folder")
+                aux1 = appendChild(foldersTree, folderNode("Local docs"))
+                        aux2 = appendChild(aux1, leafNode("Profile"))
+                                appendChild(aux2, generateDocEntry(0, "Personal info", "ident.html", ""))
+                                appendChild(aux2, generateDocEntry(0, "Resume", "resume.html", ""))
+                        aux2 = appendChild(aux1, leafNode("Likes"))
+                                appendChild(aux2, generateDocEntry(0, "Portugal", "portugal.html", ""))
+                                appendChild(aux2, generateDocEntry(0, "Music", "musica.htm", ""))
+                                appendChild(aux2, generateDocEntry(0, "Books & Movies", "arts.html", ""))
+                aux1 = appendChild(foldersTree, folderNode("Web favorites"))
+                        aux2 = appendChild(aux1, leafNode("Friends with sites"))
+                                appendChild(aux2,generateDocEntry(1, "Ana Maria", "wwwAlu.ci.uminho.pt:8888/~si8900/", ""))
+                                appendChild(aux2,generateDocEntry(1, "Ant&oacute;nio Almeida", "lemac18.lemac.ist.utl.pt/~aalmeida/myhomepage.html", ""))
+                                appendChild(aux2,generateDocEntry(1, "Ant&oacute;nio Figueiredo", "www.cfn.ist.utl.pt/~antonio/", ""))
+                                appendChild(aux2,generateDocEntry(1, "Ant&oacute;nio Sargento", "www.ip.pt/~ip101065/", ""))
+                                appendChild(aux2,generateDocEntry(1, "Francisco Rosa", "albertina.inesc.pt/people/fjar", ""))
+                                appendChild(aux2,generateDocEntry(1, "Humberto Fernando", "www.cfn.ist.utl.pt/~fernando/", ""))
+                                appendChild(aux2,generateDocEntry(1, "Jo&atilde;o Cruz", "www.geocities.com/Paris/3853/", ""))
+                                appendChild(aux2,generateDocEntry(1, "Nabil M. Lawandy", "www.chem.brown.edu/brochure/people/nml/nml.html", ""))
+                                appendChild(aux2,generateDocEntry(1, "Nuno Marques", "www-ia.di.fct.unl.pt/~nmm", ""))
+                                appendChild(aux2,generateDocEntry(1, "Teresa Gon&ccedilalves", "albertina.inesc.pt/people/tsg", ""))
+                        aux2 = appendChild(aux1, folderNode("Readings"))
+                                aux3 = appendChild(aux2, leafNode("News"))
+                                        appendChild(aux3, generateDocEntry(1, "CNN", "www.cnn.com/", ""))
+                                        appendChild(aux3, generateDocEntry(1, "PUBLICO", "www.publico.pt/publico/hoje", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Di&aacute;rio de Noticias", "www.dn.pt/homepage/home.htm", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Portuguese Soccer Championship", "www.dn.pt/des/primeira.htm", ""))
+                                aux3 = appendChild(aux2, leafNode("Cartoons"))
+                                        appendChild(aux3, generateDocEntry(1, "The Dilbert Zone", "www.unitedmedia.com/comics/dilbert/", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Randy Glasbergen", "www.borg.com/~rjgtoons/toon.html", ""))
+                                aux3 = appendChild(aux2, leafNode("Science"))
+                                        appendChild(aux3, generateDocEntry(1, "Discover Magazine", "www.enews.com/magazines/discover/page1a.html", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Scientific American", "www.sciam.com/", ""))
+                                aux3 = appendChild(aux2, leafNode("Reference"))
+                                        appendChild(aux3, generateDocEntry(1, "Internet Movie Database", "us.imdb.com/", ""))
+                                        appendChild(aux3, generateDocEntry(1, "MapQuest! Interactive Atlas Welcome!", "www.mapquest.com/cgi-bin/mqatlas?screen=wm_register&link=wm_main&uid=104adz16d09jizx", ""))
+                                        appendChild(aux3, generateDocEntry(1, "BigYellow", "s8.bigyellow.com/", ""))
+                                        appendChild(aux3, generateDocEntry(1, "HomeArts Recipe Finder", "homearts.com/waisform/recipe.htm", ""))
+                                aux3 = appendChild(aux2,  leafNode("Computers"))
+                                        appendChild(aux3,generateDocEntry(1, "Byte", "www.byte.com/", ""))
+                                        appendChild(aux3,generateDocEntry(1, "Python", "www.python.org/", ""))
+                                        appendChild(aux3,generateDocEntry(1, "ZDNet", "www.zdnet.com", ""))
+                                aux3 = appendChild(aux2, leafNode("Other"))
+                                        appendChild(aux3, generateDocEntry(1, "Motorcyle", "www.motorcycle.com", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Agenda Cultural de Lisboa", "marte.consiste.pt/agenda", ""))
+                        aux2 = appendChild(aux1, leafNode("Searches"))
+                                appendChild(aux2, generateDocEntry(1, "Excite", "www.excite.com", ""))
+                                appendChild(aux2, generateDocEntry(1, "Altavista", "altavista.digital.com", ""))
+                                appendChild(aux2, generateDocEntry(1, "SAPO (portuguese sites)", "sapo.ua.pt", ""))
+                                appendChild(aux2, generateDocEntry(1, "Point's Top 5%", "www.pointcom.com/", ""))
+                                appendChild(aux2, generateDocEntry(1, "Top 5% Portugal", "www.ip.pt/top5portugal/main.html", ""))
+                        aux2 = appendChild(aux1, folderNode("Sights & Sounds"))
+                                aux3 = appendChild(aux2,  leafNode("Radios"))
+                                        appendChild(aux3, generateDocEntry(1, "R&aacute;dio Comercial On-line", "www.radiocomercial.pt/audio/audio.html", ""))
+                                        appendChild(aux3, generateDocEntry(1, "TSF- A R&aacute;dio em Directo", "www.tsf.pt/", ""))
+                                aux3 = appendChild(aux2,  leafNode("Cameras"))
+                                        appendChild(aux3, generateDocEntry(1, "Lisboa/Amoreiras", "expotelecom.telepac.pt/e_futuro/rc/transito/amoreiras.jpg", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Lisboa/Pra&ccedil;a de Espanha", "expotelecom.telepac.pt/e_futuro/rc/transito/pespanha.jpg", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Lisboa/Ponte", "expotelecom.telepac.pt/e_futuro/rc/transito/ponte.jpg", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Downtown Providence", "rhodeisland.com/webcam.jpg", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Home of WORLD NETCAMS", "trendy.net/sites/netcams/", ""))
+                        aux2 = appendChild(aux1, folderNode("Downloads"))
+                                aux3 = appendChild(aux2,  leafNode("Shareware"))
+                                        appendChild(aux3, generateDocEntry(1, "Windows95.com", "www.windows95.com/apps", ""))
+                                        appendChild(aux3, generateDocEntry(1, "shareware.com", "www.shareware.com", ""))
+                                aux3 = appendChild(aux2,  leafNode("Firmware"))
+                                        appendChild(aux3, generateDocEntry(1, "Iomega zip", "www.iomega.com/product/zip/index.html", ""))
+                                        appendChild(aux3, generateDocEntry(1, "USRobotics", "www.usrobotics.com/home/20411.02.html", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Matrox Mystique", "www.matrox.com/mgaweb/3dgaming.htm", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Radio Track", "www.aimslab.com/", ""))
+                        aux2 = appendChild(aux1, folderNode("Shopping"))
+                                aux3 = appendChild(aux2,  leafNode("Books"))
+                                        appendChild(aux3, generateDocEntry(1, "Amazon.com Books", "www.amazon.com/", ""))
+                                aux3 = appendChild(aux2,  leafNode("Hardware & Software"))
+                                        appendChild(aux3, generateDocEntry(1, "ISN - Internet Shopping Network", "www.internet.net/", ""))
+                                        appendChild(aux3, generateDocEntry(1, "Computer Express", "www.cexpress.com/", ""))
+                                aux3 = appendChild(aux2,  leafNode("Shopping Center"))
+                                        appendChild(aux3, generateDocEntry(1, "IMALL Homepage", "www.imall.com/", ""))
+                                        appendChild(aux3, generateDocEntry(1, "BizWeb", "www.bizweb.com/", ""))
+                                aux3 = appendChild(aux2,  leafNode("Other"))
+                                        appendChild(aux3, generateDocEntry(1, "Edmund's Automobile Buyer's Guides", "www.edmunds.com/", ""))
+}
+
+// Auxiliary function to build the node
+function folderNode(name)
+{
+var arrayAux
+        arrayAux = new Array
+        arrayAux[0] = 0
+        arrayAux[1] = 0
+        arrayAux[2] = 0
+        arrayAux[3] = name
+        
+        return arrayAux
+}
+
+// Auxiliary function to build the node
+// The entries in arrayAux[4]..array[length-1] are strings built in generate doc entry
+function leafNode(name)
+{
+var arrayAux
+        arrayAux = new Array
+        arrayAux[0] = 0
+        arrayAux[1] = 0
+        arrayAux[2] = 1
+        arrayAux[3] = name
+        
+        return arrayAux
+}
+
+//this way the generate tree function becomes simpler and less error prone
+function appendChild(parent, child)
+{
+        parent[parent.length] = child
+        return child
+}
+
+//these are the last entries in the hierarchy, the local and remote links to html documents
+function generateDocEntry(icon, docDescription, link)
+{
+var retString =""
+
+        if (icon==0)
+                retString = "<A href='"+link+"' target=folderFrame><img src='doc.gif' alt='Opens in right frame'"
+        else
+                retString = "<A href='http://"+link+"' target=_blank><img src='link.gif' alt='Opens in new window'"
+        retString = retString + " border=0></a><td nowrap><font size=-1 face='Arial, Helvetica'>" + docDescription + "</font>"
+
+        return retString
+
+}
+
+
+// **********************
+// display functions
+
+//redraws the left frame
+function redrawTree()
+{
+var doc = top.treeFrame.window.document
+
+        doc.clear()
+        doc.write("<body bgcolor='white'>")     
+        redrawNode(foldersTree, doc, 0, 1, "")
+        doc.close()
+}
+
+//recursive function over the tree structure called by redrawTree
+function redrawNode(foldersNode, doc, level, lastNode, leftSide)
+{
+var i=0
+
+        doc.write("<table border=0 cellspacing=0 cellpadding=0>")
+        doc.write("<tr><td valign = middle nowrap>")
+
+        doc.write(leftSide)
+
+        if (level>0)
+                if (lastNode) //the last 'brother' in the children array
+                {
+                        doc.write("<img src='lastnode.gif' width=16 height=22>")
+                        leftSide = leftSide + "<img src='blank.gif' width=16 height=22>" 
+                }
+                else
+                {
+                        doc.write("<img src='node.gif' width=16 height=22>")
+                        leftSide = leftSide + "<img src='vertline.gif' width=16 height=22>"
+                }
+
+        displayIconAndLabel(foldersNode, doc)
+        doc.write("</table>")
+
+        if (foldersNode.length > 4 && foldersNode[0]) //there are sub-nodes and the folder is open
+        {
+                if (!foldersNode[2]) //for folders with folders
+                {
+                        level=level+1
+                        for (i=4; i<foldersNode.length;i++)
+                                if (i==foldersNode.length-1)
+                                        redrawNode(foldersNode[i], doc, level, 1, leftSide)
+                                else
+                                        redrawNode(foldersNode[i], doc, level, 0, leftSide)
+                }
+                else //for folders with documents
+                {
+                        for (i=4; i<foldersNode.length;i++)
+                        {
+                                doc.write("<table border=0 cellspacing=0 cellpadding=0 valign=center>")
+                                doc.write("<tr><td nowrap>")
+                                doc.write(leftSide)
+                                if (i==foldersNode.length - 1)
+                                        doc.write("<img src='lastnode.gif' width=16 height=22>")
+                                else
+                                        doc.write("<img src='node.gif' width=16 height=22>")
+                                doc.write(foldersNode[i])
+                                doc.write("</table>")
+                        }
+                }
+        }
+}
+
+//builds the html code to display a folder and its label
+function displayIconAndLabel(foldersNode, doc)
+{
+        doc.write("<A href='javascript:top.openBranch(\"" + foldersNode[3] + "\")'")
+        if (foldersNode[1])
+        {
+                doc.write("onMouseOver='window.status=\"Close folder\"; return true'><img src=")
+                doc.write("opfolder.gif width=24 height=22 border=noborder></a>")
+        }
+        else
+        {
+                doc.write("onMouseOver='window.status=\"Open folder\"; return true'><img src=")
+                doc.write("clfolder.gif width=24 height=22 border=noborder></a>")
+        }
+        doc.write("<td valign=middle align=left nowrap>")
+        doc.write("<font size=-1 face='Arial, Helvetica'>"+foldersNode[3]+"</font>")
+}
+
+//**********************+
+// Recursive functions
+
+//when a parent is closed all children also are
+function closeFolders(foldersNode)
+{
+var i=0
+
+        if (!foldersNode[2])
+        {
+                for (i=4; i< foldersNode.length; i++)
+                        closeFolders(foldersNode[i])
+
+        }
+        foldersNode[0] = 0
+        foldersNode[1] = 0
+}
+
+//recursive over the tree structure
+//called by openbranch
+function clickOnFolderRec(foldersNode, folderName)
+{
+var i=0
+
+        if (foldersNode[3] == folderName)
+        {
+                if (foldersNode[0])
+                        closeFolders(foldersNode)
+                else
+                {
+                        foldersNode[0] = 1
+                        foldersNode[1] = 1
+                }
+        }
+        else
+        {
+                if (!foldersNode[2])
+                        for (i=4; i< foldersNode.length; i++)
+                                clickOnFolderRec(foldersNode[i], folderName)
+        }
+}
+
+
+// ********************
+// Event handlers
+
+//called when the user clicks on a folder
+function openBranch(branchName)
+{
+        clickOnFolderRec(foldersTree, branchName)
+        if (branchName=="Start folder" && foldersTree[0]==0)
+                top.folderFrame.location="basefldr.htm"
+        timeOutId = setTimeout("redrawTree()",100)
+}
+
+//called after this html file is loaded
+function initializeTree()
+{
+        generateTree()
+        redrawTree()
+}
+
+var foldersTree = 0
+var timeOutId = 0
+generateTree() //sometimes when the user reloads the document Netscape 3.01 does not trigger the onLoad event (!!)
+
+
+// end hiding contents from old browsers  -->
+
+
+</script>
+
+
+</HEAD>
+
+<FRAMESET cols="200,*"  onLoad='initializeTree()'> 
+        <FRAME src="basetree.htm" name="treeFrame"> 
+        <FRAME SRC="basefldr.htm" name="folderFrame"> 
+</FRAMESET> 
+
+
+</HTML>

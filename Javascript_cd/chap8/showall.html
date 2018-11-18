@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Contact Manager - Show All Entries</title>
+</head>
+
+<body bgcolor="#ffffff">
+
+<center>
+<font size="+2">Contact Manager</font>
+</center>
+
+<pre>
+<server>
+
+// connect to the database
+dbConnect();
+
+var sql = "";
+var width = 0;
+var lines = "";
+
+sql = "select count (*) from contact";
+writeln ('Total Entries : ' + countRows (sql));
+
+var fname_len = getMaxLen ("contact", "fname", 10);
+var lname_len = getMaxLen ("contact", "lname", 10);
+var city_len  = getMaxLen ("contact", "city", 10);
+var phone_len = getMaxLen ("contact", "homephone", 12);
+var view_len  = 7;
+
+width = view_len + fname_len + lname_len + city_len + phone_len + 2 + 12;
+lines = "";
+for (var i = 0; i < width; i++)
+   lines += "-";
+
+writeln (lines);
+write ('|'); write (pad ('', view_len));
+write ('|'); write (pad ('FIRT', fname_len));
+write ('|'); write (pad ('LAST', lname_len));
+write ('|'); write (pad ('CITY', city_len));
+write ('|'); write (pad ('ST', 2));
+write ('|'); write (pad ('HOME PHONE', phone_len));
+write ('|'); writeln ('');
+writeln (lines);
+
+sql = "select * from contact";
+var cursor = database.cursor (sql);
+while (cursor.next ())
+{
+   link = '<a href="/jsbook/index.html?id=' + cursor.id + '">View</a>'
+   write ('|'); write (pad ('  ' + link + '  ', view_len));
+   write ('|'); write (pad (cursor.fname, fname_len));
+   write ('|'); write (pad (cursor.lname, lname_len));
+   write ('|'); write (pad (cursor.city,  city_len));
+   write ('|'); write (pad (cursor.state, 2));
+   write ('|'); write (pad (cursor.homephone, phone_len));
+   write ('|');
+   write ('\n');
+}
+cursor.close ();
+writeln (lines);
+
+</server>
+</pre>
+
+</body>
+</html>

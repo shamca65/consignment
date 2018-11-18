@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<TITLE>Search Local</TITLE>
+<SCRIPT LANGUAGE = "JavaScript">
+<!-- By Olaf Walkowiak, Bookmark, <si0015@aixrs1.hrz.uni-essen.de>, http://www.bookmark.de
+
+function createArray(length)
+{
+	this.length = length;
+	for( var i = 1; i<= length; i++)
+		this[i] = null;
+	return this;		
+}
+//                  *********************************************** Some Preparation Data ******************************************
+
+var Entries = 4;	// How many entries in the Database?
+var Separator = ";"      	// Separator for the Data fields
+var Fields = 7;	// Number of DataFields
+var iName = 1;
+var iFirstName = 2;
+var iStreet = 3;
+var iPLZ = 4;	// German ZIP Code
+var iCity = 5;
+var iPhone = 6;
+var iEMail = 7; 	
+//                  ************************************************* Now create the Array *******************************************
+
+var Data = new createArray(Entries);
+
+// 	*********************************************** Type in your Data below *****************************************
+
+Data[1] = "Walkowiak;Olaf;Suedseestr. 14;45357;Essen;+49-201-604594;si0015@aixrs1.hrz.uni-essen.de";
+Data[2] = "Muster;Max;Am Hang 13; 12345;Irgendwo;+56-789-123456;max.muster@beispiel.de";
+Data[3] = "Walkowiak;Kurt;Luebecker Str.65;45145;Essen;+49-201-xxxxxxxx;";
+Data[4] = "Broesel;Werner;Boelkstoffstr 12;20123;Saufdorf;+49-xxx-xxxxxxxx;werner@semmel.verlag";
+
+//                   ***************************************** End of Data Block ********************************************************
+//                   ***************************************** Begin Common functions ************************************************
+
+var LastMatch = 0; // Store Last Matched Data Index
+function GetField(Entry,number) // Count begins with 1, f.e. GetField(Data[1] ,1) returns Walkowiak
+{
+	var Out = "";
+	var FirstChar;
+	var LastChar;
+
+	FirstChar = 0;
+	LastChar = Entry.indexOf(Separator) ;
+	if (number == 1) 
+	{
+		Out += Entry.substring(FirstChar,LastChar); 
+		return Out;
+	}
+	if (number == Fields)
+	{
+		Out+= Entry.substring(Entry.lastIndexOf(Separator) + 1,Entry.length)
+		return Out;
+	}
+
+	for(var i =2; i <= number; i++)
+	{
+		FirstChar = LastChar + 1;
+		LastChar = Entry.indexOf(Separator, FirstChar);
+	}
+	Out += Entry.substring(FirstChar,LastChar); 
+	return Out;
+}
+
+function FindNext(String, number) // number is the number of the field to search in
+{	
+	var CompareWith = "";
+	for(var i = LastMatch + 1; i <=Data.length; i++)
+	{
+		var buf = GetField(Data[i],number);
+		var bl = parseInt(buf.length);
+		var sl = parseInt(String.length);
+		if(bl > sl)
+		{
+		CompareWith = buf.substring(0,sl );
+		}	
+		else
+		{
+			CompareWith = buf;
+		}
+		if (CompareWith == String)
+		{
+			LastMatch = i;
+			return i;
+		}
+	}
+	LastMatch = 0;
+	return 0;	
+}
+
+// ************************************************************* Custom functions for this document********************************
+function ResetSearch()
+{
+	LastMatch = 0;
+	for(var i = 1; i <=Fields; i++)
+	{
+		document.SearchForm.elements[i+3].value = "";
+	}
+}
+
+
+
+function TypeNext()
+{
+	var SearchString = document.SearchForm.Text.value;
+	var index =document.SearchForm.elements[3].options.selectedIndex + 1;
+	var j = FindNext(SearchString, index);
+	if (j == 0)
+	{
+		alert("End of List reached, Search String not found! \nPress 'Find Next' again to to restart from top of list!");
+		ResetSearch();
+		return;
+	}
+	var buf = "";
+	for(var i = 1; i <=Fields; i++)
+	{
+		buf = GetField(Data[j],i);
+		document.SearchForm.elements[i+3].value = buf;
+	}
+}
+
+// -->
+</SCRIPT>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+
+<CENTER><H3>A Search without contacting the server</H3>
+</CENTER><P>
+This is a sample document to show how to perform a search in a Database with JavaScript.<BR>
+<hr>
+<FORM NAME="SearchForm"  onSubmit = "TypeNext();return false">
+<INPUT NAME="Text" TYPE="TEXT" ROWS=1 COLS=20>
+<INPUT NAME="FindNext" TYPE="SUBMIT" VALUE="FindNext">
+<INPUT NAME="NewSearch" TYPE="Reset" VALUE="NewSearch" onClick ="ResetSearch();"><BR>
+Search for <SELECT  VALUE="field" SIZE=1>
+<OPTION>Name
+<OPTION>First Name
+<OPTION>Street
+<OPTION>PLZ (German ZIP Code)
+<OPTION>City
+<OPTION>Telephone Number
+<OPTION>E-Mail Address
+</SELECT><BR>
+<H3>Here is the Result:</H3>
+<INPUT NAME="Result1" TYPE="TEXT" ROWS=1 COLS=15 SIZE="15"> 
+<INPUT NAME="Result2" TYPE="TEXT" ROWS=1 COLS=15 SIZE="15"><BR>
+<INPUT NAME="Result3" TYPE="TEXT" ROWS=1 COLS=31 SIZE="31"><BR>
+<INPUT NAME="Result4" TYPE="TEXT" ROWS=1 COLS= 5 SIZE="5">
+<INPUT NAME="Result5" TYPE="TEXT" ROWS=1 COLS=25 SIZE="25">
+<INPUT NAME="Result6" TYPE="TEXT" ROWS=1 COLS=31 SIZE="31"><BR>
+<INPUT NAME="Result7" TYPE="TEXT" ROWS=1 COLS=30 SIZE="30">
+</FORM>
+<HR>
+
+</BODY>
+</HTML>

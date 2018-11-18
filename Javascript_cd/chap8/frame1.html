@@ -1,0 +1,43 @@
+<html>
+<head>
+<title></title>
+<base target="frame2">
+</head>
+
+<body bgcolor="#ffffff">
+
+<server>
+var abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+function indexObject ()
+{
+   for (var i = 0; i < abc.length; i++)
+   {
+      this[abc.charAt (i)] = 0
+   }
+   return (this)
+}
+
+var contact_idx = new indexObject ()
+var sql = "select lname[1] from contact order by lname"
+var cursor = database.cursor (sql)
+while (cursor.next ())
+{
+   var idx = cursor.lname.toUpperCase ()
+   contact_idx[idx]++;
+}
+cursor.close ()
+
+for (var i = 0; i < abc.length; i++)
+{
+   if (contact_idx[abc.charAt (i)] == 0)
+      write (abc.charAt (i) + ' ')
+   else
+      write ('<a href="frame2.html#' + abc.charAt (i) + '">' + abc.charAt (i) + '</a> ')
+}
+write ('&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;');
+write ('<a href="showall.html" target="_top">All</a>');
+</server>
+
+</body>
+</html>

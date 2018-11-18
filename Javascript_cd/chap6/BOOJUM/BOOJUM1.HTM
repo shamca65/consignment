@@ -1,0 +1,192 @@
+<HTML>
+<head>
+<TITLE> Hunting the SNARK with JavaScript </TITLE>
+</head>
+<body bgcolor="#ffffc0" text="#000080" link="#FF0000" vlink="#800000" alink="#FFFF00">
+<SCRIPT language="JavaScript">
+<!-- hide this script
+// Most code in this script is Copyright(C) 1996, Justin Boyan, jab+j@cs.cmu.edu
+// For documentation and more info, see:  http://www.cs.cmu.edu/~jab/snark/
+// Modified by John Campbell, john@jesus.org.uk 7 May 1996
+
+var MAX_ENGINES = 30;
+var SNARK_STRING = "hunting+the+snark";
+
+function MakeArray(n) {
+   for (var i = 1; i <= n; i++) {
+     this[i] = 0;
+   }
+   this.maxlen = n;
+   this.len = 0;
+   return this;
+}
+
+var engs = new MakeArray(MAX_ENGINES);
+
+function find_substring(needle, haystack) {
+   var i, needlen = needle.length, haylen = haystack.length;
+   for (i=0; i<=haylen-needlen; i++) {
+      if (needle == haystack.substring(i,i+needlen))
+        return i;
+   }
+   return false;
+}
+
+function Engine(name, opts, home, search) {
+  var snark = find_substring(SNARK_STRING, search);
+  this.name = name;
+  this.opts = opts;
+  this.home = home;
+  this.pre_snark = search.substring(0,snark);
+  this.post_snark= search.substring(snark+SNARK_STRING.length, search.length);
+}
+
+function Add(name, opts, home, search) {
+  engs.len++;
+  if (engs.len <= engs.maxlen) {
+    engs[engs.len] = new Engine(name, opts, home, search)
+  }
+  else {
+    alert("Better increase MAX_ENGINES: " + engs.len + ">" + engs.maxlen)
+  }
+}
+
+function DisplayForm() {
+  document.writeln('<CENTER><FORM Name=Snarkform OnSubmit="HandleForm(this); return false">');
+  document.writeln('Look for: <INPUT size=35 name="query">');
+  document.writeln('In: <SELECT name="service">');
+  for (i=1; i <= engs.len; i++) {
+    document.writeln("<OPTION " + engs[i].opts + "> " + engs[i].name);
+  }
+  document.writeln('</SELECT> <input type=submit value="Search"><br>');
+  document.writeln('A blank query takes you to the search engine\'s home page.&nbsp;&nbsp; &nbsp;&nbsp;');
+// document.writeln('<a href="#" target="_self" onClick="link = \'\' + parent.display.location.href; parent.location.href = link; return false")>Kill this panel</a></font>');
+// Sorry, above line will not work unless data tainting is implemented on client computer
+  document.writeln('&nbsp;&nbsp; &nbsp;&nbsp;<a href="boojum_y.html" target="display"><i>Why Boojum?</i></a>');
+  document.writeln('</FORM> </CENTER>');
+  document.Snarkform.query.focus()
+}
+
+function HandleForm(form) {
+//  form.submit();
+  var i, newq="", oldq=form.query.value;
+  for (i=0; i<oldq.length; i++) {  // compress [ ]+ into \+
+    var thischar = oldq.charAt(i);
+    if (thischar != ' ')
+      newq += thischar;
+    else if (lastchar != ' ')
+      newq += '+';
+    lastchar = thischar;
+  }
+  var eng = engs[1+form.service.selectedIndex];
+// Now comes the line that causes the boojum to reference the *other* frame (called 'display')
+  parent.display.location.href = newq ? eng.pre_snark + newq + eng.post_snark : eng.home;
+  document.Snarkform.query.focus()
+}
+
+
+// ADD SEARCH ENGINES BELOW.
+
+Add("Churches on the Web","",
+   "http://www.christianity.net/churchlocator/",
+   "http://www.christianity.net/cgi/search.cgi?query=hunting+the+snark");
+
+Add("Church Locator","",
+   "http://netministries.org/churches.htm",
+   "http://netministries.org/cgi-bin/nmform02.exe?CHURCHNAME=hunting+the+snark");
+
+Add("CrossSearch","",
+   "http://www.crosssearch.com/",
+   "http://www.crosssearch.com/index.html?search=hunting+the+snark");
+
+Add("Goshen Christian GoSearch", "",
+  "http://www.goshen.net",
+  "http://www.goshen.net/gosearch/search2.cgi?words=hunting+the+snark&i=frames&how2=gosearch&bool=AND&s=1&e=10&i=quick&showd=YES");
+
+Add("Goshen Christian GoSeek", "",
+  "http://www.goshen.net",
+  "http://www.goshen.net/goseek/goseek.cgi?words=hunting+the+snark&i=frames&s=1&e=10");
+
+Add("AltaVista", "SELECTED",
+   "http://altavista.digital.com/",
+   "http://altavista.digital.com/cgi-bin/query?pg=q&what=web&fmt=d&q=hunting+the+snark");
+
+Add("AltaVista (UseNet)", "",
+   "http://altavista.digital.com/",
+   "http://altavista.digital.com/cgi-bin/query?pg=q&what=news&fmt=d&q=hunting+the+snark" );
+
+Add("DejaNews", "",
+   "http://www.dejanews.com/",
+   "http://search.dejanews.com/nph-dnquery.xp?query=hunting+the+snark&defaultOp=AND&svcclass=dncurrent&maxhits=25");
+
+Add("Excite", "",
+   "http://www.excite.com/",
+   "http://www.excite.com/search.gw?search=hunting+the+snark&collection=web");
+
+Add("Galaxy","",
+   "http://galaxy.einet.net/galaxy.html",
+   "http://galaxy.einet.net/www/www.html?hunting+the+snark");
+
+Add("HotBot", "",
+   "http://www.hotbot.com",
+   "http://www.hotbot.com/search.html?MT=hunting+the+snark&DC=25");
+
+Add("Infoseek UltraSmart", "",
+   "http://www.infoseek.com/Home?pg=Home.html&sv=A2",
+   "http://www.infoseek.com/Titles?qt=hunting+the+snark&col=WW&sv=A2");
+
+Add("Infoseek (Usenet)", "",
+   "http://www.infoseek.com",
+   "http://www.infoseek.com/Titles?qt=hunting+the+snark&col=NN&sv=A2");
+
+Add("Lycos", "",
+   "http://www.lycos.com/",
+   "http://www.lycos.com/cgi-bin/pursuit?query=hunting+the+snark&backlink=639");
+
+Add("Magellan","",
+   "http://www.mckinley.com/",
+   "http://www.mckinley.com/extsearch.cgi?query=hunting+the+snark");
+
+Add("MetaCrawler","",
+   "http://www.metacrawler.com/",
+   "http://www.metacrawler.com/crawler?general=hunting+the+snark&method=0&format=1");
+
+Add("NLightN Universe","",
+   "http://nln5001.nlightn.com/nlndemo/docs/altlogin.htm",
+   "http://nln5001.nlightn.com/cgi-win/cgitest.exe/linksearch?FINDSTRING=hunting+the+snark&SQUID=3262XXXXXX0&dbfiles=Universe&search-method=within+field");
+
+Add("OpenText", "",
+   "http://search.opentext.com",
+   "http://search.opentext.com/omw/simplesearch?SearchFor=hunting+the+snark&mode=and");
+
+Add("Reference.com (Newsgroups)","",
+   "http://www.reference.com/",
+   "http://www.reference.com/cgi-bin/pn/go?searchspace=Usenet+%26+Mailing+List+Archive&ranking=by+Relevance&querytext=hunting+the+snark");
+
+Add("WebCrawler", "",
+   "http://query.webcrawler.com/",
+   "http://query.webcrawler.com/cgi-bin/WebQuery?searchText=hunting+the+snark&maxHits=25");
+
+Add("Yahoo!", "",
+   "http://www.yahoo.com/",
+   "http://search.yahoo.com/bin/search?p=hunting+the+snark" );
+
+// ADD SEARCH ENGINES ABOVE.
+
+DisplayForm();
+
+// done hiding from old browsers -->
+
+</SCRIPT>
+<pre>
+
+
+
+
+
+
+</pre>
+Do not load this page directly.<p>Please go to the <a href="load-me.html" target="_top">Boojum page</a> instead.<br>
+
+</BODY>
+</html>
