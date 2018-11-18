@@ -1,11 +1,10 @@
 <% content_for :title, 'New Customer' %>
-<div class="registration-form" >
-  <div class="body" >
-  <%= render 'customerNew', customer: @customer %>
-  <div class="social-media">
-    <h5>Sign up with social media</h5>
-    <div class="social-icons"><a href="#"><i class="icon-social-facebook"></i></a>
-      <a href="#"><i class="fa fa-google"></i></a><a href="#"><i class="fa fa-twitter"></i></a></div>
-  </div>
+<div class="modal-fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="loginmodal-container">
+      <div class="body" >
+        <%= render 'customerNew', customer: @customer %>
+      </div>
+    </div>
   </div>
 </div>

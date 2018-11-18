@@ -1,28 +1,23 @@
-<%= form_with(model: customer, local: true) do |form| %>
+<%= render 'shared/customer_graphic'%>
 
-  <div class="form-icon"><span><i class="icon-user icon"></i></span></div>
-  <div class="registration-form">
+<%= form_with(model: customer, local: true) do |f| %>
 
-    <div class="form-group">
-      <%= form.text_field :first_name, class: "form-control item", type: "text", placeholder: "First Name" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.text_field :last_name, class: "form-control item", type: "text", placeholder: "Last Name" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.text_field :email, id: "email", class: "form-control item", type: "email", placeholder: "Email Address" %>
-    </div>
-
-    <div class="form-group">
-      <%= form.text_field :phone, id: "phone-number", class: "form-control item", type: "phone", placeholder: "Phone" %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-
+  <div class="field">
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "First Name" %>
   </div>
+
+  <div class="field">
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "Last Name" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "Phone" %>
+  </div>
+
+  <div class="field">
+    <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+  </div>
+
+  <div class="form-group"><%= f.submit :Submit, class: 'btn btn-primary btn-block create-account'%> </button></div>
 
 <%end %>
