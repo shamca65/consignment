@@ -10,12 +10,12 @@
     <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "Last Name" %>
   </div>
 
-  <div class="field">
-    <%= f.text_field :phone, autofocus: true, autocomplete: "phone", placeholder: "Phone" %>
+  <div class="field" id="phone">
+    <%= f.text_field :phone, id: 'phone', autofocus: true, autocomplete: "phone", placeholder: "Phone" %>
   </div>
 
-  <div class="field">
-    <%= f.text_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
+  <div class="field" id="email">
+    <%= f.text_field :email, id: 'email', autofocus: true, autocomplete: "email", placeholder: "Email" %>
   </div>
 
   <div class="form-group"><%= f.submit :Submit, class: 'btn btn-primary btn-block create-account'%> </button></div>

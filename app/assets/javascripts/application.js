@@ -14,7 +14,6 @@
 //= require paloma
 //= require_tree .
 
-
 $(document).ready(function(){
     Paloma.start();
 
