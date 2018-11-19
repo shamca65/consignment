@@ -1,16 +1,12 @@
 <div class="table-responsive">
 <table class="table">
-  <tbody>
-  <tr >
-    <td class="align-top"></td>
-    <td></td>
+  <tr>
     <td class="text-right align-middle">
       <%= form_for :search_customers, url: search_results_customers_path, method: :get do |form| %>
         <%= form.text_field :query, value: params[:search_customers].presence && params[:search_customers][:query] %>
-        <%= form.submit 'Search Customers' %>
+        <%= form.submit 'Search Customers', class: 'btn btn-primary'%>
       <% end %>
     </td>
   </tr>
-  </tbody>
 </table>
 </div>

@@ -1,22 +1,25 @@
 <%= form_with(model: item, local: true) do |f| %>
+<div style="font-size: 18px">
 
-  <div class="field">
+  <div class="form-group" >
     <%= f.label :customer %><br>
     <%= select_tag "customer_id", options_from_collection_for_select(Customer.all, "id", "full_name"), selected: :option %>
   </div>
 
-  <div class="field">
+  <div class="form-group" >
     <%= f.text_field :description, autofocus: true, autocomplete: "description", placeholder: "Item Description" %>
   </div>
 
-  <div class="field">
+  <div class="form-group" >
     <%= f.text_field :size, autofocus: true, autocomplete: "size", placeholder: "Item Size" %>
   </div>
 
-   <div class="field" id="item_price">
-      <%= f.number_field :price, autofocus: true, autocomplete: "price", placeholder: "Item Price" %>
+   <div class="form-group" >
+      <%= f.number_field :price, id: 'currencyInput', autofocus: true, autocomplete: "price", placeholder: "Item Price" %>
   </div>
 
   <div class="form-group"><%= f.submit :Submit, class: 'btn btn-primary btn-block create-account'%> </button></div>
+
+</div>
 
 <%end %>

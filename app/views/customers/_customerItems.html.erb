@@ -1,6 +1,5 @@
 <% @customerItems.each do |item| %>
   <tr>
-
     <td><%= item.id %></td>
     <td><%= item.description %></td>
     <td><%= item.size %></td>
@@ -9,8 +8,4 @@
     <td><%= link_to 'Delete', item, method: :delete, class: "btn btn-sm btn-danger", data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-
-
-
-
 </tbody>

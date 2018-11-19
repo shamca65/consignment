@@ -1,4 +1,10 @@
-<div class="registration-form">
-  <%= render 'itemNew', item: @item %>
+<% content_for :title, 'Search Customer' %>
+<div class="modal-fade" role="dialog">
+
+    <div class="loginmodal-container">
+      <div class="body" >
+        <%= render 'shared/searchCustomer' %>
+      </div>
+    </div>
+
 </div>
-<%= render 'shared/footerlinks' %>
