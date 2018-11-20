@@ -26,4 +26,7 @@ Rails.application.routes.draw do
       #root to: "users#index"
   end
 
+  get 'item_takein' => 'static#item_takein', as: :item_takein
+
+
 end
