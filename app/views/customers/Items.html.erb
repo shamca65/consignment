@@ -1,35 +1,22 @@
 <% content_for :title, 'Customer Items' %>
-<table class="table width: 100%;">
-  <tr style="height: 5px; ">
-    <td style="text-align: left; font-size: x-large"; vertical-align: top>Customer</td>
-    <td style="text-align: center"></td>
-    <td style="text-align: center"></td>
-    <td style="text-align: right">
-      <%= link_to 'Take In New Item', customers_path, type: "button", class: "btn btn-info" %>
-    </td>
-  </tr>
-</table>
 
-<table class="table table-striped border-color: #1c7430">
+<table class="table table-striped table-bordered">
 <tr style="height: 25px; ">
-  <td style="width: 256px; height: 25px;">ID :<b><%=@customer.id %></b></td>
-  <td style="width: 265px; height: 25px;">Email:<b><%=@customer.email %></b></td>
-  <td style="width: 96px; height: 25px;"><b></b></td>
-  <td style="width: 92px; height: 25px;"><b></b></td>
+  <td class="customer-grid-lg">ID :<b><%=@customer.id %></b></td>
+  <td class="customer-grid-lg">Email:<b><%=@customer.email %></b></td>
 </tr>
 <tr style="height: 25px;">
-  <td style="width: 256px; height: 25px;">Name:<b><%= @customer.full_name%></b></td>
-  <td style="width: 265px; height: 25px;">Last Take In:<b></b></td>
-  <td style="width: 96px; height: 25px;"><b></b></td>
-  <td style="width: 92px; height: 25px;"><b></b></td>
+  <td class="customer-grid-lg">Name:<b><%= @customer.full_name%></b></td>
+  <td class="customer-grid-lg">Last Take In:<b></b></td>
 </tr>
 <tr style="height: 25px;">
-  <td style="width: 256px; height: 25px;">Phone:<b><%=@customer.phone %></b></td>
-  <td style="width: 265px; height: 25px;">Last Pay Out:<b></b></td>
-  <td style="width: 96px; height: 25px;"><b></b></td>
-  <td style="width: 92px; height: 25px;"><b></b></td>
+  <td class="customer-grid-lg">Phone:<b><%=@customer.phone %></b></td>
+  <td class="customer-grid-lg">Last Pay Out:<b></b></td>
 </tr>
 </table>
+<div class="right-div">
+  <%= link_to 'Take In New Item', customers_path, type: "button", class: "btn btn-info" %>
+</div>
 <table class="table table-striped table-hover">
   <thead>
   <tr>
@@ -44,6 +31,11 @@
     </th>
     <th>
       Price
+    </th>
+    <th>
+    </th>
+    <th>
+
     </th>
   </tr>
   </thead>

@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-
     var contr = page.controller()
     var act = page.action()
 
