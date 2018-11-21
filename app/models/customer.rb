@@ -6,6 +6,8 @@ class Customer < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  accepts_nested_attributes_for :items
+
   after_create  :log_create_event
   after_update  :log_update_event
   after_destroy :log_destroy_event
