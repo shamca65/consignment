@@ -3,14 +3,8 @@ class CustomersController < ApplicationController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy, :items, :takein ]
 
-
-
   def takein
-
-    3.times do
-      item = @customer.items.build
-    end
-
+    @item = @customer.items.new
   end
 
   def search_results

@@ -38,6 +38,10 @@ $( document ).ready(function() {
                             { input: '#emailInput', message: 'Invalid e-mail!', action: 'keyup', rule: 'email' }]
                     });
 
+                case "takein":
+                    $("#jqxradiobutton2").jqxRadioButton({ width: 120, height: 25 });
+                    break;
+
             }
             break;
         case "static":
