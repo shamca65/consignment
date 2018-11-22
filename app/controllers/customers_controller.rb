@@ -1,8 +1,17 @@
 class CustomersController < ApplicationController
   include EventLogger
 
-  before_action :set_customer, only: [:show, :edit, :update, :destroy, :items]
+  before_action :set_customer, only: [:show, :edit, :update, :destroy, :items, :takein ]
 
+
+
+  def takein
+
+    3.times do
+      item = @customer.items.build
+    end
+
+  end
 
   def search_results
     query = params[:search_customers].presence && params[:search_customers][:query]

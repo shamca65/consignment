@@ -15,7 +15,7 @@
 </tr>
 </table>
 <div class="right-div">
-  <%= link_to 'Take In New Item', customers_path, type: "button", class: "btn btn-info" %>
+  <%= link_to 'Take In New Item', takein_customers_path(:id => @customer.id), type: "button", class: "btn btn-info" %>
 </div>
 <table class="table table-striped table-hover">
   <thead>

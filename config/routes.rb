@@ -14,19 +14,18 @@ Rails.application.routes.draw do
       get :search
       get 'search_results' => 'customers#search_results', as: :search_results
       get '/items/:id', to: 'customers#items', as: 'items'
+      get 'takein', to: 'customers#takein', as: 'takein'
     end
   end
 
   resources :customers
 
   namespace :admin do
-      resources :users
-      resources :customers
-      resources :items
-      #root to: "users#index"
+    resources :users
+    resources :customers
+    resources :items
   end
 
-  get 'item_takein' => 'static#item_takein', as: :item_takein
-
+  get 'find_customer' => 'static#find_customer', as: :find_customer
 
 end
