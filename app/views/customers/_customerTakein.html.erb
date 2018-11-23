@@ -1,30 +1,67 @@
 <%= form_for @customer do |f| %>
   <table class="table table-striped table-bordered">
-    <tr>
-      <td>ID :<b><%=@customer.id %></b></td>
-      <td>Name:<b><%= @customer.full_name%></b></td>
-      <td>Email:<b><%=@customer.email %></b></td>
-      <td>Phone:<b><%=@customer.phone %></b></td>
+    <tr style="font-size:24px">
+      <td class="customer-banner">ID :<b><%=@customer.id %></b></td>
+      <td class="customer-banner">Name:<b><%= @customer.full_name%></b></td>
+      <td class="customer-banner">Email:<b><%=@customer.email %></b></td>
+      <td class="customer-banner">Phone:<b><%=@customer.phone %></b></td>
     </tr>
   </table>
-  <!--Table-->
     <%= f.fields_for @item do |item_fields|%>
       <div class="team-boxed">
         <div class="container">
           <div class="row people" >
             <div class="col-md-6 col-lg-4 item grey-border">
-                <p class="title">Type</p>
+                <p class="section-title">Type</p>
                 <div class="item">
 
                   <div class="cc-selector">
                     <input id="visa" type="radio" name="credit-card" value="visa" />
                     <label class="drinkcard-cc visa" for="visa"></label>
-
+                    <br>
                     <input id="glyph-arrow" type="radio" name="credit-card" value="glyph-arrow" />
                     <label class="drinkcard-cc jenkins" for="glyph-arrow"></label>
-
+                    <br>
                     <input id="mastercard" type="radio" name="credit-card" value="mastercard" />
                     <label class="drinkcard-cc mastercard"for="mastercard"></label>
+                    <br>
+                    <input id="glyph-arrow" type="radio" name="credit-card" value="glyph-arrow" />
+                    <label class="drinkcard-cc jenkins" for="glyph-arrow"></label>
+                    <br>
+                  </div>
+                  <br>
+                  <p class="section-title">Size</p>
+
+                  <div class="funkyradio">
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio1" />
+                      <label for="radio1">XS</label>
+                    </div>
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio2" >
+                      <label for="radio2">Small</label>
+                    </div>
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio3" />
+                      <label for="radio3">Medium</label>
+                    </div>
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio4" checked />
+                      <label for="radio4">Large</label>
+                    </div>
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio5" />
+                      <label for="radio5">XL</label>
+                    </div>
+                    <div class="funkyradio-success">
+                      <input type="radio" name="radio" id="radio6" />
+                      <label for="radio6">XXL</label>
+                    </div>
+                    <div class="funkyradio-danger">
+                      <input type="radio" name="radio" id="radio7" />
+                      <label for="radio7">N/A</label>
+                    </div>
+
                   </div>
 
               </div>

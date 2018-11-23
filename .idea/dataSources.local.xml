@@ -2,36 +2,33 @@
 <project version="4">
   <component name="dataSourceStorageLocal">
     <data-source name="consignment@localhost" uuid="f48eff7c-2d68-4910-bd85-a142358ea359">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <secret-storage>master_key</secret-storage>
-      <first-sync>true</first-sync>
       <user-name>root</user-name>
     </data-source>
     <data-source name="consignment@localhost [2]" uuid="61b764fc-c287-4436-baa6-6e90eeb19b2e">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <secret-storage>master_key</secret-storage>
-      <first-sync>true</first-sync>
       <user-name>root</user-name>
     </data-source>
     <data-source name="test" uuid="257c2974-691e-4227-84ed-e2d540af37f7">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="SQLITE" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0.0" />
       <auth-required>false</auth-required>
     </data-source>
     <data-source name="Rails consignment: development" uuid="81194af4-661f-4fdf-9272-3e4271ff34d7">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <user-name>root</user-name>
     </data-source>
     <data-source name="Rails consignment: default" uuid="a7e4a002-28c7-4527-9d7d-d73253f08257">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
-      <first-sync>true</first-sync>
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <user-name>root</user-name>
     </data-source>
     <data-source name="Rails consignment: production" uuid="c953a09f-9baa-4e35-851d-04536cc814dd">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <user-name>root</user-name>
     </data-source>
     <data-source name="Rails consignment: test" uuid="460c7e9e-a840-4d56-9ea7-63881e02a9d5">
-      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" exact-version="0.0" />
       <user-name>root</user-name>
     </data-source>
   </component>
