@@ -110,9 +110,12 @@
   border-style:solid;
 }
 
+// Radio boxes
+
 .funkyradio div {
   clear: both;
   overflow: hidden;
+  width: 150px;
 }
 
 .funkyradio label {
@@ -148,7 +151,7 @@
   bottom: 0;
   left: 0;
   content: '';
-  width: 2.5em;
+  width: 3.5em; //width of grey portion on left
   background: #D1D3D4;
   border-radius: 3px 0 0 3px;
 }
@@ -218,48 +221,44 @@
   color: #fff;
   background-color: #5bc0de;
 }
-// CSS for selecting items by radio button with image
-//
-.cc-selector input{
-  margin:0;padding:0;
-  -webkit-appearance:none;
-  -moz-appearance:none;
-  appearance:none;
+div.takeinsTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
 }
-
-.visa{background-image:url(http://i.imgur.com/lXzJ1eB.png);}
-.mastercard{background-image:url(http://i.imgur.com/SJbRQF7.png);}
-.woman{background-image: image-url("woman.png")}
-.man{background-image: image-url("man.png")}
-.boy{background-image: image-url("boy.png")}
-.baby_girl{background-image: image-url("baby_girl.png")}
-
-.cc-selector input:active +.drinkcard-cc{opacity: .9;}
-.cc-selector input:checked +.drinkcard-cc{
-  -webkit-filter: none;
-  -moz-filter: none;
-  filter: none;
+.divTable.takeinsTable .divTableCell, .divTable.takeinsTable .divTableHead {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
 }
-.drinkcard-cc{
-  cursor:pointer;
-  background-size:contain;
-  background-repeat:no-repeat;
-  display:inline-block;
-  width:100px;height:70px;
-  -webkit-transition: all 100ms ease-in;
-  -moz-transition: all 100ms ease-in;
-  transition: all 100ms ease-in;
-  -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
-  -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
-  filter: brightness(1.8) grayscale(1) opacity(.7);
+.divTable.takeinsTable .divTableBody .divTableCell {
+  font-size: 16px;
 }
-.drinkcard-cc:hover{
-  -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
-  -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
-  filter: brightness(1.2) grayscale(.5) opacity(.9);
+.takeinsTable .tableFootStyle {
+  font-size: 14px;
 }
-
-/* Extras */
-a:visited{color:#888}
-a{color:#444;text-decoration:none;}
-p{margin-bottom:.3em;}
+.takeinsTable .tableFootStyle .links {
+  text-align: right;
+}
+.takeinsTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.takeinsTable.outerTableFooter {
+  border-top: none;
+}
+.takeinsTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px;
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
