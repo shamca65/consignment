@@ -13,19 +13,13 @@
           <div class="row people" >
             <div class="col-md-6 col-lg-4 item grey-border">
                 <p class="section-title">Type</p>
-                <div class="item">
 
-                  <div class="btn-group" data-toggle="buttons">
-                    <label class="btn btn-primary active">
-                      <input type="radio" name="options" id="option1" autocomplete="off" checked> <span class="glyphicon glyphicon-unchecked unchecked"></span> <span class="glyphicon glyphicon-check checked"></span>
-                    </label>
-                    <label class="btn btn-primary">
-                      <input type="radio" name="options" id="option2" autocomplete="off"> <span class="glyphicon glyphicon-unchecked unchecked"></span> <span class="glyphicon glyphicon-check checked"></span>
-                    </label>
-                    <label class="btn btn-primary">
-                      <input type="radio" name="options" id="option3" autocomplete="off"> <span class="glyphicon glyphicon-unchecked unchecked"></span> <span class="glyphicon glyphicon-check checked"></span>
-                    </label>
-                  </div>
+                <%= item_fields.radio_button :type, 'email', :checked => true %>
+                <%= label :email, '', class: "fa fa-paper-plane-o icon fa-lg", style: "color: black;"%>
+              <br />
+                <%= item_fields.radio_button :type, 'type' %>
+                <%= label :type, 'TYPE' %>
+
                   <br>
                   <p class="section-title">Size</p>
 
