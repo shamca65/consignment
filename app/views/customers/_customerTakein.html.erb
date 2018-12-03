@@ -80,28 +80,22 @@
 
             <div id="three" class="col-lg-4 item grey-border">
               <p class="title">Size</p>
-                <%= item_fields.number_field :price %>
-
-              <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent
-                aliquam in
-                tellus eu gravida. Aliquam varius finibus est, et interdum justo suscipit id. Etiam dictum feugiat
-                tellus, a
-                semper massa. </p>
 
 
-
-              <div class="row">
-                <div class="col-sm-*">
-                  <div id="one" class="col-lg-* item grey-border">
-                    <p class="title">Thing 1</p>
-                  </div>
-                </div>
+              <div class="form-group form-control-lg">
+                <%= item_fields.text_field :description, id: 'description', autofocus: true, autocomplete: "description", class: "form-control", placeholder: "Enter Description"  %>
+              </div>
+              <div class="form-group">
+                <%= item_fields.number_field :price, id: 'price', autofocus: true, autocomplete: "price", class: "form-control", placeholder: "Enter Price"  %>
+              </div>
+              <div class="form-group">
+                <%= text_area(:items, :notes, cols: 20, rows: 5, class: 'form-control', placeholder: "Enter Notes") %>
               </div>
 
               <div class="row">
                 <div class="col-sm-*">
                   <div id="one" class="col-lg-*">
-                    <p class="title">Thing 2</p>
+                    <p class="title"></p>
                   </div>
                 </div>
               </div>
