@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2018_11_24_172427) do
   end
 
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "size"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,7 +38,7 @@ ActiveRecord::Schema.define(version: 2018_11_24_172427) do
     t.decimal "price", precision: 8, scale: 2
     t.text "notes"
     t.integer "type"
-    t.integer "size_enum"
+    t.integer "size"
     t.integer "photo_id"
     t.index ["customer_id"], name: "index_items_on_customer_id"
   end
