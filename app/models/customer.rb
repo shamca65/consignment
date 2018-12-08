@@ -8,14 +8,17 @@ class Customer < ApplicationRecord
 
   accepts_nested_attributes_for :items
 
-  after_create  :log_create_event
-  after_update  :log_update_event
+  enum trans_type: [:account_setup, :agreement_signed]
+  enum agreement_status: [:signed, :unsigned]
+
+  after_create :log_create_event
+  after_update :log_update_event
   after_destroy :log_destroy_event
 
   validates_presence_of :first_name, :last_name, :phone
 
   # ElasticSearch Index
-  settings index: { number_of_shards: 1 } do
+  settings index: {number_of_shards: 1} do
     mappings dynamic: 'false' do
       indexes :first_name, type: :text, analyzer: 'english'
       indexes :last_name, type: :text, analyzer: 'english'
@@ -64,15 +67,15 @@ class Customer < ApplicationRecord
   end
 
   def log_create_event
-    log_event("Customer",self.id,"created")
+    log_event("Customer", self.id, "created")
   end
 
   def log_update_event
-    log_event("Customer",self.id,"udpated")
+    log_event("Customer", self.id, "udpated")
   end
 
   def log_destroy_event
-    log_event("Customer",self.id,"deleted")
+    log_event("Customer", self.id, "deleted")
   end
 
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_24_172427) do
+ActiveRecord::Schema.define(version: 2018_12_08_010301) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 2018_11_24_172427) do
     t.string "phone"
     t.string "email"
     t.boolean "active"
+    t.text "street_address"
+    t.text "city"
+    t.text "province"
+    t.text "postal"
+    t.datetime "acct_open_date"
+    t.datetime "last_trans_date"
+    t.integer "trans_type"
+    t.integer "agreement_status"
   end
 
   create_table "event_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -40,6 +48,15 @@ ActiveRecord::Schema.define(version: 2018_11_24_172427) do
     t.integer "type"
     t.integer "size"
     t.integer "photo_id"
+    t.text "clerk"
+    t.integer "status"
+    t.datetime "sold_date"
+    t.datetime "takein_date"
+    t.datetime "pickup_date"
+    t.datetime "payout_date"
+    t.decimal "payout_amount", precision: 10
+    t.decimal "owing_client", precision: 10
+    t.decimal "paid_client", precision: 10
     t.index ["customer_id"], name: "index_items_on_customer_id"
   end
 
