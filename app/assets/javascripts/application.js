@@ -15,6 +15,10 @@
 //= require_tree .
 
 $(document).ready(function(){
+    var contr = page.controller()
+    var act = page.action()
+
+
     Paloma.start();
 
     $('#js-ajax-link').on('click', function(e){
@@ -26,4 +30,44 @@ $(document).ready(function(){
         });
     });
 
+    switch(contr) {
+        case "items":
+            switch(act) {
+                case "edit":
+
+
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case "customers":
+            switch(act) {
+                case "new":
+                    break;
+                case "takein":
+                    $("#currencyInput").jqxNumberInput({
+                        template: 'primary',
+                        width: '150px',
+                        height: '32px',
+                        symbol: '$',
+                        spinButtons: true,
+                        digits: 3,
+                        decimalDigits: 2
+                    });
+                    break;
+
+            }
+            break;
+        case "static":
+            break;
+        default:
+    }
+
 });
+
+
+
+
+
+

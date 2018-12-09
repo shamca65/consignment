@@ -1,20 +1,17 @@
-<table class="navTable table-responsive-md">
-  <tr>
-    <td><%= render 'shared/footerlinks' %></td>
-    <td colspan="2">
-      <div class="intro" style="height: 80px;">
-        <h2 class="text-center" style="color: rgb(20,133,238);font-size: 60px;">
-          <strong><%= yield(:title)%></strong>
-        </h2>
-      </div>
-    <td colspan="2">
-      <div class="btn-group" role="group" aria-label="Navigation">
+  <div class="row">
+    <div class="col-lg-4 text-left">
+      <%= render 'shared/footerlinks' %>
+    </div>
+    <div class="col-lg-4 text-center">
+      <strong><%= yield(:title)%></strong>
+    </div>
+    <div class="col-lg-4 text-right">
+      <div class="btn-group" role="group" >
         <% if user_signed_in? %>
           <%= link_to 'Sign Out', destroy_user_session_path, type: "button", class: "btn btn-info" %>
         <%else %>
           <%= link_to 'Sign In', new_user_session_path, type: "button", class: "btn btn-warning" %>
         <%end %>
       </div>
-    </td>
-  </tr>
-</table>
+    </div>
+  </div>
