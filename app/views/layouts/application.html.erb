@@ -1,46 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
-    <%= csrf_meta_tags %>
-  </head>
-  <body>
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Find a Customer</h4>
-        </div>
-        <div class="modal-body">
-          <div class="center-div">
-            <%= render 'shared/searchCustomer'%>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-   <!--Notifications-->
-  <div id="jq-notificationWin" style="display: none" >
-    <div id="jqmsg"  >
-      Default text
-    </div>
-  </div>
-  <%= content_tag :body, data: { action: action_name, controller: controller_name } do %>
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= content_tag :body, data: { action: action_name, controller: controller_name } do %>
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div id='js-ajax-response'>
-        </div>
-        <%= render 'shared/navbar' %>
-        <%= yield %>
-        <%= insert_paloma_hook %>
-      </div>
-    </div>
+    <%= render 'shared/navbar' %>
+    <%= yield %>
+    <%= insert_paloma_hook %>
   </div>
   </body>
-</html>
+  </html>
 <% end %>

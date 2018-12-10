@@ -1,22 +1,75 @@
-<%= render 'shared/customer_graphic'%>
-<%= form_for Customer.new do |f| %>
+<%= form_for @customer, class: "form-horizontal" do |f| %>
 
-      <div class="field">
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", placeholder: "First Name" %>
+<div class="row team-boxed">
+  <div>
+    <div >
+
+      <div id="one" class="col-lg-4 item grey-border">
+        <br />
+        <p class="title">Type</p>
+        <br /><br />
+
+        <div class="form-group">
+          <%= f.text_field :first_name, id: 'firstName',
+                           autofocus: true, autocomplete: "first_name",
+                           class: "form-control", placeholder: "First Name" %>
+          <br />
+          <%= f.text_field :last_name, id: 'lastName',
+                           autofocus: true, autocomplete: "last_name",
+                           class: "form-control", placeholder: "Last Name" %>
+          <br />
+          <%= f.text_field :email, id: 'email',
+                           autofocus: true, autocomplete: "email",
+                           class: "form-control", placeholder: "Email Address" %>
+          <br />
+          <%= f.text_field :phone, id: 'phone',
+                           autofocus: true, autocomplete: "phone",
+                           class: "form-control", placeholder: "Phone"%>
+          <br />
+
+          <%= f.text_field :street_address, id: 'streetAddress',
+                           autofocus: true, autocomplete: "street_address",
+                           class: "form-control", placeholder: "Street Address" %>
+          <br />
+          <%= f.text_field :city, id: 'city',
+                           autofocus: true, autocomplete: "city",
+                           class: "form-control", placeholder: "City"%>
+          <br />
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", placeholder: "Last Name" %>
+      <div id="two" class="col-lg-4 item grey-border">
+        <br />
+        <p class="title">Size</p>
+        <br /><br />
+        <div class="form-group">
+          <%= f.label 'Account Opened On:', class: "text-left" %>
+          <%= f.date_field :acct_open_date, id: 'acctOpenDate',
+                           autofocus: true, autocomplete: "acct_open_date",
+                           class: "form-control", placeholder: "Account Open Date" %>
+          <br />
+          <%= f.label 'Last Transaction Date:', class: "text-left" %>
+          <%= f.date_field :last_trans_date, id: 'lastTransDate',
+                           autofocus: true, autocomplete: "last_trans_date",
+                           class: "form-control", placeholder: "Last Transaction Date"%>
+          <br />
+          <%= f.number_field :trans_type, id: 'transType',
+                             autofocus: true, autocomplete: "trans_type",
+                             class: "form-control", placeholder: "Last Transaction"%>
+          <br />
+          <%= f.text_field :agreement_status, id: 'agreementStatus',
+                           autofocus: true, autocomplete: "agreement_status",
+                           class: "form-control", placeholder: "Agreement Status" %>
+        </div>
       </div>
 
-      <div class="field">
-        <%= f.text_field :phone, id: 'phoneInput', autofocus: true, autocomplete: "phone", placeholder: "Phone" %>
+      <div id="three" class="col-lg-4 item grey-border">
+        <br />
+        <p class="title">Description</p>
+        <br />
       </div>
 
-      <div class="field">
-        <%= f.text_field :email, id: 'emailInput', autofocus: true, autocomplete: "email", placeholder: "Email" %>
-      </div>
-
-      <div class="form-group"><%= f.submit :Submit, class: 'btn btn-primary btn-block create-account'%> </button></div>
-
+    </div>
+  </div>
+</div>
 <% end %>
