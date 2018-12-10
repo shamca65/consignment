@@ -15,8 +15,10 @@
 //= require_tree .
 
 $(document).ready(function(){
+
     var contr = page.controller();
     var act = page.action();
+
 
     Paloma.start();
 
@@ -28,7 +30,6 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
-
 
 
     switch(contr) {
@@ -44,6 +45,7 @@ $(document).ready(function(){
                         digits: 3,
                         decimalDigits: 2
                     });
+
 
                     break;
                 default:
@@ -69,6 +71,18 @@ $(document).ready(function(){
 
                 case "takein":
 
+
+                    break;
+                case "takein":
+                    $("#currencyInput").jqxNumberInput({
+                        template: 'primary',
+                        width: '150px',
+                        height: '32px',
+                        symbol: '$',
+                        spinButtons: true,
+                        digits: 3,
+                        decimalDigits: 2
+                    });
                     break;
 
             }
@@ -79,3 +93,9 @@ $(document).ready(function(){
     }
 
 });
+
+
+
+
+
+
