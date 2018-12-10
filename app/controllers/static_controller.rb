@@ -1,7 +1,6 @@
 class StaticController < ApplicationController
 
   def index
-    #js :mega, :msg => 'Hack to testing'
   end
 
   def item_takein
@@ -9,6 +8,10 @@ class StaticController < ApplicationController
       format.html
       format.js
     end
+  end
+
+  def find_customer
+    render "customers/search"
   end
 
 end

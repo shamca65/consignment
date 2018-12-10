@@ -10,7 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
+//= require jqwidgets/jqxcore
 //= require paloma
 //= require_tree .
 
