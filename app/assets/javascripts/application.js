@@ -16,8 +16,8 @@
 
 $(document).ready(function(){
 
-    var contr = page.controller();
-    var act = page.action();
+    var contr = page.controller()
+    var act = page.action()
 
 
     Paloma.start();
@@ -36,6 +36,7 @@ $(document).ready(function(){
         case "items":
             switch(act) {
                 case "edit":
+
                     $("#currencyInput").jqxNumberInput({
                         template: 'primary',
                         width: '150px',
@@ -45,7 +46,6 @@ $(document).ready(function(){
                         digits: 3,
                         decimalDigits: 2
                     });
-
 
                     break;
                 default:
@@ -70,11 +70,7 @@ $(document).ready(function(){
                     });
 
                 case "takein":
-
-
-                    break;
-                case "takein":
-                    $("#currencyInput").jqxNumberInput({
+                    $("#itemPrice").jqxNumberInput({
                         template: 'primary',
                         width: '150px',
                         height: '32px',
