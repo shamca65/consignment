@@ -1,4 +1,5 @@
 <% content_for :title, "Take In Station" %>
+
 <div class="features-boxed" >
   <div class="container">
     <%= link_to new_customer_path do %>
@@ -18,6 +19,11 @@
         </div>
       </div>
     <%end %>
+
+    <li>
+      <a href="#" id="add-regular">Add regular notification</a>: Fades out after a certain amount of time, can be set for each notification.
+    </li>
+
 
     <%= link_to find_customer_path do %>
       <div class="col-sm-6 col-md-5 col-lg-4 item">

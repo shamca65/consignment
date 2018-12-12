@@ -12,9 +12,14 @@
 //
 
 //= require jquery
+//= require gritter/jquery.gritter
+//= require bootstrap-sprockets
+//= require jquery_ujs
 //= require jqwidgets/jqxcore
+//= require turbolinks
 //= require paloma
 //= require_tree .
+
 
 $(document).ready(function(){
 
@@ -32,6 +37,26 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
+
+    $('#add-regular').click(function(){
+
+        $.gritter.add({
+            // (string | mandatory) the heading of the notification
+            title: 'This is a regular notice!',
+            // (string | mandatory) the text inside the notification
+            text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
+            // (string | optional) the image to display on the left
+            image: 'assets/019-cap.svg',
+            // (bool | optional) if you want it to fade out on its own or just sit there
+            sticky: false,
+            // (int | optional) the time you want it to be alive for before fading out
+            time: ''
+        });
+
+        return false;
+
+    });
+
 
 
     switch(contr) {
