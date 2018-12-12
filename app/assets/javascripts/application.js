@@ -20,12 +20,14 @@
 //= require paloma
 //= require_tree .
 
-
 $(document).ready(function(){
 
     var contr = page.controller()
     var act = page.action()
 
+    function showGritter() {
+        return alert('Gritter');
+    }
 
     Paloma.start();
 
@@ -37,6 +39,8 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
+
+
 
     $('#add-regular').click(function(){
 
@@ -56,8 +60,6 @@ $(document).ready(function(){
         return false;
 
     });
-
-
 
     switch(contr) {
         case "items":

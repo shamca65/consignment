@@ -12,12 +12,13 @@ class Users::SessionsController < Devise::SessionsController
    #POST /resource/sign_in
    def create
      super
-
+     flash[:notice] = 'sucessfully logged in'
    end
 
    #DELETE /resource/sign_out
    def destroy
      super
+     flash[:notice] = 'what a funky day'
    end
 
   # protected
