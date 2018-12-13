@@ -2,10 +2,11 @@
   <div class="row team-boxed">
     <div id="one" class="col-lg-4 item grey-border">
       <br />
-      <p class="title">Type</p>
+      <p class="title">Details</p>
       <br /><br />
 
       <div class="form-group">
+
         <%= f.text_field :first_name, id: 'firstName',
                          autofocus: true, autocomplete: "first_name",
                          class: "form-control", placeholder: "First Name" %>
@@ -35,7 +36,7 @@
     </div>
     <div id="two" class="col-lg-4 item grey-border">
       <br />
-      <p class="title">Size</p>
+      <p class="title">Account Info</p>
       <br /><br />
       <div class="form-group">
         <%= f.label 'Account Opened On:', class: "text-left" %>
@@ -48,13 +49,15 @@
                          autofocus: true, autocomplete: "last_trans_date",
                          class: "form-control", placeholder: "Last Transaction Date"%>
         <br />
-        <%= f.number_field :trans_type, id: 'transType',
-                           autofocus: true, autocomplete: "trans_type",
-                           class: "form-control", placeholder: "Last Transaction"%>
+        <%= f.select :agreement_status, Customer.agreement_statuses.keys,
+                     { prompt: 'Agreement Status', selected: @customer.agreement_status },
+                     { class: "form-control" } %>
         <br />
-        <%= f.text_field :agreement_status, id: 'agreementStatus',
-                         autofocus: true, autocomplete: "agreement_status",
-                         class: "form-control", placeholder: "Agreement Status" %>
+        <%= f.select :trans_type, Customer.trans_types.keys,
+                     { prompt: 'Last Transaction on Account', selected: @customer.trans_type },
+                     { class: "form-control", disabled: true} %>
+        <br />
+
       </div>
     </div>
   </div>

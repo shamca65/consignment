@@ -8,8 +8,8 @@ class Customer < ApplicationRecord
 
   accepts_nested_attributes_for :items
 
-  enum trans_type: [:account_setup, :agreement_signed]
-  enum agreement_status: [:signed, :unsigned]
+  enum trans_type: [:AccountSetup, :AgreementSigned]
+  enum agreement_status: [:Signed, :UnSigned]
 
   after_create :log_create_event
   after_update :log_update_event
