@@ -19,9 +19,22 @@
 //= require paloma
 //= require_tree .
 
+jQuery.noConflict();
 
-var test=function(){
-    alert("henlo");
+var showGritter=function(message){
+
+    $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Application Notice',
+        // (string | mandatory) the text inside the notification
+        text: message,
+        // (string | optional) the image to display on the left
+        image: 'assets/019-cap.svg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: ''
+    });
 }
 
 $(document).ready(function(){
