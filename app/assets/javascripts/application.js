@@ -16,18 +16,18 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require jqwidgets/jqxcore
-//= require turbolinks
 //= require paloma
 //= require_tree .
+
+
+var test=function(){
+    alert("henlo");
+}
 
 $(document).ready(function(){
 
     var contr = page.controller()
     var act = page.action()
-
-    function showGritter() {
-        return alert('Gritter');
-    }
 
     Paloma.start();
 
@@ -39,7 +39,6 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
-
 
 
     $('#add-regular').click(function(){
