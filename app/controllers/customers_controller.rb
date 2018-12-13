@@ -55,6 +55,7 @@ class CustomersController < ApplicationController
     # whitelist params
     @customer = Customer.new(customer_params)
     if @customer.save
+      js :notify, :msg => 'Customer record successfully saved'
       redirect_to customers_path, notice: 'Account was created successfully'
     else
       render :new, notice: 'Account was not saved'
