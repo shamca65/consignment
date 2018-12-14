@@ -8,8 +8,8 @@ class Customer < ApplicationRecord
 
   accepts_nested_attributes_for :items
 
-  enum trans_type: [:AccountSetup, :AgreementUpdate, :AccountInactive]
-  enum agreement_status: [:Signed, :UnSigned]
+  enum trans_type: [AccountSetup:0,  AgreementUpdate:1, AccountInactive:2]
+  enum agreement_status: [Signed:0, UnSigned:1]
 
   before_create :set_create_defaults
   before_update :set_update_defaults
@@ -80,17 +80,16 @@ class Customer < ApplicationRecord
 
   def set_create_defaults
     self.acct_open_date = Date.today
-    self.trans_type = Customer.AccountSetup
+    self.trans_type = Customer.trans_type[:AgreementUpdate].value
     self.last_trans_date = Date.today
   end
 
   def set_update_defaults
     # the customer has togged the agreement status one way or the other
-     if self.agreement_status_changed? {
-       Customer.trans_type = Customer.AgreementUpdate
-     }
+     if self.agreement_status_changed?
+       self.trans_type = Customer.trans_type[:AgreementUpdate].value
        self.last_trans_date = Date.today
-     log_event("Customer", self.id, self.agreement_status)
+       log_event("Customer", self.id, "Agreement changed to " + self.agreement_status)
     end
   end
 

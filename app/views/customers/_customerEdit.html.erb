@@ -50,13 +50,15 @@
                          autofocus: true, autocomplete: "last_trans_date",
                          class: "form-control", placeholder: "Last Transaction Date"%>
         <br />
-        <%= f.select :agreement_status, Customer.agreement_statuses.keys,
+        <%= f.select :agreement_status, Customer.agreement_statuses.collect {|d| [d.to_s,d.to_s]},
                      { prompt: 'Agreement Status', selected: @customer.agreement_status },
                      { class: "form-control" } %>
         <br />
-        <%= f.select :trans_type, Customer.trans_types.keys,
+
+        <%= f.select :trans_type, Customer.trans_types.collect {|d| [d.to_s,d.to_s]},
                      { prompt: 'Last Transaction on Account', selected: @customer.trans_type },
                      { class: "form-control", disabled: true} %>
+
         <br />
 
       </div>
