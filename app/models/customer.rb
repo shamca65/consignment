@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
   accepts_nested_attributes_for :items
 
   enum trans_type: [AccountSetup:0,  AgreementUpdate:1, AccountInactive:2]
-  enum agreement_status: [Signed:0, UnSigned:1]
+  enum agreement_status: [:Signed, :UnSigned]
 
   before_create :set_create_defaults
   before_update :set_update_defaults
