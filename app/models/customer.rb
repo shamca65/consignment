@@ -8,34 +8,42 @@ class Customer < ApplicationRecord
 
   accepts_nested_attributes_for :items
 
-  enum trans_type: [:AccountSetup, :AgreementSigned, :AccountRemoved]
+  enum trans_type: [:AccountSetup, :AgreementUpdate, :AccountInactive]
   enum agreement_status: [:Signed, :UnSigned]
 
+  before_create :set_create_defaults
+  before_update :set_update_defaults
   after_create :log_create_event
   after_update :log_update_event
   after_destroy :log_destroy_event
 
-  validates_presence_of :first_name, :last_name, :phone
+  validates_presence_of :first_name, :last_name, :phone, :agreement_status
 
   # Customer
   #
   # Create
   # - log insert
-  # - stamp acct_open_date as today
+  # - stamp acct_open_date as Date.today
   # - stamp trans_type as 'acct create'
-  # - stamp last_trans_date as today
+  # - stamp last_trans_date as Date.today
   #
   # Update
   # - log update (field level?)
-  # - stamp last_trans_date as today
+  # - if agreement_status WAS unsigned, but is now signed
+  #     - stamp last_trans_date as today
+  #     - stamp trans_type as 'AccountInactive'
   #
   # Delete
   # - mark record as inactive
-  # - stamp trans_type as 'acct remove'
   # - stamp last_trans_date as today
+  #    - stamp trans_type as 'AgreementSigned'
   #
+  #
+  #-----------------------------------------------------------------
   #
 
+  #-----------------------------------------------------------------
+  #
   # ElasticSearch Index
   settings index: {number_of_shards: 1} do
     mappings dynamic: 'false' do
@@ -45,39 +53,45 @@ class Customer < ApplicationRecord
     end
   end
 
-  def self.search(query)
-    __elasticsearch__.search(
-        {
-         query: {
-                multi_match: {
-                    query: query,
-                    fields: ['first_name', 'last_name', 'email', 'id']
-                }
-            }
-        }
-    )
+  def self.search(query) __elasticsearch__.search({
+      query: {
+       multi_match: {
+        query: query,
+         fields: ['first_name', 'last_name', 'email', 'id']
+       }
+      }
+     })
   end
 
   # TODO Need to refactor this and possibly get rid of 'active' parameter
-  def self.search_published(query)
-    self.search({
-                    query: {
-                        bool: {
-                            must: [
-                                {
-                                    multi_match: {
-                                        query: query,
-                                        fields: [:first_name, :last_name, :email]
-                                    }
-                                },
-                                {
-                                    match: {
-                                        active: true
-                                    }
-                                }]
-                        }
-                    }
-                })
+  def self.search_published(query) self.search({
+       query: {
+          bool: {
+           must: [
+             { multi_match:
+                { query: query, fields: [:first_name, :last_name, :email] }
+             },
+             { match: { active: true } }
+           ]
+          }
+        }
+      })
+  end
+
+  def set_create_defaults
+    self.acct_open_date = Date.today
+    self.trans_type = Customer.AccountSetup
+    self.last_trans_date = Date.today
+  end
+
+  def set_update_defaults
+    # the customer has togged the agreement status one way or the other
+     if self.agreement_status_changed? {
+       Customer.trans_type = Customer.AgreementUpdate
+     }
+       self.last_trans_date = Date.today
+     log_event("Customer", self.id, self.agreement_status)
+    end
   end
 
   def full_name

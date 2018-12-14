@@ -5,10 +5,10 @@
     <td><%= customer.full_name %></td>
     <td><%= customer.phone %></td>
     <td><%= customer.email %></td>
-    <td >
+    <td style="text-align: center">
       <%= link_to ' ', items_customers_path(customer.id), class: 'fa fa-lg fa-list-ol icon btn-md-primary' %>
     </td>
-    <td>
+    <td style="text-align: center">
       <%= link_to ' ', edit_customer_path(customer.id), class: 'fa fa-lg fa-id-card-o btn-md-primary' %>
     </td>
   </tr>
