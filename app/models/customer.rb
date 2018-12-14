@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
 
   accepts_nested_attributes_for :items
 
-  enum trans_type: [:AccountSetup, :AgreementSigned]
+  enum trans_type: [:AccountSetup, :AgreementSigned, :AccountRemoved]
   enum agreement_status: [:Signed, :UnSigned]
 
   after_create :log_create_event
@@ -16,6 +16,25 @@ class Customer < ApplicationRecord
   after_destroy :log_destroy_event
 
   validates_presence_of :first_name, :last_name, :phone
+
+  # Customer
+  #
+  # Create
+  # - log insert
+  # - stamp acct_open_date as today
+  # - stamp trans_type as 'acct create'
+  # - stamp last_trans_date as today
+  #
+  # Update
+  # - log update (field level?)
+  # - stamp last_trans_date as today
+  #
+  # Delete
+  # - mark record as inactive
+  # - stamp trans_type as 'acct remove'
+  # - stamp last_trans_date as today
+  #
+  #
 
   # ElasticSearch Index
   settings index: {number_of_shards: 1} do
@@ -29,7 +48,7 @@ class Customer < ApplicationRecord
   def self.search(query)
     __elasticsearch__.search(
         {
-            query: {
+         query: {
                 multi_match: {
                     query: query,
                     fields: ['first_name', 'last_name', 'email', 'id']
