@@ -39,7 +39,7 @@
       <br />
       <p class="title">Account Info</p>
       <br /><br />
-      <div class="form-group">
+      <div >
         <%= f.label 'Account Opened On:', class: "text-left" %>
         <%= f.date_field :acct_open_date, id: 'acctOpenDate',
                          autofocus: true, autocomplete: "acct_open_date",
@@ -50,17 +50,13 @@
                          autofocus: true, autocomplete: "last_trans_date",
                          class: "form-control", placeholder: "Last Transaction Date"%>
         <br />
-        <%= f.select :agreement_status, options_for_select(Customer.agreement_statuses.map {|k,v| [k,v]}),
-                     { prompt: 'Agreement Status', selected: @customer.agreement_status },
-                     { class: "form-control" } %>
-        <br />
+        <div class="field">
+          <%= f.label :agreement_status %><br />
+          <%= select("customer", "agreement_status", Customer::AGREEMENT_STATUS, {include_blank: true}) %>
+        </div>
 
-      </div>
-      <div class="actions">
-        <%= f.submit 'Update Customer', {class: "form-control btn btn-primary"} %>
       </div>
     </div>
   </div>
-
-
+  <%= f.submit 'Update Customer', {class: "form-control btn btn-primary"} %>
 <%end %>

@@ -55,7 +55,6 @@ class CustomersController < ApplicationController
     # whitelist params
     @customer = Customer.new(customer_params)
     if @customer.save
-      js :notify, :msg => 'Customer record successfully saved'
       redirect_to customers_path, notice: 'Account was created successfully'
     else
       render :new, notice: 'Account was not saved'
@@ -65,12 +64,12 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer was successfully updated.' }
+        format.html { redirect_to @customer}
         format.json { render :show, status: :ok, location: @customer }
       else
-        js :notify, :msg => 'There was an issue saving the record  '
         format.html { render :edit}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
@@ -96,6 +95,7 @@ class CustomersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :phone, :query, :email,
-      :street_address, :city, :acct_open_date, :last_trans_date, :agreement_status)
+      :street_address, :city, :acct_open_date, :agreement_status, :trans_type,
+      :last_trans_date)
     end
 end

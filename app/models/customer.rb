@@ -8,17 +8,18 @@ class Customer < ApplicationRecord
 
   accepts_nested_attributes_for :items
 
-  enum trans_type: [AccountSetup:0,  AgreementUpdate:1, AccountInactive:2]
-  enum agreement_status: [:Signed, :UnSigned]
+  before_create :set_attr_for_create
+  before_update :set_attr_for_update
 
-  before_create :set_create_defaults
-  before_update :set_update_defaults
-  after_create :log_create_event
-  after_update :log_update_event
   after_destroy :log_destroy_event
 
-  validates_presence_of :first_name, :last_name, :phone, :agreement_status
+  validates_presence_of :first_name, :last_name, :phone
 
+  AGREEMENT_STATUS = {:Unsigned => 0, :Signed => 1}
+  TRANS_TYPE = {:AccountSetup => 0, :AgreementUpdate => 1, :AccountDeactivated => 2}
+
+  #-----------------------------------------------------------------
+  #
   # Customer
   #
   # Create
@@ -38,12 +39,8 @@ class Customer < ApplicationRecord
   # - stamp last_trans_date as today
   #    - stamp trans_type as 'AgreementSigned'
   #
-  #
   #-----------------------------------------------------------------
-  #
 
-  #-----------------------------------------------------------------
-  #
   # ElasticSearch Index
   settings index: {number_of_shards: 1} do
     mappings dynamic: 'false' do
@@ -78,18 +75,21 @@ class Customer < ApplicationRecord
       })
   end
 
-  def set_create_defaults
+  def set_attr_for_create
+    puts "setting create data***********************************"
+    self.trans_type = TRANS_TYPE[:AccountSetup]
     self.acct_open_date = Date.today
-    self.trans_type = Customer.trans_type[:AgreementUpdate].value
     self.last_trans_date = Date.today
+    log_event("Customer", self.id, "Account Created")
   end
 
-  def set_update_defaults
+  def set_attr_for_update
+    puts "setting update data***********************************"
     # the customer has togged the agreement status one way or the other
-     if self.agreement_status_changed?
-       self.trans_type = Customer.trans_type[:AgreementUpdate].value
-       self.last_trans_date = Date.today
-       log_event("Customer", self.id, "Agreement changed to " + self.agreement_status)
+    if self.agreement_status_changed?
+      self.trans_type = TRANS_TYPE[:AgreementUpdate]
+      self.last_trans_date = Date.today
+      log_event("Customer", self.id, "Agreement Updated")
     end
   end
 
@@ -98,16 +98,5 @@ class Customer < ApplicationRecord
     myName ||= 'not provided'
   end
 
-  def log_create_event
-    log_event("Customer", self.id, "created")
-  end
-
-  def log_update_event
-    log_event("Customer", self.id, "udpated")
-  end
-
-  def log_destroy_event
-    log_event("Customer", self.id, "deleted")
-  end
 
 end
