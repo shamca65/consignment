@@ -11,13 +11,14 @@
 // about supported directives.
 //
 
+
 //= require jquery
-//= require mdb/popper.min
-//= require mdb/mdb
-//= require bootstrap
 //= require rails-ujs
+//= require bootstrap
 //= require bootstrap-sprockets
 //= require paloma
+//= require mdb/popper.min
+//= require mdb/mdb
 //= require_tree .
 
 jQuery.noConflict();

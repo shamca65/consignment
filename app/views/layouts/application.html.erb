@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= stylesheet_link_tag    'application' %>
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
     <%= csrf_meta_tags %>
   </head>
@@ -14,5 +14,4 @@
           <%= insert_paloma_hook %>
     </div>
   </body>
-  </html>
 <% end %>
