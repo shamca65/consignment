@@ -10,61 +10,11 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
-
 //= require jquery
 //= require rails-ujs
 //= require bootstrap
 //= require bootstrap-sprockets
-//= require paloma
 //= require mdb/popper.min
 //= require mdb/mdb
 //= require_tree .
-
-jQuery.noConflict();
-
-$(document).ready(function(){
-
-    var contr = page.controller()
-    var act = page.action()
-
-    Paloma.start();
-
-    $('#js-ajax-link').on('click', function(e){
-        e.preventDefault();
-
-        $.get($(this).prop('href'), function(response){
-            $('#js-ajax-response').html(response);
-            Paloma.start();
-        });
-    });
-
-    switch(contr) {
-        case "items":
-            switch(act) {
-                case "edit":
-                    break;
-
-                default:
-                    break;
-            }
-            break;
-        case "customers":
-            switch(act) {
-                case "new":
-                    break;
-
-                case "takein":
-                    break;
-
-            }
-            break;
-    }
-
-});
-
-
-
-
-
 

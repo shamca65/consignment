@@ -9,22 +9,12 @@
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-             role="button" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">
-            Go
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="<%= customers_path %>">Customer List</a>
-            <a class="dropdown-item" href="<%= items_path %>">Item List</a>
-          </div>
+          <a class="nav-link" href="<%= customers_path %>">Customer List</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
+          <a class="nav-link" href="<%= items_path %>">Items</a>
         </li>
       </ul>
       <div class="navbar-right">
