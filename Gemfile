@@ -42,8 +42,8 @@ gem 'devise', '~> 4.5'
 gem 'bootsnap', '~> 1.3', '>= 1.3.2'
 gem 'administrate', '~> 0.11.0'
 gem 'bourbon', '~> 5.1'
-gem 'gritter', '~> 1.2'
 gem 'paloma', '~> 5.1'
+gem 'font-awesome-rails'
 
 # Elasticsearch
 gem 'elasticsearch-model'

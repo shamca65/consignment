@@ -12,30 +12,15 @@
 //
 
 //= require jquery
-//= require gritter/jquery.gritter
+//= require mdb/popper.min
+//= require mdb/mdb
+//= require bootstrap
+//= require rails-ujs
 //= require bootstrap-sprockets
-//= require jquery_ujs
-//= require jqwidgets/jqxcore
 //= require paloma
 //= require_tree .
 
 jQuery.noConflict();
-
-var showGritter=function(message){
-
-    $.gritter.add({
-        // (string | mandatory) the heading of the notification
-        title: 'Application Notice',
-        // (string | mandatory) the text inside the notification
-        text: message,
-        // (string | optional) the image to display on the left
-        image: 'assets/019-cap.svg',
-        // (bool | optional) if you want it to fade out on its own or just sit there
-        sticky: false,
-        // (int | optional) the time you want it to be alive for before fading out
-        time: ''
-    });
-}
 
 $(document).ready(function(){
 
@@ -53,42 +38,12 @@ $(document).ready(function(){
         });
     });
 
-
-    $('#add-regular').click(function(){
-
-        $.gritter.add({
-            // (string | mandatory) the heading of the notification
-            title: 'This is a regular notice!',
-            // (string | mandatory) the text inside the notification
-            text: 'This will fade out after a certain amount of time. Vivamus eget tincidunt velit. Cum sociis natoque penatibus et <a href="#" style="color:#ccc">magnis dis parturient</a> montes, nascetur ridiculus mus.',
-            // (string | optional) the image to display on the left
-            image: 'assets/019-cap.svg',
-            // (bool | optional) if you want it to fade out on its own or just sit there
-            sticky: false,
-            // (int | optional) the time you want it to be alive for before fading out
-            time: ''
-        });
-
-        return false;
-
-    });
-
     switch(contr) {
         case "items":
             switch(act) {
                 case "edit":
-
-                    $("#currencyInput").jqxNumberInput({
-                        template: 'primary',
-                        width: '150px',
-                        height: '35px',
-                        symbol: '$',
-                        spinButtons: true,
-                        digits: 3,
-                        decimalDigits: 2
-                    });
-
                     break;
+
                 default:
                     break;
             }
@@ -96,37 +51,13 @@ $(document).ready(function(){
         case "customers":
             switch(act) {
                 case "new":
-                    $("#phoneInput").jqxMaskedInput({ mask: '(###)###-####', width: 250, height: 30  });
-
-
-                    $('#phoneInput').jqxValidator({
-                        rules: [
-                            { input: '#phoneInput', message: 'Invalid phone number!', action: 'valuechanged, blur', rule: 'phone' }]
-                    });
-
-                    $('#emailInput').jqxValidator({
-                        rules: [
-                            { input: '#emailInput', message: 'E-mail is required!', action: 'keyup, blur', rule: 'required' },
-                            { input: '#emailInput', message: 'Invalid e-mail!', action: 'keyup', rule: 'email' }]
-                    });
+                    break;
 
                 case "takein":
-                    $("#itemPrice").jqxNumberInput({
-                        template: 'primary',
-                        width: '150px',
-                        height: '32px',
-                        symbol: '$',
-                        spinButtons: true,
-                        digits: 3,
-                        decimalDigits: 2
-                    });
                     break;
 
             }
             break;
-        case "static":
-            break;
-        default:
     }
 
 });
