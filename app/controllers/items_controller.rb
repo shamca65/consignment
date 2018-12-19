@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    js 'Static#mega', :msg => 'Crack to test'
     @items = Item.all
   end
 
