@@ -6,7 +6,7 @@
 
 
 # ignore workspace configuration
-/.idea/*
+/.idea/
 
 # Ignore database.yml
 /config/database.yml

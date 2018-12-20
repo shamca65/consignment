@@ -13,7 +13,7 @@ module Consignment
     config.assets.enabled = true
     config.load_defaults 5.2
     config.assets.paths << Rails.root.join("app", "assets", "fonts", "images")
-    config.assets.paths << Rails.root.join("vendor", "mdb")
+    config.assets.paths << Rails.root.join("vendor", "javascripts", "stylesheets" )
     config.autoload_paths += ["#{config.root}/lib"]
     config.action_controller.permit_all_parameters = true
     # Settings in config/environments/* take precedence over those specified here.
