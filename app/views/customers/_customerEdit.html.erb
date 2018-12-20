@@ -3,9 +3,8 @@
   <div class="row team-boxed">
     <div id="one" class="col-lg-4 item grey-border">
       <br />
-      <p class="title">Details</p>
+      <p class="title">Personal Details</p>
       <br /><br />
-
       <div class="form-group">
 
         <%= f.text_field :first_name, id: 'firstName',
@@ -54,7 +53,10 @@
           <%= f.label :agreement_status %><br />
           <%= select("customer", "agreement_status", Customer::AGREEMENT_STATUS, {include_blank: true}) %>
         </div>
-
+        <div class="field">
+          <%= f.label :agreement_status %><br />
+          <%= select("customer", "trans_type", Customer::TRANS_TYPE, {include_blank: true}) %>
+        </div>
       </div>
     </div>
   </div>
