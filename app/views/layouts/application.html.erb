@@ -3,6 +3,7 @@
   <head>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
     <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
     <%= csrf_meta_tags %>
   </head>
@@ -12,5 +13,6 @@
           <%= render 'shared/navbar' %>
           <%= yield %>
     </div>
+    <%= javascript_include_tag 'mdb/mdb.js' %>
   </body>
 <% end %>
