@@ -13,8 +13,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require font-awesome
- *= require mdb/bootstrap
- *= require mdb/mdb
+ *= require bootstrap
+ *= require mdb
  *= require_tree .
  *= require_self
  */

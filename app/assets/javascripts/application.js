@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require mdb/popper.min
-//= require mdb/bootstrap.min
-//= require mdb/mdb
-//= require mdb/custom
+//= require popper.min
+//= require bootstrap.min
+//= require mdb
+//= require custom
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
