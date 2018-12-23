@@ -17,4 +17,18 @@
 //= require custom
 //= require rails-ujs
 //= require activestorage
+//= require paloma
 //= require_tree .
+
+$(document).ready(function(){
+    Paloma.start();
+
+    $('#js-ajax-link').on('click', function(e){
+        e.preventDefault();
+
+        $.get($(this).prop('href'), function(response){
+            $('#js-ajax-response').html(response);
+            Paloma.start();
+        });
+    });
+});

@@ -3,15 +3,15 @@
   <head>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
     <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <%= content_tag :body, data: { action: action_name, controller: controller_name } do %>
     <div class="container">
-          <%= render 'shared/navbar' %>
-          <%= yield %>
+      <%= render 'shared/navbar' %>
+      <%= yield %>
+      <%= insert_paloma_hook %>
     </div>
     <%= javascript_include_tag 'mdb.js' %>
   </body>

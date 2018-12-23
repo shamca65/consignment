@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   include EventLogger
+  protect_from_forgery except: :index
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy, :items, :takein ]
 
