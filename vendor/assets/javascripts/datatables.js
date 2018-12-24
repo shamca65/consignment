@@ -14420,7 +14420,7 @@
 	
 		/* Features */
 		"sWrapper": "dataTables_wrapper",
-		"sFilter": "dataTables_filter",
+		"sFilter": "dataTables_filter text-right",
 		"sInfo": "dataTables_info",
 		"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
 		"sLength": "dataTables_length",
@@ -14436,7 +14436,7 @@
 		"sSortColumn": "sorting_", /* Note that an int is postfixed for the sorting order */
 	
 		/* Filtering */
-		"sFilterInput": "",
+		"sFilterInput": "form-control form-control-md",
 	
 		/* Page length */
 		"sLengthSelect": "",
@@ -15370,7 +15370,7 @@ $.extend( true, DataTable.defaults, {
 /* Default class modification */
 $.extend( DataTable.ext.classes, {
 	sWrapper:      "dataTables_wrapper dt-bootstrap4",
-	sFilterInput:  "form-control form-control-sm",
+	sFilterInput:  "form-control form-control-sm ",
 	sLengthSelect: "custom-select custom-select-sm form-control form-control-sm",
 	sProcessing:   "dataTables_processing card",
 	sPageButton:   "paginate_button page-item"

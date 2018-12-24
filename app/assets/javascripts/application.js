@@ -32,9 +32,16 @@ $(document).ready(function(){
         });
     });
 
-    $('#appDataTable').dataTable( {
-                "paginate": false,
-                "sort": false
+    $('#customersDataTable').dataTable( {
+                "paginate": true,
+                "sort": true,
+                "search": {
+                    "caseInsensitive": true
+                },
+                "colReorder": {
+                    enable: true
+                }
+
     } );
 
 
