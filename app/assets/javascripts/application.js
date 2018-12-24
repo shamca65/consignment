@@ -31,4 +31,13 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
+
+    $('#appDataTable').dataTable( {
+                "paginate": false,
+                "sort": false
+    } );
+
+
+
+
 });

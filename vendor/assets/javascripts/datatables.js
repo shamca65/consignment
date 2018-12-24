@@ -4194,7 +4194,7 @@
 		var language = settings.oLanguage;
 		var previousSearch = settings.oPreviousSearch;
 		var features = settings.aanFeatures;
-		var input = '<input type="search" class="'+classes.sFilterInput+'"/>';
+		var input = '<input type="search" class="'+classes.sFilterInput+'" style="font-size:x-large; text-align: right;" />';
 	
 		var str = language.sSearch;
 		str = str.match(/_INPUT_/) ?

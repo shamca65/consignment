@@ -1,3 +1,4 @@
+<tbody>
 <% @customerItems.each do |item| %>
   <tr>
     <td><%= item.id %></td>
@@ -8,3 +9,5 @@
     <td><%= link_to 'Delete', item, method: :delete, class: "btn btn-md btn-outline-danger waves-effect", data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
+</table>

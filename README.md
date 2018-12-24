@@ -7,6 +7,7 @@ To Do
 * content for title not showing
 * hook up conditional search form in nav bar
 * add pic logo to navbar
+* test pagination
 
 Configurables
 * company name in gritter messages

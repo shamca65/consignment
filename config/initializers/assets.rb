@@ -19,3 +19,5 @@ Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts
 Rails.application.config.assets.precompile += %w(.svg .eot .woff .ttf)
 Rails.application.config.assets.precompile += %w( mdb.js )
 Rails.application.config.assets.precompile += %w( mdb.css )
+Rails.application.config.assets.precompile += %w( datatables.js )
+Rails.application.config.assets.precompile += %w( datatables.css )
