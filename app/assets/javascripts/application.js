@@ -41,10 +41,6 @@ $(document).ready(function(){
                 "colReorder": {
                     enable: true
                 }
-
     } );
-
-
-
 
 });
