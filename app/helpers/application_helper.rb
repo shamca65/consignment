@@ -8,6 +8,10 @@ module ApplicationHelper
       size_span_generator size
     end
 
+    def ag_status_label status
+      ag_status_span_generator status
+    end
+
     def admin?
       admin_types.include?(current_user.type)
     end
@@ -37,6 +41,19 @@ module ApplicationHelper
         when 6
           content_tag(:span, 'N/A', class: 'label label-success')
         end
+    end
+
+    def ag_status_span_generator status
+      case status
+        when 0
+          content_tag(:span, 'Unsigned', class: 'label label-primary')
+
+        when 1
+          content_tag(:span, 'Signed', class: 'label label-success')
+
+      end
+
+
     end
 
   def bootstrap_class_for(flash_type)

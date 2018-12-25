@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_08_010301) do
+ActiveRecord::Schema.define(version: 2018_12_25_134859) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_12_08_010301) do
     t.datetime "last_trans_date"
     t.integer "trans_type"
     t.integer "agreement_status"
+    t.text "street_address2"
   end
 
   create_table "event_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

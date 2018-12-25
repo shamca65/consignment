@@ -77,6 +77,7 @@ class Customer < ApplicationRecord
 
   def set_attr_for_create
     puts "setting create data***********************************"
+    self.agreement_status ||= 0 #unsigned
     self.trans_type = TRANS_TYPE[:AccountSetup]
     self.acct_open_date = Date.today
     self.last_trans_date = Date.today
