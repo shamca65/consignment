@@ -31,16 +31,34 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
+});
 
+$(function(){
     $('#customersDataTable').dataTable( {
-                "paginate": true,
-                "sort": true,
-                "search": {
-                    "caseInsensitive": true
-                },
-                "colReorder": {
-                    enable: true
-                }
+        "paginate": true,
+        "sort": true,
+        "search": {
+            "caseInsensitive": true
+        }
     } );
+});
 
+$(function(){
+    $('#itemsDataTable').dataTable( {
+        "paginate": true,
+        "sort": true,
+        "search": {
+            "caseInsensitive": true
+        },
+        "columns": [
+            null,
+            { "width": "50px" },    // customer id
+            { "width": "150px" },   // customer name
+            null,
+            null,
+            { "width": "75px" },    // price
+            { "width": "75px" },    // edit button
+            { "width": "75px" }     // delete button
+        ]
+    } );
 });

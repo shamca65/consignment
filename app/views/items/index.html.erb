@@ -1,26 +1,32 @@
 <% content_for :title, "Items" %>
-<table id="appDataTable" class="table table-striped" cellspacing="0" width="100%">
+<table id="itemsDataTable" class="table table-striped" cellspacing="0" width="100%">
   <thead>
   <tr>
-    <th class="th-xl">
-      id
+    <th class="th-xl text-center">
+      <b>Item</b>
     </th>
     <th class="th-xl">
-      Customer id
+      <b>Customer</b>
     </th>
     <th class="th-xl">
-      Customer Name
+      <b>Customer Name</b>
+    </th>
+    <th class="th-xl text-center">
+      <b>Size</b>
     </th>
     <th class="th-xl">
-      Size
+      <b>Description</b>
     </th>
     <th class="th-xl">
-      Description
+      <b>Price</b>
     </th>
     <th class="th-xl">
-      Price
+
+    </th>
+    <th class="th-xl">
+
     </th>
   </tr>
   </thead>
 <%= render 'itemIndex' %>
-
+  <tbody>
