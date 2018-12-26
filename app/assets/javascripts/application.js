@@ -20,7 +20,9 @@
 //= require paloma
 //= require_tree .
 
+
 $(document).ready(function(){
+
     Paloma.start();
 
     $('#js-ajax-link').on('click', function(e){
@@ -31,9 +33,7 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
-});
 
-$(function(){
     $('#customersDataTable').dataTable( {
         "paginate": true,
         "sort": true,
@@ -50,9 +50,7 @@ $(function(){
             { "width": "75px" }     // delete button
         ]
     } );
-});
 
-$(function(){
     $('#itemsDataTable').dataTable( {
         "paginate": true,
         "sort": true,
@@ -70,4 +68,9 @@ $(function(){
             { "width": "75px" }     // delete button
         ]
     } );
+
+    $(document).ready(function() {
+        $('.mdb-select').materialSelect();
+    });
+
 });

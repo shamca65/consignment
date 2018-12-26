@@ -4,6 +4,8 @@ class CustomersController < ApplicationController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy, :items, :takein ]
 
+  @provs = Customer::PROVINCES.map{|k,v| [k.to_s,v]}
+
   def takein
     @item = @customer.items.new
   end
@@ -97,6 +99,6 @@ class CustomersController < ApplicationController
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :phone, :query, :email,
       :street_address, :city, :acct_open_date, :agreement_status, :trans_type,
-      :last_trans_date)
+      :last_trans_date, :street_address2, :postal, :province)
     end
 end

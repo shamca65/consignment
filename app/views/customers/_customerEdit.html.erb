@@ -1,5 +1,5 @@
 <%= form_with(model: customer, local: true) do |f| %>
-<!-- Extended material form grid -->
+  <!-- Extended material form grid -->
   <!-- Grid row -->
   <br />
   <div class="form-row">
@@ -28,8 +28,6 @@
     <!-- Grid column -->
   </div>
   <!-- Grid row -->
-
-  <!-- Grid row -->
   <div class="row">
     <!-- Grid column -->
     <div class="col-md-12">
@@ -41,8 +39,6 @@
         <label for="inputAddressMD">Address</label>
       </div>
     </div>
-    <!-- Grid column -->
-
     <!-- Grid column -->
     <div class="col-md-12">
       <!-- Material input -->
@@ -56,8 +52,6 @@
     <!-- Grid column -->
   </div>
   <!-- Grid row -->
-
-  <!-- Grid row -->
   <div class="form-row">
     <!-- Grid column -->
     <div class="col-md-6">
@@ -71,48 +65,44 @@
     </div>
     <!-- Grid column -->
 
-    <!-- Grid column -->
     <div class="col-md-6">
       <!-- Material input -->
       <div class="md-form form-group">
         <%= f.text_field :postal, id: "inputPostalMD",
                          autofocus: true, autocomplete: "postal",
                          class: "form-control", placeholder: "Postal"%>
-        <label for="inputPostalMD">Zip</label>
+        <label for="inputPostalMD">Postal</label>
       </div>
     </div>
     <!-- Grid column -->
-  </div>
 
+  </div>
   <!-- Grid row -->
   <div class="form-row">
     <!-- Grid column -->
     <div class="col-md-6">
       <!-- Material input -->
       <div class="md-form form-group">
-        <%= f.text_field :city, id: "inputCityMD",
-                         autofocus: true, autocomplete: "city",
-                         class: "form-control", placeholder: "City"%>
-        <label for="inputCityMD">City</label>
+        <!--Blue select-->
+
+        <div class="input-group mb-3 ">
+          <select name="customer[province]" id="mdb-select" class="mdb-select md-form colorful-select dropdown-primary">
+            <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]}) %>
+          </select>
+        </div>
+        <!--/Blue select-->
       </div>
     </div>
+  </div>
     <!-- Grid column -->
 
-    <!-- Grid column -->
     <div class="col-md-6">
       <!-- Material input -->
       <div class="md-form form-group">
-        <%= f.text_field :postal, id: "inputPostalMD",
-                         autofocus: true, autocomplete: "postal",
-                         class: "form-control", placeholder: "Postal"%>
-        <label for="inputPostalMD">Zip</label>
+          Place 7
       </div>
     </div>
     <!-- Grid column -->
   </div>
 
-  <!-- Grid row -->
-  <button type="submit" class="btn btn-primary btn-md">Sign in</button>
-</form>
-<!-- Extended material form grid -->
 <%end %>

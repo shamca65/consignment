@@ -17,6 +17,20 @@ class Customer < ApplicationRecord
 
   AGREEMENT_STATUS = {:Unsigned => 0, :Signed => 1}
   TRANS_TYPE = {:AccountSetup => 0, :AgreementUpdate => 1, :AccountDeactivated => 2}
+  PROVINCES = { :ON=>'Ontario',
+      :AB => 'Alberta',
+      :BC => 'British Columbia',
+      :MB => 'Manitoba',
+      :NL => 'Newfoundland and Labrador',
+      :NB => 'New Brunswick',
+      :NS => 'Nova Scotia',
+      :SK => 'Saskatchewan',
+      :NT => 'Northwest_Territories',
+      :NU => 'Nunavut',
+      :YK => 'Yukon',
+      :PE => 'Prince Edward Island',
+      :QC => 'Quebec' }
+
 
   #-----------------------------------------------------------------
   #
