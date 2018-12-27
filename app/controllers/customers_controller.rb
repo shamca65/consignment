@@ -4,8 +4,6 @@ class CustomersController < ApplicationController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy, :items, :takein ]
 
-  @provs = Customer::PROVINCES.map{|k,v| [k.to_s,v]}
-
   def takein
     @item = @customer.items.new
   end
@@ -70,7 +68,7 @@ class CustomersController < ApplicationController
 
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer}
+        format.html { redirect_to customers_path}
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit}
@@ -89,6 +87,8 @@ class CustomersController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_customer
@@ -101,4 +101,6 @@ class CustomersController < ApplicationController
       :street_address, :city, :acct_open_date, :agreement_status, :trans_type,
       :last_trans_date, :street_address2, :postal, :province)
     end
+
+
 end

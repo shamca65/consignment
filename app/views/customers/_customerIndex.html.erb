@@ -6,6 +6,7 @@
     <td class="text-center"><%= ag_status_label(customer.agreement_status) %></td>
     <td class="text-left"><%= customer.phone.truncate(15) %></td>
     <td class="text-center"><%= customer.email %></td>
+    <td class="text-center"><%= customer.province %></td>
     <td style="text-align: center">
       <%= link_to ' ', items_customers_path(customer.id), class: 'fa fa-lg fa-list-ol icon btn-md-primary' %>
     </td>

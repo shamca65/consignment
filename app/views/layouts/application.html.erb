@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
     <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
     <%= csrf_meta_tags %>
   </head>
@@ -16,11 +15,5 @@
     </div>
     <%= javascript_include_tag 'mdb.js' %>
     <%= javascript_include_tag 'datatables' %>
-    <%= javascript_include_tag 'jqxdropdownlist' %>
-    <%= javascript_include_tag 'jqxbuttons.js'  %>
-    <%= javascript_include_tag 'jqxscrollbar.js' %>
-    <%= javascript_include_tag 'jqxlistbox.js' %>
-    <%= javascript_include_tag 'jqxcore.js' %>
-
     </body>
 <% end %>

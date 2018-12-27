@@ -1,4 +1,4 @@
-<%= form_with(model: customer, local: true) do |f| %>
+<%= form_for @customer do |f| %>
   <!-- Extended material form grid -->
   <!-- Grid row -->
   <br />
@@ -11,6 +11,7 @@
                          autofocus: true, autocomplete: "first_name",
                          class: "form-control", placeholder: "First Name" %>
         <label for="inputfirstName4MD">First Name</label>
+
       </div>
     </div>
     <!-- Grid column -->
@@ -87,8 +88,10 @@
 
         <div class="input-group mb-3 ">
           <select name="customer[province]" id="mdb-select" class="mdb-select md-form colorful-select dropdown-primary">
-            <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]}) %>
+            <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
+
           </select>
+          <label>Province</label>
         </div>
         <!--/Blue select-->
       </div>
@@ -99,10 +102,13 @@
     <div class="col-md-6">
       <!-- Material input -->
       <div class="md-form form-group">
-          Place 7
       </div>
     </div>
     <!-- Grid column -->
   </div>
 
+
+  <div class="btn btn-outline-primary btn-rounded waves-effect">
+    <%= f.submit "Update Customer Record" %>
+  </div>
 <%end %>

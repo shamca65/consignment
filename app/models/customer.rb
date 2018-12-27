@@ -55,6 +55,8 @@ class Customer < ApplicationRecord
   #
   #-----------------------------------------------------------------
 
+
+
   # ElasticSearch Index
   settings index: {number_of_shards: 1} do
     mappings dynamic: 'false' do
@@ -95,6 +97,7 @@ class Customer < ApplicationRecord
     self.trans_type = TRANS_TYPE[:AccountSetup]
     self.acct_open_date = Date.today
     self.last_trans_date = Date.today
+    self.province = 'DU'
     log_event("Customer", self.id, "Account Created")
   end
 
@@ -112,6 +115,5 @@ class Customer < ApplicationRecord
     myName = last_name.titleize + ", " + first_name.titleize
     myName ||= 'not provided'
   end
-
 
 end

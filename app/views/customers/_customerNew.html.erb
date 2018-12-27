@@ -1,50 +1,143 @@
+<%= form_for (Customer.new) do |f| %>
+  <!-- Extended material form grid -->
+  <!-- Grid row -->
+  <br />
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :first_name, id: 'inputfirstName4MD',
+                         autofocus: true, autocomplete: "first_name",
+                         class: "form-control", placeholder: "First Name" %>
+        <label for="inputfirstName4MD">First Name</label>
 
-<%= form_for @customer, class: "form-horizontal" do |f| %>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :last_name, id: 'inputlastName4MD',
+                         autofocus: true, autocomplete: "last_name",
+                         class: "form-control", placeholder: "Last Name" %>
+        <label for="inputlastName4MD">Last Name</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <br />
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :phone, id: 'inputPhone4MD',
+                         autofocus: true, autocomplete: "phone",
+                         class: "form-control", placeholder: "Phone or Mobile" %>
+        <label for="inputPhone4MD">Phone or Mobile</label>
+
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :email, id: 'inputEmail4MD',
+                         autofocus: true, autocomplete: "email",
+                         class: "form-control", placeholder: "Email Address" %>
+        <label for="inputEmail4MD">Email Address</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
   <div class="row">
-    <div id="one" class="col-md-6">
-      <br />
-      <div class="card border-secondary">
-        <div class="card-header bg-warning h3">Details</div>
-        <div class="card-body">
-          <%= f.text_field :first_name, id: 'firstName',
-                           autofocus: true, autocomplete: "first_name",
-                           class: "form-control", placeholder: "First Name" %>
-          <br />
-          <%= f.text_field :last_name, id: 'lastName',
-                           autofocus: true, autocomplete: "last_name",
-                           class: "form-control", placeholder: "Last Name" %>
-          <br />
-          <%= f.text_field :email, id: 'email',
-                           autofocus: true, autocomplete: "email",
-                           class: "form-control", placeholder: "Email Address" %>
-          <br />
-          <%= f.text_field :phone, id: 'phone',
-                           autofocus: true, autocomplete: "phone",
-                           class: "form-control", placeholder: "Phone"%>
-          <br />
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :street_address, id: "inputAddressMD",
+                         autofocus: true, autocomplete: "street_address",
+                         class: "form-control", placeholder: "Street Address" %>
+        <label for="inputAddressMD">Address 1</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :street_address2, id: "inputAddress2MD",
+                         autofocus: true, autocomplete: "street_address2",
+                         class: "form-control", placeholder: "Street Address 2" %>
+        <label for="inputAddress2MD">Address 2</label>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :city, id: "inputCityMD",
+                         autofocus: true, autocomplete: "city",
+                         class: "form-control", placeholder: "City"%>
+        <label for="inputCityMD">City</label>
+      </div>
+    </div>
+    <!-- Grid column -->
 
-          <%= f.text_field :street_address, id: 'streetAddress',
-                           autofocus: true, autocomplete: "street_address",
-                           class: "form-control", placeholder: "Street Address" %>
-          <br />
-          <%= f.text_field :city, id: 'city',
-                           autofocus: true, autocomplete: "city",
-                           class: "form-control", placeholder: "City"%>
-          <br />
-        </div>
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :postal, id: "inputPostalMD",
+                         autofocus: true, autocomplete: "postal",
+                         class: "form-control", placeholder: "Postal"%>
+        <label for="inputPostalMD">Postal</label>
       </div>
     </div>
-    <!---- 2nd card --------->
-    <div id="one" class="col-md-6">
-      <br />
-      <div class="card border-secondary">
-        <div class="card-header h3">Notes</div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#!" class="btn btn-primary">Go somewhere</a>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <!--Blue select-->
+
+        <div class="input-group mb-3 ">
+          <select name="customer[province]" id="mdb-select" class="mdb-select md-form colorful-select dropdown-primary">
+            <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
+
+          </select>
+          <label>Province</label>
         </div>
+        <!--/Blue select-->
       </div>
     </div>
+  </div>
+  <!-- Grid column -->
+
+  <div class="col-md-6">
+    <!-- Material input -->
+    <div class="md-form form-group">
+    </div>
+  </div>
+  <!-- Grid column -->
+  </div>
+
+
+  <div class="btn btn-outline-primary btn-rounded waves-effect">
+    <%= f.submit "Save New Customer" %>
   </div>
 <% end %>
