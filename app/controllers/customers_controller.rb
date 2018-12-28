@@ -28,7 +28,8 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-      @customers = Customer.all
+    @customers = Customer.all
+    js :notifyAlive, :msg => 'Toastr is alive'
   end
 
   # GET /customers/1
@@ -52,7 +53,7 @@ class CustomersController < ApplicationController
     # whitelist params
     @customer = Customer.new(customer_params)
     if @customer.save
-      redirect_to customers_path, notice: 'Account was created successfully'
+      redirect_to customers_path
     else
       render :new, notice: 'Account was not saved'
     end
@@ -61,10 +62,9 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to customers_path}
+        format.html { redirect_to customers_path, info: 'Person was successfully updated.'}
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit}
@@ -83,7 +83,9 @@ class CustomersController < ApplicationController
     end
   end
 
-
+  def notify_user
+    js :notifyAlive, :msg => 'Toastr is alive'
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

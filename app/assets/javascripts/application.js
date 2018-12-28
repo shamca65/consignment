@@ -20,7 +20,6 @@
 //= require paloma
 //= require_tree .
 
-
 $(document).ready(function(){
 
     Paloma.start();
@@ -46,6 +45,7 @@ $(document).ready(function(){
             { "width": "75px" },    // agreement status
             { "width": "75px" },    // phone
             { "width": "75px" },    // email
+            { "width": "50px" },    // province
             { "width": "75px" },    // edit button
             { "width": "75px" }     // delete button
         ]
@@ -70,5 +70,6 @@ $(document).ready(function(){
     } );
 
     $('.mdb-select').materialSelect();
+
 
 });

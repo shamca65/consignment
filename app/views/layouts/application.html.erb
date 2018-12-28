@@ -10,6 +10,7 @@
     <%= content_tag :body, data: { action: action_name, controller: controller_name } do %>
     <div class="container">
       <%= render 'shared/navbar' %>
+      <%= render :partial => 'shared/alerts', :flash => flash %>
       <%= yield %>
       <%= insert_paloma_hook %>
     </div>

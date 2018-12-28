@@ -10,8 +10,6 @@ class Customer < ApplicationRecord
 
   before_create :set_attr_for_create
   before_update :set_attr_for_update
-  after_save :notify_user
-
 
   after_destroy :log_destroy_event
 
@@ -118,8 +116,5 @@ class Customer < ApplicationRecord
     myName ||= 'not provided'
   end
 
-  def notify_user
-    js :notifySuccess, :msg => 'test message'
-  end
 
 end

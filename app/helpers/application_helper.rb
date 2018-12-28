@@ -12,10 +12,6 @@ module ApplicationHelper
       ag_status_span_generator status
     end
 
-    def admin?
-      admin_types.include?(current_user.type)
-    end
-
     private
 
     def size_span_generator size
@@ -56,19 +52,4 @@ module ApplicationHelper
 
     end
 
-  def bootstrap_class_for(flash_type)
-    case flash_type
-    when “success”
-      “success” # Green
-    when “error”
-      “danger” # Red
-    when “alert”
-      “warning” # Yellow
-    when “notice”
-      “info” # Blue
-    else
-      flash_type.to_s
-    end
-
-  end
 end
