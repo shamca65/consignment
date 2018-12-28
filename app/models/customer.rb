@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
 
   before_create :set_attr_for_create
   before_update :set_attr_for_update
+  after_save :notify_user
+
 
   after_destroy :log_destroy_event
 
@@ -114,6 +116,10 @@ class Customer < ApplicationRecord
   def full_name
     myName = last_name.titleize + ", " + first_name.titleize
     myName ||= 'not provided'
+  end
+
+  def notify_user
+    js :notifySuccess, :msg => 'test message'
   end
 
 end

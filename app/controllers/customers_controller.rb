@@ -12,19 +12,15 @@ class CustomersController < ApplicationController
     query = params[:search_customers].presence && params[:search_customers][:query]
 
     if query
-      puts "***************** query : " + params[:search_customers][:query].to_s
       @customers = Customer.search(query)
-      puts "Query count : " + Customer.search(query).size.to_s
     end
 
   end
 
   def items
-      puts "***************** customer#customer_items : " + params[:id].to_s
       @customerItems = Item.customer_items(params[:id])
-      puts "********* customer item size: " + Item.customer_items(params[:id]).count.to_s
       respond_to do |format|  ## Add this
-        format.html { render :'customers/Items', notice: 'Showing rhinos' }
+        format.html {}
         end
   end
 
