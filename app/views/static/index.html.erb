@@ -1,56 +1,39 @@
 <% content_for :title, "Take In Station" %>
-
-<div class="features-boxed" >
-  <div class="container">
-    <%= link_to new_customer_path do %>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-user-plus icon"></i>
-          <h3 class="name">Add New Customer</h3>
-          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-        </div>
-      </div>
-    <%end %>
-
-    <%= link_to customers_path do %>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-search icon"></i>
-          <h3 class="name">Customer Search</h3>
-          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-        </div>
-      </div>
-    <%end %>
-
-    <%= link_to find_customer_path do %>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-files-o icon"></i>
-          <h3 class="name">Take In</h3>
-          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-        </div>
-      </div>
-      <% end %>
-
-    <%= link_to items_path do %>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-shopping-bag icon"></i>
-          <h3 class="name">Items</h3>
-          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-        </div>
-      </div>
+<br />
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Add New Customer</h3>
+      <%= link_to new_customer_path do %>
+            <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       <%end %>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
 
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-paperclip icon"></i>
-          <h3 class="name">Manage</h3>
-          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-        </div>
-      </div>
-      <div class="col-sm-6 col-md-5 col-lg-4 item">
-        <div class="box"><i class="fa fa-tags icon"></i>
-          <h3 class="name">Print Labels</h3>
-          <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-        </div>
-      </div>
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Search</h3>
+      <%= link_to customers_path do %>
+            <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+      <%end %>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <h3 class="card-title">Items</h3>
+      <%= link_to items_path do %>
+            <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+      <%end %>
+    </div>
+    <div class="card-footer">
+      <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
 </div>
-<!-- Button trigger modal -->

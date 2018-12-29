@@ -1,7 +1,6 @@
 class StaticController < ApplicationController
 
   def index
-    js :notifySuccess, :msg => 'test message'
   end
 
   def item_takein
