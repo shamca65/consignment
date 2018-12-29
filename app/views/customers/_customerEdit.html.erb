@@ -129,24 +129,25 @@
 
     <div class="col-md-6">
       <!-- Material input -->
-      <div class="md-form form-group" id="test">
+      <div class="md-form form-group" id="ag_group">
         <!-- Material inline 1 -->
-        <label class="form-check-label" for="test">Agreement Status</label><br /><br />
+        <label class="form-check-label" id="myTooltip" for="ag_group" data-toogle="tooltip">Agreement Status</label><br />
+                <br />
         <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 0,
+          <%= f.radio_button :agreement_status, 1,
                              id: 'ag_status01',
                              class: 'form-check-input',
-                             name: 'ag_status' %>
+                             name: 'customer[agreement_status' %>
 
           <label class="form-check-label" for="ag_status01">Signed</label>
         </div>
 
         <!-- Material inline 2 -->
         <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 1,
+          <%= f.radio_button :agreement_status, 0,
                              id: 'ag_status02',
                              class: 'form-check-input',
-                             name: 'ag_status' %>
+                             name: 'customer[agreement_status' %>
 
           <label class="form-check-label" for="ag_status02">Unsigned</label>
         </div>

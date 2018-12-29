@@ -1,11 +1,12 @@
 <% content_for :title, "Take In Station" %>
 <br />
 <div class="card-deck">
-  <div class="card">
+  <div class="card border-primary mb-3">
     <div class="card-body">
-      <h3 class="card-title">Add New Customer</h3>
+
       <%= link_to new_customer_path do %>
-            <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+         <h3 class="card-title">Add New Customer</h3>
+         <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       <%end %>
     </div>
     <div class="card-footer">
@@ -13,11 +14,12 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card border-danger mb-3">
     <div class="card-body">
-      <h3 class="card-title">Search</h3>
+
       <%= link_to customers_path do %>
-            <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+        <h3 class="card-title">Customer Search</h3>
+        <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       <%end %>
     </div>
     <div class="card-footer">
@@ -25,15 +27,38 @@
     </div>
   </div>
 
-  <div class="card">
+  <div class="card border-dark mb-3">
     <div class="card-body">
-      <h3 class="card-title">Items</h3>
+
       <%= link_to items_path do %>
+        <h3 class="card-title">Items</h3>
             <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-      <%end %>
+        <%end %>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
 </div>
+
+
+<button type="button" class="btn btn-secondary material-tooltip-main" data-toggle="tooltip" data-html="true"
+        title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+  MD tooltip with HTML
+</button>
+<br />
+Tight pants next level keffiyeh <a href="#" class="material-tooltip-main" data-toggle="tooltip" title="Default tooltip">you
+  probably</a>
+haven't
+heard of them. Photo booth beard raw denim letterpress vegan messenger bag stumptown. Farm-to-table seitan,
+mcsweeney's fixie sustainable quinoa 8-bit american apparel <a href="#" class="material-tooltip-main"
+                                                               data-toggle="tooltip" title="Another tooltip">have
+  a</a> terry richardson vinyl chambray. Beard stumptown, cardigans banh mi lomo thundercats. Tofu
+biodiesel
+williamsburg marfa, four loko mcsweeney's cleanse vegan chambray. A really ironic artisan <a href="#" class="material-tooltip-main"
+                                                                                             data-toggle="tooltip" title="Another one here too">whatever keytar</a>, scenester farm-to-table banksy
+Austin
+<a href="#" class="material-tooltip-main" data-toggle="tooltip" title="The last tip!">twitter handle</a>
+freegan
+cred raw denim single-origin
+coffee viral.

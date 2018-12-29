@@ -132,20 +132,20 @@
       <div class="md-form form-group">
         <!-- Material inline 1 -->
         <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 0,
+          <%= f.radio_button :agreement_status, 1,
                 id: 'ag_status01',
                 class: 'form-check-input',
-                name: 'ag_status' %>
+                name: 'customer[agreement_status]' %>
 
           <label class="form-check-label" for="ag_status01">Signed</label>
         </div>
 
         <!-- Material inline 2 -->
         <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 1,
+          <%= f.radio_button :agreement_status, 0,
                              id: 'ag_status02',
                              class: 'form-check-input',
-                             name: 'ag_status' %>
+                             name: 'customer[agreement_status]' %>
 
           <label class="form-check-label" for="ag_status02">Unsigned</label>
         </div>
@@ -157,9 +157,6 @@
     </div>
     <!-- Grid column -->
   </div>
-
-
-
 
   <!-- Grid row -->
   <div class="form-row">

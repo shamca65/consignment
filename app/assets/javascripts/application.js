@@ -13,9 +13,9 @@
 //= require jquery
 //= require popper.min
 //= require bootstrap.min
+//= require rails-ujs
 //= require mdb
 //= require custom
-//= require rails-ujs
 //= require activestorage
 //= require paloma
 //= require_tree .
@@ -32,6 +32,7 @@ $(document).ready(function(){
             Paloma.start();
         });
     });
+
 
     $('#customersDataTable').dataTable( {
         "paginate": true,
@@ -69,7 +70,9 @@ $(document).ready(function(){
         ]
     } );
 
+    // Select
     $('.mdb-select').materialSelect();
 
-
 });
+
+
