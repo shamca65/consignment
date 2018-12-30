@@ -1,12 +1,12 @@
 <tbody>
 <% @customers.each do |customer| %>
-  <tr >
-    <td class="text-center" ><%= customer.id %></td>
-    <td class="text-left"><%= customer.full_name %></td>
-    <td class="text-center"><%= ag_status_label(customer.agreement_status) %></td>
-    <td class="text-left"><%= customer.phone.truncate(15) %></td>
-    <td class="text-center"><%= customer.email %></td>
-    <td class="text-center"><%= customer.province %></td>
+  <tr class="h3">
+    <td class="text-center text-light h4 align-middle" ><%= customer.id %></td>
+    <td class="text-left h5 align-middle"><%= customer.full_name %></td>
+    <td class="text-center align-middle"><%= ag_status_label(customer.agreement_status) %></td>
+    <td class="text-left h5 align-middle"><%= customer.phone.truncate(15) %></td>
+    <td class="text-center h5 align-middle"><%= customer.email %></td>
+    <td class="text-center h5 align-middle"><%= customer.province %></td>
     <td style="text-align: center">
       <%= link_to ' ', items_customers_path(customer.id), class: 'fal fa-list-alt h3 text-primary' %>
     </td>

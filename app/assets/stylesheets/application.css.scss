@@ -17,6 +17,7 @@
  *= require css/datatables
  *= require css/cards-extended
  *= require css/all
+ *= require Montserrat
  *= require_tree .
  *= require_self
  */
@@ -25,6 +26,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "toastr";
+
+
 
 @font-face {
   font-family: 'Font Awesome 5 Pro';

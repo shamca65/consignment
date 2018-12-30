@@ -8,7 +8,6 @@ module ApplicationHelper
       size_span_generator size
     end
 
-
     private
 
     def size_span_generator size
