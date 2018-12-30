@@ -17,7 +17,8 @@ Rails.application.config.assets.version = '1.0'
 #Rails.application.config.assets.precompile += %w( jquery.js )
 Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts','images')
 Rails.application.config.assets.precompile += %w(.svg .eot .woff .ttf)
-Rails.application.config.assets.precompile += %w( mdb.js )
-Rails.application.config.assets.precompile += %w( mdb.css )
-Rails.application.config.assets.precompile += %w( datatables.js )
-Rails.application.config.assets.precompile += %w( datatables.css )
+Rails.application.config.assets.precompile += %w( js/mdb.js )
+Rails.application.config.assets.precompile += %w( css/mdb.css )
+Rails.application.config.assets.precompile += %w( js/addons/datatables.js )
+Rails.application.config.assets.precompile += %w( css/addons/datatables.css )
+
