@@ -10,11 +10,21 @@ Bundler.require(*Rails.groups)
 module Consignment
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
+    config.assets.unknown_asset_fallback = false
+    config.assets.digest = false
     config.assets.enabled = true
+    #
     config.load_defaults 5.2
     config.assets.paths << Rails.root.join("app", "assets")
     config.assets.paths << Rails.root.join("vendor", "mdb" )
     config.assets.paths << Rails.root.join("vendor", "fa" )
+    config.assets.paths << Rails.root.join("vendor", "fa", "svgs", "light")
+    config.assets.paths << Rails.root.join("vendor", "fa", "svgs", "regular")
+    config.assets.paths << Rails.root.join("vendor", "fa", "svgs", "solids")
+    config.assets.paths << Rails.root.join("vendor", "fa", "svgs", "brands")
+    config.assets.paths << Rails.root.join("vendor", "fa", "webfonts")
+    config.assets.paths << Rails.root.join("vendor", "fa", "js")
+    config.assets.paths << Rails.root.join("vendor", "fa", "css")
     config.autoload_paths += ["#{config.root}/lib"]
     config.autoload_paths += ["#{config.root}/vendor"]
     config.colorize_logging = true
