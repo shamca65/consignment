@@ -12,6 +12,7 @@ module ApplicationHelper
       ag_status_span_generator status
     end
 
+
     private
 
     def size_span_generator size
@@ -41,14 +42,13 @@ module ApplicationHelper
 
     def ag_status_span_generator status
       case status
-        when 0
-          content_tag(:span, 'Unsigned', class: 'label label-primary')
+      when 0
+        content_tag(:span, 'Unsigned', class: 'fal fa-times')
 
-        when 1
-          content_tag(:span, 'Signed', class: 'label label-success')
+      when 1
+        content_tag(:span, 'Signed', class: 'fal fa-check-circle')
 
       end
-
 
     end
 
