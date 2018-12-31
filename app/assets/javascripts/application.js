@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require js/popper.min
-//= require js/bootstrap
-//= require rails-ujs
+//= require jquery-3.3.1.min
+//= require jquery-ui/jquery-ui.min
+//= require popper.min
+//= require bootstrap/bootstrap.min
 //= require js/mdb
 //= require js/all
 //= require activestorage
@@ -73,14 +73,8 @@ $(document).ready(function(){
     // Select
     $('.mdb-select').materialSelect();
 
+	$('.material-tooltip-main').tooltip({
+		template: '<div class="tooltip md-tooltip-main"> </div>'
+	})
+
 });
-
-document.addEventListener('DOMContentLoaded',function(){
-	var trigger = document.getElementsByClassName("is-success")[0];
-	var instance = new Tooltip(trigger,{
-		title: trigger.getAttribute('data-tooltip'),
-		trigger: "hover",
-	});
-});
-
-
