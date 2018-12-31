@@ -1,17 +1,29 @@
+
+
 <%= form_for (Customer.new) do |f| %>
-  <!-- Extended material form grid -->
   <!-- Grid row -->
+  <!-- Material form register -->
+  <div class="d-flex justify-content-center">
+  <div class="card w-75 mb-3 " >
+
+    <h2 class="card-header info-color white-text text-center py-4">
+      <strong>New Customer</strong>
+    </h2>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
   <br />
-  <div class="form-row">
+  <div class="form-row" style="height: 80px;">
     <!-- Grid column -->
-    <div class="col-md-6">
+    <div class="col-md-6 ">
       <!-- Material input -->
+
       <div class="md-form form-group">
         <%= f.text_field :first_name, id: 'inputfirstName4MD',
                          autofocus: true, autocomplete: "first_name",
-                         class: "form-control", placeholder: "First Name" %>
+                         class: "form-control", placeholder: "First Name",
+                          style: "font-size: x-large" %>
         <label for="inputfirstName4MD">First Name</label>
-
       </div>
     </div>
     <!-- Grid column -->
@@ -22,7 +34,8 @@
       <div class="md-form form-group">
         <%= f.text_field :last_name, id: 'inputlastName4MD',
                          autofocus: true, autocomplete: "last_name",
-                         class: "form-control", placeholder: "Last Name" %>
+                         class: "form-control", placeholder: "Last Name",
+                         style: "font-size: x-large" %>
         <label for="inputlastName4MD">Last Name</label>
       </div>
     </div>
@@ -37,7 +50,8 @@
       <div class="md-form form-group">
         <%= f.text_field :phone, id: 'inputPhone4MD',
                          autofocus: true, autocomplete: "phone",
-                         class: "form-control", placeholder: "Phone or Mobile" %>
+                         class: "form-control", placeholder: "Phone or Mobile",
+                         style: "font-size: x-large" %>
         <label for="inputPhone4MD">Phone or Mobile</label>
 
       </div>
@@ -50,7 +64,8 @@
       <div class="md-form form-group">
         <%= f.text_field :email, id: 'inputEmail4MD',
                          autofocus: true, autocomplete: "email",
-                         class: "form-control", placeholder: "Email Address" %>
+                         class: "form-control", placeholder: "Email Address",
+                         style: "font-size: x-large" %>
         <label for="inputEmail4MD">Email Address</label>
       </div>
     </div>
@@ -65,7 +80,8 @@
       <div class="md-form form-group">
         <%= f.text_field :street_address, id: "inputAddressMD",
                          autofocus: true, autocomplete: "street_address",
-                         class: "form-control", placeholder: "Street Address" %>
+                         class: "form-control", placeholder: "Street Address",
+                         style: "font-size: x-large" %>
         <label for="inputAddressMD">Address 1</label>
       </div>
     </div>
@@ -75,7 +91,8 @@
       <div class="md-form form-group">
         <%= f.text_field :street_address2, id: "inputAddress2MD",
                          autofocus: true, autocomplete: "street_address2",
-                         class: "form-control", placeholder: "Street Address 2" %>
+                         class: "form-control", placeholder: "Street Address 2",
+                         style: "font-size: x-large" %>
         <label for="inputAddress2MD">Address 2</label>
       </div>
     </div>
@@ -90,7 +107,8 @@
       <div class="md-form form-group">
         <%= f.text_field :city, id: "inputCityMD",
                          autofocus: true, autocomplete: "city",
-                         class: "form-control", placeholder: "City"%>
+                         class: "form-control", placeholder: "City",
+                         style: "font-size: x-large" %>
         <label for="inputCityMD">City</label>
       </div>
     </div>
@@ -101,7 +119,8 @@
       <div class="md-form form-group">
         <%= f.text_field :postal, id: "inputPostalMD",
                          autofocus: true, autocomplete: "postal",
-                         class: "form-control", placeholder: "Postal"%>
+                         class: "form-control", placeholder: "Postal",
+                         style: "font-size: x-large" %>
         <label for="inputPostalMD">Postal</label>
       </div>
     </div>
@@ -116,7 +135,7 @@
       <div class="md-form form-group">
         <!--Blue select-->
         <div class="input-group mb-3 ">
-          <select name="customer[province]" id="mdb-select" class="mdb-select md-form colorful-select dropdown-primary">
+          <select name="customer[province]" id="mdb-select" class="mdb-select md-form colorful-select dropdown-primary" style="font-size: x-large" >
             <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
           </select>
           <label>Province</label>
@@ -135,9 +154,11 @@
           <%= f.radio_button :agreement_status, 1,
                 id: 'ag_status01',
                 class: 'form-check-input',
-                name: 'customer[agreement_status]' %>
+                name: 'customer[agreement_status]'
+          %>
 
-          <label class="form-check-label" for="ag_status01">Signed</label>
+            <label class="form-check-label" for="ag_status01" style="font-size: large">Agreement</label>
+
         </div>
 
         <!-- Material inline 2 -->
@@ -145,7 +166,8 @@
           <%= f.radio_button :agreement_status, 0,
                              id: 'ag_status02',
                              class: 'form-check-input',
-                             name: 'customer[agreement_status]' %>
+                             name: 'customer[agreement_status]',
+                             style: "font-size: x-large" %>
 
           <label class="form-check-label" for="ag_status02">Unsigned</label>
         </div>
@@ -173,13 +195,11 @@
   <div class="col-md-6">
     <!-- Material input -->
     <div class="md-form form-group">
+      <%= f.submit "Save New Customer", class: "btn btn-outline-primary btn-rounded waves-effect" %>
     </div>
   </div>
   <!-- Grid column -->
   </div>
-
-
-  <div class="btn btn-outline-primary btn-rounded waves-effect">
-    <%= f.submit "Save New Customer" %>
   </div>
+    </div>
 <% end %>
