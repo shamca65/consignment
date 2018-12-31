@@ -75,4 +75,12 @@ $(document).ready(function(){
 
 });
 
+document.addEventListener('DOMContentLoaded',function(){
+	var trigger = document.getElementsByClassName("is-success")[0];
+	var instance = new Tooltip(trigger,{
+		title: trigger.getAttribute('data-tooltip'),
+		trigger: "hover",
+	});
+});
+
 

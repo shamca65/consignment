@@ -3,15 +3,29 @@
   <tr class="h3">
     <td class="text-center text-light h4 align-middle" ><%= customer.id %></td>
     <td class="text-left h5 align-middle"><%= customer.full_name %></td>
-    <td class="text-center align-middle"><%= ag_status_label(customer.agreement_status) %></td>
+    <td class="text-center align-middle">
+      <%if customer.agreement_status  == 0 %>
+        <i class="fal fa-times fa-2x text-danger" ></i>
+      <% elsif customer.agreement_status == 1 %>
+          <i class="fal fa-file-signature fa-2x text-success" data-tooltip="Only $5 one-time payment!"></i>
+        <% else %>
+        <i class="fal fa-map-marker-question fa-2x text-info"></i>
+      <% end %>
+    </td>
+
     <td class="text-left h5 align-middle"><%= customer.phone.truncate(15) %></td>
     <td class="text-center h5 align-middle"><%= customer.email %></td>
     <td class="text-center h5 align-middle"><%= customer.province %></td>
     <td style="text-align: center">
-      <%= link_to ' ', items_customers_path(customer.id), class: 'fal fa-list-alt h3 text-primary' %>
+      <%= link_to items_customers_path(customer.id) do %>
+        <i class="fal fa-tshirt fa-2x text-danger"></i>
+      <% end %>
+
     </td>
     <td style="text-align: center">
-      <%= link_to ' ', edit_customer_path(customer.id), class: 'fas fa-user-edit h3 text-secondary' %>
+      <%= link_to edit_customer_path(customer.id) do %>
+        <i class="fal fa-user-edit fa-2x text-secondary"></i>
+      <% end %>
     </td>
   </tr>
 <% end %>
