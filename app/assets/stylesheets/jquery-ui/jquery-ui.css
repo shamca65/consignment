@@ -871,16 +871,51 @@ button.ui-button::-moz-focus-inner {
 	padding: 1em 1.4em;
 	background: none;
 }
-.ui-tooltip {
-	padding: 8px;
-	position: absolute;
-	z-index: 9999;
-	max-width: 300px;
-}
-body .ui-tooltip {
-	border-width: 2px;
-}
+.ui-tooltip body {
+    height: 100px;
+    margin-top: 100px;
+    margin-left: 50px;
 
+}
+.ui-tooltip {
+    width: 900px;
+    text-align: center;
+    box-shadow: inherit;
+    padding: 0;
+}
+.ui-tooltip-content {
+    position: relative;
+    padding: 0.5em;
+    font-size: large;
+    background-color: #5f5e5d;
+}
+.ui-tooltip-content::after, .ui-tooltip-content::before {
+    content: "";
+    position: absolute;
+    border-style: solid;
+    display: block;
+    left: 90px;
+}
+.bottom .ui-tooltip-content::before {
+    bottom: -10px;
+    border-color: #AAA transparent;
+    border-width: 10px 10px 0;
+}
+.bottom .ui-tooltip-content::after {
+    bottom: -7px;
+    border-color: white transparent;
+    border-width: 10px 10px 0;
+}
+.top .ui-tooltip-content::before {
+    top: -10px;
+    border-color: #AAA transparent;
+    border-width: 0 10px 10px;
+}
+.top .ui-tooltip-content::after {
+    top: -7px;
+    border-color: white transparent;
+    border-width: 0 10px 10px;
+}
 /* Component containers
 ----------------------------------*/
 .ui-widget {

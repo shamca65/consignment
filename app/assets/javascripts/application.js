@@ -14,11 +14,17 @@
 //= require jquery-ui/jquery-ui.min
 //= require popper.min
 //= require bootstrap/bootstrap.min
+//= require protip.min
 //= require js/mdb
 //= require js/all
 //= require activestorage
 //= require paloma
 //= require_tree .
+
+
+function showtt() {
+	$.protip()
+}
 
 $(document).ready(function(){
 
@@ -73,8 +79,25 @@ $(document).ready(function(){
     // Select
     $('.mdb-select').materialSelect();
 
-	$('.material-tooltip-main').tooltip({
-		template: '<div class="tooltip md-tooltip-main"> </div>'
-	})
+	$.protip({
+		trigger: 'hover',
+		delayIn: 200,
+		interactive: 'false',
+		position: 'right',
+		arrow: 'true',
+		icon: 'info-circled',
+		size: 'large',
+		animate: 'rubberBand',
+		title: 'customzied protip',
+		delayOut: 2000,
+		gravity: false,
+		offsetLeft: 10,
+		placement: 'outside',
+		width: 500,
+		observer: false,
+		skin: 'square',
+		scheme: 'aqua',
+		autoHide: 2000
+	});
 
 });
