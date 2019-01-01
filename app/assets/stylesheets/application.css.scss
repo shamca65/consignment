@@ -12,10 +12,13 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require css/bootstrap.css
+ *= require bootstrap/bootstrap.min
  *= require css/mdb
  *= require css/datatables
  *= require css/cards-extended
+ *= require jquery-ui/jquery-ui
+ *= require protip.min
+ *= require animate
  *= require css/all
  *= require Montserrat
  *= require_tree .
