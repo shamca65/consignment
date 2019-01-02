@@ -18,6 +18,7 @@ class CustomersController < ApplicationController
   end
 
   def items
+
       @customerItems = Item.customer_items(params[:id])
       respond_to do |format|  ## Add this
         format.html {}
@@ -28,6 +29,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
+    flash[:success] = t('.successfully_created')
     @customers = Customer.all
   end
 
