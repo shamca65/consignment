@@ -29,7 +29,6 @@ class CustomersController < ApplicationController
   #
   def index
     @customers = Customer.all
-    js :notifyAlive, :msg => 'Toastr is alive'
   end
 
   # GET /customers/1
@@ -68,7 +67,7 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to customers_path, info: 'Person was successfully updated.'}
+        format.html { redirect_to customers_path, success: 'Customer record was successfully updated.'}
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit}
