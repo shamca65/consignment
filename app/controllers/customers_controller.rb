@@ -14,11 +14,9 @@ class CustomersController < ApplicationController
     if query
       @customers = Customer.search(query)
     end
-
   end
 
   def items
-
       @customerItems = Item.customer_items(params[:id])
       respond_to do |format|  ## Add this
         format.html {}
@@ -29,7 +27,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-    flash[:success] = t('.successfully_created')
+    flash[:success] = 'A freaking notice'
     @customers = Customer.all
   end
 
@@ -86,10 +84,6 @@ class CustomersController < ApplicationController
       format.html { redirect_to customers_url, danger: 'Customer was successfully deleted.' }
       format.json { head :no_content }
     end
-  end
-
-  def notify_user
-    js :notifyAlive, :msg => 'Toastr is alive'
   end
 
   private

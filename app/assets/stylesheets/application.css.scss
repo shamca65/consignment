@@ -31,6 +31,10 @@
 @import "bootstrap";
 @import "toastr";
 
+* {
+  font-family: "Montserrat";
+}
+
 @font-face {
   font-family: 'Font Awesome 5 Pro';
   src: url('<%= asset_path('fa-brands-400') %>');

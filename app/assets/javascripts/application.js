@@ -13,13 +13,13 @@
 //= require jquery-3.3.1.min
 //= require popper.min
 //= require bootstrap/bootstrap.min
-//= require toastr
 //= require protip.min
 //= require js/mdb
 //= require js/all
 //= require activestorage
 //= require paloma
-
+//= require toastr
+//= require custom
 //= require_tree .
 
 $(document).ready(function(){
@@ -71,26 +71,6 @@ $(document).ready(function(){
             { "width": "75px" }     // delete button
         ]
     } );
-
-	// setup notice defaults
-	toastr.options = {
-		"closeButton": false,
-		"debug": false,
-		"newestOnTop": true,
-		"progressBar": false,
-		"positionClass": "toast-top-full-width",
-		"preventDuplicates": false,
-		"onclick": null,
-		"showDuration": "300",
-		"hideDuration": "1000",
-		"timeOut": "2500",
-		"extendedTimeOut": "1000",
-		"showEasing": "swing",
-		"hideEasing": "linear",
-		"showMethod": "fadeIn",
-		"hideMethod": "fadeOut"
-	};
-
 
 	// Initialize Material Select
     $('.mdb-select').materialSelect();
