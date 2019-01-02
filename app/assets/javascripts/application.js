@@ -19,12 +19,8 @@
 //= require js/all
 //= require activestorage
 //= require paloma
+//= require toastr
 //= require_tree .
-
-
-function showtt() {
-	$.protip()
-}
 
 $(document).ready(function(){
 
@@ -80,6 +76,7 @@ $(document).ready(function(){
     $('.mdb-select').materialSelect();
 
 	$.protip({
+	defaults: {
 		trigger: 'hover',
 		delayIn: 200,
 		interactive: 'false',
@@ -98,6 +95,7 @@ $(document).ready(function(){
 		skin: 'square',
 		scheme: 'aqua',
 		autoHide: 2000
+	}
 	});
 
 });
