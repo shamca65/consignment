@@ -52,6 +52,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     respond_to do |format|
       if @customer.save
+        render :new, notice: 'Post was not saved'
         format.html { redirect_to customers_path, success: 'Customer was successfully created.'}
         format.json { render :show, status: :ok, location: @customer }
       else

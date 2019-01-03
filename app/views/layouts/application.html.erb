@@ -10,7 +10,7 @@
       <%= render 'shared/navbar' %>
       <%= yield %>
     </div>
+      <%= render 'shared/alerts' %>
       <%= javascript_include_tag 'js/mdb.js' %>
       <%= javascript_include_tag 'js/datatables.js' %>
-      <%= js add_gritter(flash[:notice], title: "Overtime App Notification", sticky: false) %>
     </body>
