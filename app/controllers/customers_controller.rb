@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
+    flash[:alert] = "You are not authorized to perform this action."
     @customers = Customer.all
   end
 
@@ -52,11 +53,10 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     respond_to do |format|
       if @customer.save
-        render :new, notice: 'Post was not saved'
-        format.html { redirect_to customers_path, success: 'Customer was successfully created.'}
+        format.html { redirect_to customers_path, flash[:success] = "Customer record was created."}
         format.json { render :show, status: :ok, location: @customer }
       else
-        format.html { render :edit}
+        format.html { render :edit, flash[:error] = "Customer record was NOT saved."}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -67,10 +67,10 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to customers_path, success: 'Customer record was successfully updated.'}
+        format.html { redirect_to customers_path, flash[:success] = "Customer record was updated."}
         format.json { render :show, status: :ok, location: @customer }
       else
-        format.html { render :edit}
+        format.html { render :edit, flash[:error] = "Customer record was NOT updated."}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -81,7 +81,7 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, danger: 'Customer was successfully deleted.' }
+      format.html { redirect_to customers_url,flash[:success] = "Customer record successfully deleted." }
       format.json { head :no_content }
     end
   end
