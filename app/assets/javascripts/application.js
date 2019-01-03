@@ -11,16 +11,13 @@
 // about supported directives.
 //
 //= require jquery-3.3.1.min
-//= require toastr
 //= require popper.min
 //= require bootstrap/bootstrap.min
-
 //= require protip.min
 //= require js/mdb
 //= require js/all
 //= require activestorage
 //= require paloma
-//= require custom
 //= require jquery.gritter
 //= require_tree .
 

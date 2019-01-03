@@ -1,7 +1,6 @@
 class StaticController < ApplicationController
 
   def index
-    js :showToast
   end
 
   def item_takein

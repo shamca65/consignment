@@ -16,13 +16,11 @@
  *= require css/mdb
  *= require css/datatables
  *= require css/cards-extended
- *= require toastr
  *= require protip.min
  *= require animate
  *= require css/all
  *= require Montserrat
  *= require jquery.gritter
-
  *= require_tree .
  *= require_self
  */
@@ -30,7 +28,6 @@
 //sass imports
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "toastr";
 
 * {
   font-family: "Montserrat";
