@@ -27,7 +27,6 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-    flash[:success] = 'A freaking notice'
     @customers = Customer.all
   end
 

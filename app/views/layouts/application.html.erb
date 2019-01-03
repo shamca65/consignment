@@ -3,20 +3,14 @@
   <head>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-    <%= tag :meta, name: :psj, action: action_name, controller: controller_name %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <%= content_tag :body, data: { action: action_name, controller: controller_name } do %>
     <div class="container">
       <%= render 'shared/navbar' %>
       <%= yield %>
-
-      <%= insert_paloma_hook %>
     </div>
-    <%= javascript_include_tag 'js/mdb.js' %>
-    <%= javascript_include_tag 'js/datatables.js' %>
-    <button class="btn btn-primary" id="tryMe">Try Me</button>
-    <%= render :partial => 'shared/alerts', :flash => flash %>
+      <%= javascript_include_tag 'js/mdb.js' %>
+      <%= javascript_include_tag 'js/datatables.js' %>
+      <%= js add_gritter(flash[:notice], title: "Overtime App Notification", sticky: false) %>
     </body>
-<% end %>

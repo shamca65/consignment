@@ -1,4 +1,9 @@
-<%= form_for (Customer.new) do |f| %>
+<%= form_for @customer, class: "form-horizontal" do |f| %>
+  <% if @customer.errors.any? %>
+    <% @customer.errors.full_messages.each do |error| %>
+      <%= js add_gritter(error, title: "Overtime App Notification", sticky: false) %>
+    <% end %>
+  <% end %>
   <!-- Extended material form grid -->
   <!-- Grid row -->
   <br />
@@ -11,7 +16,6 @@
                          autofocus: true, autocomplete: "first_name",
                          class: "form-control", placeholder: "First Name" %>
         <label for="inputfirstName4MD">First Name</label>
-
       </div>
     </div>
     <!-- Grid column -->

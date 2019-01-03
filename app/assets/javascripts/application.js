@@ -11,29 +11,15 @@
 // about supported directives.
 //
 //= require jquery-3.3.1.min
-//= require popper.min
 //= require bootstrap/bootstrap.min
+//= require js/jquery.gritter
 //= require protip.min
 //= require js/mdb
 //= require js/all
 //= require activestorage
-//= require paloma
-//= require jquery.gritter
 //= require_tree .
 
 $(document).ready(function(){
-
-    Paloma.start();
-
-    $('#js-ajax-link').on('click', function(e){
-        e.preventDefault();
-
-        $.get($(this).prop('href'), function(response){
-            $('#js-ajax-response').html(response);
-            Paloma.start();
-        });
-    });
-
 
     $('#customersDataTable').dataTable( {
         "paginate": true,
