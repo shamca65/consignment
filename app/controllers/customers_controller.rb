@@ -31,7 +31,7 @@ class CustomersController < ApplicationController
     respond_to do |format|
       @customers = Customer.all
       format.html
-      format.json { render :json => @customers }
+      format.json { render :json => indexJSON }
       end
   end
 
@@ -102,6 +102,19 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:first_name, :last_name, :phone, :query, :email,
       :street_address, :city, :acct_open_date, :agreement_status, :trans_type,
       :last_trans_date, :street_address2, :postal, :province)
+    end
+
+    def indexJSON
+
+      return @customers.as_json(
+        only: [
+            :id,
+            :full_name,
+            :agreement_status,
+            :phone,
+            :email,
+            :province
+            ])
     end
 
 
