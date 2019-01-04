@@ -27,7 +27,6 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-
     respond_to do |format|
       @customers = Customer.all
       format.html
@@ -73,7 +72,8 @@ class CustomersController < ApplicationController
     respond_to do |format|
       if @customer.update(customer_params)
         format.html {redirect_to edit_customer_path}
-        format.json { render json: @customer }
+        format.json { render json: @customer}
+
       else
         format.html { render :edit, flash[:error] = "Customer record was NOT updated."}
         format.js
