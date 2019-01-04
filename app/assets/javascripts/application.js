@@ -12,6 +12,7 @@
 //
 //= require jquery-3.3.1.min
 //= require bootstrap/bootstrap.min
+//= require rails-ujs
 //= require js/jquery.gritter
 //= require protip.min
 //= require js/mdb
