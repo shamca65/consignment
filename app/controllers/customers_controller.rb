@@ -27,8 +27,12 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-    flash[:success] = "Customer index action"
-    @customers = Customer.all
+
+    respond_to do |format|
+      @customers = Customer.all
+      format.html
+      format.json { render :json => @customers }
+      end
   end
 
   # GET /customers/1
@@ -55,6 +59,7 @@ class CustomersController < ApplicationController
       if @customer.save
         format.html { redirect_to customers_path, flash[:success] = "Customer record was saved."}
         format.json { render :show, status: :ok, location: @customer }
+        format.json { render :json => @objects.map(&:attributes) }
       else
         format.html { render :edit, flash[:error] = "Customer record was NOT saved."}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
