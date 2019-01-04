@@ -1,7 +1,7 @@
 <%= form_for @customer, class: "form-horizontal" do |f| %>
   <% if @customer.errors.any? %>
     <% @customer.errors.full_messages.each do |error| %>
-      <%= js add_gritter(error, title: "Overtime App Notification", sticky: false) %>
+      <%= js add_gritter(error, title: "Application Notice", sticky: false) %>
     <% end %>
   <% end %>
   <!-- Extended material form grid -->
@@ -182,8 +182,6 @@
   <!-- Grid column -->
   </div>
 
+  <%= f.submit "Save New Customer" %>
 
-  <div class="btn btn-outline-primary btn-rounded waves-effect">
-    <%= f.submit "Save New Customer" %>
-  </div>
 <% end %>

@@ -27,7 +27,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-    flash[:alert] = "You are not authorized to perform this action."
+    flash[:success] = "Customer index action"
     @customers = Customer.all
   end
 
@@ -53,7 +53,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customers_path, flash[:success] = "Customer record was created."}
+        format.html { redirect_to customers_path, flash[:success] = "Customer record was saved."}
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit, flash[:error] = "Customer record was NOT saved."}
@@ -67,7 +67,8 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to customers_path, flash[:success] = "Customer record was updated."}
+        format.html { redirect_to customers_path}
+        flash[:success] = "Customer record was saved."
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit, flash[:error] = "Customer record was NOT updated."}
