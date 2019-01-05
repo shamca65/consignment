@@ -12,7 +12,6 @@
 //
 //= require jquery-3.3.1.min
 //= require bootstrap/bootstrap.min
-//= require rails-ujs
 //= require js/jquery.gritter
 //= require protip.min
 //= require js/mdb
@@ -25,19 +24,10 @@ $(document).ready(function(){
     $('#customersDataTable').dataTable( {
         "paginate": true,
         "sort": true,
-		"ajax": 'customers.json',
         "search": {
             "caseInsensitive": true
         },
         "columns": [
-			{"data": "id"},
-			{"data": "full_name"},
-			{"data": "agreement_status"},
-			{"data": "phone"},
-			{"data": "email"},
-			{"data": "province"},
-			{"data": "email"},
-			{"data": "email"},
             { "width": "50px" },    // customer id
             { "width": "120px" },   // customer name
             { "width": "75px" },    // agreement status

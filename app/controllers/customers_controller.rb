@@ -30,7 +30,6 @@ class CustomersController < ApplicationController
     respond_to do |format|
       @customers = Customer.all
       format.html
-      format.json { render :json => indexJSON }
       end
   end
 

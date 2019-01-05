@@ -13,7 +13,9 @@ class Customer < ApplicationRecord
 
   after_destroy :log_destroy_event
 
-  validates_presence_of :first_name, :last_name, :phone
+  validates :first_name, :last_name, :phone, :presence => true
+  validates :email, :email_format => {:message => 'is not looking good'}
+
 
   AGREEMENT_STATUS = {:Unsigned => 0, :Signed => 1}
   TRANS_TYPE = {:AccountSetup => 0, :AgreementUpdate => 1, :AccountDeactivated => 2}
