@@ -7,7 +7,7 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.paths << Emoji.images_path
 
 # Add Yarn node_modules folder to the asset load path.
-Rails.application.config.assets.paths << Rails.root.join('node_modules')
+#Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
@@ -16,10 +16,13 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( jquery.js )
 #
 #Rails.application.config.assets.precompile += %w( jquery.js )
-Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts','images')
+Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+Rails.application.config.assets.paths << Rails.root.join('app','assets','images')
 Rails.application.config.assets.precompile += %w(.svg .eot .woff .ttf)
 Rails.application.config.assets.precompile += %w( js/mdb.js )
 Rails.application.config.assets.precompile += %w( css/mdb.css )
 Rails.application.config.assets.precompile += %w( js/datatables.js )
 Rails.application.config.assets.precompile += %w( css/datatables.css )
+Rails.application.config.assets.precompile += %w( js/jquery.gritter.js )
+Rails.application.config.assets.precompile += %w( css/jquery.gritter.css )
 

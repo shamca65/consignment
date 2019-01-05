@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :customers
+  resources :customers, defaults: {format: 'json'}
 
   namespace :admin do
     resources :users

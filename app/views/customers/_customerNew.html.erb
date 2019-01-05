@@ -1,6 +1,5 @@
 
-
-<%= form_for (Customer.new) do |f| %>
+<%= form_for @customer, remote: false do |f| %>
   <!-- Grid row -->
   <!-- Material form register -->
   <div class="d-flex justify-content-center">
@@ -200,6 +199,12 @@
   </div>
   <!-- Grid column -->
   </div>
+<<<<<<< HEAD
   </div>
     </div>
+=======
+
+  <%= f.submit "Save New Customer" %>
+
+>>>>>>> 770d538ac364cd317c19e501907f105195d26dfb
 <% end %>

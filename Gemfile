@@ -9,7 +9,6 @@ gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'jbuilder', '~> 2.5'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
@@ -41,8 +40,10 @@ gem 'devise', '~> 4.5'
 gem 'bootsnap', '~> 1.3', '>= 1.3.2'
 gem 'administrate', '~> 0.11.0'
 gem 'bourbon', '~> 5.1'
-gem 'paloma', '~> 5.1.0'
-gem 'toastr-rails'
+gem "gritter", "1.2.0"
+gem 'rails-ujs', '~> 0.1.0'
+gem 'jbuilder', '~> 2.8'
+gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
 
 # Elasticsearch
 gem 'elasticsearch-model'

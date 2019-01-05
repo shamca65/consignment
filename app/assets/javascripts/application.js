@@ -11,34 +11,15 @@
 // about supported directives.
 //
 //= require jquery-3.3.1.min
-//= require jquery-ui/jquery-ui.min
-//= require popper.min
 //= require bootstrap/bootstrap.min
+//= require js/jquery.gritter
 //= require protip.min
 //= require js/mdb
 //= require js/all
 //= require activestorage
-//= require paloma
 //= require_tree .
 
-
-function showtt() {
-	$.protip()
-}
-
 $(document).ready(function(){
-
-    Paloma.start();
-
-    $('#js-ajax-link').on('click', function(e){
-        e.preventDefault();
-
-        $.get($(this).prop('href'), function(response){
-            $('#js-ajax-response').html(response);
-            Paloma.start();
-        });
-    });
-
 
     $('#customersDataTable').dataTable( {
         "paginate": true,
@@ -76,28 +57,31 @@ $(document).ready(function(){
         ]
     } );
 
-    // Select
+	// Initialize Material Select
     $('.mdb-select').materialSelect();
 
+	// set tooltip defaults
 	$.protip({
+	defaults: {
 		trigger: 'hover',
-		delayIn: 200,
+		delayIn: 1000,
 		interactive: 'false',
 		position: 'right',
 		arrow: 'true',
 		icon: 'info-circled',
 		size: 'large',
-		animate: 'rubberBand',
+		animate: 'pulse',
 		title: 'customzied protip',
-		delayOut: 2000,
+		delayOut: 1800,
 		gravity: false,
 		offsetLeft: 10,
 		placement: 'outside',
-		width: 500,
+		width: 700,
 		observer: false,
-		skin: 'square',
-		scheme: 'aqua',
+		skin: 'default',
+		scheme: 'orange',
 		autoHide: 2000
+	}
 	});
 
 });

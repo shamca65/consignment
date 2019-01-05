@@ -16,11 +16,11 @@
  *= require css/mdb
  *= require css/datatables
  *= require css/cards-extended
- *= require jquery-ui/jquery-ui
  *= require protip.min
  *= require animate
  *= require css/all
  *= require Montserrat
+ *= require css/jquery.gritter
  *= require_tree .
  *= require_self
  */
@@ -28,9 +28,11 @@
 //sass imports
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "toastr";
+@import "gritter";
 
-
+* {
+  font-family: "Montserrat";
+}
 
 @font-face {
   font-family: 'Font Awesome 5 Pro';
@@ -74,4 +76,44 @@ url('<%= asset_path('fa-solid-900')%>') format('truetype'),
 url('<%= asset_path('fa-solid-900')%>') format('svg');
   font-weight: 900;
   font-style: normal;
+}
+
+@font-face{
+  font-family: 'icons';
+  src: url('<%= asset_path('fa-light-300')%>');
+}
+[class^='icon-']:before, [class*=' icon-']:before{
+  font-family: 'icons';
+  font-weight: 300;
+  font-style: normal;
+  font-variant: normal;
+  line-height: 1.5em;
+  display: inline-block;
+  width: 1em;
+  margin-right: .2em;
+  margin-left: .2em;
+  text-align: center;
+  text-decoration: inherit;
+  text-transform: none;
+  speak: none;
+}
+/* Unicode of https://fontawesome.com/v4.7.0/icon/info-circle/ */
+.icon-info-circled:before{
+  content: '\f05a';
+}
+/* Unicode of https://fontawesome.com/v4.7.0/icon/question-circle/ */
+.icon-help-circled:before{
+  content: '\f059';
+}
+/* Unicode of https://fontawesome.com/v4.7.0/icon/check-circle/ */
+.icon-ok-circled:before{
+  content: '\f058';
+}
+/* Unicode of https://fontawesome.com/v4.7.0/icon/trash/ */
+.icon-trash-empty:before{
+  content: '\f1f8';
+}
+/* Unicode of https://fontawesome.com/v4.7.0/icon/tree/ */
+.icon-tree:before{
+  content: '\f1bb';
 }

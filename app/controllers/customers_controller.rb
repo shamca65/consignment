@@ -14,7 +14,6 @@ class CustomersController < ApplicationController
     if query
       @customers = Customer.search(query)
     end
-
   end
 
   def items
@@ -28,8 +27,10 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-    @customers = Customer.all
-    js :notifyAlive, :msg => 'Toastr is alive'
+    respond_to do |format|
+      @customers = Customer.all
+      format.html
+      end
   end
 
   # GET /customers/1
@@ -54,10 +55,11 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customers_path, success: 'Customer was successfully created.'}
+        format.html { redirect_to customers_path, flash[:success] = "Customer record was saved."}
         format.json { render :show, status: :ok, location: @customer }
+        format.json { render :json => @objects.map(&:attributes) }
       else
-        format.html { render :edit}
+        format.html { render :edit, flash[:error] = "Customer record was NOT saved."}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -68,11 +70,12 @@ class CustomersController < ApplicationController
   def update
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to customers_path, info: 'Person was successfully updated.'}
-        format.json { render :show, status: :ok, location: @customer }
+        format.html {redirect_to edit_customer_path}
+        format.json { render json: @customer}
+
       else
-        format.html { render :edit}
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
+        format.html { render :edit, flash[:error] = "Customer record was NOT updated."}
+        format.js
       end
     end
   end
@@ -82,13 +85,9 @@ class CustomersController < ApplicationController
   def destroy
     @customer.destroy
     respond_to do |format|
-      format.html { redirect_to customers_url, danger: 'Customer was successfully deleted.' }
+      format.html { redirect_to customers_url,flash[:success] = "Customer record successfully deleted." }
       format.json { head :no_content }
     end
-  end
-
-  def notify_user
-    js :notifyAlive, :msg => 'Toastr is alive'
   end
 
   private
@@ -102,6 +101,19 @@ class CustomersController < ApplicationController
       params.require(:customer).permit(:first_name, :last_name, :phone, :query, :email,
       :street_address, :city, :acct_open_date, :agreement_status, :trans_type,
       :last_trans_date, :street_address2, :postal, :province)
+    end
+
+    def indexJSON
+
+      return @customers.as_json(
+        only: [
+            :id,
+            :full_name,
+            :agreement_status,
+            :phone,
+            :email,
+            :province
+            ])
     end
 
 
