@@ -1,10 +1,22 @@
-<%= form_with id: "customerEditform", model: @customer do |f| %>
-  <%= @customer.errors.inspect %>
+<div class="d-lg-flex justify-content-center">
+  <div class="w-75">
+<style>
+  .form-control{
+    font-size: 18px;
+  }
+</style>
+  <%= form_with id: "customerEditform", model: @customer do |f| %>
+
+  <% if @customer.errors.any? %>
+    <% @customer.errors.full_messages.each do |e| %>
+      <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false) %>
+    <% end %>
+  <% end %>
 
   <!-- Extended material form grid -->
+  <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
   <!-- Grid row -->
-  <br />
-  <div class="form-row ">
+  <div class="form-row" >
     <!-- Grid column -->
     <div class="col-md-6">
       <!-- Material input -->
@@ -12,8 +24,6 @@
         <%= f.text_field :first_name, id: 'inputfirstName4MD',
                          autofocus: true, autocomplete: "first_name",
                          class: "form-control", placeholder: "First Name" %>
-        <label for="inputfirstName4MD">First Name</label>
-
       </div>
     </div>
     <!-- Grid column -->
@@ -25,13 +35,12 @@
         <%= f.text_field :last_name, id: 'inputlastName4MD',
                          autofocus: true, autocomplete: "last_name",
                          class: "form-control", placeholder: "Last Name" %>
-        <label for="inputlastName4MD">Last Name</label>
       </div>
     </div>
     <!-- Grid column -->
   </div>
 
-  <br />
+  <!-- Grid row -->
   <div class="form-row">
     <!-- Grid column -->
     <div class="col-md-6">
@@ -40,8 +49,6 @@
         <%= f.text_field :phone, id: 'inputPhone4MD',
                          autofocus: true, autocomplete: "phone",
                          class: "form-control", placeholder: "Phone or Mobile" %>
-        <label for="inputPhone4MD">Phone or Mobile</label>
-
       </div>
     </div>
     <!-- Grid column -->
@@ -53,14 +60,13 @@
         <%= f.text_field :email, id: 'inputEmail4MD',
                          autofocus: true, autocomplete: "email",
                          class: "form-control", placeholder: "Email Address" %>
-        <label for="inputEmail4MD">Email Address</label>
       </div>
     </div>
     <!-- Grid column -->
   </div>
 
   <!-- Grid row -->
-  <div class="row">
+  <div class="for-row">
     <!-- Grid column -->
     <div class="col-md-12">
       <!-- Material input -->
@@ -68,7 +74,6 @@
         <%= f.text_field :street_address, id: "inputAddressMD",
                          autofocus: true, autocomplete: "street_address",
                          class: "form-control", placeholder: "Street Address" %>
-        <label for="inputAddressMD">Address 1</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -78,7 +83,6 @@
         <%= f.text_field :street_address2, id: "inputAddress2MD",
                          autofocus: true, autocomplete: "street_address2",
                          class: "form-control", placeholder: "Street Address 2" %>
-        <label for="inputAddress2MD">Address 2</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -92,8 +96,7 @@
       <div class="md-form form-group">
         <%= f.text_field :city, id: "inputCityMD",
                          autofocus: true, autocomplete: "city",
-                         class: "form-control", placeholder: "City"%>
-        <label for="inputCityMD">City</label>
+                         class: "form-control", placeholder: "City" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -103,8 +106,7 @@
       <div class="md-form form-group">
         <%= f.text_field :postal, id: "inputPostalMD",
                          autofocus: true, autocomplete: "postal",
-                         class: "form-control", placeholder: "Postal"%>
-        <label for="inputPostalMD">Postal</label>
+                         class: "form-control", placeholder: "Postal" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -118,23 +120,29 @@
       <div class="md-form form-group">
         <!--Blue select-->
         <div class="input-group mb-3 ">
-          <select name="customer[province]" id="mdb-select" class="mdb-select md-form colorful-select dropdown-primary">
-            <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
+          <select name="customer[province]" id="mdb-select"
+                  class="mdb-select md-form colorful-select dropdown-primary">
+            <%= options_for_select(Customer::PROVINCES.map {|k, v| [v, k]}, selected: customer.province) %>
           </select>
-          <label>Province</label>
+          <label class="form-check-label"
+                 style="font-size: medium; font-weight: inherit"
+                 id="myTooltip" for="ag_group"
+                 data-toogle="tooltip">Province</label><br/>
         </div>
         <!--/Blue select-->
       </div>
     </div>
     <!-- Grid column -->
 
-
     <div class="col-md-6">
       <!-- Material input -->
       <div class="md-form form-group" id="ag_group">
         <!-- Material inline 1 -->
-        <label class="form-check-label" id="myTooltip" for="ag_group" data-toogle="tooltip">Agreement Status</label><br />
-                <br />
+        <label class="form-check-label"
+               style="font-size: medium; font-weight: inherit;"
+               id="myTooltip" for="ag_group"
+               data-toogle="tooltip">Agreement Status</label><br/>
+        <br/>
         <div class="form-check form-check-inline">
           <%= f.radio_button :agreement_status, 1,
                              id: 'ag_status01',
@@ -143,7 +151,6 @@
 
           <label class="form-check-label" for="ag_status01">Signed</label>
         </div>
-
         <!-- Material inline 2 -->
         <div class="form-check form-check-inline">
           <%= f.radio_button :agreement_status, 0,
@@ -151,37 +158,17 @@
                              class: 'form-check-input',
                              name: 'customer[agreement_status' %>
 
-          <label class="form-check-label" for="ag_status02">Unsigned</label>
+          <label class="form-check-label h3" for="ag_status02">Unsigned</label>
         </div>
 
-
       </div>
     </div>
     <!-- Grid column -->
   </div>
-
-  <!-- Grid row -->
-  <div class="form-row">
-    <!-- Grid column -->
-    <div class="col-md-6">
-      <!-- Material input -->
-      <div class="md-form form-group">
-
-      </div>
-    </div>
+      <br />
+  <div class="text-center">
+      <button class="btn btn-primary waves-effect" type="submit" >Update Customer Record</button>
   </div>
-  <!-- Grid column -->
-
-  <div class="col-md-6">
-    <!-- Material input -->
-    <div class="md-form form-group">
-    </div>
-  </div>
-  <!-- Grid column -->
-  </div>
-
-
-  <div class="btn btn-outline-primary btn-rounded waves-effect">
-    <%= f.submit "Update Customer Record" %>
-  </div>
-<%end %>
+<% end %>
+</div>
+</div>

@@ -2,9 +2,10 @@ class Customer < ApplicationRecord
 
   has_many :items, dependent: :destroy
 
+  validates :first_name, :last_name, :phone, :presence => true
+  validates :email, :email_format => {:message => 'Email format is incorrect - record was not saved.'}
+
   include EventLogger
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
 
   accepts_nested_attributes_for :items
 
@@ -13,13 +14,9 @@ class Customer < ApplicationRecord
 
   after_destroy :log_destroy_event
 
-  validates :first_name, :last_name, :phone, :presence => true
-  validates :email, :email_format => {:message => 'is not looking good'}
-
-
   AGREEMENT_STATUS = {:Unsigned => 0, :Signed => 1}
   TRANS_TYPE = {:AccountSetup => 0, :AgreementUpdate => 1, :AccountDeactivated => 2}
-  PROVINCES = { :ON=>'Ontario',
+  PROVINCES = { :ON => 'Ontario',
       :AB => 'Alberta',
       :BC => 'British Columbia',
       :MB => 'Manitoba',
@@ -57,42 +54,6 @@ class Customer < ApplicationRecord
   #
   #-----------------------------------------------------------------
 
-
-
-  # ElasticSearch Index
-  settings index: {number_of_shards: 1} do
-    mappings dynamic: 'false' do
-      indexes :first_name, type: :text, analyzer: 'english'
-      indexes :last_name, type: :text, analyzer: 'english'
-      indexes :email, type: :text, analyzer: 'english'
-    end
-  end
-
-  def self.search(query) __elasticsearch__.search({
-      query: {
-       multi_match: {
-        query: query,
-         fields: ['first_name', 'last_name', 'email', 'id']
-       }
-      }
-     })
-  end
-
-  # TODO Need to refactor this and possibly get rid of 'active' parameter
-  def self.search_published(query) self.search({
-       query: {
-          bool: {
-           must: [
-             { multi_match:
-                { query: query, fields: [:first_name, :last_name, :email] }
-             },
-             { match: { active: true } }
-           ]
-          }
-        }
-      })
-  end
-
   def set_attr_for_create
     puts "setting create data***********************************"
     self.agreement_status ||= 0 #unsigned
@@ -117,6 +78,5 @@ class Customer < ApplicationRecord
     myName = last_name.titleize + ", " + first_name.titleize
     myName ||= 'not provided'
   end
-
 
 end
