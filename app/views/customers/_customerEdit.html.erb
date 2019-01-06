@@ -114,10 +114,25 @@
         </div>
       </div>
     </div>
+    <!-- row 6  -->
+    <div class="form-row" >
+      <div class="col-md-6">
+        <div class="form-group black-border">
+          <label for="customerNotes">Customer Notes</label>
+          <%= text_area_tag(:notes, '', size: '50x10',
+                            class: "form-control", id: "customerNotes",
+                            rows: "3", placeholder: "Enter Customer Notes") %>
+        </div>
+      </div>
+      <div class="col-md-6">
 
-
-
-
+      </div>
+    </div>
+      <!-- end of form -->
+    <br />
+    <div class="text-center">
+      <button class="btn btn-primary waves-effect" type="submit" >Update Customer Record</button>
+    </div>
 <% end %>
     <!-- justify/w-75 -->
   </div>
