@@ -125,9 +125,7 @@
             <%= options_for_select(Customer::PROVINCES.map {|k, v| [v, k]}, selected: customer.province) %>
           </select>
           <label class="form-check-label"
-                 style="font-size: medium; font-weight: inherit"
-                 id="myTooltip" for="ag_group"
-                 data-toogle="tooltip">Province</label><br/>
+                 style="font-size: medium; font-weight: inherit" >Province</label><br/>
         </div>
         <!--/Blue select-->
       </div>
@@ -136,35 +134,96 @@
 
     <div class="col-md-6">
       <!-- Material input -->
-      <div class="md-form form-group" id="ag_group">
+      <div class="md-form form-group">
         <!-- Material inline 1 -->
-        <label class="form-check-label"
-               style="font-size: medium; font-weight: inherit;"
-               id="myTooltip" for="ag_group"
-               data-toogle="tooltip">Agreement Status</label><br/>
-        <br/>
-        <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 1,
-                             id: 'ag_status01',
-                             class: 'form-check-input',
-                             name: 'customer[agreement_status' %>
-
-          <label class="form-check-label" for="ag_status01">Signed</label>
-        </div>
-        <!-- Material inline 2 -->
-        <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 0,
-                             id: 'ag_status02',
-                             class: 'form-check-input',
-                             name: 'customer[agreement_status' %>
-
-          <label class="form-check-label h3" for="ag_status02">Unsigned</label>
-        </div>
-
       </div>
     </div>
     <!-- Grid column -->
   </div>
+
+  <!-- Grid row -->
+  <div class="form-row">
+        <!-- Grid column -->
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group">
+            <!--Agreement Status -->
+            <div class="input-group mb-3 ">
+              <!-- Material inline 1 -->
+              <label class="form-check-label"
+                     style="font-size: medium; font-weight: inherit;"
+                     id="myTooltip" for="ag_group"
+                     data-toogle="tooltip">Agreement Status</label><br/>
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :agreement_status, 1,
+                                   id: 'ag_status01',
+                                   class: 'form-check-input',
+                                   name: 'customer[agreement_status' %>
+
+                <label class="form-check-label" for="ag_status01">Signed</label>
+              </div>
+              <!-- Material inline 2 -->
+              <div class="form-check form-check-inline">
+                <%= f.radio_button :agreement_status, 0,
+                                   id: 'ag_status02',
+                                   class: 'form-check-input',
+                                   name: 'customer[agreement_status' %>
+
+                <label class="form-check-label h3" for="ag_status02">Unsigned</label>
+              </div>
+            </div>
+            <!--/Blue select-->
+          </div>
+        </div>
+        <!-- Grid column -->
+
+        <div class="col-md-6">
+          <!-- Material input -->
+          <div class="md-form form-group" id="ag_group">
+
+
+          </div>
+        </div>
+        <!-- Grid column -->
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <br />
   <div class="text-center">
       <button class="btn btn-primary waves-effect" type="submit" >Update Customer Record</button>

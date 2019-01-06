@@ -58,7 +58,7 @@ $(document).ready(function(){
     } );
 
 	// Initialize Material Select
-    $('.mdb-select').materialSelect().css("font-size","18px");
+    $('.mdb-select').materialSelect();
 
 	// set tooltip defaults
 	$.protip({
