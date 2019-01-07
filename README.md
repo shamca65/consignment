@@ -7,10 +7,10 @@ To Do
     * add pic logo to navbar
     * sort order to tables
     * add copy to clipboard
+    * clean up controller specific assets
 
 POS Desk
     * implement Redis/Sidekiq
-     
 
 Configurables
     * company name in gritter messages

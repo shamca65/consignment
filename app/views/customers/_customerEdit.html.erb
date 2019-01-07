@@ -4,6 +4,15 @@
     .form-control{
       font-size: 18px;
     }
+    .select-wrapper input.select-dropdown {
+      font-size: 2rem;
+      font-family: 'Montserrat', Courier, monospace;
+    }
+    .dropdown-content li > span {
+      font-size: 1.5rem;
+      color: black;
+      display: block;
+      padding: 0.5rem; }
   </style>
   <%= form_with id: "customerEditform", model: @customer do |f| %>
 
@@ -95,37 +104,22 @@
           </div>
       </div>
       <div class="col-md-6">
-        <label style="font-weight: normal">Agreement Status</label>
         <div class="md-form form-group">
-          <div class="form-check form-check-inline">
-            <%= f.radio_button :agreement_status, 1,
-                               id: 'ag_status01',
-                               class: 'form-check-input',
-                               name: 'customer[agreement_status]' %>
-            <label class="form-check-label" for="ag_status01">Signed</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <%= f.radio_button :agreement_status, 0,
-                               id: 'ag_status02',
-                               class: 'form-check-input',
-                               name: 'customer[agreement_status]' %>
-            <label class="form-check-label h3" for="ag_status02">Unsigned</label>
-          </div>
+          <select name="customer[agreement_status]" id="mdb-select"
+                  class="mdb-select md-form colorful-select dropdown-primary">
+            <%= options_for_select(Customer::AGREEMENT_STATUSES.map {|v, k| [v, k]}, selected: customer.agreement_status) %>
+          </select>
         </div>
       </div>
     </div>
     <!-- row 6  -->
     <div class="form-row" >
-      <div class="col-md-6">
+      <div class="col-md-12 text-center">
         <div class="form-group black-border">
-          <label for="customerNotes">Customer Notes</label>
-          <%= text_area_tag(:notes, '', size: '50x10',
+          <%= text_area_tag(:notes, '', size: '50x3',
                             class: "form-control", id: "customerNotes",
-                            rows: "3", placeholder: "Enter Customer Notes") %>
+                            placeholder: "Enter Customer Notes") %>
         </div>
-      </div>
-      <div class="col-md-6">
-
       </div>
     </div>
       <!-- end of form -->

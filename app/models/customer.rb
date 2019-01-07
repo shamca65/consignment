@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
 
   after_destroy :log_destroy_event
 
-  AGREEMENT_STATUS = {:Unsigned => 0, :Signed => 1}
+  AGREEMENT_STATUSES = {:Unsigned => 0, :Signed => 1, :UnderReview => 2}
   TRANS_TYPE = {:AccountSetup => 0, :AgreementUpdate => 1, :AccountDeactivated => 2}
   PROVINCES = { :ON => 'Ontario',
       :AB => 'Alberta',
@@ -30,9 +30,7 @@ class Customer < ApplicationRecord
       :PE => 'Prince Edward Island',
       :QC => 'Quebec' }
 
-
   #-----------------------------------------------------------------
-  #
   # Customer
   #
   # Create
@@ -51,7 +49,6 @@ class Customer < ApplicationRecord
   # - mark record as inactive
   # - stamp last_trans_date as today
   #    - stamp trans_type as 'AgreementSigned'
-  #
   #-----------------------------------------------------------------
 
   def set_attr_for_create
