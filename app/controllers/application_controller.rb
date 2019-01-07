@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  add_flash_types :success, :info, :warning, :error
+  add_flash_types :success, :info, :warning, :error, :savedRecord
 
   before_action :authenticate_user!
 

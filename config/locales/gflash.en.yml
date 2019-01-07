@@ -10,6 +10,7 @@ en:
       error: "Error"
       progress: "Progress"
       info: "Information"
+      savedRecord: "Record Saved"
     #
     # Add default gflash messages:
     # defaults:

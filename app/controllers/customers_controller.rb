@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
+
     respond_to do |format|
       @customers = Customer.all
       format.html
@@ -55,7 +56,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     respond_to do |format|
       if @customer.save
-        format.html { redirect_to customers_path, flash[:success] = "Customer record was saved."}
+        format.html { redirect_to customers_path }
         format.json { render :show, status: :ok, location: @customer }
         format.json { render :json => @objects.map(&:attributes) }
       else
@@ -68,9 +69,10 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
+    puts "************************ updating record"
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { redirect_to @customer, notice: 'Customer record was successfully updated.' }
+        format.html { render :index, :savedRecord => "Foo saved" }
         format.json { render :show, status: :ok, location: @customer }
       else
         format.html { render :edit }

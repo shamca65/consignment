@@ -55,7 +55,6 @@ class Customer < ApplicationRecord
   #-----------------------------------------------------------------
 
   def set_attr_for_create
-    puts "setting create data***********************************"
     self.agreement_status ||= 0 #unsigned
     self.trans_type = TRANS_TYPE[:AccountSetup]
     self.acct_open_date = Date.today
@@ -65,7 +64,6 @@ class Customer < ApplicationRecord
   end
 
   def set_attr_for_update
-    puts "setting update data***********************************"
     # the customer has togged the agreement status one way or the other
     if self.agreement_status_changed?
       self.trans_type = TRANS_TYPE[:AgreementUpdate]

@@ -1,9 +1,11 @@
 <% if flash[:alert] %>
-  <%= js add_gritter(flash[:alert], title: "Notice", :image => image_path('info.png'), sticky: false) %>
+  <%= js add_gritter(flash[:alert], title: "Alert", :image => image_path('info.png'), sticky: false) %>
 <% elsif flash[:error] %>
-  <%= js add_gritter(flash[:error], title: "Notice", :image => image_path('prohibition.png'), sticky: false) %>
+  <%= js add_gritter(flash[:error], title: "Error", :image => image_path('stop.png'), sticky: false) %>
 <% elsif flash[:success] %>
-  <%= js add_gritter(flash[:success], title: "Notice", :image => image_path('checked.png'), sticky: false) %>
+  <%= js add_gritter(flash[:success], title: "Success", :image => image_path('check.png'), sticky: false) %>
+<% elsif flash[:savedRecord] %>
+  <%= js add_gritter(flash[:success], title: "Saved Record", :image => image_path('check.png'), sticky: false) %>
 <% else %>
-  <%= js add_gritter(flash[:notice], title: "Notice", :image => image_path('info.png'), sticky: false) %>
+  <%= js add_gritter(flash[:notice], title: "Notice", :image => image_path('check.png'), sticky: false) %>
 <% end %>>
