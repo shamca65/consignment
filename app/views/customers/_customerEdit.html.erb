@@ -30,14 +30,19 @@
         <div class="md-form form-group">
           <%= f.text_field :first_name, id: 'inputfirstName4MD',
                            autofocus: true, autocomplete: "first_name",
-                           class: "form-control", placeholder: "First Name" %>
+                           class: "form-control", placeholder: "First Name", 'data-trigger' => 'hover',
+                           'data-toggle' => 'popover', 'data-content' => 'This field is required',
+                           'data-placement' => 'left', 'title' => 'First Name'
+          %>
         </div>
       </div>
       <div class="col-md-6">
         <div class="md-form form-group">
           <%= f.text_field :last_name, id: 'inputlastName4MD',
                            autofocus: true, autocomplete: "last_name",
-                           class: "form-control", placeholder: "Last Name" %>
+                           class: "form-control", placeholder: "Last Name", 'data-trigger' => 'hover',
+                           'data-toggle' => 'popover', 'data-content' => 'This field is required',
+                           'data-placement' => 'left', 'title' => 'Last Name' %>
         </div>
       </div>
     </div>
@@ -116,9 +121,8 @@
     <div class="form-row" >
       <div class="col-md-12 text-center">
         <div class="form-group black-border">
-          <%= text_area_tag(:notes, '', size: '50x3',
-                            class: "form-control", id: "customerNotes",
-                            placeholder: "Enter Customer Notes") %>
+          <%= f.text_area(:notes, :cols => 50, :rows => 5, class: "form-control", id: "customerNotes",
+                          placeholder: "Enter Customer Notes") %>
         </div>
       </div>
     </div>

@@ -27,11 +27,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
-
-    respond_to do |format|
-      @customers = Customer.all
-      format.html
-      end
+    @customers = Customer.all
   end
 
   # GET /customers/1
@@ -60,7 +56,7 @@ class CustomersController < ApplicationController
         format.json { render :show, status: :ok, location: @customer }
         format.json { render :json => @objects.map(&:attributes) }
       else
-        format.html { render :edit, flash[:error] = "Customer record was NOT saved."}
+        format.html { render :edit, warning: = "Customer record was NOT saved."}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -72,11 +68,9 @@ class CustomersController < ApplicationController
     puts "************************ updating record"
     respond_to do |format|
       if @customer.update(customer_params)
-        format.html { render :index, :savedRecord => "Foo saved" }
-        format.json { render :show, status: :ok, location: @customer }
+        format.html { redirect_to customers_path, success: "Customer record updated"}
       else
         format.html { render :edit }
-        format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
   end

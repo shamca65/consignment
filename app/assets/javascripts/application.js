@@ -12,6 +12,7 @@
 //
 //= require jquery-3.3.1.min
 //= require bootstrap/bootstrap.min
+//= require js/popper.min
 //= require js/jquery.gritter
 //= require protip.min
 //= require js/mdb
@@ -84,4 +85,5 @@ $(document).ready(function(){
 	}
 	});
 
+    $('[data-toggle="popover"]').popover()
 });
