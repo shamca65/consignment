@@ -65,25 +65,24 @@ $(document).ready(function(){
 	$.protip({
 	defaults: {
 		trigger: 'hover',
-		delayIn: 1000,
+		delayIn: 700,
+		delayOut: 2000,
 		interactive: 'false',
-		position: 'right',
+		position: 'left-top',
 		arrow: 'true',
 		icon: 'info-circled',
-		size: 'large',
-		animate: 'pulse',
+		size: 'small',
+		animate: 'fadeIn',
 		title: 'customzied protip',
-		delayOut: 1800,
 		gravity: false,
-		offsetLeft: 10,
+		offsetLeft: -20,
 		placement: 'outside',
 		width: 700,
 		observer: false,
 		skin: 'default',
-		scheme: 'orange',
-		autoHide: 2000
+		scheme: 'black',
+		autoHide: 2500
 	}
 	});
 
-    $('[data-toggle="popover"]').popover()
 });

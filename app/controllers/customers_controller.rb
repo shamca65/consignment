@@ -56,7 +56,7 @@ class CustomersController < ApplicationController
         format.json { render :show, status: :ok, location: @customer }
         format.json { render :json => @objects.map(&:attributes) }
       else
-        format.html { render :edit, warning: = "Customer record was NOT saved."}
+        format.html { render :edit, warning: "Customer record was NOT saved."}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
     end
@@ -95,7 +95,7 @@ class CustomersController < ApplicationController
     def customer_params
       params.require(:customer).permit(:first_name, :last_name, :phone, :query, :email,
       :street_address, :city, :acct_open_date, :agreement_status, :trans_type,
-      :last_trans_date, :street_address2, :postal, :province)
+      :last_trans_date, :street_address2, :postal, :province, :notes)
     end
 
     def indexJSON
