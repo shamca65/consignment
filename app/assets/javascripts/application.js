@@ -68,9 +68,8 @@ $(document).ready(function(){
 		delayIn: 700,
 		delayOut: 2000,
 		interactive: 'false',
-		position: 'left-top',
+		position: 'left-bottom',
 		arrow: 'true',
-		icon: 'info-circled',
 		size: 'small',
 		animate: 'fadeIn',
 		title: 'customzied protip',
@@ -80,7 +79,7 @@ $(document).ready(function(){
 		width: 700,
 		observer: false,
 		skin: 'default',
-		scheme: 'black',
+		scheme: 'red',
 		autoHide: 2500
 	}
 	});

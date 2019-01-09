@@ -5,14 +5,14 @@
       font-size: 18px;
     }
     .select-wrapper input.select-dropdown {
-      font-size: 2rem;
+      font-size: 1rem;
       font-family: 'Montserrat', Courier, monospace;
     }
     .dropdown-content li > span {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: black;
       display: block;
-      padding: 0.5rem; }
+      padding: 0.3rem; }
   </style>
   <%= form_with id: "customerEditform", model: @customer do |f| %>
 
@@ -38,9 +38,7 @@
         <div class="md-form form-group">
           <%= f.text_field :last_name, id: 'inputlastName4MD',
                            autofocus: true, autocomplete: "last_name",
-                           class: "form-control", placeholder: "Last Name", 'data-trigger' => 'hover',
-                           'data-toggle' => 'popover', 'data-content' => 'This field is required',
-                           'data-placement' => 'left', 'title' => 'Last Name' %>
+                           class: "form-control", placeholder: "Last Name" %>
         </div>
       </div>
     </div>
