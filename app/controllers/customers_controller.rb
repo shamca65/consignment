@@ -19,7 +19,7 @@ class CustomersController < ApplicationController
   def items
       @customerItems = Item.customer_items(params[:id])
       respond_to do |format|  ## Add this
-        format.html {}
+        format.html { render :'customers/Items', notice: 'Showing rhinos' }
         end
   end
 

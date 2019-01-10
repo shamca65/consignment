@@ -58,6 +58,11 @@ $(document).ready(function(){
         ]
     } );
 
+	$('.dataTables_filter input').attr('data-toggle', 'tooltip')
+		.attr('data-placement', 'right')
+		.attr('title', 'Search by any term')
+		.tooltip();
+
 	// Initialize Material Select
     $('.mdb-select').materialSelect();
 
@@ -65,14 +70,15 @@ $(document).ready(function(){
 	$.protip({
 	defaults: {
 		trigger: 'hover',
-		delayIn: 700,
-		delayOut: 2000,
+		icon: 'tree',
+		delayIn: 550,
+		delayOut: 1700,
 		interactive: 'false',
-		position: 'left-bottom',
+		position: 'bottom-left',
 		arrow: 'true',
 		size: 'small',
 		animate: 'fadeIn',
-		title: 'customzied protip',
+		title: 'Required field',
 		gravity: false,
 		offsetLeft: -20,
 		placement: 'outside',

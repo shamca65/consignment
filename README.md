@@ -8,6 +8,7 @@ To Do
     * sort order to tables
     * add copy to clipboard
     * clean up controller specific assets
+    * clean up unneeded routes
 
 POS Desk
     * implement Redis/Sidekiq

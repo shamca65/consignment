@@ -1,7 +1,7 @@
 <tbody>
 <% @customers.each do |customer| %>
   <tr class="h3">
-    <td class="text-center text-light h4 align-middle" ><%= customer.id %></td>
+    <td class="text-center h5 align-middle" ><%= customer.id %></td>
     <td class="text-left h5 align-middle"><%= customer.full_name %></td>
     <td class="text-center align-middle">
       <%if customer.agreement_status  == 0 %>

@@ -30,7 +30,8 @@
         <div class="md-form form-group">
           <%= f.text_field :first_name, id: 'inputfirstName4MD',
                            autofocus: true, autocomplete: "first_name",
-                           class: "form-control protip", placeholder: "First Name"
+                           class: "form-control protip", placeholder: "First Name",
+                           'data-pt-title' => "First Name is required"
           %>
         </div>
       </div>
@@ -38,7 +39,8 @@
         <div class="md-form form-group">
           <%= f.text_field :last_name, id: 'inputlastName4MD',
                            autofocus: true, autocomplete: "last_name",
-                           class: "form-control", placeholder: "Last Name" %>
+                           class: "form-control protip", placeholder: "Last Name",
+                            'data-pt-title' => "Last Name is a required field" %>
         </div>
       </div>
     </div>
@@ -48,14 +50,17 @@
         <div class="md-form form-group">
           <%= f.text_field :phone, id: 'inputPhone4MD',
                            autofocus: true, autocomplete: "phone",
-                           class: "form-control", placeholder: "Phone or Mobile" %>
+                           class: "form-control protip", placeholder: "Phone or Mobile",
+                           'data-pt-title' => "Phone Number is required field" %>
         </div>
       </div>
       <div class="col-md-6">
         <div class="md-form form-group">
           <%= f.text_field :email, id: 'inputEmail4MD',
                            autofocus: true, autocomplete: "email",
-                           class: "form-control", placeholder: "Email Address" %>
+                           class: "form-control protip", placeholder: "Email Address",
+                           'data-pt-title' => "Email Address is a required field",
+                           'data-pt-position' => "right" %>
         </div>
       </div>
     </div>
