@@ -9,6 +9,7 @@ To Do
     * add copy to clipboard
     * clean up controller specific assets
     * clean up unneeded routes
+    * build an array of default options for protips
 
 POS Desk
     * implement Redis/Sidekiq
