@@ -1,16 +1,20 @@
-<script>
-
-</script>
+<tbody>
 <% @items.each do |item| %>
-  <tr>
-    <td class="text-center"><%= item.id %></td>
-    <td class="text-center"><%= item.customer_id %></td>
-    <td class="text-left"><%= item.customer.full_name.truncate(50) %></td>
-    <td class="text-center"><%= size_label(item.size) %></td>
-    <td class="text-left"><%= item.description %></td>
-    <td><%= number_to_currency(item.price) %></td>
-    <td style="text-align: center">
-      <div class="itemDeleteIcon protip " data-pt-title="Edit item"
+  <tr >
+    <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
+    <td class="text-left h5 align-middle">
+      <%= link_to edit_customer_path(item.customer.id) do %>
+        <span><i class="fal fa-user-circle text-primary"></i>
+      <% end %>
+        <%= item.customer.full_name.truncate(50) %></span>
+    </td>
+    <td class="text-left h5 align-middle"><%= item.customer.street_address %></td>
+    <td class="text-left h5 align-middle"><%= item.customer.city %></td>
+    <td class="text-center align-middle"><%= size_label(item.size) %></td>
+    <td class="text-left h5 align-middle"><%= item.description %></td>
+    <td class="text-right h5 align-middle"><%= number_to_currency(item.price) %></td>
+    <td class="text-center h5 align-middle">
+    <div class="itemDeleteIcon protip " data-pt-title="Edit item"
                                          data-pt-position="bottom"
                                          data-pt-scheme="aqua"
                                          data-pt-icon="info-circled"
@@ -19,9 +23,9 @@
       <%= link_to edit_item_path(item) do %>
         <i class="fal fa-edit fa-2x text-info"></i>
       <% end %>
-      </div>
+    </div>
     </td>
-    <td style="text-align: center">
+    <td class="text-center h5 align-middle">
       <div class="itemDeleteIcon protip " data-pt-title="Delete this item"
                                         data-pt-position="right"
                                         data-pt-scheme="red"

@@ -47,14 +47,15 @@ $(document).ready(function(){
             "caseInsensitive": true
         },
         "columns": [
-            null,
-            { "width": "50px" },    // customer id
-            { "width": "150px" },   // customer name
-            null,
-            null,
-            { "width": "75px" },    // price
-            { "width": "75px" },    // edit button
-            { "width": "75px" }     // delete button
+			{ "width": "50px" },	// item id
+            { "width": "225px" },   // customer name
+			{ "width": "225px" },   // street
+			{ "width": "100px" },	// city
+			{ "width": "50px" },	// size
+			{ "width": "200px" },	// description
+            { "width": "100px" },    // price
+            { "width": "100px" },    // edit button
+            { "width": "100px" }     // delete button
         ]
     } );
 
@@ -70,7 +71,7 @@ $(document).ready(function(){
 	$.protip({
 	defaults: {
 		trigger: 'hover',
-		icon: 'info-circled',
+		icon: 'info-checked',
 		delayIn: 500,
 		delayOut: 1500,
 		interactive: 'false',
