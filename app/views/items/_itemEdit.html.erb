@@ -1,25 +1,53 @@
-<%= form_with(model: item, local: true) do |f| %>
-<div style="font-size: 18px">
-
-  <div class="form-group" >
-    <%= f.label :customer %><br>
-    <%= select_tag "customer_id", options_from_collection_for_select(Customer.all, "id", "full_name"), selected: :option %>
+<%= form_with id: "itemEditform", model: @item do |f| %>
+  <!-- Notifications -->
+  <% if @item.errors.any? %>
+    <% @item.errors.full_messages.each do |e| %>
+      <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false) %>
+    <% end %>
+  <% end %>
+  <!-- Extended material form grid -->
+  <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
+  <!-- row 1  -->
+  <div class="form-row" >
+    <div class="col-md-6">
+      <div class="md-form form-group">
+        <%= f.text_field :description, id: 'itemDescription',
+                         autofocus: true, autocomplete: "itemDescription",
+                         class: "form-control protip", placeholder: "Item Description",
+                         'data-pt-title' => "Item description is a required field"
+        %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="md-form form-group">
+        <select name="item[size]" id="mdb-select"
+                class="mdb-select md-form colorful-select dropdown-primary"
+                style="font-size: large">
+          <%= options_for_select(Item::ITEM_SIZES.map {|k, v| [v, k]}, selected: item.size) %>
+        </select>
+      </div>
+    </div>
+  </div>
+  <!-- row 2  -->
+  <div class="form-row" >
+    <div class="col-md-6">
+      <div class="md-form form-group">
+        <%= f.number_field :price, id: 'itemPrice',
+                         autofocus: true, autocomplete: "itemPrice",
+                         class: "form-control protip", placeholder: "Item Price",
+                         'data-pt-title' => "Item price is required field" %>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="md-form form-group">
+        Arsenal
+    </div>
+  </div>
+  <!-- end of form -->
+  <br />
+  <div class="text-center">
+    <button class="btn btn-primary waves-effect" type="submit" >Update Item Record</button>
   </div>
 
-  <div class="form-group" >
-    <%= f.text_field :description, autofocus: true, autocomplete: "description", placeholder: "Item Description" %>
-  </div>
-
-  <div class="form-group" >
-    <%= f.text_field :size, autofocus: true, autocomplete: "size", placeholder: "Item Size" %>
-  </div>
-
-   <div class="form-group" >
-      <%= f.number_field :price, id: 'currencyInput', autofocus: true, autocomplete: "price", placeholder: "Item Price" %>
-  </div>
-
-  <div class="form-group"><%= f.submit :Submit, class: 'btn btn-primary btn-block create-account'%> </button></div>
-
-</div>
 
 <%end %>

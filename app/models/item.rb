@@ -10,6 +10,15 @@ class Item < ApplicationRecord
 
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
 
+  ITEM_SIZES = {
+  :na => 'Not Applicable',
+  :xs => 'Extra Small',
+  :sm => 'Small',
+  :md => 'Medium',
+  :lg => 'Large',
+  :xl => 'Extra Large',
+  :xx => '2X Large'}
+
   def log_create_event
     log_event("Item",self.id,"created")
   end

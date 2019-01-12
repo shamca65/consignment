@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_06_210047) do
+ActiveRecord::Schema.define(version: 2019_01_12_142033) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_01_06_210047) do
     t.decimal "price", precision: 8, scale: 2
     t.text "notes"
     t.integer "type"
-    t.integer "size"
+    t.string "size"
     t.integer "photo_id"
     t.text "clerk"
     t.integer "status"
