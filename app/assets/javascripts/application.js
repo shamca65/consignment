@@ -71,12 +71,11 @@ $(document).ready(function(){
 	$.protip({
 	defaults: {
 		trigger: 'hover',
-		icon: 'info-checked',
 		delayIn: 500,
 		delayOut: 1500,
 		interactive: 'false',
-		arrow: 'true',
-		size: 'small',
+		arrow: false,
+		size: 'normal',
 		animate: 'fadeIn',
 		title: 'Required field',
 		gravity: false,

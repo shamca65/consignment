@@ -1,3 +1,19 @@
+<div class="d-lg-flex justify-content-center">
+  <div class="w-75">
+<style>
+  .form-control{
+    font-size: 18px;
+  }
+  .select-wrapper input.select-dropdown {
+    font-size: 1rem;
+    font-family: 'Montserrat', Courier, monospace;
+  }
+  .dropdown-content li > span {
+    font-size: 1.2rem;
+    color: black;
+    display: block;
+    padding: 0.3rem; }
+</style>
 <%= form_with id: "itemEditform", model: @item do |f| %>
   <!-- Notifications -->
   <% if @item.errors.any? %>
@@ -31,16 +47,31 @@
   <!-- row 2  -->
   <div class="form-row" >
     <div class="col-md-6">
-      <div class="md-form form-group">
+      <div class="md-form form-group input-group">
+        <div class="input-group-prepend">
+        <span class="input-group-text">$ </span>
         <%= f.number_field :price, id: 'itemPrice',
                          autofocus: true, autocomplete: "itemPrice",
                          class: "form-control protip", placeholder: "Item Price",
                          'data-pt-title' => "Item price is required field" %>
+
+        </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
     <div class="col-md-6">
       <div class="md-form form-group">
         Arsenal
+      </div>
     </div>
   </div>
   <!-- end of form -->
@@ -49,5 +80,4 @@
     <button class="btn btn-primary waves-effect" type="submit" >Update Item Record</button>
   </div>
 
-
-<%end %>
+<% end %>

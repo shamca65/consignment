@@ -1,16 +1,16 @@
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark ">
     <li class="navbar-brand" style="font-size: 26px">Acta Diurna</li>
     <% if controller_name != 'sessions' %>
     <div class="collapse navbar-collapse mx-auto " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto h4">
-        <li class="nav-item active">
-          <a class="nav-link " href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
+        <li class="nav-item btn btn-outline-primary btn-lg <%= active?(root_path) %>">
+          <a class="nav-link" href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= customers_path %>">Customers</a>
+        <li class="nav-item btn btn-outline-secondary btn-lg">
+          <a class="nav-link " href="<%= customers_path %>">Customers</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= items_path %>">Items</a>
+        <li class="nav-item btn btn-outline-info btn-lg <%= active?(items_path) %>">
+          <a class="nav-link " href="<%= items_path %>">Items</a>
         </li>
       </ul>
       <div class="navbar-right">
