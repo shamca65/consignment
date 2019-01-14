@@ -24,82 +24,94 @@
   <% end %>
   <!-- Extended material form grid -->
   <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
-  <!-- row 1  -->
-      <div class="form-row" >
-        <!-- left column  -->
-        <div class="col">
-          <!-- left column  -->
-          <div class="col-md-6">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
+  <!-- Outside row -->
+    <div class="row">
+      <!-- Left column  -->
+      <div class="col">
+        <!-- Row 1-->
+        <div class="row">
+          <div class="md-form form-group input-group">
+            <div class="input-group-prepend">
               <span class="input-group-text teal lighten-4">
                 <i class="fal fa-user fa-2x"></i>
               </span>
-                <%= f.text_field :description, id: 'itemDescription',
-                                 autofocus: true, autocomplete: "itemDescription",
-                                 class: "form-control protip", placeholder: "Description",
-                                 'data-pt-title' => "Description (required)",
-                                 'data-pt-position' => 'bottom-left'
-                %>
-              </div>
-            </div>
+            <%= f.text_field :description, id: 'itemDescription',
+                             autofocus: true, autocomplete: "itemDescription",
+                             class: "form-control protip", placeholder: "Description",
+                             'data-pt-title' => "Description (required)",
+                             'data-pt-position' => 'bottom-left'
+            %>
           </div>
-          <div class="col-md-6">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
+          </div>
+        </div>
+        <div class="row">
+          <div class="md-form form-group input-group">
+          <div class="input-group-prepend">
                   <span class="input-group-text teal lighten-4">
                     <i class="fal fa-expand-alt fa-2x"></i>
                   </span>
-                  <div class="protip" data-pt-title="Item Size (required)"
-                       data-pt-position="bottom-left"
-                       data-pt-scheme="red">
-                    <select name="item[size]" id="mdb-select"
-                            class="mdb-select md-form colorful-select dropdown-primary" >
-                      <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
-                    </select>
-                  </div>
-              </div>
+            <div class="protip" data-pt-title="Item Size (required)"
+                 data-pt-position="bottom-left"
+                 data-pt-scheme="red">
+              <select name="item[size]" id="mdb-select"
+                      class="mdb-select md-form colorful-select dropdown-primary" >
+                <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
+              </select>
             </div>
           </div>
+          </div>
         </div>
-        <!-- row 2  -->
-        <div class="form-row" >
-          <div class="col-md-6">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
+        <div class="row">
+          <div class="md-form form-group input-group">
+            <div class="input-group-prepend">
                 <span class="input-group-text teal lighten-4">
                   <i class="fal fa-usd-circle fa-2x"></i>
                 </span>
-                  <%= f.text_field :price, id: "itemPrice",
-                                   autofocus: true, autocomplete: "itemPrice",
-                                   class: "form-control protip", placeholder: "Item Price",
-                                   'data-pt-title' => "Item Price (required - enter numbers only)",
-                                   'data-pt-position' => "bottom-left",
-                                   'data-pt-scheme' => "red" %>
-                </div>
+              <%= f.text_field :price, id: "itemPrice",
+                               autofocus: true, autocomplete: "itemPrice",
+                               class: "form-control protip", placeholder: "Item Price",
+                               'data-pt-title' => "Item Price (required - enter numbers only)",
+                               'data-pt-position' => "bottom-left",
+                               'data-pt-scheme' => "red" %>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
+        </div>
+        <div class="row">
+          <div class="md-form form-group input-group">
+            <div class="input-group-prepend">
                   <span class="input-group-text teal lighten-4">
                     <i class="fal fa-map-marker fa-2x "></i>
                   </span>
-                <div class="protip" data-pt-title="Item Size (required)"
-                     data-pt-position="bottom-left"
-                     data-pt-scheme="red">
-                  <select name="item[item_type]" id="mdb-select"
-                          class="mdb-select md-form colorful-select dropdown-primary" >
-                    <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
-                  </select>
-                </div>
+              <div class="protip" data-pt-title="Item Size (required)"
+                   data-pt-position="bottom-left"
+                   data-pt-scheme="red">
+                <select name="item[item_type]" id="mdb-select"
+                        class="mdb-select md-form colorful-select dropdown-primary" >
+                  <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
+                </select>
               </div>
             </div>
           </div>
         </div>
-        <!--- left column --->
+        <div class="row"></div>
       </div>
-      <div class="col">
-        Right
-      </div>
+      <!-- Right column  -->
+      <span class="border border-dark">
+        <div class="col">
+       <!-- Row 1  -->
+          <div class="row">
+            <div class="card border-info mb-3" style="max-width: 20rem;">
+              <div class="card-header">Header</div>
+                <div class="card-body text-info">
+                  <h5 class="card-title">Info Panel title</h5>
+                  <p class="card-text">Some quick example text to build on the panel title and make up the bulk of the panel's content.</p>
+                </div>
+            </div>
+          </div>
+          <div class="row">
+            Another row
+          </div>
+        </div>
+    </span>
+    </div>
 <% end %>
