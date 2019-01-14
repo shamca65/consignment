@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col">
+    <div class="col-md-6">
+      <div class="md-form form-group input-group">
+        <div class="input-group-prepend">
+              <span class="input-group-text teal lighten-4">
+                <i class="fal fa-user fa-2x"></i>
+              </span>
+          <%= f.text_field :description, id: 'itemDescription',
+                           autofocus: true, autocomplete: "itemDescription",
+                           class: "form-control protip", placeholder: "Description",
+                           'data-pt-title' => "Description (required)",
+                           'data-pt-position' => 'bottom-left'
+          %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="md-form form-group input-group">
+        <div class="input-group-prepend">
+                  <span class="input-group-text teal lighten-4">
+                    <i class="fal fa-expand-alt fa-2x"></i>
+                  </span>
+          <div class="protip" data-pt-title="Item Size (required)"
+               data-pt-position="bottom-left"
+               data-pt-scheme="red">
+            <select name="item[size]" id="mdb-select"
+                    class="mdb-select md-form colorful-select dropdown-primary" >
+              <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    Right Column
+  </div>
+</div>

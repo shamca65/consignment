@@ -1,19 +1,20 @@
 <div class="d-lg-flex justify-content-center">
-  <div class="w-75">
-<style>
-  .form-control{
-    font-size: 18px;
-  }
-  .select-wrapper input.select-dropdown {
-    font-size: 1rem;
-    font-family: 'Montserrat', Courier, monospace;
-  }
-  .dropdown-content li > span {
-    font-size: 1.2rem;
-    color: black;
-    display: block;
-    padding: 0.3rem; }
-</style>
+  <div class="w-100">
+    <style>
+      .form-control{
+        font-size: 18px;
+      }
+      .select-wrapper input.select-dropdown {
+        font-size: 1rem;
+        font-family: 'Montserrat', Courier, monospace;
+        padding-left: 10px;
+      }
+      .dropdown-content li > span {
+        font-size: 1rem;
+        color: black;
+        display: block;
+        padding: 0.3rem; }
+    </style>
 <%= form_with id: "itemEditform", model: @item do |f| %>
   <!-- Notifications -->
   <% if @item.errors.any? %>
@@ -24,60 +25,81 @@
   <!-- Extended material form grid -->
   <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
   <!-- row 1  -->
-  <div class="form-row" >
-    <div class="col-md-6">
-      <div class="md-form form-group">
-        <%= f.text_field :description, id: 'itemDescription',
-                         autofocus: true, autocomplete: "itemDescription",
-                         class: "form-control protip", placeholder: "Item Description",
-                         'data-pt-title' => "Item description is a required field"
-        %>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="md-form form-group">
-        <select name="item[size]" id="mdb-select"
-                class="mdb-select md-form colorful-select dropdown-primary"
-                style="font-size: large">
-          <%= options_for_select(Item::ITEM_SIZES.map {|k, v| [v, k]}, selected: item.size) %>
-        </select>
-      </div>
-    </div>
-  </div>
-  <!-- row 2  -->
-  <div class="form-row" >
-    <div class="col-md-6">
-      <div class="md-form form-group input-group">
-        <div class="input-group-prepend">
-        <span class="input-group-text">$ </span>
-        <%= f.number_field :price, id: 'itemPrice',
-                         autofocus: true, autocomplete: "itemPrice",
-                         class: "form-control protip", placeholder: "Item Price",
-                         'data-pt-title' => "Item price is required field" %>
-
+      <div class="form-row" >
+        <!-- left column  -->
+        <div class="col">
+          <!-- left column  -->
+          <div class="col-md-6">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text teal lighten-4">
+                <i class="fal fa-user fa-2x"></i>
+              </span>
+                <%= f.text_field :description, id: 'itemDescription',
+                                 autofocus: true, autocomplete: "itemDescription",
+                                 class: "form-control protip", placeholder: "Description",
+                                 'data-pt-title' => "Description (required)",
+                                 'data-pt-position' => 'bottom-left'
+                %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text teal lighten-4">
+                    <i class="fal fa-expand-alt fa-2x"></i>
+                  </span>
+                  <div class="protip" data-pt-title="Item Size (required)"
+                       data-pt-position="bottom-left"
+                       data-pt-scheme="red">
+                    <select name="item[size]" id="mdb-select"
+                            class="mdb-select md-form colorful-select dropdown-primary" >
+                      <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
+                    </select>
+                  </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <!-- row 2  -->
+        <div class="form-row" >
+          <div class="col-md-6">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text teal lighten-4">
+                  <i class="fal fa-usd-circle fa-2x"></i>
+                </span>
+                  <%= f.text_field :price, id: "itemPrice",
+                                   autofocus: true, autocomplete: "itemPrice",
+                                   class: "form-control protip", placeholder: "Item Price",
+                                   'data-pt-title' => "Item Price (required - enter numbers only)",
+                                   'data-pt-position' => "bottom-left",
+                                   'data-pt-scheme' => "red" %>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text teal lighten-4">
+                    <i class="fal fa-map-marker fa-2x "></i>
+                  </span>
+                <div class="protip" data-pt-title="Item Size (required)"
+                     data-pt-position="bottom-left"
+                     data-pt-scheme="red">
+                  <select name="item[item_type]" id="mdb-select"
+                          class="mdb-select md-form colorful-select dropdown-primary" >
+                    <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--- left column --->
       </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-    <div class="col-md-6">
-      <div class="md-form form-group">
-        Arsenal
+      <div class="col">
+        Right
       </div>
-    </div>
-  </div>
-  <!-- end of form -->
-  <br />
-  <div class="text-center">
-    <button class="btn btn-primary waves-effect" type="submit" >Update Item Record</button>
-  </div>
-
 <% end %>

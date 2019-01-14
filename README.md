@@ -10,6 +10,7 @@ To Do
     * clean up controller specific assets
     * clean up unneeded routes
     * build an array of default options for protips
+    * restrict price entry to numeric only
 
 POS Desk
     * implement Redis/Sidekiq

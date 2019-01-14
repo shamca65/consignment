@@ -19,6 +19,26 @@ class Item < ApplicationRecord
   :xl => 'Extra Large',
   :xx => '2X Large'}
 
+  ITEM_GENDERS = {
+  :man => 'Man\'\s',
+  :woman => 'Woman\'\s',
+  :boy => 'Boy\'\s',
+  :girl => 'Girl\'\s'
+  }
+
+  ITEM_TYPES = {
+      :sht => 'Shirt',
+      :pnt => 'Pants',
+      :sho => 'Shoes',
+      :hat => 'Hat/Cap',
+      :jckt => 'Jacket',
+      :skrt => 'Skirt',
+      :tsht => 'T-Shirt',
+      :blse => 'Blouse',
+      :acc => 'Accessory',
+      :glv => 'Gloves'}
+
+
   def log_create_event
     log_event("Item",self.id,"created")
   end
