@@ -1,2 +1,2 @@
       invoke  active_record
-      create    db/migrate/20190113221715_add_item_type_items.rb
+      create    db/migrate/20190114180446_add_item_status.rb

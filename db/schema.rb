@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_13_221715) do
+ActiveRecord::Schema.define(version: 2019_01_14_181449) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_01_13_221715) do
     t.decimal "paid_client", precision: 10
     t.string "gender", limit: 10
     t.string "item_type", limit: 10
+    t.string "item_status", limit: 10
+    t.decimal "payout_pct", precision: 8, scale: 2
     t.index ["customer_id"], name: "index_items_on_customer_id"
   end
 

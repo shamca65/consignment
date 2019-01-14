@@ -36,8 +36,16 @@ class Item < ApplicationRecord
       :tsht => 'T-Shirt',
       :blse => 'Blouse',
       :acc => 'Accessory',
-      :glv => 'Gloves'}
+      :glv => 'Gloves'
+      }
 
+  ITEM_STATUSES = {
+      :fs => 'For Sale',
+      :sold => 'Sold',
+      :po => 'Paid Out',
+      :mtd => 'Moved To Donations',
+      :rtc => 'Returned to Customer'
+    }
 
   def log_create_event
     log_event("Item",self.id,"created")

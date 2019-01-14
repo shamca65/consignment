@@ -2,15 +2,15 @@
   <div class="w-100">
     <style>
       .form-control{
-        font-size: 18px;
+        font-size: 16px;
       }
       .select-wrapper input.select-dropdown {
-        font-size: 1rem;
+        font-size: 1.4rem;
         font-family: 'Montserrat', Courier, monospace;
         padding-left: 10px;
       }
       .dropdown-content li > span {
-        font-size: 1rem;
+        font-size: 1.6rem;
         color: black;
         display: block;
         padding: 0.3rem; }
@@ -25,7 +25,7 @@
   <!-- Extended material form grid -->
   <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
   <!-- Outside row -->
-    <div class="row ">
+    <div class="row">
       <!-- Left column  -->
       <div class="col-md-6">
         <div class="col">
@@ -55,7 +55,7 @@
                    data-pt-position="bottom-left"
                    data-pt-scheme="red">
                 <select name="item[size]" id="mdb-select"
-                        class="mdb-select md-form colorful-select dropdown-primary" >
+                        class="mdb-select md-form colorful-select dropdown-info" >
                   <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
                 </select>
               </div>
@@ -87,7 +87,7 @@
                      data-pt-position="bottom-left"
                      data-pt-scheme="red">
                   <select name="item[item_type]" id="mdb-select"
-                          class="mdb-select md-form colorful-select dropdown-primary" style=width:200px !important">
+                          class="mdb-select md-form colorful-select dropdown-info" style=width:200px !important">
                     <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
                   </select>
                 </div>
@@ -101,16 +101,35 @@
         <!-- end of left column  -->
       </div>
       <!-- Right column  -->
-      <span class="border border-light col-md-6">
+      <span class="col-md-6">
           <!-- Card 1  -->
-          <div class="row ">
+          <div class="row">
             <div class="card text-center ">
               <div class="card-header">
                 <em>Dates</em>
               </div>
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title">
+                  <div class="row">
+                    <div class="col text-right">
+                        Clerk :
+                    </div>
+                    <div class="col text-left">
+                        <%= item.clerk %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col text-right">
+                        Take In Date :
+                    </div>
+                    <div class="col text-left">
+                        <%= item.takein_date.strftime("%d-%b-%Y") %>
+                    </div>
+                  </div>
+                </h5>
+                <p class="card-text">
+
+                </p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
               <div class="card-footer text-muted">
@@ -142,7 +161,9 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text">
+
+                </p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
               <div class="card-footer text-muted">
