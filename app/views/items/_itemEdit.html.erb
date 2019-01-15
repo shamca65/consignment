@@ -148,7 +148,6 @@
                       <b>Sold On:</b>
                     </div>
                     <div class="col text-left">
-
                         <%= item.sold_date.nil? ? 'Still for sale' : item.sold_date.strftime("%d-%b-%Y") %>
                     </div>
                   </div>
@@ -187,6 +186,10 @@
               </div>
             </div>
           </div>
+          <br />
+        <!-- Card 2  Payouts -->
+        <%= render(:partial => "cards/item_payout_card") if item.item_status == 'so' %>
+
           <br />
           <!-- End of right col  -->
     </span>
