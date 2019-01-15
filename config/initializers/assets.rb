@@ -19,10 +19,15 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 Rails.application.config.assets.paths << Rails.root.join('app','assets','images')
 Rails.application.config.assets.precompile += %w(.svg .eot .woff .ttf)
+
+# material bootstrap
 Rails.application.config.assets.precompile += %w( js/mdb.js )
 Rails.application.config.assets.precompile += %w( css/mdb.css )
 Rails.application.config.assets.precompile += %w( js/datatables.js )
 Rails.application.config.assets.precompile += %w( css/datatables.css )
+# gritter
 Rails.application.config.assets.precompile += %w( js/jquery.gritter.js )
 Rails.application.config.assets.precompile += %w( css/jquery.gritter.css )
+
+
 

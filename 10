@@ -1,2 +1,0 @@
-      invoke  active_record
-      create    db/migrate/20190114180446_add_item_status.rb

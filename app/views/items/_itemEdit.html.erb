@@ -1,3 +1,31 @@
+<style>
+  .picker__frame {
+    margin: 0 auto;
+    min-width: 30rem !important;
+    max-width: 20.3125rem;
+    width: 18.75rem;
+    max-height: 21.875rem;
+  }
+  table td {
+    font-size: 1.4rem;
+    font-weight: 300;
+  }
+  .picker__select--month, .picker__select--year {
+    font-size: 1.2em;
+  }
+  .picker__box .picker__footer .picker__button--today, .picker__box .picker__footer .picker__button--clear, .picker__box .picker__footer .picker__button--close {
+    border: 1px solid #fff;
+    background: #fff;
+    font-size: 1.2em;
+    padding: 1rem 0 0.7rem 0;
+    font-weight: 700;
+    width: 33%;
+    display: inline-block;
+    vertical-align: bottom;
+    text-transform: uppercase;
+  }
+</style>
+
 <div class="d-lg-flex justify-content-center">
   <div class="w-100">
     <style>
@@ -96,6 +124,22 @@
           </div>
           <div class="row">
           <!-- Row 2  -->
+          <div class="row">
+              <div class="md-form form-group input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text teal lighten-4">
+                    <i class="fal fa-user fa-2x"></i>
+                  </span>
+
+                    <%= f.text_field :pickup_date, id: 'itemPickupDate',
+                                     autofocus: true, autocomplete: "itemPickupDate",
+                                     class: "form-control protip datepicker", placeholder: "Pickup Date",
+                                     'data-pt-title' => "Pickup Date (required)",
+                                     'data-pt-position' => 'bottom-left'
+                    %>
+                </div>
+              </div>
+            </div>
         </div>
         </div>
         <!-- end of left column  -->
@@ -152,30 +196,6 @@
                     </div>
                   </div>
                   <br />
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Payout Date:</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.payout_date.nil? ? '-' : item.payout_date.strftime("%d-%b-%Y") %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Payout %:</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.payout_pct.nil? ? '-' : item.payout_pct %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Payout Amount:</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.payout_amount.nil? ? '-' : item.payout_amount %>
-                    </div>
-                  </div>
                 </h5>
                 <p class="card-text">
                 </p>
@@ -187,9 +207,8 @@
             </div>
           </div>
           <br />
-        <!-- Card 2  Payouts -->
-        <%= render(:partial => "cards/item_payout_card") if item.item_status == 'so' %>
-
+          <!-- Card 2  Payouts -->
+          <%= render(:partial => "cards/item_payout_card") if item.item_status == 'so' %>
           <br />
           <!-- End of right col  -->
     </span>

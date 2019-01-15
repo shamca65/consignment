@@ -87,5 +87,10 @@ $(document).ready(function(){
 		autoHide: 2500
 	}
 	});
-
+// Data Picker Initialization
+    $('.datepicker').pickadate({
+        today: '',
+        clear: '',
+        close: ''
+    });
 });
