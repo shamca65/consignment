@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    add_breadcrumb "index", items_path, :title => "Back to the Index"
     @items = Item.all
   end
 

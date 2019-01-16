@@ -41,3 +41,4 @@ gem 'bourbon', '~> 5.1'
 gem "gritter", "1.2.0"
 gem 'jbuilder', '~> 2.8'
 gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
+gem 'breadcrumbs_on_rails', '~> 3.0', '>= 3.0.1'

@@ -27,6 +27,7 @@ class CustomersController < ApplicationController
   # GET /customers.json
   #
   def index
+    add_breadcrumb "Customer List", customers_url
     @customers = Customer.all
   end
 
@@ -43,6 +44,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
+    add_breadcrumb "edit", edit_customer_path
   end
 
   # POST /customers

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :info, :warning, :error, :savedRecord
+  add_breadcrumb "home", :root_path
 
   before_action :authenticate_user!
 
