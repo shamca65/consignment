@@ -10,7 +10,7 @@
             <b>Payout Date:</b>
           </div>
           <div class="col text-left">
-            <%= item.payout_date.nil? ? '-' : item.payout_date.strftime("%d-%b-%Y") %>
+            <%= @item.payout_date.nil? ? '-' : @item.payout_date.strftime("%d-%b-%Y") %>
           </div>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
             <b>Payout %:</b>
           </div>
           <div class="col text-left">
-            <%= item.payout_pct.nil? ? '-' : item.payout_pct %>
+            <%= @item.payout_pct.nil? ? '-' : @item.payout_pct %>
           </div>
         </div>
         <div class="row">
@@ -26,7 +26,7 @@
             <b>Payout Amount:</b>
           </div>
           <div class="col text-left">
-            <%= item.payout_amount.nil? ? '-' : item.payout_amount %>
+            <%= @item.payout_amount.nil? ? '-' : @item.payout_amount %>
           </div>
         </div>
       </h5>
@@ -35,7 +35,7 @@
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
     <div class="card-footer text-muted">
-      <em>Item last updated: <%= item.updated_at.strftime("%d-%b")  %> </em>
+      <em>Item last updated: <%= @item.updated_at.strftime("%d-%b")  %> </em>
     </div>
   </div>
 </div>

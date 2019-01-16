@@ -20,10 +20,11 @@ class Item < ApplicationRecord
   :xx => '2X Large'}
 
   ITEM_GENDERS = {
-  :man => 'Man\'\s',
-  :woman => 'Woman\'\s',
-  :boy => 'Boy\'\s',
-  :girl => 'Girl\'\s'
+  :man => 'Men\'s',
+  :woman => 'Woman\'s',
+  :boy => 'Boy\'s',
+  :girl => 'Girl\'s',
+  :na => 'Not Applicable'
   }
 
   ITEM_TYPES = {

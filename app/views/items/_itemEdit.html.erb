@@ -62,8 +62,8 @@
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text teal lighten-4">
-                  <i class="fal fa-user fa-2x"></i>
-                </span>
+                  <i class="fal fa-poll-h"></i>
+                &nbsp&nbspDescription</span>
               <%= f.text_field :description, id: 'itemDescription', style: "width:350px !important",
                                autofocus: true, autocomplete: "itemDescription",
                                class: "form-control protip", placeholder: "Description",
@@ -77,8 +77,8 @@
             <div class="md-form form-group input-group">
             <div class="input-group-prepend">
                     <span class="input-group-text teal lighten-4">
-                      <i class="fal fa-expand-alt fa-2x"></i>
-                    </span>
+                      <i class="fal fa-expand-alt"></i>
+                    &nbsp&nbspSize</span>
               <div class="protip" data-pt-title="Item Size (required)"
                    data-pt-position="bottom-left"
                    data-pt-scheme="red">
@@ -94,8 +94,8 @@
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
                   <span class="input-group-text teal lighten-4">
-                    <i class="fal fa-usd-circle fa-2x"></i>
-                  </span>
+                    <i class="fal fa-usd-circle"></i>
+                  &nbsp&nbspPrice</span>
                 <%= f.text_field :price, id: "itemPrice",
                                  autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
                                  class: "form-control protip", placeholder: "Item Price",
@@ -109,28 +109,25 @@
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
                     <span class="input-group-text teal lighten-4">
-                      <i class="fal fa-map-marker fa-2x "></i>
-                    </span>
-                <div class="protip" data-pt-title="Item Size (required)"
+                      <i class="fal fa-tshirt"></i>
+                    &nbsp&nbspItem Type</span>
+                <div class="protip" data-pt-title="Item Type (required)"
                      data-pt-position="bottom-left"
                      data-pt-scheme="red">
                   <select name="item[item_type]" id="mdb-select"
-                          class="mdb-select md-form colorful-select dropdown-info" style=width:200px !important">
-                    <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
+                          class="mdb-select md-form colorful-select dropdown-info" style="width:200px !important">
+                      <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
                   </select>
                 </div>
               </div>
             </div>
           </div>
           <div class="row">
-          <!-- Row 2  -->
-          <div class="row">
               <div class="md-form form-group input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text teal lighten-4">
-                    <i class="fal fa-user fa-2x"></i>
-                  </span>
-
+                    <i class="fal fa-calendar-alt"></i>
+                  &nbsp&nbspPickup Date</span>
                     <%= f.text_field :pickup_date, id: 'itemPickupDate',
                                      autofocus: true, autocomplete: "itemPickupDate",
                                      class: "form-control protip datepicker", placeholder: "Pickup Date",
@@ -140,6 +137,39 @@
                 </div>
               </div>
             </div>
+          <div class="row">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+                    <span class="input-group-text teal lighten-4">
+                      <i class="fal fa-male"></i>
+                    &nbsp&nbspGender</span>
+                        <div class="protip" data-pt-title="Gender (required)"
+                           data-pt-position="bottom-left"
+                           data-pt-scheme="red">
+                        <select name="item[gender]" id="mdb-select"
+                            class="mdb-select md-form colorful-select dropdown-info" >
+                      <%= options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}, selected: item.gender) %>
+                    </select>
+                        </div>
+              </div>
+              </div>
+            </div>
+            <br />
+          <div class="form-row" >
+            <div class="col-md-12 text-center">
+              <div class="form-group red-border well shadow-textarea">
+                <div class="protip" data-pt-title="Item Notes"
+                     data-pt-position="top-left"
+                     data-pt-scheme="aqua">
+                  <label for="itemNotes">Item Notes</label>
+                  <%= f.text_area :notes, class: 'form-control', id: 'itemNotes',
+                                  cols: "10", rows: "3", placeholder: "Enter Item notes" %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
         </div>
         </div>
         <!-- end of left column  -->
@@ -147,68 +177,10 @@
       <!-- Right column  -->
       <span class="col-md-6">
           <!-- Card 1  -->
-          <div class="row">
-            <div class="card text-center w-100">
-              <div class="card-header">
-                <em>Dates</em>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Clerk:</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.clerk %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Take In Date:</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.takein_date.strftime("%d-%b-%Y") %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Customer:</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.customer.full_name %>
-                    </div>
-                  </div>
-                  <br />
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Pickup Date</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.pickup_date.strftime("%d-%b-%Y") %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col text-right">
-                      <b>Sold On:</b>
-                    </div>
-                    <div class="col text-left">
-                        <%= item.sold_date.nil? ? 'Still for sale' : item.sold_date.strftime("%d-%b-%Y") %>
-                    </div>
-                  </div>
-                  <br />
-                </h5>
-                <p class="card-text">
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-              <div class="card-footer text-muted">
-                <em>Item last updated: <%= item.updated_at.strftime("%d-%b")  %> </em>
-              </div>
-            </div>
-          </div>
+        <%= render 'items/cards/dates', locals: {item: @item} %>
           <br />
           <!-- Card 2  Payouts -->
-          <%= render(:partial => "cards/item_payout_card") if item.item_status == 'so' %>
+          <%= render  "items/cards/payouts", locals: {item: @item} %>
           <br />
           <!-- End of right col  -->
     </span>
