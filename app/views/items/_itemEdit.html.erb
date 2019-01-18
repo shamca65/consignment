@@ -37,6 +37,7 @@
     color: black;
     display: block;
     padding: 0.3rem; }
+
 </style>
 
 <div class="d-lg-flex justify-content-center">
@@ -61,13 +62,14 @@
                 <span class="input-group-text teal lighten-4">
                   <i class="fal fa-poll-h"></i>&nbsp&nbspDescription
                 </span>
+              </div>
                 <%= f.text_field :description, id: 'itemDescription', style: "width:350px !important",
                                  autofocus: true, autocomplete: "itemDescription",
                                  class: "form-control protip", placeholder: "Description",
                                  'data-pt-title' => "Description (required)",
                                  'data-pt-position' => 'bottom-left'
                 %>
-              </div>
+
             </div>
             <!-- End of Row 1-->
           </div>
@@ -78,6 +80,7 @@
                 <span class="input-group-text teal lighten-4">
                       <i class="fal fa-expand-alt"></i>&nbsp&nbspSize
                 </span>
+              </div>
                 <div class="protip" data-pt-title="Item Size (required)"
                    data-pt-position="bottom-left"
                    data-pt-scheme="red">
@@ -86,7 +89,7 @@
                       <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
                    </select>
                 </div>
-             </div>
+
             </div>
           </div>
 
