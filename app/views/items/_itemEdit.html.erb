@@ -24,72 +24,72 @@
     vertical-align: bottom;
     text-transform: uppercase;
   }
+  .form-control{
+    font-size: 16px;
+  }
+  .select-wrapper input.select-dropdown {
+    font-size: 1.2rem;
+    font-family: 'Montserrat', Courier, monospace;
+    padding-left: 10px;
+  }
+  .dropdown-content li > span {
+    font-size: 1.4rem;
+    color: black;
+    display: block;
+    padding: 0.3rem; }
 </style>
 
 <div class="d-lg-flex justify-content-center">
   <div class="w-100">
-    <style>
-      .form-control{
-        font-size: 16px;
-      }
-      .select-wrapper input.select-dropdown {
-        font-size: 1.2rem;
-        font-family: 'Montserrat', Courier, monospace;
-        padding-left: 10px;
-      }
-      .dropdown-content li > span {
-        font-size: 1.4rem;
-        color: black;
-        display: block;
-        padding: 0.3rem; }
-    </style>
-<%= form_with id: "itemEditform", model: @item do |f| %>
-  <!-- Notifications -->
-  <% if @item.errors.any? %>
-    <% @item.errors.full_messages.each do |e| %>
-      <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false) %>
-    <% end %>
-  <% end %>
-  <!-- Extended material form grid -->
-  <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
-  <!-- Outside row -->
-    <div class="row">
-      <!-- Left column  -->
+    <%= form_with id: "itemEditform", model: @item do |f| %>
+      <!-- Notifications -->
+      <% if @item.errors.any? %>
+        <% @item.errors.full_messages.each do |e| %>
+          <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false) %>
+        <% end %>
+      <% end %>
+      <!-- Outside row -->
+      <div class="row">
+      <!-- Main Row  -->
       <div class="col-md-6">
+        <!-- md-6 column left -->
         <div class="col">
-          <!-- Row 1-->
+          <!-- Main col left-->
           <div class="row">
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text teal lighten-4">
-                  <i class="fal fa-poll-h"></i>
-                &nbsp&nbspDescription</span>
-              <%= f.text_field :description, id: 'itemDescription', style: "width:350px !important",
-                               autofocus: true, autocomplete: "itemDescription",
-                               class: "form-control protip", placeholder: "Description",
-                               'data-pt-title' => "Description (required)",
-                               'data-pt-position' => 'bottom-left'
-              %>
-            </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-                    <span class="input-group-text teal lighten-4">
-                      <i class="fal fa-expand-alt"></i>
-                    &nbsp&nbspSize</span>
-              <div class="protip" data-pt-title="Item Size (required)"
-                   data-pt-position="bottom-left"
-                   data-pt-scheme="red">
-                <select name="item[size]" id="mdb-select"
-                        class="mdb-select md-form colorful-select dropdown-info" >
-                  <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
-                </select>
+                  <i class="fal fa-poll-h"></i>&nbsp&nbspDescription
+                </span>
+                <%= f.text_field :description, id: 'itemDescription', style: "width:350px !important",
+                                 autofocus: true, autocomplete: "itemDescription",
+                                 class: "form-control protip", placeholder: "Description",
+                                 'data-pt-title' => "Description (required)",
+                                 'data-pt-position' => 'bottom-left'
+                %>
               </div>
             </div>
+            <!-- End of Row 1-->
+          </div>
+
+          <div class="row">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text teal lighten-4">
+                      <i class="fal fa-expand-alt"></i>&nbsp&nbspSize
+                </span>
+                <div class="protip" data-pt-title="Item Size (required)"
+                   data-pt-position="bottom-left"
+                   data-pt-scheme="red">
+                  <select name="item[size]" id="mdb-select"
+                        class="mdb-select md-form colorful-select dropdown-info" >
+                      <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
+                   </select>
+                </div>
+             </div>
             </div>
           </div>
+
           <div class="row">
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
@@ -105,29 +105,32 @@
               </div>
             </div>
           </div>
+
           <div class="row">
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
-                    <span class="input-group-text teal lighten-4">
+                  <span class="input-group-text teal lighten-4">
                       <i class="fal fa-tshirt"></i>
                     &nbsp&nbspItem Type</span>
                 <div class="protip" data-pt-title="Item Type (required)"
-                     data-pt-position="bottom-left"
-                     data-pt-scheme="red">
-                  <select name="item[item_type]" id="mdb-select"
-                          class="mdb-select md-form colorful-select dropdown-info" style="width:200px !important">
-                      <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
-                  </select>
-                </div>
+                           data-pt-position="bottom-left"
+                           data-pt-scheme="red">
+                              <select name="item[item_type]" id="mdb-select"
+                                      class="mdb-select md-form colorful-select dropdown-info" style="width:200px !important">
+                                  <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
+                              </select>
+                      </div>
               </div>
             </div>
           </div>
+          <!-- End of item type  -->
+
           <div class="row">
-              <div class="md-form form-group input-group">
+            <div class="md-form form-group input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text teal lighten-4">
                     <i class="fal fa-calendar-alt"></i>
-                  &nbsp&nbspPickup Date</span>
+                      &nbsp&nbspPickup Date</span>
                     <%= f.text_field :pickup_date, id: 'itemPickupDate',
                                      autofocus: true, autocomplete: "itemPickupDate",
                                      class: "form-control protip datepicker", placeholder: "Pickup Date",
@@ -136,17 +139,18 @@
                     %>
                 </div>
               </div>
-            </div>
+          </div>
+
           <div class="row">
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
-                    <span class="input-group-text teal lighten-4">
+                 <span class="input-group-text teal lighten-4">
                       <i class="fal fa-male"></i>
                     &nbsp&nbspGender</span>
-                        <div class="protip" data-pt-title="Gender (required)"
+                    <div class="protip" data-pt-title="Gender (required)"
                            data-pt-position="bottom-left"
                            data-pt-scheme="red">
-                        <select name="item[gender]" id="mdb-select"
+                          <select name="item[gender]" id="mdb-select"
                             class="mdb-select md-form colorful-select dropdown-info" >
                       <%= options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}, selected: item.gender) %>
                     </select>
@@ -154,8 +158,8 @@
               </div>
               </div>
             </div>
-            <br />
-          <div class="form-row" >
+
+          <div class="row" >
             <div class="col-md-12 text-center">
               <div class="form-group red-border well shadow-textarea">
                 <div class="protip" data-pt-title="Item Notes"
@@ -164,17 +168,16 @@
                   <label for="itemNotes">Item Notes</label>
                   <%= f.text_area :notes, class: 'form-control', id: 'itemNotes',
                                   cols: "10", rows: "3", placeholder: "Enter Item notes" %>
-
                 </div>
               </div>
             </div>
           </div>
-          </div>
+          <!-- Row 1-->
         </div>
-        </div>
-        <!-- end of left column  -->
+        <!-- End of main left column  -->
       </div>
-      <!-- Right column  -->
+
+      <!-- md-6 column right -->
       <span class="col-md-6">
           <!-- Card 1  -->
         <%= render 'items/cards/dates', locals: {item: @item} %>
@@ -184,6 +187,15 @@
           <br />
           <!-- End of right col  -->
     </span>
-      <!-- End of Row  -->
+
+      <!-- End of Outside Row  -->
     </div>
-<% end %>
+
+      <div class="text-center">
+        <button class="btn btn-primary waves-effect " type="submit" >Update Item Record</button>
+      </div>
+
+    <% end %>
+    <!-- w-100 row -->
+  </div>
+</div>
