@@ -99,34 +99,34 @@
                   <span class="input-group-text teal lighten-4">
                     <i class="fal fa-usd-circle"></i>
                   &nbsp&nbspPrice</span>
+              </div>
                 <%= f.text_field :price, id: "itemPrice",
                                  autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
                                  class: "form-control protip", placeholder: "Item Price",
                                  'data-pt-title' => "Item Price (required - enter numbers only)",
                                  'data-pt-position' => "bottom-left",
                                  'data-pt-scheme' => "red" %>
-              </div>
+
             </div>
           </div>
 
           <div class="row">
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
-                  <span class="input-group-text teal lighten-4">
-                      <i class="fal fa-tshirt"></i>
-                    &nbsp&nbspItem Type</span>
-                <div class="protip" data-pt-title="Item Type (required)"
-                           data-pt-position="bottom-left"
-                           data-pt-scheme="red">
-                              <select name="item[item_type]" id="mdb-select"
-                                      class="mdb-select md-form colorful-select dropdown-info" style="width:200px !important">
-                                  <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
-                              </select>
-                      </div>
+                <span class="input-group-text teal lighten-4">
+                    <i class="fal fa-tshirt"></i>
+                  &nbsp&nbspItem Type</span>
               </div>
+                <div class="protip" data-pt-title="Item Type (required)"
+                     data-pt-position="bottom-left"
+                     data-pt-scheme="red">
+                        <select name="item[item_type]" id="mdb-select"
+                                class="mdb-select md-form colorful-select dropdown-info" style="width:200px !important">
+                            <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
+                        </select>
+                </div>
             </div>
           </div>
-          <!-- End of item type  -->
 
           <div class="row">
             <div class="md-form form-group input-group">
@@ -134,14 +134,14 @@
                   <span class="input-group-text teal lighten-4">
                     <i class="fal fa-calendar-alt"></i>
                       &nbsp&nbspPickup Date</span>
-                    <%= f.text_field :pickup_date, id: 'itemPickupDate',
+                </div>
+                  <%= f.text_field :pickup_date, id: 'itemPickupDate',
                                      autofocus: true, autocomplete: "itemPickupDate",
                                      class: "form-control protip datepicker", placeholder: "Pickup Date",
                                      'data-pt-title' => "Pickup Date (required)",
                                      'data-pt-position' => 'bottom-left'
-                    %>
-                </div>
-              </div>
+                  %>
+            </div>
           </div>
 
           <div class="row">
@@ -153,14 +153,14 @@
                     <div class="protip" data-pt-title="Gender (required)"
                            data-pt-position="bottom-left"
                            data-pt-scheme="red">
-                          <select name="item[gender]" id="mdb-select"
-                            class="mdb-select md-form colorful-select dropdown-info" >
-                      <%= options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}, selected: item.gender) %>
-                    </select>
-                        </div>
-              </div>
+                      <select name="item[gender]" id="mdb-select"
+                        class="mdb-select md-form colorful-select dropdown-info" >
+                        <%= options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}, selected: item.gender) %>
+                      </select>
+                    </div>
               </div>
             </div>
+          </div>
 
           <div class="row" >
             <div class="col-md-12 text-center">
