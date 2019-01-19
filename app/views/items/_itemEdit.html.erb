@@ -10,9 +10,11 @@
     font-size: 1.4rem;
     font-weight: 300;
   }
+
   .picker__select--month, .picker__select--year {
     font-size: 1.2em;
   }
+
   .picker__box .picker__footer .picker__button--today, .picker__box .picker__footer .picker__button--clear, .picker__box .picker__footer .picker__button--close {
     border: 1px solid #fff;
     background: #fff;
@@ -25,8 +27,10 @@
     text-transform: uppercase;
   }
   .form-control{
+    margin-top: 1.1rem !important;
+    margin-bottom: 1rem !important;
     font-size: 16px;
-    width: 70px;
+    width: 50px;
   }
   .select-wrapper input.select-dropdown {
     font-size: 1.2rem;
@@ -38,6 +42,11 @@
     color: black;
     display: block;
     padding: 0.3rem; }
+
+  .md-form {
+    margin-top: 1.1rem !important;
+    margin-bottom: 1rem !important;
+  }
 
 </style>
 
@@ -53,15 +62,17 @@
       <!-- Outside row -->
       <div class="row">
 
-      <!-- Main column split  -->
+      <!-- Main column split left -->
         <div class="col-md-8">
 
         <!-- md-6 column left -->
           <div class="col">
 
           <!-- Main col left-->
-          <!-- Gender -->
+
           <div class="row">
+
+            <!-- Gender -->
             <div class="col-lg-6">
               <div class="md-form form-group input-group">
                 <div class="input-group-prepend">
@@ -77,10 +88,12 @@
                     <%= options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}, selected: item.gender) %>
                   </select>
                 </div>
+              </div>
             </div>
-            </div>
+
+            <!-- Item Type -->
             <div class="col-lg-6">
-              <!-- Item Type -->
+
               <div class="md-form form-group input-group">
                 <div class="input-group-prepend">
                 <span class="input-group-text teal lighten-4">
@@ -97,9 +110,12 @@
                 </div>
               </div>
             </div>
+
+            <!-- end row -->
           </div>
 
           <div class="row">
+
             <!-- size -->
             <div class="col-lg-6">
               <div class="md-form form-group input-group">
@@ -120,8 +136,9 @@
               </div>
               <!-- sub column left -->
             </div>
+
+            <!-- Price -->
             <div class="col-lg-6">
-              <!-- Price -->
               <div class="md-form form-group input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text teal lighten-4">
@@ -138,21 +155,14 @@
               </div>
               <!-- end sub column right -->
             </div>
+
             <!-- end dual dropdown row -->
-          </div>
-
-          <!-- Size -->
-          <div class="row">
-
-          </div>
-
-          <div class="row">
-
           </div>
 
           <!-- Description -->
           <div class="row">
-            <div class="md-form form-group input-group">
+            <div class="col-12-md">
+              <div class="md-form form-group input-group">
               <div class="input-group-prepend">
                 <span class="input-group-text teal lighten-4">
                   <i class="fal fa-poll-h"></i>&nbsp&nbspDescription
@@ -166,38 +176,6 @@
                 %>
 
             </div>
-            <!-- End of Row 1-->
-          </div>
-
-          <!-- Pickup Date -->
-          <div class="row">
-            <div class="md-form form-group input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text teal lighten-4">
-                    <i class="fal fa-calendar-alt"></i>
-                      &nbsp&nbspPickup Date</span>
-                </div>
-                  <%= f.text_field :pickup_date, id: 'itemPickupDate',
-                                     autofocus: true, autocomplete: "itemPickupDate",
-                                     class: "form-control protip datepicker", placeholder: "Pickup Date",
-                                     'data-pt-title' => "Pickup Date (required)",
-                                     'data-pt-position' => 'top-right'
-                  %>
-            </div>
-          </div>
-
-          <!-- Notes -->
-          <div class="row" >
-            <div class="col-md-12 text-center">
-              <div class="form-group red-border well shadow-textarea">
-                <div class="protip" data-pt-title="Item Notes"
-                     data-pt-position="top-left"
-                     data-pt-scheme="aqua">
-                  <label for="itemNotes">Private Notes</label>
-                  <%= f.text_area :notes, class: 'form-control', id: 'itemNotes',
-                                  cols: "10", rows: "3", placeholder: "Enter Item notes" %>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -206,18 +184,19 @@
         <!-- End of main left column  -->
         </div>
 
-      <!-- md-4 main split column right -->
+      <!-- main column split right -->
         <span class="col-md-4">
+
           <!-- Card 1  -->
-        <%= render 'items/cards/dates', locals: {item: @item} %>
-        <br />
-          <!-- Card 2  Payouts -->
-        <%= render  "items/cards/payouts", locals: {item: @item} %>
-        <br />
+          <%= render 'items/cards/dates', locals: {item: @item} %>
+          <br />
+            <!-- Card 2  Payouts -->
+          <%= render  "items/cards/payouts", locals: {item: @item} %>
+          <br />
           <!-- End of right col  -->
        </span>
 
-      <!-- End of main  Row  -->
+      <!-- End of outside row  -->
     </div>
 
     <div class="text-center">
