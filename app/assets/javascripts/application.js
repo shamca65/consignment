@@ -93,4 +93,8 @@ $(document).ready(function(){
         clear: '',
         close: ''
     });
+	// Extend the default picker options for all instances.
+	$.extend($.fn.pickadate.defaults, {
+		formatSubmit: 'yyyy-mm-dd'
+	})
 });

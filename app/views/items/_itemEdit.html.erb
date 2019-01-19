@@ -26,6 +26,7 @@
   }
   .form-control{
     font-size: 16px;
+    width: 70px;
   }
   .select-wrapper input.select-dropdown {
     font-size: 1.2rem;
@@ -56,6 +57,96 @@
         <!-- md-6 column left -->
         <div class="col">
           <!-- Main col left-->
+          <!-- Gender -->
+          <div class="row">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+                 <span class="input-group-text teal lighten-4">
+                      <i class="fal fa-male"></i>
+                    &nbsp&nbspGender</span>
+                <div class="protip" data-pt-title="Gender (required)"
+                     data-pt-position="top-right"
+                     data-pt-scheme="red">
+                  <select name="item[gender]" id="mdb-select"
+                          class="mdb-select md-form colorful-select dropdown-info" >
+                    <%= options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}, selected: item.gender) %>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item Type -->
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="md-form form-group input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text teal lighten-4">
+                    <i class="fal fa-tshirt"></i>
+                  &nbsp&nbspItem Type</span>
+              </div>
+                <div class="protip" data-pt-title="Item Type (required)"
+                   data-pt-position="top-right"
+                   data-pt-scheme="red">
+                  <select name="item[item_type]" id="mdb-select"
+                        class="mdb-select md-form colorful-select dropdown-info" >
+                    <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
+                  </select>
+                </div>
+              </div>
+              <!-- sub column left -->
+            </div>
+            <div class="col-lg-6">
+              <div class="md-form form-group input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text teal lighten-4">
+                      <i class="fal fa-expand-alt"></i>&nbsp&nbspSize
+                </span>
+                </div>
+                <div class="protip" data-pt-title="Item Size (required)"
+                     data-pt-position="top-right"
+                     data-pt-scheme="red">
+                  <select name="item[size]" id="mdb-select"
+                          class="mdb-select md-form colorful-select dropdown-info" >
+                    <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
+                  </select>
+                </div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+              <!-- sub column right -->
+            </div>
+            <!-- end dual dropdown row -->
+          </div>
+          <!-- Size -->
+          <div class="row">
+
+          </div>
+          <!-- Price -->
+          <div class="row">
+            <div class="md-form form-group input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text teal lighten-4">
+                    <i class="fal fa-usd-circle"></i>
+                  &nbsp&nbspPrice</span>
+              </div>
+              <%= f.text_field :price, id: "itemPrice",
+                               autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
+                               class: "form-control protip", placeholder: "Item Price",
+                               'data-pt-title' => "Item Price (required - enter numbers only)",
+                               'data-pt-position' => "top-right",
+                               'data-pt-scheme' => "red" %>
+
+            </div>
+          </div>
+          <!-- Description -->
           <div class="row">
             <div class="md-form form-group input-group">
               <div class="input-group-prepend">
@@ -67,67 +158,14 @@
                                  autofocus: true, autocomplete: "itemDescription",
                                  class: "form-control protip", placeholder: "Description",
                                  'data-pt-title' => "Description (required)",
-                                 'data-pt-position' => 'bottom-left'
+                                 'data-pt-position' => 'top-right'
                 %>
 
             </div>
             <!-- End of Row 1-->
           </div>
 
-          <div class="row">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text teal lighten-4">
-                      <i class="fal fa-expand-alt"></i>&nbsp&nbspSize
-                </span>
-              </div>
-                <div class="protip" data-pt-title="Item Size (required)"
-                   data-pt-position="bottom-left"
-                   data-pt-scheme="red">
-                  <select name="item[size]" id="mdb-select"
-                        class="mdb-select md-form colorful-select dropdown-info" >
-                      <%= options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size) %>
-                   </select>
-                </div>
-
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
-                  <span class="input-group-text teal lighten-4">
-                    <i class="fal fa-usd-circle"></i>
-                  &nbsp&nbspPrice</span>
-              </div>
-                <%= f.text_field :price, id: "itemPrice",
-                                 autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
-                                 class: "form-control protip", placeholder: "Item Price",
-                                 'data-pt-title' => "Item Price (required - enter numbers only)",
-                                 'data-pt-position' => "bottom-left",
-                                 'data-pt-scheme' => "red" %>
-
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text teal lighten-4">
-                    <i class="fal fa-tshirt"></i>
-                  &nbsp&nbspItem Type</span>
-              </div>
-                <div class="protip" data-pt-title="Item Type (required)"
-                     data-pt-position="bottom-left"
-                     data-pt-scheme="red">
-                        <select name="item[item_type]" id="mdb-select"
-                                class="mdb-select md-form colorful-select dropdown-info" style="width:200px !important">
-                            <%= options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type) %>
-                        </select>
-                </div>
-            </div>
-          </div>
-
+          <!-- Pickup Date -->
           <div class="row">
             <div class="md-form form-group input-group">
                 <div class="input-group-prepend">
@@ -139,36 +177,19 @@
                                      autofocus: true, autocomplete: "itemPickupDate",
                                      class: "form-control protip datepicker", placeholder: "Pickup Date",
                                      'data-pt-title' => "Pickup Date (required)",
-                                     'data-pt-position' => 'bottom-left'
+                                     'data-pt-position' => 'top-right'
                   %>
             </div>
           </div>
 
-          <div class="row">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
-                 <span class="input-group-text teal lighten-4">
-                      <i class="fal fa-male"></i>
-                    &nbsp&nbspGender</span>
-                    <div class="protip" data-pt-title="Gender (required)"
-                           data-pt-position="bottom-left"
-                           data-pt-scheme="red">
-                      <select name="item[gender]" id="mdb-select"
-                        class="mdb-select md-form colorful-select dropdown-info" >
-                        <%= options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}, selected: item.gender) %>
-                      </select>
-                    </div>
-              </div>
-            </div>
-          </div>
-
+          <!-- Notes -->
           <div class="row" >
             <div class="col-md-12 text-center">
               <div class="form-group red-border well shadow-textarea">
                 <div class="protip" data-pt-title="Item Notes"
                      data-pt-position="top-left"
                      data-pt-scheme="aqua">
-                  <label for="itemNotes">Item Notes</label>
+                  <label for="itemNotes">Private Notes</label>
                   <%= f.text_area :notes, class: 'form-control', id: 'itemNotes',
                                   cols: "10", rows: "3", placeholder: "Enter Item notes" %>
                 </div>
