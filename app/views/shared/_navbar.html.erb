@@ -1,21 +1,16 @@
-<style>
-  .btn {
-      padding: 0.7rem 1.6rem;
-      font-size: 1.2rem !important;
-  }
-</style>
+
 <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-dark ">
-    <li class="navbar-brand text-lg-left">Acta Diurna</li>
+    <li class="navbar-brand ">Acta Diurna</li>
     <% if controller_name != 'sessions' %>
     <div class="collapse navbar-collapse mx-auto " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item btn btn-outline-primary btn-md <%= active?(root_path) %>">
-          <a class="nav-link text-lg-center" href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
+        <li class="nav-item btn btn-outline-primary  <%= active?(root_path) %>">
+          <a class="nav-link " href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item btn btn-outline-secondary btn-md <%= active?(customers_path) %>">
+        <li class="nav-item btn btn-outline-secondary <%= active?(customers_path) %>">
           <a class="nav-link " href="<%= customers_path %>">Customers</a>
         </li>
-        <li class="nav-item btn btn-outline-info btn-md <%= active?(items_path) %>">
+        <li class="nav-item btn btn-outline-info <%= active?(items_path) %>">
           <a class="nav-link " href="<%= items_path %>">Items</a>
         </li>
       </ul>
