@@ -2,13 +2,19 @@
 #
 Rails.application.routes.draw do
 
+  resources :configs
   resources :photos
   devise_for :users, controllers: {sessions: 'users/sessions'}
 
   root to: 'static#index'
 
   resources :event_logs
-  resources :items
+
+  resources :items do
+  	collection do
+  		get 'pickups' => 'item#pickups', as: :pickups
+		end
+	end
 
   resources :customers do
     collection do
@@ -26,7 +32,5 @@ Rails.application.routes.draw do
     resources :customers
     resources :items
   end
-
-  get 'find_customer' => 'static#find_customer', as: :find_customer
 
 end

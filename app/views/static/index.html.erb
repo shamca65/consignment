@@ -1,41 +1,56 @@
 <% content_for :title, "Take In Station" %>
-
 <div class="card-deck">
-  <div class="card border-primary mb-3">
-    <div class="card-body">
+  <div class="row">
 
-      <%= link_to new_customer_path do %>
-         <h3 class="card-title">Add New Customer</h3>
-         <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-      <%end %>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card border-danger mb-3">
-    <div class="card-body">
-
-      <%= link_to customers_path do %>
-        <h3 class="card-title">Customer Search</h3>
-        <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-      <%end %>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-
-  <div class="card border-dark mb-3">
-    <div class="card-body">
-
-      <%= link_to items_path do %>
-        <h3 class="card-title">Items</h3>
-            <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+    <div class="card border-primary mb-3">
+      <div class="card-body">
+        <%= link_to new_customer_path do %>
+           <h3 class="card-title">Add New Customer</h3>
+           <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
         <%end %>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
     </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
+
+    <div class="card border-danger mb-3">
+      <div class="card-body">
+        <%= link_to customers_path do %>
+          <h3 class="card-title">Customer Search</h3>
+          <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+        <%end %>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+
+    <div class="card border-dark mb-3">
+      <div class="card-body">
+        <%= link_to items_path do %>
+          <h3 class="card-title">Items</h3>
+              <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+          <%end %>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
     </div>
   </div>
-</div>
+
+  <div class="row">
+    <div class="card border-dark mb-3">
+      <div class="card-body">
+        <%= link_to pickups_items_path do %>
+          <h3 class="card-title">Manage Pickups</h3>
+          <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+        <%end %>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Current Pickup Date is : 2019-09-09</small>
+      </div>
+    </div>
+  </div>
+
+  </div>
