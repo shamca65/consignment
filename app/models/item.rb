@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   after_destroy :log_destroy_event
 
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
-  scope :pickup_items, -> ('2019-09-09')(where("pickup_date" <=, pickup_date))
+  scope :pickup_items, -> {where("pickup_date <= ?", '2019-12-31')}
 
   ITEM_SIZES = {
   :na => 'Not Applicable',
@@ -18,7 +18,7 @@ class Item < ApplicationRecord
   :md => 'Medium',
   :lg => 'Large',
   :xl => 'Extra Large',
-  :xx => '2X Large'}.freeze
+  :xx => '2X Large'}
 
   ITEM_GENDERS = {
   :man => 'Men\'s',
@@ -26,7 +26,7 @@ class Item < ApplicationRecord
   :boy => 'Boy\'s',
   :girl => 'Girl\'s',
   :na => 'Not Applicable'
-  }.freeze
+  }
 
   ITEM_TYPES = {
       :sht => 'Shirt',
@@ -39,7 +39,7 @@ class Item < ApplicationRecord
       :blse => 'Blouse',
       :acc => 'Accessory',
       :glv => 'Gloves'
-      }.freeze
+      }
 
   ITEM_STATUSES = {
       :fs => 'For Sale',
@@ -47,7 +47,7 @@ class Item < ApplicationRecord
       :po => 'Paid Out',
       :mtd => 'Moved To Donations',
       :rtc => 'Returned to Customer'
-    }.freeze
+    }
 
   def log_create_event
     log_event("Item",self.id,"created")

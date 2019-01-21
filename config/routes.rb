@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :items do
   	collection do
-  		get 'pickups' => 'item#pickups', as: :pickups
+  		get 'pickups' => 'items#pickups', as: :pickups
 		end
 	end
 
