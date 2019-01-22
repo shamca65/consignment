@@ -28,9 +28,6 @@ Rails.application.config.assets.precompile += %w( css/datatables.css )
 # gritter
 Rails.application.config.assets.precompile += %w( js/jquery.gritter.js )
 Rails.application.config.assets.precompile += %w( css/jquery.gritter.css )
-# dual select
-Rails.application.config.assets.precompile += %w( js/picklist.js )
-Rails.application.config.assets.precompile += %w( css/picklist.css )
-
-
-
+# dual list box
+Rails.application.config.assets.precompile += %w( js/jquery.bootstrap-duallistbox.js )
+Rails.application.config.assets.precompile += %w( css/bootstrap-duallistbox.css )

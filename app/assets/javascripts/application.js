@@ -17,7 +17,12 @@
 //= require protip.min
 //= require js/mdb
 //= require js/all
-//= require js/picklist
+//= require js/jqxcore
+//= require js/jqxbuttons
+//= require js/jqxscrollbar
+//= require js/jqxlistbox
+//= require js/jqxdragdrop
+//= require js/jqxdata
 //= require activestorage
 //= require_tree .
 

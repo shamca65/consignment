@@ -5,6 +5,10 @@ class ItemsController < ApplicationController
 
 	def pickups
 		@pickupItems = Item.pickup_items
+		respond_to do |format|
+			format.html { render :pickups }
+			format.json {render :json => indexJSON}
+		end
 	end
   # GET /items
   # GET /items.json
@@ -79,5 +83,13 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:size, :description, :price, :customer_id,
                                    :item_type, :pickup_date, :gender, :notes
       )
-    end
+		end
+	def indexJSON
+
+		return @pickupItems.as_json(
+				only: [
+						:id,
+						:description
+				])
+	end
 end
