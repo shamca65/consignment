@@ -89,7 +89,9 @@ class ItemsController < ApplicationController
 		return @pickupItems.as_json(
 				only: [
 						:id,
-						:description
+						:description,
+						:size,
+						:gender
 				])
 	end
 end

@@ -20,7 +20,10 @@
 //= require js/jqxcore
 //= require js/jqxbuttons
 //= require js/jqxscrollbar
-//= require js/jqxlistbox
+//= require js/jqxgrid
+//= require js/jqxmenu
+//= require js/jqxgrid.selection
+//= require js/jqxgrid.columnsresize
 //= require js/jqxdragdrop
 //= require js/jqxdata
 //= require activestorage

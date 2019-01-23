@@ -1,41 +1,57 @@
-<div id='content'>
+
   <script type="text/javascript">
 	  $(document).ready(function () {
-		  var url = "/items/pickups/";
+
+		var url = "/items/pickups";
+
 		  // prepare the data
 		  var source =
 			  {
 				  datatype: "json",
 				  datafields: [
-					  { name: 'id' },
-					  { name: 'description' }
+			      { name: 'id', type: 'integer' },
+					  { name: 'description', type: 'string' },
+					  { name: 'size', type: 'string' },
+					  { name: 'gender', type: 'string' }
 				  ],
 				  id: 'id',
 				  url: url
 			  };
 		  var dataAdapter = new $.jqx.dataAdapter(source);
 
-		  // Create a jqxListBox
-		  $("#jqxWidget").jqxListBox({ source: dataAdapter, displayMember: "id", valueMember: "description", width: 200, height: 250});
-		  $("#jqxWidget").on('select', function (event) {
-			  if (event.args) {
-				  var item = event.args.item;
-				  if (item) {
-					  var valueelement = $("<div></div>");
-					  valueelement.text("Value: " + item.value);
-					  var labelelement = $("<div></div>");
-					  labelelement.text("Label: " + item.label);
+		  $("#pickupItems").jqxGrid(
+			  {
+				  width: 475,
+				  source: dataAdapter,
+				  columnsresize: true,
+				  columns: [
+			      { text: 'Item ID', datafield: 'id', width: 75 },
+					  { text: 'Description', datafield: 'description', width: 250 },
+					  { text: 'Size', datafield: 'size', width: 50 },
+					  { text: 'Gender', datafield: 'gender', width: 75 }
+				  ]
+			  });
 
-					  $("#selectionlog").children().remove();
-					  $("#selectionlog").append(labelelement);
-					  $("#selectionlog").append(valueelement);
-				  }
-			  }
-		  });
+    // update the edited row when the user clicks the 'Save' button.
+        $("#mybutton").click(function () {
+          alert('hey there');
+        });
+
+
+
 	  });
   </script>
-  <div id='jqxWidget'>
-  </div>
-    <div style="font-size: 13px; font-family: Verdana;" id="selectionlog">
-  </div>
+
+<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
+  <div id="pickupItems"></div>
+</div>
+<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
+  <div id="storeStock"></div>
+</div>
+
+<div>
+  <FORM>
+    <INPUT TYPE=BUTTON NAME="button" VALUE="Window" id="mybutton">
+  </FORM>
+
 </div>
