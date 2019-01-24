@@ -44,21 +44,22 @@
             $("#jqxgrid").jqxGrid('unselectrow', event.args.rowindex);
           }
         });
+
         $("#mybutton").jqxButton({
           theme: 'energyblue',
-          width: 300,
+          width: 200,
           height: 30
         });
 
+
         $('#mybutton').click(function () {
           // get row ID.
-          var rowID = $('#jqxgrid').jqxGrid('getrowid', 0);
+          //var rowID = $('#jqxgrid').jqxGrid('getrowid', 0);
           // get row Data by ID.
-          var data = $('#jqxgrid').jqxGrid('getrowdatabyid', rowID);
-          alert(data.id + " " + data.description+ " " + data.size+ " " + data.gender);
+          //var data = $('#jqxgrid').jqxGrid('getrowdatabyid', rowID);
+          var rowindexes = $('#jqxgrid').jqxGrid('getselectedrowindexes');
+          alert("row indexes : " + rowindexes);
         });
-
-
 
 	  });
   </script>
