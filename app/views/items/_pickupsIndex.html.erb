@@ -1,65 +1,87 @@
 
-  <script type="text/javascript">
-	  $(document).ready(function () {
+<script type="text/javascript">
+	$(document).ready(function () {
 
-		var url = "/items/pickups";
+  var url = "/items/pickups";
+  var selectedItems = 0;
 
-		  // prepare the data
-		  var source =
-			  {
-				  datatype: "json",
-				  datafields: [
-			      { name: 'id', type: 'integer' },
-			      { name: 'chk', type: 'string' },
-					  { name: 'description', type: 'string' },
-					  { name: 'size', type: 'string' },
-					  { name: 'gender', type: 'string' }
-				  ],
-				  id: 'id',
-				  url: url
-			  };
-		  var dataAdapter = new $.jqx.dataAdapter(source);
 
-		  $("#jqxgrid").jqxGrid(
-			  {
-				  width: 500,
-				  source: dataAdapter,
-				  editable: true,
-			    selectionmode: 'none',
-				  columns: [
-			      { text: ' ', datafield: 'chk', columntype: 'checkbox', width: 40 },
-			      { text: 'Item ID', datafield: 'id', width: 75 },
-					  { text: 'Description', datafield: 'description', width: 250 },
-					  { text: 'Size', datafield: 'size', width: 50 },
-					  { text: 'Gender', datafield: 'gender', width: 75 }
-				  ]
-			  });
+	  $('#jqxgrid').on('bindingcomplete', function (event) {
+		  setState();
+	  });
+
+    var source =
+      {
+        datatype: "json",
+        datafields: [
+          { name: 'id', type: 'integer' },
+          { name: 'chk', type: 'string' },
+          { name: 'description', type: 'string' },
+          { name: 'size', type: 'string' },
+          { name: 'gender', type: 'string' }
+        ],
+        id: 'id',
+        url: url
+      };
+
+    var dataAdapter = new $.jqx.dataAdapter(source);
+
+    $("#jqxgrid").jqxGrid(
+      {
+        width: 500,
+        source: dataAdapter,
+        editable: true,
+        selectionmode: 'none',
+        columns: [
+          { text: ' ', datafield: 'chk', columntype: 'checkbox', width: 40 },
+          { text: 'Item ID', datafield: 'id', width: 75 },
+          { text: 'Description', datafield: 'description', width: 250 },
+          { text: 'Size', datafield: 'size', width: 50 },
+          { text: 'Gender', datafield: 'gender', width: 75 }
+        ]
+      });
 
 // select or unselect rows when the checkbox is checked or unchecked.
-        $("#jqxgrid").bind('cellendedit', function (event) {
-          if (event.args.value) {
-            $("#jqxgrid").jqxGrid('selectrow', event.args.rowindex);
-          }
-          else {
-            $("#jqxgrid").jqxGrid('unselectrow', event.args.rowindex);
-          }
-        });
+      $("#jqxgrid").bind('cellendedit', function (event) {
+        if (event.args.value) {
+          $("#jqxgrid").jqxGrid('selectrow', event.args.rowindex);
+          selectedItems++;
+        }
+        else {
+          $("#jqxgrid").jqxGrid('unselectrow', event.args.rowindex);
+          selectedItems--;
+        }
+        setState();
+      });
 
-        $("#mybutton").jqxButton({
-          theme: 'energyblue',
-          width: 200,
-          height: 30
-        });
+      var setState = function () {
+        var isValid = (selectedItems > 0);
+        if (isValid) {
+          $("#mybutton").jqxButton({ disabled: false});
+        }
+        else {
+          $("#mybutton").jqxButton({ disabled: true });
+        }
+      };
 
 
-        $('#mybutton').click(function () {
-          // get row ID.
-          //var rowID = $('#jqxgrid').jqxGrid('getrowid', 0);
-          // get row Data by ID.
-          //var data = $('#jqxgrid').jqxGrid('getrowdatabyid', rowID);
-          var rowindexes = $('#jqxgrid').jqxGrid('getselectedrowindexes');
-          alert("row indexes : " + rowindexes);
-        });
+      $("#mybutton").jqxButton({
+        theme: 'energyblue',
+        width: 200,
+        height: 30
+      });
+
+
+      $('#mybutton').click(function () {
+
+        // get row ID.
+        //var rowID = $('#jqxgrid').jqxGrid('getrowid', 0);
+        // get row Data by ID.
+        //var data = $('#jqxgrid').jqxGrid('getrowdatabyid', rowID);
+
+        var rowindexes = $('#jqxgrid').jqxGrid('getselectedrowindexes');
+        alert("selected : " + selectedItems);
+      });
 
 	  });
   </script>
