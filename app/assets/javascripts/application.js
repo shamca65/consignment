@@ -24,8 +24,10 @@
 //= require js/jqxmenu
 //= require js/jqxgrid.selection
 //= require js/jqxgrid.columnsresize
+//= require js/jqxgrid.edit
 //= require js/jqxdragdrop
 //= require js/jqxdata
+//= require js/jqxcheckbox
 //= require activestorage
 //= require_tree .
 

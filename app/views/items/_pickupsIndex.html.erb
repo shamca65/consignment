@@ -10,6 +10,7 @@
 				  datatype: "json",
 				  datafields: [
 			      { name: 'id', type: 'integer' },
+			      { name: 'chk', type: 'string' },
 					  { name: 'description', type: 'string' },
 					  { name: 'size', type: 'string' },
 					  { name: 'gender', type: 'string' }
@@ -19,12 +20,14 @@
 			  };
 		  var dataAdapter = new $.jqx.dataAdapter(source);
 
-		  $("#pickupItems").jqxGrid(
+		  $("#jqxgrid").jqxGrid(
 			  {
-				  width: 475,
+				  width: 500,
 				  source: dataAdapter,
-				  columnsresize: true,
+				  editable: true,
+			    selectionmode: 'none',
 				  columns: [
+			      { text: ' ', datafield: 'chk', columntype: 'checkbox', width: 40 },
 			      { text: 'Item ID', datafield: 'id', width: 75 },
 					  { text: 'Description', datafield: 'description', width: 250 },
 					  { text: 'Size', datafield: 'size', width: 50 },
@@ -32,9 +35,27 @@
 				  ]
 			  });
 
-    // update the edited row when the user clicks the 'Save' button.
-        $("#mybutton").click(function () {
-          alert('hey there');
+// select or unselect rows when the checkbox is checked or unchecked.
+        $("#jqxgrid").bind('cellendedit', function (event) {
+          if (event.args.value) {
+            $("#jqxgrid").jqxGrid('selectrow', event.args.rowindex);
+          }
+          else {
+            $("#jqxgrid").jqxGrid('unselectrow', event.args.rowindex);
+          }
+        });
+        $("#mybutton").jqxButton({
+          theme: 'energyblue',
+          width: 300,
+          height: 30
+        });
+
+        $('#mybutton').click(function () {
+          // get row ID.
+          var rowID = $('#jqxgrid').jqxGrid('getrowid', 0);
+          // get row Data by ID.
+          var data = $('#jqxgrid').jqxGrid('getrowdatabyid', rowID);
+          alert(data.id + " " + data.description+ " " + data.size+ " " + data.gender);
         });
 
 
@@ -43,10 +64,7 @@
   </script>
 
 <div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
-  <div id="pickupItems"></div>
-</div>
-<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
-  <div id="storeStock"></div>
+  <div id="jqxgrid"></div>
 </div>
 
 <div>
