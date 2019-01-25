@@ -3,56 +3,52 @@
 
     var url = "/items/pickups";
     var selectedItems = 0;
+    var leftGrid = $('#jqxgrid');
 
-      $('#jqxgrid').on('bindingcomplete', function (event) {
-        setBtnState();
-      });
+	  var removeSelectedRows = function () {
+		  var ROWINDEXES = leftGrid.jqxGrid('getselectedrowindexes');
 
-      var source = {
-          datatype: "json",
-          datafields: [
-            { name: 'id', type: 'integer' },
-            { name: 'chk', type: 'string' },
-            { name: 'description', type: 'string' },
-            { name: 'size', type: 'string' },
-            { name: 'gender', type: 'string' }
-          ],
-          id: 'id',
-          url: url
-        };
+		  //leftGrid.jqxGrid('deleterow', ROWINDEXES);
+		  leftGrid.jqxGrid('clearselection');
 
-      var dataAdapter = new $.jqx.dataAdapter(source);
+	  };
 
-      $("#jqxgrid").jqxGrid({
-        width: 500,
-        source: dataAdapter,
-        editable: true,
-        selectionmode: 'none',
-        columns: [
-          { text: ' ', datafield: 'chk', columntype: 'checkbox', width: 40 },
-          { text: 'Item ID', datafield: 'id', width: 75 },
-          { text: 'Description', datafield: 'description', width: 250 },
-          { text: 'Size', datafield: 'size', width: 50 },
-          { text: 'Gender', datafield: 'gender', width: 75 }
-        ]
-      });
+	  leftGrid.on('bindingcomplete', function (event) {
+      setBtnState();
+      console.log('binding complete');
+    });
 
-      $("#jqxgrid2").jqxGrid({
-          width: 500,
-          source:
-          editable: true,
-          selectionmode: 'none',
-          columns: [
-            { text: ' ', datafield: 'chk', columntype: 'checkbox', width: 40 },
-            { text: 'Item ID', datafield: 'id', width: 75 },
-            { text: 'Description', datafield: 'description', width: 250 },
-            { text: 'Size', datafield: 'size', width: 50 },
-            { text: 'Gender', datafield: 'gender', width: 75 }
-          ]
-        });
+    var source = {
+        datatype: "json",
+        datafields: [
+          { name: 'id', type: 'integer' },
+          { name: 'chk', type: 'string' },
+          { name: 'description', type: 'string' },
+          { name: 'size', type: 'string' },
+          { name: 'gender', type: 'string' }
+        ],
+        id: 'id',
+        url: url
+      };
 
-  // select or unselect rows when the checkbox is checked or unchecked.
-    $("#jqxgrid").bind('cellendedit', function (event) {
+    var dataAdapter = new $.jqx.dataAdapter(source);
+
+	  leftGrid.jqxGrid({
+      width: 500,
+      source: dataAdapter,
+      editable: true,
+      selectionmode: 'checkbox',
+      columns: [
+        { text: 'Item ID', datafield: 'id', width: 75, editable: false },
+        { text: 'Description', datafield: 'description', width: 250, editable: false },
+        { text: 'Size', datafield: 'size', width: 50, editable: false },
+        { text: 'Gender', datafield: 'gender', width: 75, editable: false }
+      ]
+    });
+
+    // select or unselect rows when the checkbox is checked or unchecked.
+	  leftGrid.bind('checkbox', function (event) {
+
       if (event.args.value) {
         $("#jqxgrid").jqxGrid('selectrow', event.args.rowindex);
         selectedItems++;
@@ -80,44 +76,19 @@
       height: 30
     });
 
-      $('#mybutton').click(function () {
-      // get row ID.
-      //var rowID = $('#jqxgrid').jqxGrid('getrowid', 0);
-      // get row Data by ID.
-      //var data = $('#jqxgrid').jqxGrid('getrowdatabyid', rowID);
+    $('#mybutton').click(function () {
 
-      var ROWINDEXES = $('#jqxgrid').jqxGrid('getselectedrowindexes');
-      //if there are selected items, loop through them and remove from the grid
-      // ROWINDEX references the control's record id (not an Item Record)
-
-      for (let i = 0; i < ROWINDEXES.length; i++) {
-        console.log(ROWINDEXES[i]);
-        // Remove this entries
-		    // @param row id. Use the 'getrowid' method to get the id of a row.
-		    $('#jqxGrid').jqxGrid('deleterow', ROWINDEXES);
-
-      }
-
+      removeSelectedRows();
     });
 
 	});
-  </script>
+</script>
 
-<div class="row">
-    <div class="col-md-12">
-      <div class="col-md-6">
-          <div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;"></div>
-          <div id="jqxgrid"></div>
-        </div>
-
-      <div class="col-md-6">
-          <div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;"></div>
-          <div id="jqxgrid2"></div>
-        </div>
-      <div>
-      <FORM>
-        <INPUT TYPE=BUTTON NAME="button" VALUE="Window" id="mybutton">
-      </FORM>
-    </div>
-    </div>
+<div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
+  <div id="jqxgrid"></div>
 </div>
+
+<FORM>
+  <INPUT TYPE=BUTTON NAME="button" VALUE="Window" id="mybutton">
+</FORM>
+

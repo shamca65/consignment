@@ -70,14 +70,15 @@ ActiveRecord::Schema.define(version: 2019_01_24_152652) do
     t.string "item_type", limit: 10
     t.string "item_status", limit: 10
     t.decimal "payout_pct", precision: 8, scale: 2
-    t.string "owner", limit: 15
     t.string "chk", limit: 5
+    t.string "owner", limit: 15
     t.index ["customer_id"], name: "index_items_on_customer_id"
   end
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "updated_date"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
