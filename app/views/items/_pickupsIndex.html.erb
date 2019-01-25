@@ -2,19 +2,15 @@
 	$(document).ready(function () {
 
     var url = "/items/pickups";
-    var selectedItems = 0;
     var leftGrid = $('#jqxgrid');
 
 	  var removeSelectedRows = function () {
 		  var ROWINDEXES = leftGrid.jqxGrid('getselectedrowindexes');
-
-		  //leftGrid.jqxGrid('deleterow', ROWINDEXES);
-		  leftGrid.jqxGrid('clearselection');
-
+		  console.log(ROWINDEXES)
+		  leftGrid.jqxGrid('deleterow', ROWINDEXES);
 	  };
 
 	  leftGrid.on('bindingcomplete', function (event) {
-      setBtnState();
       console.log('binding complete');
     });
 
@@ -35,34 +31,22 @@
 
 	  leftGrid.jqxGrid({
       width: 500,
+		  theme: 'energyblue',
       source: dataAdapter,
       editable: true,
-      selectionmode: 'checkbox',
+		  selectionmode: 'checkbox',
+		  altrows: true,
+        ready: function ()
+        {
+          // called when the Grid is loaded. Call methods or set properties here.
+        },
+
       columns: [
         { text: 'Item ID', datafield: 'id', width: 75, editable: false },
         { text: 'Description', datafield: 'description', width: 250, editable: false },
         { text: 'Size', datafield: 'size', width: 50, editable: false },
         { text: 'Gender', datafield: 'gender', width: 75, editable: false }
       ]
-    });
-
-	 leftGrid.on('rowselect', function (event)
-	  {
-		  var args = event.args;
-		  alert(event.args.);
-	  });
-    // select or unselect rows when the checkbox is checked or unchecked.
-	  leftGrid.bind('cellselect', function (event) {
-      console.log(event);
-      if (event.args.value) {
-        $("#jqxgrid").jqxGrid('selectrow', event.args.rowindex);
-        selectedItems++;
-      }
-      else {
-        $("#jqxgrid").jqxGrid('unselectrow', event.args.rowindex);
-        selectedItems--;
-      }
-      setBtnState();
     });
 
     var setBtnState = function () {
@@ -82,7 +66,6 @@
     });
 
     $('#mybutton').click(function () {
-
       removeSelectedRows();
     });
 
