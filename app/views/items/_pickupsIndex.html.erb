@@ -46,9 +46,14 @@
       ]
     });
 
+	 leftGrid.on('rowselect', function (event)
+	  {
+		  var args = event.args;
+		  alert(event.args.);
+	  });
     // select or unselect rows when the checkbox is checked or unchecked.
-	  leftGrid.bind('checkbox', function (event) {
-
+	  leftGrid.bind('cellselect', function (event) {
+      console.log(event);
       if (event.args.value) {
         $("#jqxgrid").jqxGrid('selectrow', event.args.rowindex);
         selectedItems++;
