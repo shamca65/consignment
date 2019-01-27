@@ -9,23 +9,42 @@
     var url = "/items/pickups";
     var leftGrid = $('#jqxgrid');
     var rightGrid = $('#jqxgridRight');
+	  var rightData = new Array();
+	  var description = ["Big pants", "Little pants", "No pants"];
+	  var size = ["xs", "sm", "md"];
+	  var gender = ["Woman", "Boy", "Girl"];
+	  var id = ["2", "1", "3"];
+
+	  for (var i = 0; i < 20; i++) {
+		  var row = {};
+		  row["id"] = id[Math.floor(Math.random() * id.length)];
+		  row["description"] = description[Math.floor(Math.random() * description.length)];
+		  row["size"] = size[Math.floor(Math.random() * size.length)];
+		  row["gender"] = gender[Math.floor(Math.random() * gender.length)];
+		  rightData[i] = row;
+	  }
 
     var moveItemsToStoreStock = function() {
+		  var selectedRows = new Array();
       // get selected rows
 		  var ROWINDEXES = leftGrid.jqxGrid('getselectedrowindexes');
-		  var row = getRowData(ROWINDEXES);
-		  //var value = rightGrid.jqxGrid('addrow', null, row);
+		  var selectedRows = getRowData(ROWINDEXES);
+		  var value = rightGrid.jqxGrid('addrow', null, selectedRows);
+		  alert('selectedRows : ' + selectedRows.length);
     };
 
     var getRowData = function(rowIndexes) {
-      var rows = new Array();
+      /* loop through selected rows, get their index numbers
+        and data, then push the dataRow onto the rows array
+       */
+      var selectedRows = new Array();
 
       for (var i = 0; i < rowIndexes.length; i++) {
 		    var rowID = $('#jqxgrid').jqxGrid('getrowid', rowIndexes[i]);
 		    var datarow = generateRow(rowID);
-		    //alert('datarow: ' + datarow["id"]);
-        rows.push(datarow);
+        selectedRows.push(datarow);
       }
+      return selectedRows;
 	  };
 
 		var generateRow = function (rowID) {
@@ -42,7 +61,6 @@
 
 	  var removeSelectedRows = function () {
 		  var ROWINDEXES = leftGrid.jqxGrid('getselectedrowindexes');
-		  alert('rowindexes : ' + ROWINDEXES);
 		  leftGrid.jqxGrid('deleterow', ROWINDEXES);
 		  leftGrid.jqxGrid('clearselection');
 	  };
@@ -73,7 +91,6 @@
         {
 			    console.log('left grid is ready');
         },
-
       columns: [
         { text: 'Item ID', datafield: 'id', width: 75, editable: false },
         { text: 'Description', datafield: 'description', width: 250, editable: false },
@@ -82,23 +99,7 @@
       ]
     });
 
-	  var rightData = new Array();
-
-	  var description = ["Big pants", "Little pants", "No pants"];
-	  var size = ["xs", "sm", "md"];
-	  var gender = ["Woman", "Boy", "Girl"];
-	  var id = ["2", "1", "3"];
-
-	  for (var i = 0; i < 200; i++) {
-		  var row = {};
-		  row["id"] = id[Math.floor(Math.random() * id.length)];
-		  row["description"] = description[Math.floor(Math.random() * description.length)];
-		  row["size"] = size[Math.floor(Math.random() * size.length)];
-		  row["gender"] = gender[Math.floor(Math.random() * gender.length)];
-		  rightData[i] = row;
-	  }
-	  var rightSource =
-		  {
+	  var rightSource = {
 			  localdata: rightData,
 			  datatype: "array",
 			  datafields:
@@ -109,6 +110,7 @@
 					  { name: 'gender', type: 'number' }
 				  ]
 		  };
+
 	  var rightDataAdapter = new $.jqx.dataAdapter(rightSource);
 
 	  rightGrid.jqxGrid({
@@ -149,7 +151,7 @@
 
     $('#mybutton').click(function () {
 		  moveItemsToStoreStock();
-      //removeSelectedRows();
+      removeSelectedRows();
     });
 
 	});
