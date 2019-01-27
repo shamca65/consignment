@@ -28,11 +28,13 @@
     var moveItemsToStoreStock = function() {
 		  var selectedRows = new Array();
       // get selected rows
-		  var ROWINDEXES = leftGrid.jqxGrid('getselectedrowindexes');
+		  var rowIdvals = leftGrid.jqxGrid('getselectedrowindexes');
 		  // retrieve the data
-		  var selectedRows = getRowData(ROWINDEXES);
+		  var selectedRowData = getRowData(rowIdvals);
 		  // add to right grid
-		  var value = rightGrid.jqxGrid('addrow', null, selectedRows);
+		  var value = rightGrid.jqxGrid('addrow', null, selectedRowData);
+		  //remove selected items from left grid
+		  removeSelectedRows(rowIdvals);
     };
 
     var getRowData = function(rowIndexes) {
@@ -42,7 +44,7 @@
       var selectedRows = new Array();
 
       for (var i = 0; i < rowIndexes.length; i++) {
-		    var rowID = $('#jqxgrid').jqxGrid('getrowid', rowIndexes[i]);
+		    var rowID = leftGrid.jqxGrid('getrowid', rowIndexes[i]);
 		    var datarow = generateRow(rowID);
         selectedRows.push(datarow);
       }
@@ -61,32 +63,22 @@
 			return row;
 		};
 
+	  var removeSelectedRows = function (rowIdvals) {
+	  	var numRows = rowIdvals.length;
+      var rowIDs = new Array();
 
-	  $("#deleterowbutton").on('click', function () {
-		  var selectedrowindexes = $("#jqxgrid").jqxGrid('getselectedrowindexes');
-		  var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
-
-		  if (selectedrowindex >= 0 && selectedrowindex < rowscount) {
-			  var id = $("#jqxgrid").jqxGrid('getrowid', selectedrowindex);
-		  }
-	  });
-
-	  var removeSelectedRows = function () {
-		  var rowIndexes = leftGrid.jqxGrid('getselectedrowindexes');
-		  alert('rowIndexes.length : ' + rowIndexes.length);
-      for (var i = 0; i < rowIndexes.length; i++) {
-        alert("i : " + i);
-        //var rowID = leftGrid.jqxGrid('getrowid', rowIndexes[i]);
-        //alert('rowID : ' + rowID + "  rowIndexes : " + rowIndexes[i]);
-        //leftGrid.jqxGrid('deleterow', rowID);
-      }
+		 for (var i = 0; i < numRows; i++) {
+		  rowID = leftGrid.jqxGrid('getrowid', rowIdvals[i]);
+		  //alert('i: ' + i + " rowIdvals: " + rowIdvals[i] + ' rowID: ' + rowID);
+		  rowIDs.push(rowID);
+     }
+		  leftGrid.jqxGrid('deleterow', rowIDs);
 	  };
 
     var JSONsource = {
         datatype: "json",
         datafields: [
-          { name: 'id', type: 'integer' },
-          { name: 'chk', type: 'string' },
+          { name: 'id', type: 'number' },
           { name: 'description', type: 'string' },
           { name: 'size', type: 'string' },
           { name: 'gender', type: 'string' }
@@ -121,7 +113,7 @@
 			  datatype: "array",
 			  datafields:
 				  [
-					  { name: 'id', type: 'string' },
+					  { name: 'id', type: 'number' },
 					  { name: 'description', type: 'string' },
 					  { name: 'size', type: 'string' },
 					  { name: 'gender', type: 'number' }
