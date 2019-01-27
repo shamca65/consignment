@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   after_destroy :log_destroy_event
 
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
-  scope :pickup_items, -> {where("pickup_date <= ?", '2019-12-31')}
+  scope :pickup_items, -> {where("pickup_date <= ? and owner != 'store'", '2019-12-31')}
 
   ITEM_SIZES = {
   :na => 'Not Applicable',

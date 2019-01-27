@@ -15,7 +15,8 @@
 	  var gender = ["Woman", "Boy", "Girl"];
 	  var id = ["2", "1", "3"];
 
-	  for (var i = 0; i < 20; i++) {
+    // load test data for right grid
+	  for (var i = 0; i < 3; i++) {
 		  var row = {};
 		  row["id"] = id[Math.floor(Math.random() * id.length)];
 		  row["description"] = description[Math.floor(Math.random() * description.length)];
@@ -28,9 +29,10 @@
 		  var selectedRows = new Array();
       // get selected rows
 		  var ROWINDEXES = leftGrid.jqxGrid('getselectedrowindexes');
+		  // retrieve the data
 		  var selectedRows = getRowData(ROWINDEXES);
+		  // add to right grid
 		  var value = rightGrid.jqxGrid('addrow', null, selectedRows);
-		  alert('selectedRows : ' + selectedRows.length);
     };
 
     var getRowData = function(rowIndexes) {
@@ -59,10 +61,25 @@
 			return row;
 		};
 
+
+	  $("#deleterowbutton").on('click', function () {
+		  var selectedrowindexes = $("#jqxgrid").jqxGrid('getselectedrowindexes');
+		  var rowscount = $("#jqxgrid").jqxGrid('getdatainformation').rowscount;
+
+		  if (selectedrowindex >= 0 && selectedrowindex < rowscount) {
+			  var id = $("#jqxgrid").jqxGrid('getrowid', selectedrowindex);
+		  }
+	  });
+
 	  var removeSelectedRows = function () {
-		  var ROWINDEXES = leftGrid.jqxGrid('getselectedrowindexes');
-		  leftGrid.jqxGrid('deleterow', ROWINDEXES);
-		  leftGrid.jqxGrid('clearselection');
+		  var rowIndexes = leftGrid.jqxGrid('getselectedrowindexes');
+		  alert('rowIndexes.length : ' + rowIndexes.length);
+      for (var i = 0; i < rowIndexes.length; i++) {
+        alert("i : " + i);
+        //var rowID = leftGrid.jqxGrid('getrowid', rowIndexes[i]);
+        //alert('rowID : ' + rowID + "  rowIndexes : " + rowIndexes[i]);
+        //leftGrid.jqxGrid('deleterow', rowID);
+      }
 	  };
 
     var JSONsource = {
@@ -143,38 +160,44 @@
       }
     };
 
-    $("#mybutton").jqxButton({
+    $("#btnMoveItems").jqxButton({
       theme: 'jqx-fresh',
       width: 200,
       height: 40
     });
 
-    $('#mybutton').click(function () {
+    $('#btnMoveItems').click(function () {
 		  moveItemsToStoreStock();
       removeSelectedRows();
     });
 
 	});
 </script>
-<div class="col-md-12">
-  <div class="col-md-5">
-    <div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
-      <div id="jqxgrid"></div>
-    </div>
-  </div>
-  <div class="col-md-2">
-    <div id='space' style="font-size: 14px; font-family: Verdana; float: left;">
-      <div id="space"></div>
-    </div>
-  </div>
-  <div class="col-md-5">
-    <div id='jqxWidgetRight' style="font-size: 14px; font-family: Verdana; float: left;">
-      <div id="jqxgridRight"></div>
-    </div>
-  </div>
 
-<FORM>
-  <INPUT TYPE=BUTTON NAME="button" VALUE="Window" id="mybutton">
-</FORM>
-
+<div class="row">
+  <div class="col-md-12">
+    <div class="col-md-5">
+      <div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
+        <div id="jqxgrid"></div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div id='space' style="font-size: 14px; font-family: Verdana; float: left;">
+        <div id="space"></div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div id='jqxWidgetRight' style="font-size: 14px; font-family: Verdana; float: left;">
+        <div id="jqxgridRight"></div>
+      </div>
+    </div>
+  </div>
+  <br/>
+  <div class="row border border-light">
+    <div class="col-md-12">
+    <FORM>
+      <INPUT TYPE=BUTTON NAME="button" class="btn btn-md btn-outline-primary" VALUE="Move Items >>" id="btnMoveItems">
+    </FORM>
+  </div>
+  </div>
 </div>
