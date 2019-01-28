@@ -25,35 +25,38 @@
 		  rightData[i] = row;
 	  }
 
-    var moveItemsToStoreStock = function() {
+    var moveItems = function(grid) {
 		  var selectedRows = new Array();
       // get selected rows
-		  var rowIdvals = leftGrid.jqxGrid('getselectedrowindexes');
-		  // retrieve the data
-		  var selectedRowData = getRowData(rowIdvals);
-		  // add to right grid
-		  var value = rightGrid.jqxGrid('addrow', null, selectedRowData);
+		  var rowIdvals = grid.jqxGrid('getselectedrowindexes');
+		  // retrieve the cell data
+		  var selectedRowData = getRowData(rowIdvals, grid);
+		  // duplicate each selected row to the other grid
+		  to_grid = ((grid == leftGrid) ? rightGrid : leftGrid);
+        {
+          var value = to_grid.jqxGrid('addrow', null, selectedRowData);
+        }
 		  //remove selected items from left grid
-		  removeSelectedRows(rowIdvals);
+		  removeSelectedRows(rowIdvals, grid);
     };
 
-    var getRowData = function(rowIndexes) {
+    var getRowData = function(rowIndexes,grid) {
       /* loop through selected rows, get their index numbers
         and data, then push the dataRow onto the rows array
        */
       var selectedRows = new Array();
 
       for (var i = 0; i < rowIndexes.length; i++) {
-		    var rowID = leftGrid.jqxGrid('getrowid', rowIndexes[i]);
-		    var datarow = generateRow(rowID);
+		    var rowID = grid.jqxGrid('getrowid', rowIndexes[i]);
+		    var datarow = generateRow(rowID, grid);
         selectedRows.push(datarow);
       }
       return selectedRows;
 	  };
 
-		var generateRow = function (rowID) {
+		var generateRow = function (rowID,grid) {
 			// get row Data by ID.
-			var data = leftGrid.jqxGrid('getrowdatabyid', rowID);
+			var data = grid.jqxGrid('getrowdatabyid', rowID);
 			//alert(data.id + " " + data.description + " " + data.size);
 			var row = {};
 			row["id"] = data.id;
@@ -63,16 +66,15 @@
 			return row;
 		};
 
-	  var removeSelectedRows = function (rowIdvals) {
+	  var removeSelectedRows = function (rowIdvals,grid) {
 	  	var numRows = rowIdvals.length;
       var rowIDs = new Array();
 
 		 for (var i = 0; i < numRows; i++) {
-		  rowID = leftGrid.jqxGrid('getrowid', rowIdvals[i]);
-		  //alert('i: ' + i + " rowIdvals: " + rowIdvals[i] + ' rowID: ' + rowID);
+		  rowID = grid.jqxGrid('getrowid', rowIdvals[i]);
 		  rowIDs.push(rowID);
      }
-		  leftGrid.jqxGrid('deleterow', rowIDs);
+		  grid.jqxGrid('deleterow', rowIDs);
 	  };
 
     var JSONsource = {
@@ -152,16 +154,27 @@
       }
     };
 
-    $("#btnMoveItems").jqxButton({
+    $("#btnMoveToRight").jqxButton({
       theme: 'jqx-fresh',
       width: 200,
       height: 40
     });
 
-    $('#btnMoveItems').click(function () {
-		  moveItemsToStoreStock();
-      removeSelectedRows();
+    $('#btnMoveToRight').click(function () {
+		  moveItems(leftGrid);
+      //removeSelectedRows();
     });
+
+	  $("#btnMoveToLeft").jqxButton({
+		  theme: 'jqx-fresh',
+		  width: 200,
+		  height: 40
+	  });
+
+	  $('#btnMoveToLeft').click(function () {
+		  moveItems(rightGrid);
+		  //removeSelectedRows();
+	  });
 
 	});
 </script>
@@ -172,6 +185,9 @@
       <div id='jqxWidget' style="font-size: 14px; font-family: Verdana; float: left;">
         <div id="jqxgrid"></div>
       </div>
+        <FORM>
+          <INPUT TYPE=BUTTON NAME="button" class="btn btn-md btn-outline-primary" VALUE="Move Items >>" id="btnMoveToRight">
+        </FORM>
     </div>
     <div class="col-md-2">
       <div id='space' style="font-size: 14px; font-family: Verdana; float: left;">
@@ -183,13 +199,15 @@
         <div id="jqxgridRight"></div>
       </div>
     </div>
+    <FORM>
+      <INPUT TYPE=BUTTON NAME="button" class="btn btn-md btn-outline-primary" VALUE="<<< Move Items" id="btnMoveToLeft">
+    </FORM>
   </div>
   <br/>
   <div class="row border border-light">
     <div class="col-md-12">
-    <FORM>
-      <INPUT TYPE=BUTTON NAME="button" class="btn btn-md btn-outline-primary" VALUE="Move Items >>" id="btnMoveItems">
-    </FORM>
+
+
   </div>
   </div>
 </div>
