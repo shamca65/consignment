@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
 		respond_to do |format|
 			format.json {render :json => @pickupMoveIDs, :status => 200}
 		end
-		pp @pickupMoveIDs
+		puts @pickupMoveIds.
 	end
   # GET /items
   # GET /items.json
