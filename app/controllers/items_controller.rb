@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+	require 'json'
+	skip_before_action :verify_authenticity_token
   include EventLogger
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
@@ -9,6 +11,14 @@ class ItemsController < ApplicationController
 			format.html { render :pickups }
 			format.json {render :json => indexJSON}
 		end
+	end
+
+	def updatepickups
+		@pickupMoveIDs = nil
+		respond_to do |format|
+			format.json {render :json => @pickupMoveIDs, :status => 200}
+		end
+		pp @pickupMoveIDs
 	end
   # GET /items
   # GET /items.json
@@ -84,8 +94,14 @@ class ItemsController < ApplicationController
                                    :item_type, :pickup_date, :gender, :notes
       )
 		end
-	def indexJSON
 
+	def getIDsFromJSON
+
+		#out=JSON.parse(data)
+		#flash[:notice] = 'json data : ' + out
+	end
+
+	def indexJSON
 		return @pickupItems.as_json(
 				only: [
 						:id,

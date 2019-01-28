@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   after_update :log_update_event
   after_destroy :log_destroy_event
 
+# TODO - need dynamic pickup data
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
   scope :pickup_items, -> {where("pickup_date <= ? and owner != 'store'", '2019-12-31')}
 

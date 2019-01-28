@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :items do
   	collection do
   		get 'pickups' => 'items#pickups', as: :pickups
+			post 'updatepickups' => 'items#updatepickups', as: :updatepickups
 		end
 	end
 
