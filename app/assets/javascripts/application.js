@@ -28,6 +28,8 @@
 //= require js/jqxdragdrop
 //= require js/jqxdata
 //= require js/jqxcheckbox
+//= require js/jqxdata.export
+//= require js/jqxgrid.export
 //= require activestorage
 //= require_tree .
 
