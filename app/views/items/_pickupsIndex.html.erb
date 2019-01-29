@@ -28,7 +28,6 @@
 
 	  // Sending and receiving data in JSON format using POST method
       var commitChanges = function() {
-
         var jsonGridData = rightGrid.jqxGrid('exportdata', 'json');
         var xhr = new XMLHttpRequest();
         xhr.open("POST", postURL, true);

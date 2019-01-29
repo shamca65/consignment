@@ -5,6 +5,8 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
+
+
 	def pickups
 		@pickupItems = Item.pickup_items
 		respond_to do |format|
@@ -14,12 +16,26 @@ class ItemsController < ApplicationController
 	end
 
 	def updatepickups
+		json_root = '_json'
+		json_id_field = 'Item No.'
+		pickup_ids = []
+
 		@pickupMoveIDs = nil
 		respond_to do |format|
 			format.json {render :json => @pickupMoveIDs, :status => 200}
 		end
-		puts @pickupMoveIds.
+
+		params[json_root].each do |k, v|
+			k.each do |l, m|
+				if l == json_id_field
+						pickup_ids.push(m.to_i)
+				  end
+			  end
+		end
+		pp pickup_ids
 	end
+
+
   # GET /items
   # GET /items.json
   def index
