@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   after_update :log_update_event
   after_destroy :log_destroy_event
 
-# TODO - need dynamic pickup data
+# TODO - need dynamic pickup date
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
   scope :pickup_items, -> {where("pickup_date <= ? and owner != 'store'", '2019-12-31')}
 
@@ -50,6 +50,8 @@ class Item < ApplicationRecord
       :mtd => 'Moved To Donations',
       :rtc => 'Returned to Customer'
     }
+
+
 
   def log_create_event
     log_event("Item",self.id,"created")

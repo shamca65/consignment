@@ -5,7 +5,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-
+	@ItemsService = ItemsService.new(params).call
 
 	def pickups
 		@pickupItems = Item.pickup_items
@@ -20,20 +20,24 @@ class ItemsController < ApplicationController
 		json_id_field = 'Item No.'
 		pickup_ids = []
 
-		@pickupMoveIDs = nil
 		respond_to do |format|
 			format.json {render :json => @pickupMoveIDs, :status => 200}
 		end
 
-		params[json_root].each do |k, v|
+		# traverse json from the root to pick out item IDs to update
+		params[json_root].each do |k|
 			k.each do |l, m|
 				if l == json_id_field
+						# TODO - checking/validation on 'm'
 						pickup_ids.push(m.to_i)
-				  end
-			  end
+				end
+			end
 		end
-		pp pickup_ids
+
+		move_to_store_stock(pickup_ids)
+
 	end
+
 
 
   # GET /items
