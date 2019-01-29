@@ -8,14 +8,24 @@
 
     var url = "/items/pickups";
     var postURL = "/items/updatepickups";
+    var leftNumSelected = 0;
     var leftGrid = $('#jqxgrid');
     var rightGrid = $('#jqxgridRight');
 	  var rightData = new Array();
 	  var description = ["Big pants", "Little pants", "No pants"];
 	  var size = ["xs", "sm", "md"];
 	  var gender = ["Woman", "Boy", "Girl"];
-	  var id = ["12", "11", "13"];
+	  var id = ["3", "4", "5"];
 
+	  var setBtnState = function () {
+		  var isValid = (leftNumSelected > 0);
+		  if (isValid) {
+			  $("#btnMoveToRight").jqxButton({ disabled: false});
+		  }
+		  else {
+			  $("#btnMoveToRight").jqxButton({ disabled: true });
+		  }
+	  };
     // load test data for right grid
 	  for (var i = 0; i < 3; i++) {
 		  var row = {};
@@ -146,6 +156,7 @@
         ready: function ()
         {
           console.log('right grid is ready');
+          setBtnState();
         },
 			  columns: [
 				  { text: 'Item No.', datafield: 'id', width: 75, cellsalign: 'center' },
@@ -155,15 +166,28 @@
 			  ]
 		  });
 
-    var setBtnState = function () {
-      var isValid = (selectedItems > 0);
-      if (isValid) {
-        $("#mybutton").jqxButton({ disabled: false});
-      }
-      else {
-        $("#mybutton").jqxButton({ disabled: true });
-      }
-    };
+
+
+	  leftGrid.on('rowselect', function (event)
+	  {
+		  // event arguments.
+		  var args = event.args;
+		  let checkboxes = document.querySelectorAll('.jqx-checkbox');
+		  let checkbox = checkboxes[args.rowindex + 1];
+		  let isChecked = $(checkbox).jqxCheckBox('checked');
+		  leftNumSelected++;
+		  console.log("select: " + isChecked);
+	  });
+
+	  leftGrid.on('rowunselect', function (event)
+	  {
+		  var args = event.args;
+		  let checkboxes = document.querySelectorAll('.jqx-checkbox');
+		  let checkbox = checkboxes[args.rowindex + 1];
+		  let isChecked = $(checkbox).jqxCheckBox('checked');
+		  leftNumSelected--;
+		  console.log('unselect : ' + isChecked);
+	  });
 
     $("#btnMoveToRight").jqxButton({
       theme: 'jqx-fresh',
@@ -205,7 +229,7 @@
         <div id="jqxgrid"></div>
       </div>
         <FORM>
-          <INPUT TYPE=BUTTON NAME="button" class="btn btn-md btn-outline-primary" VALUE="Move Items >>" id="btnMoveToRight">
+          <INPUT TYPE=BUTTON NAME="button" class="btn btn-lg btn-outline-primary" VALUE="Move Items >>" id="btnMoveToRight">
         </FORM>
     </div>
     <div class="col-md-2">

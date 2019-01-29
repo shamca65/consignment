@@ -26,8 +26,9 @@ class ItemsController < ApplicationController
 		params[json_root].each do |k|
 			k.each do |l, m|
 				if l == json_id_field
-						# TODO - checking/validation on 'm'
-						pickup_ids.push(m.to_i)
+						if m.present?
+							pickup_ids.push(m.to_i)
+						end
 				end
 			end
 		end
@@ -110,15 +111,10 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:size, :description, :price, :customer_id,
-                                   :item_type, :pickup_date, :gender, :notes
+                                   :item_type, :pickup_date, :gender, :notes,
+                                   :owner, :item_status
       )
 		end
-
-	def getIDsFromJSON
-
-		#out=JSON.parse(data)
-		#flash[:notice] = 'json data : ' + out
-	end
 
 	def indexJSON
 		return @pickupItems.as_json(
