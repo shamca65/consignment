@@ -1,11 +1,9 @@
 class ItemsController < ApplicationController
 	require 'json'
-	skip_before_action :verify_authenticity_token
   include EventLogger
 
+	skip_before_action :verify_authenticity_token
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-
-	@ItemsService = ItemsService.new(params).call
 
 	def pickups
 		@pickupItems = Item.pickup_items
@@ -34,8 +32,9 @@ class ItemsController < ApplicationController
 			end
 		end
 
-		move_to_store_stock(pickup_ids)
-
+		#MovePickupsService(pickup_ids).call
+		tmp = MovePickupsService.new(pickup_ids).call
+		#pp tmp
 	end
 
 
