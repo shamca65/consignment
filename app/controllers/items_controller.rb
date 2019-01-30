@@ -33,12 +33,9 @@ class ItemsController < ApplicationController
 			end
 		end
 
-		#MovePickupsService(pickup_ids).call
-		tmp = MovePickupsService.new(pickup_ids).call
-		#pp tmp
+		MovePickupsService.new(pickup_ids).call
+
 	end
-
-
 
   # GET /items
   # GET /items.json

@@ -34,51 +34,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-
-    $('#customersDataTable').dataTable( {
-        "paginate": true,
-        "sort": true,
-        "search": {
-            "caseInsensitive": true
-        },
-        "columns": [
-            { "width": "50px" },    // customer id
-            { "width": "120px" },   // customer name
-            { "width": "75px" },    // agreement status
-            { "width": "75px" },    // phone
-            { "width": "75px" },    // email
-            { "width": "50px" },    // province
-            { "width": "75px" },    // edit button
-            { "width": "75px" }     // delete button
-        ]
-    } );
-
-    $('#itemsDataTable').dataTable( {
-        "paginate": true,
-        "sort": true,
-        "search": {
-            "caseInsensitive": true
-        },
-        "columns": [
-			{ "width": "50px" },	// item id
-            { "width": "225px" },   // customer name
-			{ "width": "225px" },   // street
-			{ "width": "100px" },	// city
-			{ "width": "50px" },	// size
-			{ "width": "200px" },	// description
-            { "width": "100px" },    // price
-            { "width": "100px" },    // edit button
-            { "width": "100px" }     // delete button
-        ]
-    } );
-
-
-
-	$('.dataTables_filter input').attr('data-toggle', 'tooltip')
-		.attr('data-placement', 'right')
-		.attr('title', 'Search by any term')
-		.tooltip();
-
+	
 	// Initialize Material Select
     $('.mdb-select').materialSelect();
 

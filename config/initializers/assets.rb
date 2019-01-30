@@ -28,6 +28,7 @@ Rails.application.config.assets.precompile += %w( css/datatables.css )
 # gritter
 Rails.application.config.assets.precompile += %w( js/jquery.gritter.js )
 Rails.application.config.assets.precompile += %w( css/jquery.gritter.css )
-# dual list box
-Rails.application.config.assets.precompile += %w( js/jquery.bootstrap-duallistbox.js )
-Rails.application.config.assets.precompile += %w( css/bootstrap-duallistbox.css )
+# page specific js files
+Rails.application.config.assets.precompile += %w( items_grid.js )
+Rails.application.config.assets.precompile += %w( customers_grid.js )
+
