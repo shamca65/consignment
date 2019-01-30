@@ -1,3 +1,7 @@
 <% content_for :title, "Items" %>
-
+<style>
+  .no-sort::after { display: none!important; }
+  .no-sort::before { display: none!important; }
+  .no-sort { pointer-events: none!important; cursor: default!important; }
+</style>
 <%= render 'pickupsIndex' %>

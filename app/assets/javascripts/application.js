@@ -111,7 +111,7 @@ $(document).ready(function(){
 		.attr('title', 'Search by any term')
 		.tooltip();
 
-	$('#leftGrid').dataTable({
+	$('#pickupsLeftGrid').dataTable({
 		"paginate": true,
 		"sort": true,
 		"search": {
@@ -121,12 +121,11 @@ $(document).ready(function(){
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
 			{"width": "50px"},	// size
-			{"width": "200px"},	// description
-			{"width": "100px"} // price
+			{"width": "200px"}	// description
 		]
 	});
 
-	$('#rightGrid').dataTable({
+	$('#pickupsRightGrid').dataTable({
 		"paginate": true,
 		"sort": true,
 		"search": {
