@@ -14,10 +14,8 @@ module CustomersHelper
       case status
       when 0
         content_tag(:i, '', class: 'far fa-times h2 text-danger')
-
       when 1
         content_tag(:i, '', class: 'far fa-check-circle h2 text-success')
-
       end
 
     end

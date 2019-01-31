@@ -114,20 +114,32 @@ $(document).ready(function(){
 	$('#leftGridDataTable').dataTable({
 		"paginate": false,
 		"sort": false,
+		"bInfo": false,
 		"search": {
 			"caseInsensitive": true
 		},
 		"columns": [
+			{"width": "50px"},	// checkbox
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
 			{"width": "200px"},	// description
 			{"width": "50px"}	// size
-		]
+		],
+		columnDefs: [ {
+			orderable: false,
+			className: 'select-checkbox',
+			targets:   0
+		} ],
+		select: {
+			style:    'os',
+			selector: 'td:first-child'
+		}
 	});
 
 	$('#rightGridDataTable').dataTable({
 		"paginate": false,
 		"sort": false,
+		"bInfo": false,
 		"search": {
 			"caseInsensitive": true
 		},

@@ -5,16 +5,17 @@
           <tbody>
             <% @pickupItems.each do |item| %>
             <tr >
+              <td class="text-center h5 align-middle"></td>
               <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
               <td class="text-left h5 align-middle"><%= item.customer.full_name.truncate(50) %></td>
-              <td class="text-center align-middle"><%= size_label(item.size) %></td>
               <td class="text-left h5 align-middle"><%= item.description %></td>
+              <td class="text-center align-middle"><%= item.size %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-1">
         <div id='space' style="font-size: 14px; font-family: Verdana; float: left;">
           <div id="space"></div>
         </div>
@@ -27,7 +28,7 @@
             <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
             <td class="text-left h5 align-middle"><%= item.customer.full_name.truncate(50) %></td>
             <td class="text-left h5 align-middle"><%= item.description %></td>
-            <td class="text-center align-middle"><%= size_label(item.size) %></td>
+            <td class="text-center align-middle"><%= item.size %></td>
           </tr>
         <% end %>
         </tbody>
