@@ -1,75 +1,37 @@
-
 <div class="row">
-  <div class="col-md-12">
-    <div class="col-md-5">
-      <%= render 'items/partials/itemsTableHeader' %>
-      <tbody>
-      <% @pickupItems.each do |item| %>
-        <tr >
-          <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
-          <td class="text-left h5 align-middle">
-            <%= link_to edit_customer_path(item.customer.id) do %>
-        <span><i class="fal fa-user-circle text-primary"></i>
-            <% end %>
-            <%= item.customer.full_name.truncate(50) %></span>
-          </td>
-          <td class="text-left h5 align-middle"><%= item.customer.street_address %></td>
-          <td class="text-left h5 align-middle"><%= item.customer.city %></td>
-          <td class="text-center align-middle"><%= size_label(item.size) %></td>
-          <td class="text-left h5 align-middle"><%= item.description %></td>
-          <td class="text-right h5 align-middle"><%= number_to_currency(item.price) %></td>
-          <td class="text-center h5 align-middle">
-            <div class="itemDeleteIcon protip " data-pt-title="Edit item"
-                 data-pt-position="bottom"
-                 data-pt-scheme="aqua"
-                 data-pt-icon="info-circled"
-                 data-pt-size="large"
-                 data-pt-arrow="false">
-              <%= link_to edit_item_path(item) do %>
-                <i class="fal fa-edit text-info"></i>
-              <% end %>
-            </div>
-          </td>
-          <td class="text-center h5 align-middle">
-            <div class="itemDeleteIcon protip " data-pt-title="Delete this item"
-                 data-pt-position="right"
-                 data-pt-scheme="red"
-                 data-pt-icon="info-circled"
-                 data-pt-size="large"
-                 data-pt-arrow="false">
-              <%= link_to 'Delete', @item, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <i class="fal fa-layer-minus text-danger " ></i>
-              <% end %>
-            </div>
-          </td>
-        </tr>
-      <% end %>
-      </tbody>
-      </table>
-        <FORM>
-          <INPUT TYPE=BUTTON NAME="button" class="btn btn-lg btn-outline-primary" VALUE="Move Items >>" id="btnMoveToRight">
-        </FORM>
-    </div>
-    <div class="col-md-2">
-      <div id='space' style="font-size: 14px; font-family: Verdana; float: left;">
-        <div id="space"></div>
-      </div>
-    </div>
-    <div class="col-md-5">
-      <div id='jqxWidgetRight' style="font-size: 14px; font-family: Verdana; float: left;">
-        <div id="jqxgridRight"></div>
-      </div>
-    </div>
-    <FORM>
-      <INPUT TYPE=BUTTON NAME="button" class="btn btn-md btn-outline-primary" VALUE="<<< Move Items" id="btnMoveToLeft">
-    </FORM>
-  </div>
-  <br/>
-  <div class="row border border-light">
     <div class="col-md-12">
-      <FORM>
-        <INPUT TYPE=BUTTON NAME="button" class="btn btn-md btn-outline-danger" VALUE="Commit" id="btnCommit">
-      </FORM>
-  </div>
-  </div>
+      <div class="col-md-5">
+        <%= render 'items/partials/leftGridTableHeader' %>
+          <tbody>
+            <% @pickupItems.each do |item| %>
+            <tr >
+              <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
+              <td class="text-left h5 align-middle"><%= item.customer.full_name.truncate(50) %></td>
+              <td class="text-center align-middle"><%= size_label(item.size) %></td>
+              <td class="text-left h5 align-middle"><%= item.description %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-md-2">
+        <div id='space' style="font-size: 14px; font-family: Verdana; float: left;">
+          <div id="space"></div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        <%= render 'items/partials/rightGridTableHeader' %>
+        <tbody>
+        <% @pickupItems.each do |item| %>
+          <tr >
+            <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
+            <td class="text-left h5 align-middle"><%= item.customer.full_name.truncate(50) %></td>
+            <td class="text-left h5 align-middle"><%= item.description %></td>
+            <td class="text-center align-middle"><%= size_label(item.size) %></td>
+          </tr>
+        <% end %>
+        </tbody>
+        </table>
+        </div>
+    </div>
 </div>

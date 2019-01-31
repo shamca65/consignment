@@ -111,32 +111,31 @@ $(document).ready(function(){
 		.attr('title', 'Search by any term')
 		.tooltip();
 
-	$('#pickupsLeftGrid').dataTable({
-		"paginate": true,
-		"sort": true,
+	$('#leftGridDataTable').dataTable({
+		"paginate": false,
+		"sort": false,
 		"search": {
 			"caseInsensitive": true
 		},
 		"columns": [
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
-			{"width": "50px"},	// size
-			{"width": "200px"}	// description
+			{"width": "200px"},	// description
+			{"width": "50px"}	// size
 		]
 	});
 
-	$('#pickupsRightGrid').dataTable({
-		"paginate": true,
-		"sort": true,
+	$('#rightGridDataTable').dataTable({
+		"paginate": false,
+		"sort": false,
 		"search": {
 			"caseInsensitive": true
 		},
 		"columns": [
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
-			{"width": "50px"},	// size
 			{"width": "200px"},	// description
-			{"width": "100px"} // price
+			{"width": "50px"}	// size
 		]
 	});
 
