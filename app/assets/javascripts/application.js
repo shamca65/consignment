@@ -17,6 +17,7 @@
 //= require protip.min
 //= require js/mdb
 //= require js/datatables
+//= require js/dataTables.select.min
 //= require js/all
 //= require js/jqxcore
 //= require js/jqxbuttons
@@ -119,7 +120,6 @@ $(document).ready(function(){
 			"caseInsensitive": true
 		},
 		"columns": [
-			{"width": "50px"},	// checkbox
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
 			{"width": "200px"},	// description
@@ -133,7 +133,8 @@ $(document).ready(function(){
 		select: {
 			style:    'os',
 			selector: 'td:first-child'
-		}
+		},
+		order: [[ 1, 'asc' ]]
 	});
 
 	$('#rightGridDataTable').dataTable({
