@@ -120,10 +120,12 @@ $(document).ready(function(){
 			"caseInsensitive": true
 		},
 		"columns": [
+			{"width": "65px"},	// checkbox
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
 			{"width": "200px"},	// description
-			{"width": "50px"}	// size
+			{"width": "60px"},	// size
+			{"width": "75px"}	// price
 		],
 		columnDefs: [ {
 			orderable: false,
@@ -131,7 +133,7 @@ $(document).ready(function(){
 			targets:   0
 		} ],
 		select: {
-			style:    'os',
+			style:    'multi',
 			selector: 'td:first-child'
 		},
 		order: [[ 1, 'asc' ]]
@@ -145,11 +147,22 @@ $(document).ready(function(){
 			"caseInsensitive": true
 		},
 		"columns": [
+			{"width": "65px"},	// checkbox
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
 			{"width": "200px"},	// description
 			{"width": "50px"}	// size
-		]
+		],
+		columnDefs: [ {
+			orderable: false,
+			className: 'select-checkbox',
+			targets:   0
+		} ],
+		select: {
+			style:    'multi',
+			selector: 'td:first-child'
+		},
+		order: [[ 1, 'asc' ]]
 	});
 
 });

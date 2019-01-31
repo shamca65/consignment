@@ -1,14 +1,16 @@
-<div class="row">
+<div class="row" style="width: 100%">
     <div class="col-md-12">
       <div class="col-md-5">
         <%= render 'items/partials/leftGridTableHeader' %>
           <tbody>
             <% @pickupItems.each do |item| %>
             <tr >
+              <td class="text-center h5 align-middle"></td>
               <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
               <td class="text-left h5 align-middle"><%= item.customer.full_name.truncate(50) %></td>
               <td class="text-left h5 align-middle"><%= item.description %></td>
-              <td class="text-center align-middle"><%= item.size %></td>
+              <td class="text-center align-middle"><%= size_label(item.size) %></td>
+              <td class="text-center align-middle"><%= number_to_currency item.price %></td>
             </tr>
           <% end %>
           </tbody>
@@ -24,10 +26,11 @@
         <tbody>
         <% @pickupItems.each do |item| %>
           <tr >
+            <td class="text-center h5 align-middle"></td>
             <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
             <td class="text-left h5 align-middle"><%= item.customer.full_name.truncate(50) %></td>
-            <td class="text-left h5 align-middle"><%= item.description %></td>
-            <td class="text-center align-middle"><%= item.size %></td>
+            <td class="text-left h5 align-middle" style="width: 150px"><%= item.description %></td>
+            <td class="text-center align-middle"><%= size_label(item.size) %></td>
           </tr>
         <% end %>
         </tbody>
