@@ -112,7 +112,12 @@ $(document).ready(function(){
 		.attr('title', 'Search by any term')
 		.tooltip();
 
-	$('#leftGridDataTable').dataTable({
+	var leftGrid = $('#leftGridDataTable');
+	var rightGrid = $('#rightGridDataTable');
+
+	//var selectedRows = leftGrid.rows({ selected: true }).ids(true);
+
+	leftGrid.dataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
@@ -139,7 +144,7 @@ $(document).ready(function(){
 		order: [[ 1, 'asc' ]]
 	});
 
-	$('#rightGridDataTable').dataTable({
+	rightGrid.dataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,

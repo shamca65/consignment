@@ -28,7 +28,3 @@ Rails.application.config.assets.precompile += %w( css/mdb.css )
 # gritter
 Rails.application.config.assets.precompile += %w( js/jquery.gritter.js )
 Rails.application.config.assets.precompile += %w( css/jquery.gritter.css )
-# page specific js files
-Rails.application.config.assets.precompile += %w( items_grid.js )
-Rails.application.config.assets.precompile += %w( customers_grid.js )
-

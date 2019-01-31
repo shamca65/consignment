@@ -1,27 +1,22 @@
 <div class="row" style="width: 100%">
     <div class="col-md-12">
-      <div class="col-md-5">
+      <div class="col-lg-6">
         <%= render 'items/partials/leftGridTableHeader' %>
           <tbody>
             <% @pickupItems.each do |item| %>
             <tr >
-              <td class="text-center h5 align-middle"></td>
-              <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
-              <td class="text-left h5 align-middle"><%= item.customer.full_name.truncate(50) %></td>
-              <td class="text-left h5 align-middle"><%= item.description %></td>
-              <td class="text-center align-middle"><%= size_label(item.size) %></td>
-              <td class="text-center align-middle"><%= number_to_currency item.price %></td>
+              <td class="text-center h5 align-middle" style="width: 60px"></td>
+              <td class="text-center h5 align-middle" style="width: 60px"><%= item.id.to_s %></td>
+              <td class="text-left h5 align-middle" style="width: 160px"><%= item.customer.full_name.truncate(50) %></td>
+              <td class="text-left h5 align-middle" style="width: 260px"><%= item.description %></td>
+              <td class="text-center align-middle" style="width: 80px"><%= size_label(item.size) %></td>
+              <td class="text-center align-middle" style="width: 60px"><%= number_to_currency item.price %></td>
             </tr>
           <% end %>
           </tbody>
         </table>
       </div>
-      <div class="col-md-1">
-        <div id='space' style="font-size: 14px; font-family: Verdana; float: left;">
-          <div id="space"></div>
-        </div>
-      </div>
-      <div class="col-md-5">
+      <div class="col-lg-6">
         <%= render 'items/partials/rightGridTableHeader' %>
         <tbody>
         <% @pickupItems.each do |item| %>
@@ -37,4 +32,18 @@
         </table>
         </div>
     </div>
-</div>
+
+    <div class="col-lg-12 mx-auto">
+      <footer class="page-footer text-center font-small mt-4 wow fadeIn">
+        <div class="col-lg-5">
+          <button class="btn btn-outline-primary">Move >></button>
+        </div>
+        <div class="col-lg-2">
+        </div>
+        <div class="col-lg-5 mx-auto">
+          <button class="btn btn-outline-primary"><< Move</button>
+          <button class="btn btn-outline-primary">Commit Changes</button>
+        </div>
+      </footer>
+    </div>
+  </div>
