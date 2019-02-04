@@ -114,6 +114,42 @@ $(document).ready(function(){
 
 	//var selectedRows = leftGrid.rows({ selected: true }).ids(true);
 	var table = $('#example').DataTable({
+		paginate: false,
+		sort: false,
+		bInfo: false,
+		rowId: 'id',
+		search: {
+			"caseInsensitive": true
+		},
+		columns: [
+			{item: "ID",data: "id","width": "50px"},	// item id
+			{item: "Name",data: "name","width": "225px"}, // customer name
+			{item: "Description",data: "description","width": "200px"},	// description
+			{item: "Size",data: "size","width": "60px"},	// size
+			{item: "Price",data: "price","width": "75px"},	// real price
+			{item: "Days",data: "days","width": "75px"}	// days in store
+		],
+		columnDefs: [ {
+			orderable: false,
+			className: 'select-checkbox',
+			targets:   0
+		},
+			{ "name": "chk",   "targets": 0 },
+			{ "name": "ID",  "targets": 1 },
+			{ "name": "Name", "targets": 2 },
+			{ "name": "Description",  "targets": 3 },
+			{ "name": "Size",    "targets": 4 },
+			{ "name": "Price",    "targets": 5 },
+			{ "name": "Days",    "targets": 6 }
+		 ]	,
+		select: {
+			style:    'multi',
+			selector: 'td:first-child'
+		},
+		order: [[ 1, 'asc' ]]
+	});
+
+	var table2 = $('#example2').DataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
@@ -122,7 +158,6 @@ $(document).ready(function(){
 			"caseInsensitive": true
 		},
 		"columns": [
-			{item: "chk",data: "chk","width": "65px"},	// checkbox
 			{item: "ID",data: "id","width": "50px"},	// item id
 			{item: "Name",data: "name","width": "225px"}, // customer name
 			{item: "Description",data: "description","width": "200px"},	// description
@@ -142,48 +177,15 @@ $(document).ready(function(){
 		order: [[ 1, 'asc' ]]
 	});
 
-	var rightGrid = $('#rightGridDataTable').DataTable({
-		"paginate": false,
-		"sort": false,
-		"bInfo": false,
-		"search": {
-			"caseInsensitive": true
-		},
-		"columns": [
-			{"width": "65px"},	// checkbox
-			{"width": "50px"},	// item id
-			{"width": "225px"}, // customer name
-			{"width": "200px"},	// description
-			{"width": "50px"},	// size
-			{"width": "75px"},	// real price
-			{"width": "75px"}	// days in store
-		],
-		columnDefs: [ {
-			orderable: false,
-			className: 'select-checkbox',
-			targets:   0
-		} ],
-		select: {
-			style:    'multi',
-			selector: 'td:first-child'
-		},
-		order: [[ 1, 'asc' ]]
-	});
 
 	var moveItems = function(table) {
 		//var selectedRows = new Array();
+		// get selected rows with the cell data
 		var count = table.rows( { selected: true } ).count();
 		var arrayID = table.rows( { selected: true } ).ids();
-		alert(' number 1 : '  + arrayID[1]);
-
-		console.log(arrayID[1]);
-
-
-		// get selected rows
-		// var rowIdvals = grid.jqxGrid('getselectedrowindexes');
-		// retrieve the cell data
-		// var selectedRowData = getRowData(rowIdvals, grid);
+		//
 		// duplicate each selected row to the other grid
+		table2.rows.add(arrayID).draw();
 		//to_grid = ((grid == leftGrid) ? rightGrid : leftGrid);
 		//{
 		//	var value = to_grid.jqxGrid('addrow', null, selectedRowData);
@@ -194,7 +196,7 @@ $(document).ready(function(){
 
 	$('#example tbody').on('click', 'tr', function () {
 		var data = table.row( this ).data();
-		//console.log(data["id"]);
+		console.log(data);
 	} );
 
 	$('#btnMoveToStoreStock').click(function () {
