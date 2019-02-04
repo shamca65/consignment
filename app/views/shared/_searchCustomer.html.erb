@@ -1,9 +1,0 @@
-<%= form_for :search_customers, url: search_results_customers_path, method: :get do |form| %>
-  <div class="form-field-center">
-    <%= form.text_field :query, class: 'search-field-txt', value: params[:search_customers].presence && params[:search_customers][:query] %>
-  </div>
-  <div>
-    <%= form.submit 'Search', class: 'btn btn-primary btn-md btn-block'%>
-  </div>
-<% end %>
-

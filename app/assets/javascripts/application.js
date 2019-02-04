@@ -70,7 +70,7 @@ $(document).ready(function(){
 	$.extend($.fn.pickadate.defaults, {
 		formatSubmit: 'yyyy-mm-dd'
 	});
-	$('#customersDataTable').dataTable({
+	$('#customersDataTable').DataTable({
 		"paginate": true,
 		"sort": true,
 		"search": {
@@ -88,7 +88,7 @@ $(document).ready(function(){
 		]
 	});
 
-	$('#itemsDataTable').dataTable({
+	$('#itemsDataTable').DataTable({
 		"paginate": true,
 		"sort": true,
 		"search": {
@@ -107,30 +107,28 @@ $(document).ready(function(){
 		]
 	});
 
-	$('.dataTables_filter input').attr('data-toggle', 'tooltip')
+	$('.DataTables_filter input').attr('data-toggle', 'tooltip')
 		.attr('data-placement', 'right')
 		.attr('title', 'Search by any term')
 		.tooltip();
 
-	var leftGrid = $('#leftGridDataTable');
-	var rightGrid = $('#rightGridDataTable');
-
 	//var selectedRows = leftGrid.rows({ selected: true }).ids(true);
-
-	leftGrid.dataTable({
+	var table = $('#example').DataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
+		"rowId": 'id',
 		"search": {
 			"caseInsensitive": true
 		},
 		"columns": [
-			{"width": "65px"},	// checkbox
-			{"width": "50px"},	// item id
-			{"width": "225px"}, // customer name
-			{"width": "200px"},	// description
-			{"width": "60px"},	// size
-			{"width": "75px"}	// price
+			{item: "chk",data: "chk","width": "65px"},	// checkbox
+			{item: "ID",data: "id","width": "50px"},	// item id
+			{item: "Name",data: "name","width": "225px"}, // customer name
+			{item: "Description",data: "description","width": "200px"},	// description
+			{item: "Size",data: "size","width": "60px"},	// size
+			{item: "Price",data: "price","width": "75px"},	// real price
+			{item: "Days",data: "days","width": "75px"}	// days in store
 		],
 		columnDefs: [ {
 			orderable: false,
@@ -144,7 +142,7 @@ $(document).ready(function(){
 		order: [[ 1, 'asc' ]]
 	});
 
-	rightGrid.dataTable({
+	var rightGrid = $('#rightGridDataTable').DataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
@@ -156,7 +154,9 @@ $(document).ready(function(){
 			{"width": "50px"},	// item id
 			{"width": "225px"}, // customer name
 			{"width": "200px"},	// description
-			{"width": "50px"}	// size
+			{"width": "50px"},	// size
+			{"width": "75px"},	// real price
+			{"width": "75px"}	// days in store
 		],
 		columnDefs: [ {
 			orderable: false,
@@ -168,6 +168,35 @@ $(document).ready(function(){
 			selector: 'td:first-child'
 		},
 		order: [[ 1, 'asc' ]]
+	});
+
+	var moveItems = function(table) {
+		//var selectedRows = new Array();
+		var count = table.rows( { selected: true } ).count();
+		var arrayID = table.rows( { selected: true } ).ids();
+
+
+
+		// get selected rows
+		// var rowIdvals = grid.jqxGrid('getselectedrowindexes');
+		// retrieve the cell data
+		// var selectedRowData = getRowData(rowIdvals, grid);
+		// duplicate each selected row to the other grid
+		//to_grid = ((grid == leftGrid) ? rightGrid : leftGrid);
+		//{
+		//	var value = to_grid.jqxGrid('addrow', null, selectedRowData);
+		//}
+		//remove selected items from left grid
+		//removeSelectedRows(rowIdvals, grid);
+	};
+
+	$('#example tbody').on('click', 'tr', function () {
+		var data = table.row( this ).data();
+		console.log(data["id"]);
+	} );
+
+	$('#btnMoveToStoreStock').click(function () {
+		moveItems(table);
 	});
 
 });

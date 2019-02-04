@@ -6,10 +6,9 @@
     <%= csrf_meta_tags %>
     <%= render 'shared/navbar' %>
   </head>
-  <body>
-    <div class="container" >
-      <%= yield %>
+  <body >
+    <div class="container-wide" >
+        <%= yield %>
     </div>
       <%= render 'shared/alerts' %>
-      <%= javascript_include_tag 'js/mdb'%>
   </body>
