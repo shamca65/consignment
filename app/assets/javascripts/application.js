@@ -174,7 +174,9 @@ $(document).ready(function(){
 		//var selectedRows = new Array();
 		var count = table.rows( { selected: true } ).count();
 		var arrayID = table.rows( { selected: true } ).ids();
+		alert(' number 1 : '  + arrayID[1]);
 
+		console.log(arrayID[1]);
 
 
 		// get selected rows
@@ -192,7 +194,7 @@ $(document).ready(function(){
 
 	$('#example tbody').on('click', 'tr', function () {
 		var data = table.row( this ).data();
-		console.log(data["id"]);
+		//console.log(data["id"]);
 	} );
 
 	$('#btnMoveToStoreStock').click(function () {
