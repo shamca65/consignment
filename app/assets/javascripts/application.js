@@ -114,34 +114,31 @@ $(document).ready(function(){
 
 	//var selectedRows = leftGrid.rows({ selected: true }).ids(true);
 	var table = $('#example').DataTable({
-		paginate: false,
-		sort: false,
-		bInfo: false,
-		rowId: 'id',
-		search: {
+		"paginate": false,
+		"sort": false,
+		"bInfo": false,
+		"rowId": 'id',
+		"search": {
 			"caseInsensitive": true
 		},
-		columns: [
-			{item: "ID",data: "id","width": "50px"},	// item id
-			{item: "Name",data: "name","width": "225px"}, // customer name
-			{item: "Description",data: "description","width": "200px"},	// description
-			{item: "Size",data: "size","width": "60px"},	// size
-			{item: "Price",data: "price","width": "75px"},	// real price
-			{item: "Days",data: "days","width": "75px"}	// days in store
+		"columns": [
+			{item: "","width": "50px"},
+			{item: "ID","width": "50px"},	// item id
+			{item: "Name","width": "225px"}, // customer name
+			{item: "Description","width": "200px"},	// description
+			{item: "Size","width": "60px"},	// size
+			{item: "Price","width": "75px"},	// real price
+			{item: "Days","width": "75px"}	// days in store
 		],
-		columnDefs: [ {
-			orderable: false,
-			className: 'select-checkbox',
-			targets:   0
-		},
-			{ "name": "chk",   "targets": 0 },
-			{ "name": "ID",  "targets": 1 },
-			{ "name": "Name", "targets": 2 },
-			{ "name": "Description",  "targets": 3 },
-			{ "name": "Size",    "targets": 4 },
-			{ "name": "Price",    "targets": 5 },
-			{ "name": "Days",    "targets": 6 }
-		 ]	,
+		columnDefs: [
+			{title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
+			{name: "id", data: "id", orderable: false, targets:   1},
+			{name: "name", data: "name", orderable: false, targets:   2},
+			{name: "description", data: "description", orderable: false, targets:   3},
+			{name: "size", data: "size", orderable: false, targets:   4},
+			{name: "price", data: "price", orderable: false, targets:   5},
+			{name: "days", data: "days", orderable: false, targets: 6}
+		],
 		select: {
 			style:    'multi',
 			selector: 'td:first-child'
@@ -158,18 +155,23 @@ $(document).ready(function(){
 			"caseInsensitive": true
 		},
 		"columns": [
-			{item: "ID",data: "id","width": "50px"},	// item id
-			{item: "Name",data: "name","width": "225px"}, // customer name
-			{item: "Description",data: "description","width": "200px"},	// description
-			{item: "Size",data: "size","width": "60px"},	// size
-			{item: "Price",data: "price","width": "75px"},	// real price
-			{item: "Days",data: "days","width": "75px"}	// days in store
+			{item: "","width": "50px"},
+			{item: "ID","width": "50px"},	// item id
+			{item: "Name","width": "225px"}, // customer name
+			{item: "Description","width": "200px"},	// description
+			{item: "Size","width": "60px"},	// size
+			{item: "Price","width": "75px"},	// real price
+			{item: "Days","width": "75px"}	// days in store
 		],
-		columnDefs: [ {
-			orderable: false,
-			className: 'select-checkbox',
-			targets:   0
-		} ],
+		columnDefs: [
+			{title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
+			{name: "id", data: "id", orderable: false, targets:   1},
+			{name: "name", data: "name", orderable: false, targets:   2},
+			{name: "description", data: "description", orderable: false, targets:   3},
+			{name: "size", data: "size", orderable: false, targets:   4},
+			{name: "price", data: "price", orderable: false, targets:   5},
+			{name: "days", data: "days", orderable: false, targets: 6}
+		],
 		select: {
 			style:    'multi',
 			selector: 'td:first-child'
@@ -181,11 +183,12 @@ $(document).ready(function(){
 	var moveItems = function(table) {
 		//var selectedRows = new Array();
 		// get selected rows with the cell data
-		var count = table.rows( { selected: true } ).count();
-		var arrayID = table.rows( { selected: true } ).ids();
+		var arrayID = table.rows( { selected: true }).data().toArray();
 		//
 		// duplicate each selected row to the other grid
+		console.log(arrayID);
 		table2.rows.add(arrayID).draw();
+		var result = table.rows({ selected: true }).remove(arrayID).draw();
 		//to_grid = ((grid == leftGrid) ? rightGrid : leftGrid);
 		//{
 		//	var value = to_grid.jqxGrid('addrow', null, selectedRowData);
@@ -193,11 +196,6 @@ $(document).ready(function(){
 		//remove selected items from left grid
 		//removeSelectedRows(rowIdvals, grid);
 	};
-
-	$('#example tbody').on('click', 'tr', function () {
-		var data = table.row( this ).data();
-		console.log(data);
-	} );
 
 	$('#btnMoveToStoreStock').click(function () {
 		moveItems(table);
