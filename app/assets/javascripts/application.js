@@ -133,7 +133,7 @@ $(document).ready(function(){
 		columnDefs: [
 			{title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
 			{name: "id", data: "id", orderable: false, targets:   1},
-			{name: "name", data: "name", orderable: false, targets:   2},
+			{name: "name", data: "name", orderable: true, targets:   2},
 			{name: "description", data: "description", orderable: false, targets:   3},
 			{name: "size", data: "size", orderable: false, targets:   4},
 			{name: "price", data: "price", orderable: false, targets:   5},
@@ -153,6 +153,9 @@ $(document).ready(function(){
 		"rowId": 'id',
 		"search": {
 			"caseInsensitive": true
+		},
+		"initComplete": function(settings, json) {
+			console.log('init is complete')
 		},
 		"columns": [
 			{item: "","width": "50px"},
@@ -179,26 +182,34 @@ $(document).ready(function(){
 		order: [[ 1, 'asc' ]]
 	});
 
+	var commitItems = function(table) {
+		var rows = table2.rows().remove().draw();
+	};
 
 	var moveItems = function(table) {
-		//var selectedRows = new Array();
 		// get selected rows with the cell data
 		var arrayID = table.rows( { selected: true }).data().toArray();
-		//
+
 		// duplicate each selected row to the other grid
-		console.log(arrayID);
 		table2.rows.add(arrayID).draw();
-		var result = table.rows({ selected: true }).remove(arrayID).draw();
-		//to_grid = ((grid == leftGrid) ? rightGrid : leftGrid);
-		//{
-		//	var value = to_grid.jqxGrid('addrow', null, selectedRowData);
-		//}
-		//remove selected items from left grid
-		//removeSelectedRows(rowIdvals, grid);
+		table.rows({ selected: true }).remove(arrayID).draw();
+		table2.rows().select();
+	};
+
+	var cleanUpTable2 = function() {
+		table2.rows().remove().draw();
 	};
 
 	$('#btnMoveToStoreStock').click(function () {
 		moveItems(table);
 	});
 
+	$('#btnCommit').click(function () {
+		cleanUpTable2();
+		commitItems();
+	});
+
+	window.onload = function() {
+		cleanUpTable2();
+	};
 });
