@@ -14968,8 +14968,7 @@ var WOW;
     var Waves            = Waves || {};
     var $$               = document.querySelectorAll.bind(document);
     var toString         = Object.prototype.toString;
-    var isTouchAvailable = false;
-    // var isTouchAvailable = 'ontouchstart' in window;
+    var isTouchAvailable = 'ontouchstart' in window;
 
 
     // Find exact position of element
@@ -15409,7 +15408,7 @@ var WOW;
             body.addEventListener('touchend', TouchHandler.registerEvent, false);
         }
 
-       // body.addEventListener('mousedown', showEffect, false);
+        // body.addEventListener('mousedown', showEffect, false);
     };
 
 

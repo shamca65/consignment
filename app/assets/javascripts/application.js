@@ -10,33 +10,23 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//	note 'all.js' = font awesome
+//
 //= require jquery-3.3.1.min
-//= require bootstrap/bootstrap.min
+//= require bootstrap
 //= require js/popper.min
 //= require js/jquery.gritter
 //= require protip.min
 //= require js/mdb
-//= require js/datatables
-//= require js/dataTables.select.min
+//= require js/addons/datatables
+//= require js/addons/dataTables.select.min
+//= require js/modules/material-select
 //= require js/all
-//= require js/jqxcore
-//= require js/jqxbuttons
-//= require js/jqxscrollbar
-//= require js/jqxgrid
-//= require js/jqxmenu
-//= require js/jqxgrid.selection
-//= require js/jqxgrid.columnsresize
-//= require js/jqxgrid.edit
-//= require js/jqxdragdrop
-//= require js/jqxdata
-//= require js/jqxcheckbox
-//= require js/jqxdata.export
-//= require js/jqxgrid.export
 //= require activestorage
 //= require_tree .
 
 $(document).ready(function(){
-	
+
 	// Initialize Material Select
     $('.mdb-select').materialSelect();
 
@@ -151,6 +141,10 @@ $(document).ready(function(){
 		"sort": false,
 		"bInfo": false,
 		"rowId": 'id',
+		"ajax":{
+			"url" : "/items/updatepickups",
+			"type" : "POST"
+		},
 		"search": {
 			"caseInsensitive": true
 		},
@@ -179,24 +173,32 @@ $(document).ready(function(){
 			style:    'multi',
 			selector: 'td:first-child'
 		},
+
 		order: [[ 1, 'asc' ]]
 	});
+
+	$.fn.dataTable.ext.errMode = 'throw';
 
 	var commitItems = function(table) {
 		var rows = table2.rows().remove().draw();
 	};
 
-	var moveItems = function(table) {
+	var moveItems = function(grid) {
+		to_table = ((grid == table) ? table2 : table);
 		// get selected rows with the cell data
-		var arrayID = table.rows( { selected: true }).data().toArray();
-
+		var arrayID = grid.rows( { selected: true }).data().toArray();
 		// duplicate each selected row to the other grid
-		table2.rows.add(arrayID).draw();
-		table.rows({ selected: true }).remove(arrayID).draw();
-		table2.rows().select();
+		to_table.rows.add(arrayID).draw();
+		grid.rows({ selected: true }).remove(arrayID).draw();
+		to_table.rows().select();
+	};
+
+	var postPickups = function(){
+
 	};
 
 	var cleanUpTable2 = function() {
+		// remove the default row
 		table2.rows().remove().draw();
 	};
 
@@ -209,7 +211,14 @@ $(document).ready(function(){
 		commitItems();
 	});
 
+	$('#btnReturn').click(function () {
+		moveItems(table2);
+	});
+
 	window.onload = function() {
 		cleanUpTable2();
 	};
+
+
+
 });

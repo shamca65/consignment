@@ -12,18 +12,19 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap/bootstrap.min
+ *
+ *	note 'all.css' = font awesome
+ *
+ *= require css/bootstrap.min
  *= require css/mdb
- *= require css/datatables
- *= require css/select.dataTables.min
- *= require css/cards-extended
+ *= require css/addons/datatables
+ *= require css/addons/select.dataTables.min
+ *= require css/addons-pro/cards-extended.min
  *= require protip
  *= require animate
- *= require css/all
  *= require Montserrat
  *= require css/jquery.gritter
- *= require css/jqx.base
- *= require css/jqx-fresh
+ *= require css/all
  *= require_tree .
  *= require_self
  */
