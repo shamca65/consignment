@@ -21,11 +21,16 @@
 //= require js/addons/datatables
 //= require js/addons/dataTables.select.min
 //= require js/modules/material-select
+//= require js/rowReorder.bootstrap4.js
+//= require js/dataTables.editor.min
 //= require js/all
+//= require js/jquery-ui-touch-punch.min
+//= require js/jquery-ui.min
 //= require activestorage
 //= require_tree .
 
 $(document).ready(function(){
+
 
 	// Initialize Material Select
     $('.mdb-select').materialSelect();
@@ -60,12 +65,10 @@ $(document).ready(function(){
 	$.extend($.fn.pickadate.defaults, {
 		formatSubmit: 'yyyy-mm-dd'
 	});
+
 	$('#customersDataTable').DataTable({
 		"paginate": true,
 		"sort": true,
-		"search": {
-			"caseInsensitive": true
-		},
 		"columns": [
 			{"width": "50px"},    // customer id
 			{"width": "120px"},   // customer name
@@ -177,6 +180,23 @@ $(document).ready(function(){
 		order: [[ 1, 'asc' ]]
 	});
 
+	var locateCustomer = $('#locateCustomer').DataTable({
+		"paginate": false,
+		"sort": false,
+		"bInfo": false,
+		"search": {
+			"caseInsensitive": true
+		},
+		"columns": [
+			{item: "ID","width": "50px"},	// item id
+			{item: "Name","width": "225px"} // customer name
+		],
+		columnDefs: [
+			{name: "id", data: "id", orderable: false, targets:   0},
+			{name: "name", data: "name", orderable: false, targets:   1}
+		]
+	});
+
 	$.fn.dataTable.ext.errMode = 'throw';
 
 	var commitItems = function(table) {
@@ -218,7 +238,6 @@ $(document).ready(function(){
 	window.onload = function() {
 		cleanUpTable2();
 	};
-
 
 
 });

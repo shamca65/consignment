@@ -1,5 +1,5 @@
 <% content_for :title, "Item Intake" %>
-<% render '/customers/partials/locateCustomer' %>
+<% render 'static/partials/locateCustomer' %>
 <div class="card-deck">
   <div class="row">
     <div class="card border-primary mb-3">
@@ -66,11 +66,27 @@
     </div>
   </div>
 
+<div class="text-center">
+  <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#orangeModalSubscription">Launch
+    modal Subscription</a>
+</div>
 
-  <%= link_to 'Add user', root_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
-  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content"></div>
-    </div>
-  </div>
-  </div>
+  <!--Section: Live preview-->
+  <table id="example" class="display" cellspacing="0" width="100%">
+    <thead>
+    <tr>
+      <th>Order</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Duration</th>
+    </tr>
+    </thead>
+    <tfoot>
+    <tr>
+      <th>Order</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Duration</th>
+    </tr>
+    </tfoot>
+  </table>

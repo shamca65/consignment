@@ -8,10 +8,6 @@ class StaticController < ApplicationController
       format.html
       format.js
     end
-  end
-
-  def find_customer
-    render "customers/search"
-  end
+	end
 
 end
