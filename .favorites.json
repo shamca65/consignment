@@ -1,0 +1,18 @@
+[
+    {
+        "type": "File",
+        "name": "/Users/shaun/Projects/consignment/app/assets/stylesheets/application.css.scss",
+        "parent_id": null,
+        "workspaceRoot": "/Users/shaun/Projects/consignment",
+        "workspacePath": "app/assets/stylesheets/application.css.scss",
+        "id": "6kEJAB5DcbvYg3KC"
+    },
+    {
+        "type": "File",
+        "name": "/Users/shaun/Projects/consignment/app/assets/javascripts/application.js",
+        "parent_id": null,
+        "workspaceRoot": "/Users/shaun/Projects/consignment",
+        "workspacePath": "app/assets/javascripts/application.js",
+        "id": "5JAGrD8wKli2fzLB"
+    }
+]

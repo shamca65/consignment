@@ -1,48 +1,52 @@
+<%
+@customers = Customer.all
+%>
 <div class="modal" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-     aria-hidden="true">
+  aria-hidden="true">
   <div class="modal-dialog modal-notify modal-warning" role="document">
     <!--Content-->
     <div class="modal-content">
       <!--Header-->
       <div class="modal-header text-center">
-        <h4 class="modal-title white-text w-100 font-weight-bold py-2">Subscribe</h4>
+        <h2 class="modal-title white-text w-100 font-weight-bold py-2">Customer Search</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="white-text">&times;</span>
         </button>
       </div>
-
       <!--Body-->
       <div class="modal-body">
-        <div class="md-form mb-5">
-          <table id="locateCustomer" class="table table-striped " cellspacing="0" width="100%" >
-            <thead>
-              <tr>
-              <th class="text-center h5">
-                id
+        <div class="md-form">
+        <table id="customerLocateTable" class="table table-striped " cellspacing="0" width="100%" >
+          <thead>
+            <tr>
+              <th class="text-center h4">
+                ID
               </th>
-              <th class="text-left h5">
+              <th class="text-left h4">
                 Name
               </th>
+              <th class="text-center h4">
+                Go!
+              </th>
             </tr>
-            </thead>
-            <% if @customers %>
-            <tbody>
-            <% @customers.each do |customer| %>
-              <tr class="h3">
-                <td class="text-center h5 align-middle" ><%= customer.id %></td>
-                <td class="text-left h5 align-middle"><%= customer.full_name %></td>
-              <% end %>
+          </thead>
+         <tbody>
+          <% @customers.each do |customer| %>
+            <tr class="h3">
+              <td class="text-center h5 align-middle" ><%= customer.id %></td>
+              <td class="text-left h5 align-middle"><%= customer.full_name %></td>
+              <td style="text-align: center">
+                <%= link_to edit_customer_path(customer.id) do %>
+                  <i class="fal fa-arrow-alt-right text-primary"></i>
+                <% end %>
+              </td>
             </tr>
-            </tbody>
-          </table>
-          <% end %>
+        <% end %>
+        </tbody>
+        </table>
         </div>
       </div>
-
       <!--Footer-->
-      <div class="modal-footer justify-content-center">
-        <a type="button" class="btn btn-outline-warning waves-effect">Send <i class="fas fa-paper-plane-o ml-1"></i></a>
-      </div>
     </div>
     <!--/.Content-->
   </div>

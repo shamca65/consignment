@@ -13,7 +13,7 @@
 //	note 'all.js' = font awesome
 //
 //= require jquery-3.3.1.min
-//= require bootstrap
+//= require js/bootstrap
 //= require js/popper.min
 //= require js/jquery.gritter
 //= require protip.min
@@ -180,20 +180,24 @@ $(document).ready(function(){
 		order: [[ 1, 'asc' ]]
 	});
 
-	var locateCustomer = $('#locateCustomer').DataTable({
-		"paginate": false,
+	var locateCustomer = $('#customerLocateTable').DataTable({
+		"paginate": true,
+		"lengthChange": false,
 		"sort": false,
 		"bInfo": false,
+		"pageSize": 5,
 		"search": {
 			"caseInsensitive": true
 		},
 		"columns": [
-			{item: "ID","width": "50px"},	// item id
-			{item: "Name","width": "225px"} // customer name
+			{item: "ID","width": "50px"},		// item id
+			{item: "Name","width": "100px"}, 	// customer name,
+			{item: "","width": "50px"} 		// link 
 		],
 		columnDefs: [
 			{name: "id", data: "id", orderable: false, targets:   0},
-			{name: "name", data: "name", orderable: false, targets:   1}
+			{name: "name", data: "name", orderable: false, targets:   1},
+			{name: "", data: "", orderable: false, targets:   2}
 		]
 	});
 
