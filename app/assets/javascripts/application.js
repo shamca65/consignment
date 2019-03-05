@@ -22,7 +22,6 @@
 //= require js/addons/dataTables.select.min
 //= require js/modules/material-select
 //= require js/rowReorder.bootstrap4.js
-//= require js/dataTables.editor.min
 //= require js/all
 //= require js/jquery-ui-touch-punch.min
 //= require js/jquery-ui.min
@@ -84,9 +83,6 @@ $(document).ready(function(){
 	$('#itemsDataTable').DataTable({
 		"paginate": true,
 		"sort": true,
-		"search": {
-			"caseInsensitive": true
-		},
 		"columns": [
 			{"width": "50px"},	// item id
 			{"width": "225px"},   // customer name
@@ -182,15 +178,9 @@ $(document).ready(function(){
 
 	var locateCustomer = $('#customerLocateTable').DataTable({
 		"paginate": true,
-		"lengthChange": false,
 		"sort": false,
-		"bInfo": false,
-		"pageSize": 5,
-		"search": {
-			"caseInsensitive": true
-		},
 		"columns": [
-			{item: "ID","width": "50px"},		// item id
+			{item: "ID","width": "75px"},		// item id
 			{item: "Name","width": "100px"}, 	// customer name,
 			{item: "","width": "50px"} 		// link 
 		],
@@ -242,6 +232,5 @@ $(document).ready(function(){
 	window.onload = function() {
 		cleanUpTable2();
 	};
-
 
 });
