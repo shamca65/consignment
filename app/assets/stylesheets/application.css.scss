@@ -17,7 +17,7 @@
  *
  *= require css/bootstrap
  *= require css/mdb
- *= require css/addons/datatables
+ *= require css/addons/dataTables.bootstrap4.min
  *= require css/addons/select.dataTables.min
  *= require css/addons-pro/cards-extended
  *= require protip
@@ -40,7 +40,7 @@
 
 .container-wide {
     width: 1600px !important;
-    margin-left: 40px;
+    margin-left: 70px;
   }
 
 @font-face{
@@ -61,26 +61,6 @@
   text-decoration: inherit;
   text-transform: none;
   speak: none;
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/info-circle/ */
-.icon-info-circled:before{
-  content: '\f05a';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/question-circle/ */
-.icon-help-circled:before{
-  content: '\f059';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/check-circle/ */
-.icon-ok-circled:before{
-  content: '\f058';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/trash/ */
-.icon-trash-empty:before{
-  content: '\f1f8';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/tree/ */
-.icon-tree:before{
-  content: '\f1bb';
 }
 
 @font-face {

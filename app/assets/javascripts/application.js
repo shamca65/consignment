@@ -21,7 +21,6 @@
 //= require js/addons/datatables
 //= require js/addons/dataTables.select.min
 //= require js/modules/material-select
-//= require js/rowReorder.bootstrap4.js
 //= require js/all
 //= require js/jquery-ui-touch-punch.min
 //= require js/jquery-ui.min
@@ -66,8 +65,8 @@ $(document).ready(function(){
 	});
 
 	$('#customersDataTable').DataTable({
-		"paginate": true,
-		"sort": true,
+		"pageLength":10,
+		"lengthMenu": [ 10, 25, 50 ],
 		"columns": [
 			{"width": "50px"},    // customer id
 			{"width": "120px"},   // customer name

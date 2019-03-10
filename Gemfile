@@ -18,6 +18,9 @@ group :development, :test do
 end
 
 group :development do
+  gem 'fastri', '~> 0.3.1.1'
+  gem 'ruby-debug-ide', '~> 0.6.1'
+  gem 'meta_request', '~> 0.6.0'
   gem 'xray-rails', '~> 0.3.1'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
