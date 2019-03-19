@@ -83,15 +83,14 @@ $(document).ready(function(){
 		"paginate": true,
 		"sort": true,
 		"columns": [
-			{"width": "50px"},	// item id
-			{"width": "225px"},   // customer name
-			{"width": "225px"},   // street
-			{"width": "100px"},	// city
-			{"width": "50px"},	// size
-			{"width": "200px"},	// description
+			{"width": "50px"},		// item id
+			{"width": "125px"},   	// customer name
+			{"width": "20px"},		// phone
+			{"width": "20px"},		// size
+			{"width": "125px"},		// description
 			{"width": "100px"},    // price
-			{"width": "100px"},    // edit button
-			{"width": "100px"}     // delete button
+			{"width": "50px"},    // edit button
+			{"width": "50px"}     // delete button
 		]
 	});
 
