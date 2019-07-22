@@ -18,6 +18,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'solargraph'
   gem 'fastri', '~> 0.3.1.1'
   gem 'meta_request', '~> 0.6.0'
   gem 'xray-rails', '~> 0.3.1'
