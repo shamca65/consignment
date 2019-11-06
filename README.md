@@ -1,6 +1,12 @@
 # Consignment App
 
 To Do
+    MVP
+        - New Customer
+            - clean up styling
+            - fix province drop down
+        
+
     * migrate stuff to stored procedures
     * reporting
     * revisit logging

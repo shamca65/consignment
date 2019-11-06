@@ -14,8 +14,8 @@
 //
 //= require jquery-3.3.1.min
 //= require js/bootstrap
-//= require js/popper.min
 //= require js/jquery.gritter
+//= require js/popper.min
 //= require protip.min
 //= require js/mdb
 //= require js/addons/datatables
