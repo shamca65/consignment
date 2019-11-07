@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "/Users/smcarthur/projects/consignment"
+		}
+	],
+	"settings": {
+		"favorites.useTrash": true,
+		"git.defaultCloneDirectory": "~/projects",
+		"ruby.codeCompletion": "rcodetools",
+		"ruby.intellisense": "rubyLocate",
+		"git.ignoreLimitWarning": true
+	}
+}
