@@ -13,9 +13,9 @@
 //	note 'all.js' = font awesome
 //
 //= require jquery-3.3.1.min
+//= require umd/popper.min.js
 //= require js/bootstrap
 //= require js/jquery.gritter
-//= require js/popper.min
 //= require protip.min
 //= require js/mdb
 //= require js/addons/datatables
@@ -28,7 +28,6 @@
 //= require_tree .
 
 $(document).ready(function(){
-
 
 	// Initialize Material Select
     $('.mdb-select').materialSelect();

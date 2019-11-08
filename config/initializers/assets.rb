@@ -21,5 +21,5 @@ Rails.application.config.assets.paths << Rails.root.join('app','assets','images'
 Rails.application.config.assets.precompile += %w(.svg .eot .woff .ttf)
 
 # gritter
-Rails.application.config.assets.precompile += %w( js/jquery.gritter.js )
-Rails.application.config.assets.precompile += %w( css/jquery.gritter.css )
+#Rails.application.config.assets.precompile += %w( js/jquery.gritter.js )
+#Rails.application.config.assets.precompile += %w( css/jquery.gritter.css )

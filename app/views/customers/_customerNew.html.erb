@@ -3,7 +3,7 @@
   <!-- Grid row -->
   <!-- Material form register -->
   <div class="d-flex justify-content-center">
-  <div class="card w-75 mb-3 " >
+  <div class="card w-75 mb-3" >
 
     <h2 class="card-header info-color white-text text-center py-4">
       <strong>New Customer</strong>
@@ -22,7 +22,6 @@
                          autofocus: true, autocomplete: "first_name",
                          class: "form-control", placeholder: "First Name",
                           style: "font-size: x-large" %>
-        <label for="inputfirstName4MD">First Name</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -35,7 +34,6 @@
                          autofocus: true, autocomplete: "last_name",
                          class: "form-control", placeholder: "Last Name",
                          style: "font-size: x-large" %>
-        <label for="inputlastName4MD">Last Name</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -51,8 +49,6 @@
                          autofocus: true, autocomplete: "phone",
                          class: "form-control", placeholder: "Phone or Mobile",
                          style: "font-size: x-large" %>
-        <label for="inputPhone4MD">Phone or Mobile</label>
-
       </div>
     </div>
     <!-- Grid column -->
@@ -65,7 +61,6 @@
                          autofocus: true, autocomplete: "email",
                          class: "form-control", placeholder: "Email Address",
                          style: "font-size: x-large" %>
-        <label for="inputEmail4MD">Email Address</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -81,7 +76,6 @@
                          autofocus: true, autocomplete: "street_address",
                          class: "form-control", placeholder: "Street Address",
                          style: "font-size: x-large" %>
-        <label for="inputAddressMD">Address 1</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -92,7 +86,6 @@
                          autofocus: true, autocomplete: "street_address2",
                          class: "form-control", placeholder: "Street Address 2",
                          style: "font-size: x-large" %>
-        <label for="inputAddress2MD">Address 2</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -108,7 +101,6 @@
                          autofocus: true, autocomplete: "city",
                          class: "form-control", placeholder: "City",
                          style: "font-size: x-large" %>
-        <label for="inputCityMD">City</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -120,7 +112,6 @@
                          autofocus: true, autocomplete: "postal",
                          class: "form-control", placeholder: "Postal",
                          style: "font-size: x-large" %>
-        <label for="inputPostalMD">Postal</label>
       </div>
     </div>
     <!-- Grid column -->
@@ -130,20 +121,27 @@
   <div class="form-row">
     <!-- Grid column -->
     <div class="col-md-6">
-      <!-- Material input -->
-      <div class="md-form form-group">
+
         <!--Blue select-->
-        <div class="input-group mb-3 ">
-          <select name="customer[province]" id="mdb-select" class="mdb-select md-form colorful-select dropdown-primary" style="font-size: x-large" >
-            <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
+        <div class="dropdown">
+         <button class="btn btn-secondary dropdown-toggle" 
+          name="customer[province]"
+          type="button" id="dropdownMenuButton" 
+          data-toggle="dropdown" 
+          aria-haspopup="true" 
+          aria-expanded="false">
+            Province
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%select_tag 'province', options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
+          </div>
           </select>
-          <label>Province</label>
+          <label></label>
         </div>
         <!--/Blue select-->
-      </div>
+  
     </div>
     <!-- Grid column -->
-
 
     <div class="col-md-6">
       <!-- Material input -->
@@ -155,9 +153,6 @@
                 class: 'form-check-input',
                 name: 'customer[agreement_status]'
           %>
-
-            <label class="form-check-label" for="ag_status01" style="font-size: large">Agreement</label>
-
         </div>
 
         <!-- Material inline 2 -->
