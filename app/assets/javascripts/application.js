@@ -14,8 +14,9 @@
 //
 
 //= require jquery-3.3.1.min
-//= require popper.min
+//= require umd/popper.min
 //= require js/bootstrap.min
+//= require material-select
 //= require bootstrap-select
 //= require js/jquery.gritter
 //= require js/mdb
@@ -29,7 +30,9 @@
 //= require_tree .
 
 $(document).ready(function(){
-
+	
+	$('.md-select').materialSelect();
+	
 	// set tooltip defaults
 	$.protip({
 	defaults: {
