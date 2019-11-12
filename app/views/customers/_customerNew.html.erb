@@ -20,7 +20,7 @@
         <%= f.text_field :first_name, id: 'inputfirstName4MD',
                          autofocus: true, autocomplete: "first_name",
                          class: "form-control", placeholder: "First Name",
-                          style: "font-size: large" %>
+                          style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -32,7 +32,7 @@
         <%= f.text_field :last_name, id: 'inputlastName4MD',
                          autofocus: true, autocomplete: "last_name",
                          class: "form-control", placeholder: "Last Name",
-                         style: "font-size: large" %>
+                         style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -46,7 +46,7 @@
         <%= f.text_field :phone, id: 'inputPhone4MD',
                          autofocus: true, autocomplete: "phone",
                          class: "form-control", placeholder: "Phone or Mobile",
-                         style: "font-size: large" %>
+                         style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -58,7 +58,7 @@
         <%= f.text_field :email, id: 'inputEmail4MD',
                          autofocus: true, autocomplete: "email",
                          class: "form-control", placeholder: "Email Address",
-                         style: "font-size: large" %>
+                         style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -73,7 +73,7 @@
         <%= f.text_field :street_address, id: "inputAddressMD",
                          autofocus: true, autocomplete: "street_address",
                          class: "form-control", placeholder: "Street Address",
-                         style: "font-size: large" %>
+                         style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -83,7 +83,7 @@
         <%= f.text_field :street_address2, id: "inputAddress2MD",
                          autofocus: true, autocomplete: "street_address2",
                          class: "form-control", placeholder: "Street Address 2",
-                         style: "font-size: large" %>
+                         style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -98,7 +98,7 @@
         <%= f.text_field :city, id: "inputCityMD",
                          autofocus: true, autocomplete: "city",
                          class: "form-control", placeholder: "City",
-                         style: "font-size: large" %>
+                         style: "font-size: medium" %>
       </div>
     </div>
 
@@ -109,7 +109,7 @@
         <%= f.text_field :postal, id: "inputPostalMD",
                          autofocus: true, autocomplete: "postal",
                          class: "form-control", placeholder: "Postal",
-                         style: "font-size: large" %>
+                         style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -120,12 +120,8 @@
     <!-- Grid column -->
     <div class="col-md-6">
       <div class="md-form mt-5 w-50">
-        <select name="options" class="md-select browser-default " >
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-        <option value="4">Option 4</option>
-        <option value="5">Option 5</option>
+        <select name="options" class="md-select browser-default" name="customer[province]" >
+          <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
         </select>
         <label class="active" for="form6" >Province</label>
       </div>
