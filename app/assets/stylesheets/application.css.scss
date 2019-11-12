@@ -25,6 +25,7 @@
  *= require Montserrat
  *= require css/jquery.gritter
  *= require css/all
+ *= require bootstrap-select
  *= require_tree .
  *= require_self
  */
@@ -38,6 +39,12 @@
   font-family: "Montserrat";
 }
 
+.dropdown .dropdown-menu .dropdown-item, .dropup .dropdown-menu .dropdown-item, .dropleft .dropdown-menu .dropdown-item, .dropright .dropdown-menu .dropdown-item {
+  padding: 0.5rem;
+  margin-left: 0;
+  font-size: 1.0rem;
+}
+  
 .container-wide {
     width: 1600px !important;
     margin-left: 70px;

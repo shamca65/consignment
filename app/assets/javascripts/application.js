@@ -12,15 +12,16 @@
 //
 //	note 'all.js' = font awesome
 //
+
 //= require jquery-3.3.1.min
-//= require umd/popper.min.js
-//= require js/bootstrap
+//= require popper.min
+//= require js/bootstrap.min
+//= require bootstrap-select
 //= require js/jquery.gritter
-//= require protip.min
 //= require js/mdb
+//= require protip.min
 //= require js/addons/datatables
 //= require js/addons/dataTables.select.min
-//= require js/modules/material-select
 //= require js/all
 //= require js/jquery-ui-touch-punch.min
 //= require js/jquery-ui.min
@@ -28,9 +29,6 @@
 //= require_tree .
 
 $(document).ready(function(){
-
-	// Initialize Material Select
-    $('.mdb-select').materialSelect();
 
 	// set tooltip defaults
 	$.protip({
@@ -52,16 +50,17 @@ $(document).ready(function(){
 		autoHide: 2500
 	}
 	});
+
 // Data Picker Initialization
-    $('.datepicker').pickadate({
-        today: '',
-        clear: '',
-        close: ''
-    });
+   // $('.datepicker').pickadate({
+   //     today: '',
+    //    clear: '',
+    //    close: ''
+    //});
 	// Extend the default picker options for all instances.
-	$.extend($.fn.pickadate.defaults, {
-		formatSubmit: 'yyyy-mm-dd'
-	});
+//	$.extend($.fn.pickadate.defaults, {
+//		formatSubmit: 'yyyy-mm-dd'
+//	});
 
 	$('#customersDataTable').DataTable({
 		"pageLength":10,

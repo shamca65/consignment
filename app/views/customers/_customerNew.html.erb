@@ -1,4 +1,10 @@
-
+<script>
+.dropdown .dropdown-menu .dropdown-item, .dropup .dropdown-menu .dropdown-item, .dropleft .dropdown-menu .dropdown-item, .dropright .dropdown-menu .dropdown-item {
+  padding: 0.5rem;
+  margin-left: 0;
+  font-size: 1.0rem; !important
+}
+</script>
 <%= form_for @customer, remote: false do |f| %>
   <!-- Grid row -->
   <!-- Material form register -->
@@ -21,7 +27,7 @@
         <%= f.text_field :first_name, id: 'inputfirstName4MD',
                          autofocus: true, autocomplete: "first_name",
                          class: "form-control", placeholder: "First Name",
-                          style: "font-size: x-large" %>
+                          style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -33,7 +39,7 @@
         <%= f.text_field :last_name, id: 'inputlastName4MD',
                          autofocus: true, autocomplete: "last_name",
                          class: "form-control", placeholder: "Last Name",
-                         style: "font-size: x-large" %>
+                         style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -48,7 +54,7 @@
         <%= f.text_field :phone, id: 'inputPhone4MD',
                          autofocus: true, autocomplete: "phone",
                          class: "form-control", placeholder: "Phone or Mobile",
-                         style: "font-size: x-large" %>
+                         style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -60,7 +66,7 @@
         <%= f.text_field :email, id: 'inputEmail4MD',
                          autofocus: true, autocomplete: "email",
                          class: "form-control", placeholder: "Email Address",
-                         style: "font-size: x-large" %>
+                         style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -75,7 +81,7 @@
         <%= f.text_field :street_address, id: "inputAddressMD",
                          autofocus: true, autocomplete: "street_address",
                          class: "form-control", placeholder: "Street Address",
-                         style: "font-size: x-large" %>
+                         style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -85,7 +91,7 @@
         <%= f.text_field :street_address2, id: "inputAddress2MD",
                          autofocus: true, autocomplete: "street_address2",
                          class: "form-control", placeholder: "Street Address 2",
-                         style: "font-size: x-large" %>
+                         style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -100,7 +106,7 @@
         <%= f.text_field :city, id: "inputCityMD",
                          autofocus: true, autocomplete: "city",
                          class: "form-control", placeholder: "City",
-                         style: "font-size: x-large" %>
+                         style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -111,7 +117,7 @@
         <%= f.text_field :postal, id: "inputPostalMD",
                          autofocus: true, autocomplete: "postal",
                          class: "form-control", placeholder: "Postal",
-                         style: "font-size: x-large" %>
+                         style: "font-size: large" %>
       </div>
     </div>
     <!-- Grid column -->
@@ -121,56 +127,23 @@
   <div class="form-row">
     <!-- Grid column -->
     <div class="col-md-6">
-
+     <div class="md-form form-group">
+      <select class="selectpicker" title="Customers Province" data-style="btn-primary" 
+                                  width: 'auto' style: "font-size: 1.1 rem">
+        <%= options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
+      </select>
         <!--Blue select-->
-        <div class="dropdown">
-         <button class="btn btn-secondary dropdown-toggle" 
-          name="customer[province]"
-          type="button" id="dropdownMenuButton" 
-          data-toggle="dropdown" 
-          aria-haspopup="true" 
-          aria-expanded="false">
-            Province
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <%select_tag 'province', options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},selected: customer.province) %>
-          </div>
-          </select>
-          <label></label>
-        </div>
-        <!--/Blue select-->
-  
+      </div>
     </div>
     <!-- Grid column -->
 
+ 
     <div class="col-md-6">
       <!-- Material input -->
-      <div class="md-form form-group">
-        <!-- Material inline 1 -->
-        <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 1,
-                id: 'ag_status01',
-                class: 'form-check-input',
-                name: 'customer[agreement_status]'
-          %>
-        </div>
+
 
         <!-- Material inline 2 -->
-        <div class="form-check form-check-inline">
-          <%= f.radio_button :agreement_status, 0,
-                             id: 'ag_status02',
-                             class: 'form-check-input',
-                             name: 'customer[agreement_status]',
-                             style: "font-size: x-large" %>
-
-          <label class="form-check-label" for="ag_status02">Unsigned</label>
-        </div>
-
-        <!-- Material inline 3 -->
-        <div class="form-check form-check-inline">
-        </div>
-      </div>
-    </div>
+  
     <!-- Grid column -->
   </div>
 
