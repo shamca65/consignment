@@ -15,13 +15,13 @@
  *
  *	note 'all.css' = font awesome
  *
- *= require css/mdb
  *= require bootstrap/bootstrap
- *= require css/addons-pro/cards-extended
+ *= require mdb/mdb.min
+ *= require bootstrap/cards-extended
  *= require protip
  *= require animate
  *= require Montserrat
- *= require css/jquery.gritter
+ *= require jquery/jquery.gritter
  *= require css/all
  *= require_tree .
  *= require_self

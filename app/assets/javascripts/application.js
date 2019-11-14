@@ -12,23 +12,20 @@
 //
 //	note 'all.js' = font awesome
 //
-//= require jquery-3.3.1.min
+//= require jquery/jquery-3.3.1.min
 //= require umd/popper.min
-//= require bootstrap/bootstrap.bundle.min
-//= require js/material-select
-//= require js/jquery.gritter
-//= require js/mdb
+//= require bootstrap/bootstrap.min
+//= require mdb/material-select
+//= require jquery/jquery.gritter
+//= require mdb/mdb.min
 //= require protip.min
-//= require js/addons/datatables
-//= require js/addons/dataTables.select.min
+//= require datatables/datatables
+//= require datatables/dataTables.select.min
 //= require js/all
-//= require js/jquery-ui-touch-punch.min
-//= require js/jquery-ui.min
 //= require activestorage
 //= require_tree .
 
 $(document).ready(function(){
-	
 
 	$('.md-select').materialSelect();
 	
@@ -69,12 +66,11 @@ $(document).ready(function(){
 		"lengthMenu": [ 10, 25, 50 ],
 		"columns": [
 			{"width": "50px"},    // customer id
-			{"width": "120px"},   // customer name
+			{"width": "120px"},   // customer name link
 			{"width": "75px"},    // agreement status
 			{"width": "75px"},    // phone
 			{"width": "75px"},    // email
 			{"width": "50px"},    // province
-			{"width": "75px"},    // edit button
 			{"width": "75px"}     // delete button
 		]
 	});

@@ -1,5 +1,5 @@
 <% if @customer.errors.any? %>
     <% @customer.errors.full_messages.each do |e| %>
-        <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false) %>
+        <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false, :position => :bottom_right) %>
     <% end %>
 <% end %>
