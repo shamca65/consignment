@@ -16,9 +16,6 @@ module Consignment
     #
     config.load_defaults 5.2
     config.assets.paths << Rails.root.join("app", "assets")
-    config.assets.paths << Rails.root.join("vendor", "mdb" )
-    config.assets.paths << Rails.root.join("vendor", "mdb", "js" )
-    config.assets.paths << Rails.root.join("node_modules","popper.js","dist")
     config.assets.paths << Rails.root.join("vendor", "fa" )
     config.assets.paths << Rails.root.join("vendor", "fa", "svgs", "light")
     config.assets.paths << Rails.root.join("vendor", "fa", "svgs", "regular")

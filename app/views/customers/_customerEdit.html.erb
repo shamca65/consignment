@@ -1,27 +1,8 @@
 <div class="d-lg-flex justify-content-center">
   <div class="w-75">
-    <style>
-    .form-control{
-      font-size: 18px;
-    }
-    .select-wrapper input.select-dropdown {
-      font-size: 1.2rem;
-      font-family: 'Montserrat', Courier, monospace;
-      padding-left: 10px;
-    }
-    .dropdown-content li > span {
-      font-size: 1.2rem;
-      color: black;
-      display: block;
-      padding: 0.3rem; }
-  </style>
+
     <%= form_with id: "customerEditform", model: @customer do |f| %>
       <!-- Notifications -->
-      <% if @customer.errors.any? %>
-        <% @customer.errors.full_messages.each do |e| %>
-          <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false) %>
-        <% end %>
-      <% end %>
       <!-- Extended material form grid -->
       <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
       <!-- row 1  -->

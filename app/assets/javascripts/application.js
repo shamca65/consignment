@@ -12,12 +12,10 @@
 //
 //	note 'all.js' = font awesome
 //
-
 //= require jquery-3.3.1.min
 //= require umd/popper.min
-//= require js/bootstrap.min
-//= require material-select
-//= require bootstrap-select
+//= require bootstrap/bootstrap.bundle.min
+//= require js/material-select
 //= require js/jquery.gritter
 //= require js/mdb
 //= require protip.min
@@ -31,6 +29,7 @@
 
 $(document).ready(function(){
 	
+
 	$('.md-select').materialSelect();
 	
 	// set tooltip defaults

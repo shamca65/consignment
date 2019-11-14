@@ -13,8 +13,5 @@ module CustomersHelper
       when 1
         content_tag(:i, '', class: 'far fa-check-circle h2 text-success')
       end
-
     end
-
-
 end

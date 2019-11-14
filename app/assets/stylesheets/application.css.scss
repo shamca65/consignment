@@ -15,17 +15,14 @@
  *
  *	note 'all.css' = font awesome
  *
- *= require css/bootstrap
  *= require css/mdb
- *= require css/addons/datatables
- *= require css/addons/select.dataTables.min
+ *= require bootstrap/bootstrap
  *= require css/addons-pro/cards-extended
  *= require protip
  *= require animate
  *= require Montserrat
  *= require css/jquery.gritter
  *= require css/all
- *= require bootstrap-select
  *= require_tree .
  *= require_self
  */
@@ -43,27 +40,10 @@
     font-weight: 300;
 }
 
-.md-select {
- background-color: transparent;
- border: none;
- border-bottom: 1.3px solid #bdbdbd;
- border-radius: 0;
- outline: 0;
- height: 2.1rem;
- width: 100%;
- font-size: 1.3rem;
- -webkit-box-shadow: none;
- box-shadow: none;
- -webkit-box-sizing: content-box;
- box-sizing: content-box;
- -webkit-transition: all .3s;
- transition: all .3s;
- }
- .md-select:active {
- border-bottom: 1px solid #4285F4;
- -webkit-box-shadow: 0 1px 0 0 #4285F4;
- box-shadow: 0 1px 0 0 #4285F4;
- }
+.field_with_errors {
+  box-sizing: border-box;
+  border-color: red;  
+}
   
 .container-wide {
     width: 1600px !important;
