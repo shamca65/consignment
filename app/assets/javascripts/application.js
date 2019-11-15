@@ -14,16 +14,16 @@
 //
 //= require jquery/jquery-3.3.1.min
 //= require umd/popper.min
-//= require bootstrap/bootstrap.min
-//= require mdb/material-select
+//= require bootstrap/bootstrap
 //= require jquery/jquery.gritter
-//= require mdb/mdb.min
+//= require mdb/mdb
+//= require mdb/material-select
+//= require jquery/jquery.dataTables.min
+//= require datatables/dataTables.bootstrap.min
 //= require protip.min
-//= require datatables/datatables
-//= require datatables/dataTables.select.min
-//= require js/all
+//= require fa/js/all
 //= require activestorage
-//= require_tree .
+
 
 $(document).ready(function(){
 

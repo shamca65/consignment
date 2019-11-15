@@ -16,14 +16,13 @@
  *	note 'all.css' = font awesome
  *
  *= require bootstrap/bootstrap
- *= require mdb/mdb.min
  *= require bootstrap/cards-extended
+ *= require mdb/mdb
  *= require protip
  *= require animate
  *= require Montserrat
  *= require jquery/jquery.gritter
- *= require css/all
- *= require_tree .
+ *= require fa/css/all
  *= require_self
  */
 
@@ -49,107 +48,3 @@
     width: 1600px !important;
     margin-left: 70px;
   }
-
-@font-face{
-  font-family: 'icons';
-  src: url('fa-light-300.woff');
-}
-[class^='icon-']:before, [class*=' icon-']:before{
-  font-family: 'icons';
-  font-weight: normal;
-  font-style: normal;
-  font-variant: normal;
-  line-height: 1.3em;
-  display: inline-block;
-  width: 1em;
-  margin-right: .2em;
-  margin-left: .2em;
-  text-align: center;
-  text-decoration: inherit;
-  text-transform: none;
-  speak: none;
-}
-
-@font-face {
-  font-family: 'Font Awesome 5 Pro';
-  src: url('<%= asset_path('fa-brands-400') %>');
-  src: url('<%= asset_path('fa-brands-400')%>') format('embedded-opentype'),
-  url('<%= asset_path('fa-brands-400')%>') format('woff'),
-  url('<%= asset_path('fa-brands-400')%>') format('truetype'),
-  url('<%= asset_path('fa-brands-400')%>') format('svg');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Font Awesome 5 Pro';
-  src: url('<%= asset_path('fa-light-300') %>');
-  src: url('<%= asset_path('fa-light-300')%>') format('embedded-opentype'),
-url('<%= asset_path('fa-light-300')%>') format('woff'),
-url('<%= asset_path('fa-light-300')%>') format('truetype'),
-url('<%= asset_path('fa-light-300')%>') format('svg');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Font Awesome 5 Pro';
-  src: url('<%= asset_path('fa-regular-400') %>');
-  src: url('<%= asset_path('fa-regular-400')%>') format('embedded-opentype'),
-url('<%= asset_path('fa-regular-400')%>') format('woff'),
-url('<%= asset_path('fa-regular-400')%>') format('truetype'),
-url('<%= asset_path('fa-regular-400')%>') format('svg');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Font Awesome 5 Pro';
-  src: url('<%= asset_path('fa-solid-900') %>');
-  src: url('<%= asset_path('fa-solid-900')%>') format('embedded-opentype'),
-url('<%= asset_path('fa-solid-900')%>') format('woff'),
-url('<%= asset_path('fa-solid-900')%>') format('truetype'),
-url('<%= asset_path('fa-solid-900')%>') format('svg');
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face{
-  font-family: 'icons';
-  src: url('<%= asset_path('fa-light-300')%>');
-}
-[class^='icon-']:before, [class*=' icon-']:before{
-  font-family: 'icons';
-  font-weight: 300;
-  font-style: normal;
-  font-variant: normal;
-  line-height: 1.5em;
-  display: inline-block;
-  width: 1em;
-  margin-right: .2em;
-  margin-left: .2em;
-  text-align: center;
-  text-decoration: inherit;
-  text-transform: none;
-  speak: none;
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/info-circle/ */
-.icon-info-circled:before{
-  content: '\f05a';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/question-circle/ */
-.icon-help-circled:before{
-  content: '\f059';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/check-circle/ */
-.icon-ok-circled:before{
-  content: '\f058';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/trash/ */
-.icon-trash-empty:before{
-  content: '\f1f8';
-}
-/* Unicode of https://fontawesome.com/v4.7.0/icon/tree/ */
-.icon-tree:before{
-  content: '\f1bb';
-}
