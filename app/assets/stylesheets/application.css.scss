@@ -22,6 +22,7 @@
  *= require animate
  *= require Montserrat
  *= require jquery/jquery.gritter
+ *= require datatables/dataTables.bootstrap4.min
  *= require fa/css/all
  *= require_self
  */
@@ -31,9 +32,6 @@
 @import "bootstrap";
 @import "gritter";
 
-* {
-  font-family: "Montserrat";
-}
 .md-form label.active {
     font-size: 1.8rem;
     font-weight: 300;
@@ -45,6 +43,27 @@
 }
   
 .container-wide {
-    width: 1600px !important;
-    margin-left: 70px;
+    width: 100% !important;
+    margin-left: 0px;
+    margin-right: 0px;
   }
+.container-wide-inside {
+    width: 99% !important;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+.nav-container {
+    width: 100% !important;
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+.card-deck-center {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.dataTables_wrapper div.dataTables_info {
+    padding-top: 0.85em;
+    white-space: nowrap;
+    margin-right: 20px;
+    margin-left: 20px;
+}

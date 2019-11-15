@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark" >
     <li class="navbar-brand ">Acta Diurna</li>
     <% if controller_name != 'sessions' %>
-    <div class="collapse navbar-collapse mx-auto " id="navbarSupportedContent">
+    <div class="navbar-collapse mx-auto " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item btn btn-outline-primary  <%= active?(root_path) %>">
           <a class="nav-link " href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
@@ -18,8 +18,8 @@
       </ul>
       <div class="navbar-right">
         <% if user_signed_in? %>
-          <div class="text-sm-center">
-          <%= button_to('Sign out', destroy_user_session_path, method: :delete, class: "btn btn-md btn-outline-warning") %>
+          <div class="text-md-center">
+          <%= button_to('Sign out', destroy_user_session_path, method: :delete, class: "btn btn-lg btn-outline-warning") %>
           </div>
         <% end %>
       </div>

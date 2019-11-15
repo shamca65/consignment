@@ -61,6 +61,10 @@ $(document).ready(function(){
 //		formatSubmit: 'yyyy-mm-dd'
 //	});
 
+	$.extend($.fn.dataTableExt.oStdClasses, {
+		"sWrapper": "dataTables_wrapper"
+	});
+
 	$('#customersDataTable').DataTable({
 		"pageLength":10,
 		"lengthMenu": [ 10, 25, 50 ],
