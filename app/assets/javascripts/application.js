@@ -68,6 +68,7 @@ $(document).ready(function(){
 	$('#customersDataTable').DataTable({
 		"pageLength":10,
 		"lengthMenu": [ 10, 25, 50 ],
+		"dom": "Bfrtip",
 		"columns": [
 			{"width": "50px"},    // customer id
 			{"width": "120px"},   // customer name link
@@ -82,6 +83,7 @@ $(document).ready(function(){
 	$('#itemsDataTable').DataTable({
 		"paginate": true,
 		"sort": true,
+		"dom": "Bfrtip",
 		"columns": [
 			{"width": "50px"},		// item id
 			{"width": "125px"},   	// customer name

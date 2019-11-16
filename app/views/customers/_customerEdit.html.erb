@@ -1,197 +1,151 @@
-<div class="d-lg-flex justify-content-center">
-  <div class="w-75">
 
-    <%= form_with id: "customerEditform", model: @customer do |f| %>
-      <!-- Notifications -->
-      <!-- Extended material form grid -->
-      <!-- /Users/Shaun/.rvm/gems/ruby-2.5.0/gems/bootstrap-sass-3.4.0/assets/stylesheets/bootstrap/_forms.scss -->
-      <!-- row 1  -->
-      <div class="form-row" >
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-            <span class="input-group-text teal lighten-4">
-              <i class="fal fa-user fa-2x"></i>
-            </span>
-            <%= f.text_field :first_name, id: 'inputfirstName4MD',
-                             autofocus: true, autocomplete: "first_name",
-                             class: "form-control protip", placeholder: "First Name",
-                             'data-pt-title' => "First Name (required)",
-                             'data-pt-position' => 'bottom-left'
-            %>
-          </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text teal lighten-4">
-                <i class="fal fa-user fa-2x "></i>
-              </span>
-                  <%= f.text_field :last_name, id: 'inputlastName4MD',
-                                   autofocus: true, autocomplete: "last_name",
-                                   class: "form-control protip", placeholder: "Last Name",
-                                    'data-pt-title' => "Last Name (required)",
-                                   'data-pt-position' => 'bottom-left' %>
-            </div>
-          </div>
-        </div>
+<%= form_with model: @customer, url: customer do |f| %>
+  <!-- Grid row -->
+  <!-- Material form register -->
+  <div class="d-flex justify-content-center">
+  <div class="card w-75 mb-3" >
+
+    <h2 class="card-header secondary-color white-text text-center py-4">
+      <strong>Update Customer</strong>
+    </h2>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+  <br />
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6 ">
+      <!-- Material input -->
+
+      <div class="md-form form-group ">
+        <%= f.text_field :first_name, id: 'inputfirstName4MD', 
+                         autofocus: true, autocomplete: "first_name",
+                         class: "form-control", placeholder: "First Name",
+                          style: "font-size: medium" %>
       </div>
-        <!-- row 2  -->
-      <div class="form-row" >
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text teal lighten-4">
-                <i class="fal fa-phone-square fa-2x"></i>
-              </span>
-                <%= f.text_field :phone, id: 'inputPhone4MD',
-                                 autofocus: true, autocomplete: "phone",
-                                 class: "form-control protip", placeholder: "Phone or Mobile",
-                                 'data-pt-title' => "Phone Number (required)",
-                                 'data-pt-position' => 'bottom-left' %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text teal lighten-4">
-                <i class="fal fa-envelope fa-2x"></i>
-              </span>
-                <%= f.text_field :email, id: 'inputEmail4MD',
-                                 autofocus: true, autocomplete: "email",
-                                 class: "form-control protip", placeholder: "Email Address",
-                                 'data-pt-title' => "Email Address (required)",
-                                 'data-pt-position' => "bottom-left" %>
-            </div>
-          </div>
-        </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :last_name, id: 'inputlastName4MD',
+                         autofocus: true, autocomplete: "last_name",
+                         class: "form-control", placeholder: "Last Name",
+                         style: "font-size: medium" %>
       </div>
-      <!-- row 3  -->
-      <div class="form-row" >
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text teal lighten-4">
-                <i class="fal fa-road fa-2x"></i>
-              </span>
-                <%= f.text_field :street_address, id: "inputAddressMD",
-                                 autofocus: true, autocomplete: "street_address",
-                                 class: "form-control protip", placeholder: "Street Address",
-                                 'data-pt-title' => "Street Address 1",
-                                 'data-pt-position' => "bottom-left",
-                                 'data-pt-scheme' => "aqua" %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend ">
-                <span class="input-group-text teal lighten-4">
-                  <i class="fal fa-road fa-2x"></i>
-                </span>
-                  <%= f.text_field :street_address2, id: "inputAddress2MD",
-                                   autofocus: true, autocomplete: "street_address2",
-                                   class: "form-control protip", placeholder: "Street Address 2",
-                                   'data-pt-title' => "Street Address 2",
-                                   'data-pt-position' => "bottom-left",
-                                   'data-pt-scheme' => "aqua" %>
-              </div>
-            </div>
-          </div>
-      </div>
-      <!-- row 4  -->
-      <div class="form-row" >
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text teal lighten-4">
-                <i class="fal fa-city fa-2x"></i>
-              </span>
-                <%= f.text_field :city, id: "inputCityMD",
-                                 autofocus: true, autocomplete: "city",
-                                 class: "form-control protip", placeholder: "City",
-                                 'data-pt-title' => "City",
-                                 'data-pt-position' => "bottom-left",
-                                 'data-pt-scheme' => "aqua" %>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-            <div class="md-form form-group input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text teal lighten-4">
-                  <i class="fal fa-map-marker fa-2x "></i>
-                </span>
-                  <%= f.text_field :postal, id: "inputPostalMD",
-                               autofocus: true, autocomplete: "postal",
-                               class: "form-control protip", placeholder: "Postal",
-                                   'data-pt-title' => "Postal/Zip Code",
-                                   'data-pt-position' => "bottom-left",
-                                   'data-pt-scheme'=>"aqua" %>
-            </div>
-            </div>
-          </div>
-      </div>
-      <!-- row 5  -->
-      <div class="form-row" >
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text teal lighten-4">
-                <i class="fal fa-parking fa-2x"></i>
-              </span>
-              <div class="protip" data-pt-title="Province or State"
-                        data-pt-position="bottom-left"
-                        data-pt-animate="pulse"
-                        data-pt-scheme="aqua">
-              <select name="customer[province]" id="mdb-select"
-                      class="mdb-select md-form colorful-select dropdown-primary"
-                      style="font-size: large">
-                <%= options_for_select(Customer::PROVINCES.map {|k, v| [v, k]}, selected: customer.province) %>
-              </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="md-form form-group input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text teal lighten-4">
-                  <i class="fal fa-file-contract fa-2x"></i>
-                </span>
-                <div class="protip" data-pt-title="Agreement Status"
-                            data-pt-position="bottom-left"
-                            data-pt-scheme="aqua">
-                  <select name="customer[agreement_status]" id="mdb-select"
-                        class="mdb-select md-form colorful-select dropdown-primary" >
-                  <%= options_for_select(Customer::AGREEMENT_STATUSES.map {|v, k| [v, k]}, selected: customer.agreement_status) %>
-                </select>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- row 6  -->
-      <br />
-      <div class="form-row" >
-        <div class="col-md-12 text-center">
-          <div class="form-group red-border well shadow-textarea">
-              <div class="protip" data-pt-title="Customer Notes"
-                   data-pt-position="top-left"
-                   data-pt-scheme="aqua">
-              <%= f.text_area :notes, class: 'form-control',
-                               cols: "10", rows: "5", placeholder: "Enter Customer notes" %>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- end of form -->
-      <div class="text-center">
-        <button class="btn btn-primary waves-effect" type="submit" >Update Customer Record</button>
-      </div>
-  <% end %>
-    <!-- justify/w-75 -->
+    </div>
+    <!-- Grid column -->
   </div>
-</div>
+   <!-- Row 2 -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :phone, id: 'inputPhone4MD',
+                         autofocus: true, autocomplete: "phone",
+                         class: "form-control", placeholder: "Phone or Mobile",
+                         style: "font-size: medium" %>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :email, id: 'inputEmail4MD',
+                         autofocus: true, autocomplete: "email",
+                         class: "form-control", placeholder: "Email Address",
+                         style: "font-size: medium" %>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
+  <div class="row">
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :street_address, id: "inputAddressMD",
+                         autofocus: true, autocomplete: "street_address",
+                         class: "form-control", placeholder: "Street Address",
+                         style: "font-size: medium" %>
+      </div>
+    </div>
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :street_address2, id: "inputAddress2MD",
+                         autofocus: true, autocomplete: "street_address2",
+                         class: "form-control", placeholder: "Street Address 2",
+                         style: "font-size: medium" %>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :city, id: "inputCityMD",
+                         autofocus: true, autocomplete: "city",
+                         class: "form-control", placeholder: "City",
+                         style: "font-size: medium" %>
+      </div>
+    </div>
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :postal, id: "inputPostalMD",
+                         autofocus: true, autocomplete: "postal",
+                         class: "form-control", placeholder: "Postal",
+                         style: "font-size: medium" %>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <div class="md-form mt-5 w-50">
+        <%= f.select  :province, options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},@customer.province),
+            {:include_blank => "Select Province"},{class: "browser-default md-select"} %>
+        <label class="active">Province</label>
+      </div>
+
+    </div>
+  </div>
+  <!-- Grid column -->
+
+  <!-- row 6  -->
+  <br />
+  <div class="form-row" >
+    <div class="col-md-12 text-center">
+      <div class="form-group red-border well shadow-textarea">
+          <div class="protip" data-pt-title="Private Notes"
+                data-pt-position="top-left"
+                data-pt-scheme="aqua">
+          <%= f.text_area :notes, class: 'form-control',
+                            cols: "10", rows: "5", placeholder: "Enter Customer notes" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of form -->
+  <div class="text-center">
+    <button class="btn btn-primary waves-effect" type="submit" >Update Customer Record</button>
+  </div>
+  <% end %>
