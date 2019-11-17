@@ -1,29 +1,24 @@
 <% content_for :title, "Items" %>
-<style>
-  .no-sort::after { display: none!important; }
-  .no-sort::before { display: none!important; }
-  .no-sort { pointer-events: none!important; cursor: default!important; }
-</style>
-<div class="text-center h3 secondary">
+<div class="text-center h2 secondary">
 Item List
 </div>
-<table id="itemsDataTable" class="table table-striped " cellspacing="0" width="80%">
+<table id="itemsDataTable" class="table table-striped dataTable_index_tables" cellspacing="0">
   <thead>
   <tr>
     <th class="text-center h5">
       <b>Item ID</b>
     </th>
     <th class="text-left h5">
-      <b>Customer Name</b>
-    </th>
-    <th class="text-left no-sort h5">
-      <b>Phone</b>
+      <b>Description</b>
     </th>
     <th class="text-center no-sort h5">
       <b>Size</b>
     </th>
     <th class="text-left no-sort h5">
-      <b>Description</b>
+      <b>Customer</b>
+    </th>
+    <th class="text-left no-sort h5">
+      <b>Phone</b>
     </th>
     <th class="text-right no-sort h5">
       <b>Price</b>

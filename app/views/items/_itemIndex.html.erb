@@ -1,16 +1,21 @@
 <tbody>
 <% @items.each do |item| %>
   <tr >
+    
     <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
+      
+    <td class="text-left h5 align-middle">
+      <%= link_to edit_item_path(item.id) do %>
+        <%= item.description.truncate(75) %>
+      <%end%>
+    </td>
+    <td class="text-center align-middle"><%= size_label(item.size) %></td>
     <td class="text-left h5 align-middle">
       <%= link_to edit_customer_path(item.customer.id) do %>
-        <span><i class="fal fa-user-circle text-primary"></i>
-      <% end %>
         <%= item.customer.full_name.truncate(50) %></span>
+        <% end %>
     </td>
     <td class="text-left h5 align-middle"><%= item.customer.phone %></td>
-    <td class="text-center align-middle"><%= size_label(item.size) %></td>
-    <td class="text-left h5 align-middle"><%= item.description.truncate(75) %></td>
     <td class="text-right h5 align-left"><%= number_to_currency(item.price) %></td>
     <td class="text-center h5 align-middle">
     <div class="itemDeleteIcon protip " data-pt-title="Edit item"
