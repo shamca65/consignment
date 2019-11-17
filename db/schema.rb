@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_24_152652) do
+ActiveRecord::Schema.define(version: 2019_11_17_180037) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -72,12 +72,14 @@ ActiveRecord::Schema.define(version: 2019_01_24_152652) do
     t.decimal "payout_pct", precision: 8, scale: 2
     t.string "chk", limit: 5
     t.string "owner", limit: 15
+    t.text "item_note"
     t.index ["customer_id"], name: "index_items_on_customer_id"
   end
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "updated_date"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

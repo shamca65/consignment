@@ -1,5 +1,10 @@
 <% content_for :title, 'Editing Item' %>
   <div>
+       <% if @item.errors.any? %>
+        <% @item.errors.full_messages.each do |e| %>
+          <%= js add_gritter(e, title: "Notice", :image => image_path('info.png'), sticky: false) %>
+        <% end %>
+      <% end %>
     <%= render 'itemEdit', item: @item %>
   </div>
 
