@@ -12,7 +12,6 @@ module ItemsHelper
 		end
 	end
 
-
 	private
 
 	def size_span_generator size
