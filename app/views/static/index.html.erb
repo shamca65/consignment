@@ -4,10 +4,16 @@
   <div class="row">
     <div class="card border-secondary mb-3">
       <div class="card-body">
-        <%= link_to new_customer_path do %>
-           <h3 class="card-title ">Add New Customer</h3>
+        <h2 class="card-title ">Customers</h2>
+        <p>
+        <%= link_to customers_path do %>
+           <h5 class="card-title">Customer List</h5>
         <%end %>
-           <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+        <%= link_to new_customer_path do %>
+           <h5 class="card-title">Add New Customer</h5>
+        <%end %>
+
+        <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       </div>
       <div class="card-footer">
         <small class="text-muted">Last updated 3 mins ago</small>
@@ -17,7 +23,7 @@
     <div class="card border-danger mb-3">
       <div class="card-body">
         <%= link_to customers_path do %>
-          <h3 class="card-title">Search/Take In</h3>
+          <h3 class="card-title">Take In</h3>
         <%end %>
           <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       </div>
@@ -28,10 +34,13 @@
 
     <div class="card border-dark mb-3">
       <div class="card-body">
-        <%= link_to items_path do %>
-          <h3 class="card-title">Items</h3>
+        <h2 class="card-title">Items</h2>
+        
+        <%= link_to new_item_path do %>
+          <h3 class="card-title">Add New Item</h3>
         <%end %>
-              <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
+
+        <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       </div>
       <div class="card-footer">
         <small class="text-muted">Last updated 3 mins ago</small>
