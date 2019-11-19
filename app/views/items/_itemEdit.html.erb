@@ -1,117 +1,105 @@
 <table class="blueTable">
 <thead>
   <tr>
-    <th>head1</th>
-    <th>head2</th>
-    <th>head3</th>
-    <th>head4</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td>cell1_1</td>
-    <td>cell2_1</td>
-    <td>cell3_1</td>
-    <td>cell4_1</td>
-  </tr>
-  <tr>
-    <td>cell1_2</td>
-    <td>
-    <%= form_with model: @item, url: item do |f| %>
-    <!-- Notifications -->
-    <!-- Grid row -->
-      <div class="card mb-3" >
+    <td></td style="width: 15%;">
+    <td style="width: 40%;">
+      <%= form_with model: @item, url: item do |f| %>
+      <!-- Notifications -->
+      <!-- Grid row -->
+        <div class="card mb-3" >
+          <h2 class="card-header warning-color-dark white-text text-center py-4">
+            <strong>Update Item</strong>
+          </h2>
 
-        <h2 class="card-header warning-color-dark white-text text-center py-4">
-          <strong>Update Item</strong>
-        </h2>
-
-        <!-- Left page -->
-        <div class="card-body px-lg-5 pt-0">
-          <br>
-          <!-- Row 1 -->
-          <div class="form-row">
-            <!-- Left column --> 
-            <div class="col-lg-6 ">
-              <!-- Gender -->
-              <div class="md-form form-group ">
-              <%= f.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]},@item.gender),
-                    {:include_blank => "Select Gender"},{class: "browser-default"} %>
-                <label class="active">Gender</label>
+          <!-- Left page -->
+          <div class="card-body px-lg-5 pt-0">
+            <br>
+            <!-- Row 1 -->
+            <div class="form-row">
+              <!-- Left column --> 
+              <div class="col-lg-6 ">
+                <!-- Gender -->
+                <div class="md-form form-group ">
+                <%= f.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]},@item.gender),
+                      {:include_blank => "Select Gender"},{class: "browser-default"} %>
+                  <label class="active">Gender</label>
+                </div>
+              </div>
+  
+              <!-- Right column --> 
+              <div class="col-lg-6">
+                <!-- Item Type -->
+                <div class="md-form form-group">
+                <%= f.select :item_type, 
+                      options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type),
+                      {:include_blank => "Select Item Type"},{class: "browser-default md-select"} %>
+                  <label class="active">Item Type</label>
+                </div>
               </div>
             </div>
- 
-            <!-- Right column --> 
-            <div class="col-lg-6">
-              <!-- Item Type -->
-              <div class="md-form form-group">
-              <%= f.select :item_type, 
-                    options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type),
-                    {:include_blank => "Select Item Type"},{class: "browser-default md-select"} %>
-                <label class="active">Item Type</label>
+
+            <!-- Row 2 -->
+            <div class="form-row">
+                <!-- Left column - size -->
+              <div class="col-lg-6">
+                <div class="md-form form-group">
+                  <%= f.select  :size, 
+                        options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size),
+                        {:include_blank => "Select Item Size"},{class: "browser-default md-select"} %>
+                    <label class="active">Item Size</label>
+                </div>
+              </div>
+
+              <div class="col-lg-6">
+                <!-- Right column - description -->
+                <div class="md-form form-group">
+                    <%= f.text_field :description, id: 'itemDescription',
+                                            autofocus: true, autocomplete: "itemDescription",
+                                            class: "form-control", placeholder: "Description"%>
+                    <label class="active">Short Description</label>
+                </div>
               </div>
             </div>
+
+            <!-- Row 3 -->
+            <div class="row">
+              <!-- Left  -->
+              <div class="col-lg-6">
+                <div class="md-form form-group">
+                  <%= f.text_field :price, id: "itemPrice",
+                    autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
+                    class: "form-control ", placeholder: "Item Price" %>
+                <label class="active">Price</label>
+                </div>
+              </div>
+              <% end %>
+   	        </div>
+               <div class="text-center">
+            <button class="btn btn-primary waves-effect "type="submit" >Update Item Record</button>
           </div>
-
-          <!-- Row 2 -->
-          <div class="form-row">
-              <!-- Left column - size -->
-            <div class="col-lg-6">
-              <div class="md-form form-group">
-                <%= f.select  :size, 
-                      options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size),
-                      {:include_blank => "Select Item Size"},{class: "browser-default md-select"} %>
-                  <label class="active">Item Size</label>
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <!-- Right column - description -->
-              <div class="md-form form-group">
-                  <%= f.text_field :description, id: 'itemDescription',
-                                          autofocus: true, autocomplete: "itemDescription",
-                                          class: "form-control", placeholder: "Description"%>
-                  <label class="active">Short Description</label>
-              </div>
-            </div>
-          </div>
-
-          <!-- Row 3 -->
-          <div class="row">
-            <!-- Left  -->
-            <div class="col-lg-6">
-              <div class="md-form form-group">
-                <%= f.text_field :price, id: "itemPrice",
-                  autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
-                  class: "form-control ", placeholder: "Item Price" %>
-              <label class="active">Price</label>
-              </div>
-            </div>
-            <% end %>
-   	</div>
     </td>
-    <td>
-    
-    
-    
-    
-    
-    
-    
+    <td style="width: 30%;">
+      <%= render 'items/cards/dates', locals: {item: @item} %>
+    <br>
+      <%= render  "items/cards/payouts", locals: {item: @item} %>
     </td>
-    <td>cell4_2</td>
+    <td style="width: 15%;">cell4_2
+
+    </td>
   </tr>
   <tr>
     <td>cell1_3</td>
     <td>cell2_3</td>
     <td>cell3_3</td>
     <td>cell4_3</td>
-  </tr>
-  <tr>
-    <td>cell1_4</td>
-    <td>cell2_4</td>
-    <td>cell3_4</td>
-    <td>cell4_4</td>
   </tr>
 </tbody>
   </tr>
