@@ -2,62 +2,41 @@
 
 <div class="card-deck card-deck-center">
   <div class="row">
-    <div class="card border-secondary mb-3">
+
+    <div class="card border-secondary mb-3" style="width:400px">
       <div class="card-body">
-        <h2 class="card-title ">Customers</h2>
-        <p>
+        <h2 class="card-header purple white-text text-center ">
+            <strong>Customers</strong>
+          </h2>
         <%= link_to customers_path do %>
-           <h5 class="card-title">Customer List</h5>
+           <h3 class="card-title">Customer List</h3>
         <%end %>
         <%= link_to new_customer_path do %>
-           <h5 class="card-title">Add New Customer</h5>
+           <h3 class="card-title">Add New Customer</h3>
         <%end %>
-
-        <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       </div>
       <div class="card-footer">
         <small class="text-muted">Last updated 3 mins ago</small>
       </div>
     </div>
 
-    <div class="card border-danger mb-3">
+    <div class="card border-dark mb-3" style="width:400px">
       <div class="card-body">
-        <%= link_to customers_path do %>
-          <h3 class="card-title">Take In</h3>
+          <h2 class="card-header orange white-text text-center ">
+            <strong>Items</strong>
+          </h2>    
+          
+        <%= link_to items_path do %>
+          <h3 class="card-title">Item List</h3>
         <%end %>
-          <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
 
-    <div class="card border-dark mb-3">
-      <div class="card-body">
-        <h2 class="card-title">Items</h2>
-        
         <%= link_to new_item_path do %>
           <h3 class="card-title">Add New Item</h3>
         <%end %>
 
-        <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
       </div>
       <div class="card-footer">
         <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="card border-dark mb-3">
-      <div class="card-body">
-        <%= link_to pickups_items_path do %>
-          <h3 class="card-title">Manage Pickups</h3>
-        <%end %>
-          <p class="card-text">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Current Pickup Date is : 2019-09-09</small>
       </div>
     </div>
   </div>

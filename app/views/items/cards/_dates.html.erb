@@ -18,7 +18,7 @@
             <b>Take In Date:</b>
           </div>
           <div class="col text-left">
-            <%=  @item.takein_date.nil? ? 'Not Set' :  @item.takein_datestrftime("%d-%b-%Y") %>
+            <%=  @item.takein_date.nil? ? 'Not Set' :  @item.takein_date.strftime("%d-%b-%Y") %>
           </div>
         </div>
         <div class="row">
