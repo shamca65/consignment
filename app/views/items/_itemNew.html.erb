@@ -1,23 +1,90 @@
-<%= form_for Item.new do |form| %>
+      <%= form_with model: @item, url: item do |f| %>
+      <!-- Notifications -->
+      <!-- Grid row -->
+      <div class="d-flex justify-content-center">
+        <div class="card mb-3 " style="width: 50%;" >
+          <h2 class="card-header warning-color-dark white-text text-center py-4">
+            <strong>Add Item</strong>
+          </h2>
 
-  <div class="field">
-    <%= form.number_field :customer_id, class: "form-control item", placeholder: "Customer_id ?" %>
-  </div>
+          <!-- Left page -->
+          <div class="card-body px-lg-5 pt-0">
+            <br>
+            <!-- Row 1 -->
+            <div class="form-row">
+              <!-- Left column --> 
+              <div class="col-lg-6 ">
+                <!-- Gender -->
+                <div class="md-form form-group ">
+                <%= f.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]},@item.gender),
+                      {:include_blank => "Select Gender"},{class: "browser-default"} %>
+                  <label class="active">Gender</label>
+                </div>
+              </div>
+  
+              <!-- Right column --> 
+              <div class="col-lg-6">
+                <!-- Item Type -->
+                <div class="md-form form-group">
+                <%= f.select :item_type, 
+                      options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type),
+                      {:include_blank => "Select Item Type"},{class: "browser-default md-select"} %>
+                  <label class="active">Item Type</label>
+                </div>
+              </div>
+            </div>
 
-  <div class="field">
-    <%= form.text_field :size, class: "form-control item", type: "text", placeholder: "Size" %>
-  </div>
+            <!-- Row 2 -->
+            <div class="form-row">
+                <!-- Left column - size -->
+              <div class="col-lg-6">
+                <div class="md-form form-group">
+                  <%= f.select  :size, 
+                        options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size),
+                        {:include_blank => "Select Item Size"},{class: "browser-default md-select"} %>
+                    <label class="active">Item Size</label>
+                </div>
+              </div>
 
-  <div class="field">
-    <%= form.text_field :description, class: "form-control item", type: "text", placeholder: "Description" %>
-  </div>
+              <div class="col-lg-6">
+                <!-- Right column - description -->
+                <div class="md-form form-group">
+                    <%= f.text_field :description, id: 'itemDescription',
+                                            autofocus: true, autocomplete: "itemDescription",
+                                            class: "form-control", placeholder: "Description"%>
+                    <label class="active">Short Description</label>
+                </div>
+              </div>
+            </div>
 
+            <!-- Row 3 -->
+            <div class="row">
+              <!-- Left  -->
+              <div class="col-lg-6">
+                <div class="md-form form-group">
+                  <%= f.text_field :price, id: "itemPrice",
+                    autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
+                    class: "form-control ", placeholder: "Item Price" %>
+                <label class="active">Price</label>
+                </div>
+              </div>
+              <% end %>
+   	        </div>
 
-  <div class="field">
-    <%= form.text_field :price, id: "currency", class: "form-control item", type: "currency", placeholder: "Price" %>
-  </div>
+            <!-- Row 4 -->
+            <div class="row">
+              <!-- Left  -->
+              <div class="col-lg-6">
+                <div class="md-form form-group">
+                  <select class="fstdropdown-select" id="getCustomer">
+                    <%=customer_list%>
+                  </select>
+                </div>
+              </div>
+          
+   	        </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+               <div class="text-center">
+            <button class="btn btn-primary waves-effect "type="submit" >Add Item Record</button>
+          </div>
+</div>

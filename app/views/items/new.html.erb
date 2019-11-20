@@ -1,9 +1,5 @@
-<% content_for :title, 'Search Customer' %>
-<div class="modal-fade" role="dialog">
-    <div class="loginmodal-container">
-      <div class="body" >
-        <%= render 'shared/searchCustomer' %>
-      </div>
-    </div>
-
-</div>
+<% content_for :title, 'New Item' %>
+  <div>
+    <%= render 'itemNew', item: @item %>
+    <%= render 'items/partials/validations'%>
+  </div>

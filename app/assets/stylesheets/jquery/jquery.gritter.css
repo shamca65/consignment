@@ -6,6 +6,12 @@
 	width:301px;
 	z-index:9999;
 }
+#gritter-notice-wrapper.top-middle {
+	top: 110px;
+	right: 250px;
+	bottom: auto;
+	left: auto;
+}
 #gritter-notice-wrapper.top-left {
     left: 20px;
     right: auto;

@@ -40,7 +40,6 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    add_breadcrumb "index", items_path, :title => "Back to the Index"
     @items = Item.all
   end
 
@@ -83,7 +82,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
         format.json { render :show, status: :ok, location: @item }
       else
-        format.html { notice: 'There was a problem updating the item.' }
+        
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
