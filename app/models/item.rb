@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   belongs_to :customer, optional: true
   has_many :photos
 
+  validates :description, :customer_id, :price, :type :presence => true
+
   after_create  :log_create_event
   after_update :log_update_event
   after_destroy :log_destroy_event
@@ -50,8 +52,6 @@ class Item < ApplicationRecord
       :mtd => 'Moved To Donations',
       :rtc => 'Returned to Customer'
     }
-
-
 
   def log_create_event
     log_event("Item",self.id,"created")

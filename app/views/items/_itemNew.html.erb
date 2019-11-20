@@ -68,7 +68,7 @@
                 <label class="active">Price</label>
                 </div>
               </div>
-              <% end %>
+             
    	        </div>
 
             <!-- Row 4 -->
@@ -76,12 +76,12 @@
               <!-- Left  -->
               <div class="col-lg-6">
                 <div class="md-form form-group">
-                  <select class="fstdropdown-select" id="getCustomer">
-                    <%=customer_list%>
-                  </select>
+                 <%= f.select  :customer_id, options_for_select(customer_list,@item.gender),
+                      {:include_blank => "Select Customer"},{class: "browser-default"} %>
+                  <label class="active">Customer</label>
                 </div>
               </div>
-          
+           <% end %>
    	        </div>
 
                <div class="text-center">
