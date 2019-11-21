@@ -79,10 +79,9 @@ class ItemsController < ApplicationController
   def update
     respond_to do |format|
       if @item.update(item_params)
-        format.html { redirect_to items_path, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
+        format.html { redirect_to items_path, success: "Customer record updated"}
       else
-        format.json { render json: @item.errors, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
