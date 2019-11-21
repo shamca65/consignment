@@ -22,8 +22,6 @@
 
 
 
-
-
     <div class="card border-dark mb-3" style="width:400px">
       <div class="card-body">
           <h2 class="card-header orange white-text text-center ">
@@ -43,4 +41,27 @@
         <small class="text-muted">Last updated 3 mins ago</small>
       </div>
     </div>
+
+        <div class="card border-dark mb-3" style="width:400px">
+      <div class="card-body">
+          <h2 class="card-header orange white-text text-center ">
+            <strong>Admin</strong>
+          </h2>    
+          
+        <%= link_to configs_path do %>
+          <h3 class="card-title">Set Pickup Date</h3>
+          <p> Items taken in will have this pickup date</p>
+        <%end %>
+
+        <%= link_to new_item_path do %>
+          <h3 class="card-title">Add New Item</h3>
+        <%end %>
+
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+
+
   </div>

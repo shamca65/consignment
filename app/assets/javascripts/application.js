@@ -93,10 +93,12 @@ $(document).ready(function(){
 		"lengthMenu": [ 10, 25, 50 ],
 		"dom": "Bfrtip",
 		"columns": [
-			{"width": "50px"},		// item id
+			{"width": "30px"},		// item id
+			{"width": "15px"},		// gender
+			{"width": "15px"},		// size
+			{"width": "15px"},		// type
 			{"width": "125px"},		// description
-			{"width": "20px"},		// size
-			{"width": "125px"},   	// customer name
+			{"width": "75px"},   	// customer name
 			{"width": "20px"},		// phone
 			{"width": "100px"},    // price
 			{"width": "50px"},    // edit button
