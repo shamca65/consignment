@@ -58,16 +58,16 @@ $(document).ready(function(){
 	}
 	});
 
-// Data Picker Initialization
-   // $('.datepicker').pickadate({
-   //     today: '',
-    //    clear: '',
-    //    close: ''
-    //});
+	// Data Picker Initialization
+    $('.datepicker').pickadate({
+        today: '',
+        clear: '',
+        close: ''
+    });
 	// Extend the default picker options for all instances.
-//	$.extend($.fn.pickadate.defaults, {
-//		formatSubmit: 'yyyy-mm-dd'
-//	});
+	$.extend($.fn.pickadate.defaults, {
+		formatSubmit: 'yyyy-mm-dd'
+	});
 
 	$.extend($.fn.dataTableExt.oStdClasses, {
 		"sWrapper": "dataTables_wrapper"
@@ -103,6 +103,17 @@ $(document).ready(function(){
 			{"width": "100px"},    // price
 			{"width": "50px"},    // edit button
 			{"width": "50px"}     // delete button
+		]
+	});
+
+	$('#configsDataTable').DataTable({
+		"pageLength":10,
+		"lengthMenu": [ 10, 25, 50 ],
+		"dom": "Bfrtip",
+		"columns": [
+			{"width": "15px"},		// id
+			{"width": "30px"},		// key
+			{"width": "50px"},		// value
 		]
 	});
 

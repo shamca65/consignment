@@ -1,45 +1,44 @@
-<%= form_for @config, remote: true do |f| %>
-  <!-- Grid row -->
-  <!-- Material form register -->
-  <div class="d-flex justify-content-center">
-    <div class="card w-75 mb-3 " >
+<%= form_with model: @config, url: config do |f| %>
+<!-- Notifications -->
+<!-- Grid row -->
+<div class="d-flex justify-content-center">
+  <div class="card mb-3 " style="width: 50%;" >
+    <h2 class="card-header warning-color-dark white-text text-center py-4">
+      <strong>Add Config</strong>
+    </h2>
 
-      <h2 class="card-header info-color white-text text-center py-4">
-        <strong>New Config</strong>
-      </h2>
+    <!-- Left page -->
+    <div class="card-body px-lg-5 pt-0">
+      <br>
+      <!-- Row 1 -->
+      <div class="form-row">
+        <!-- Left column --> 
+        <div class="col-lg-6 ">
+          <!-- Gender -->
+          <div class="md-form form-group ">
+            <%= f.text_field :key, id: 'configKey',
+                                      autofocus: true, autocomplete: "configKey",
+                                      class: "form-control", placeholder: "Key"%>
+              <label class="active">Key</label>
+          </div>
+        </div>
 
-      <!--Card content-->
-      <div class="card-body px-lg-5 pt-0">
-        <div class="form-row" style="height: 80px;">
-
-          <!-- Grid column -->
-           <div class="col-md-6 ">
-              <!-- Material input -->
-
-              <div class="md-form form-group">
-                  <%= f.text_field :key, id: 'configKey',
-                                   autofocus: true, autocomplete: "configKey",
-                                   class: "form-control", placeholder: "Key",
-                                   style: "font-size: x-large" %>
-                  <label for="configKey">Key</label>
-             </div>
-           </div>
-
-              <!-- Grid column -->
-           <div class="col-md-6">
-                <!-- Material input -->
-                <div class="md-form form-group">
-                  <%= f.text_field :value, id: 'configValue',
-                                   autofocus: true, autocomplete: "configValue",
-                                   class: "form-control", placeholder: "Value",
-                                   style: "font-size: x-large" %>
-                  <label for="configValue">Value</label>
-                </div>
-           </div>
+        <!-- Right column --> 
+        <div class="col-lg-6">
+          <!-- config Type -->
+          <div class="md-form form-group">
+            <%= f.text_field :value, id: 'configValue',
+                                      autofocus: true, autocomplete: "configValue",
+                                      class: "form-control", placeholder: "Value"%>
+              <label class="active">Value</label>
+          </div>
         </div>
       </div>
 
-  <%= f.submit "Save New Config" %>
+      <% end %>
+      </div>
+      <br>
+          <div class="text-center">
+      <button class="btn btn-primary waves-effect "type="submit" >Add New Config</button>
     </div>
-  <% end %>
-  </div>
+</div>

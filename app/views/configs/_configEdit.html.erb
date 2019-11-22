@@ -1,0 +1,117 @@
+
+<%= form_with model: @config, url: config do |f| %>
+  <!-- Grid row -->
+  <!-- Material form register -->
+  <div class="d-flex justify-content-center">
+  <div class="card w-75 mb-3" >
+
+    <h2 class="card-header info-color white-text text-center py-4">
+      <strong>Update Config</strong>
+    </h2>
+
+    <!--Card content-->
+    <div class="card-body px-lg-5 pt-0">
+  <br />
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6 ">
+      <!-- Material input -->
+
+      <div class="md-form form-group ">
+        <%= f.text_field :key, id: 'key', 
+                         autofocus: true, autocomplete: "key",
+                         class: "form-control", placeholder: "Key",
+                          style: "font-size: medium" %>
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+        <%= f.text_field :value, id: 'inputValue',
+                         autofocus: true, autocomplete: "value",
+                         class: "form-control", placeholder: "Value",
+                         style: "font-size: medium" %>
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+   <!-- Row 2 -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+
+      </div>
+    </div>
+    <!-- Grid column -->
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
+  <div class="row">
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+
+      </div>
+    </div>
+    <!-- Grid column -->
+    <div class="col-md-12">
+      <!-- Material input -->
+      <div class="md-form form-group">
+
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+
+      </div>
+    </div>
+
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <!-- Material input -->
+      <div class="md-form form-group">
+
+      </div>
+    </div>
+    <!-- Grid column -->
+  </div>
+
+  <!-- Grid row -->
+  <div class="form-row">
+    <!-- Grid column -->
+    <div class="col-md-6">
+      <div class="md-form mt-5 w-50">
+
+      </div>
+
+    </div>
+  </div>
+  <!-- Grid column -->
+
+  <!-- end of form -->
+  <div class="text-center">
+    <button class="btn btn-primary waves-effect" type="submit" >Update Config Record</button>
+  </div>
+  <% end %>

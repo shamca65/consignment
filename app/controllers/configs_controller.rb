@@ -42,7 +42,7 @@ class ConfigsController < ApplicationController
   def update
     respond_to do |format|
       if @config.update(config_params)
-        format.html { redirect_to @config, notice: 'Config was successfully updated.' }
+        format.html { redirect_to configs_path, notice: 'Config was successfully updated.' }
         format.json { render :show, status: :ok, location: @config }
       else
         format.html { render :edit }
@@ -69,6 +69,7 @@ class ConfigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def config_params
-      params.fetch(:config, {})
+      params.require(:config).permit(:key, :value)
     end
+
 end

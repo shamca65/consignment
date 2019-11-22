@@ -1,4 +1,4 @@
-<% content_for :title, "Item Intake" %>
+<% content_for :title, "Configuration" %>
 
 <div class="card-deck card-deck-center">
   <div class="row">
@@ -19,8 +19,6 @@
         <small class="text-muted">Last updated 3 mins ago</small>
       </div>
     </div>
-
-
 
     <div class="card border-dark mb-3" style="width:400px">
       <div class="card-body">
@@ -49,12 +47,12 @@
           </h2>    
           
         <%= link_to configs_path do %>
-          <h3 class="card-title">Set Pickup Date</h3>
-          <p> Items taken in will have this pickup date</p>
+          <h3 class="card-title">List of Configurations</h3>
         <%end %>
+        
 
-        <%= link_to new_item_path do %>
-          <h3 class="card-title">Add New Item</h3>
+        <%= link_to new_config_path do %>
+          <h3 class="card-title">Add New Configuration</h3>
         <%end %>
 
       </div>

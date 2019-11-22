@@ -1,0 +1,14 @@
+<tbody>
+    <% @configs.each do |config| %>
+    <tr >
+        <td class="text-center h5 align-middle">
+            <%= link_to edit_config_path(config.id) do %>
+                <%= config.id.to_s %>
+            <%end%>
+        </td>
+        <td class="text-center align-middle h5"><%= config.key %></td>
+        <td class="text-center align-middle h5"><%= config.value %></td>
+    </tr>
+    <% end %>
+    </tbody>
+</table>
