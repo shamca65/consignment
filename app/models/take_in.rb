@@ -1,0 +1,2 @@
+class TakeIn < ApplicationRecord
+end

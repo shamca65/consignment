@@ -17,10 +17,10 @@ class CustomersController < ApplicationController
   end
 
   def items
-      @customerItems = Item.customer_items(params[:id])
-      respond_to do |format|  ## Add this
-        format.html { render :'customers/Items', notice: 'Showing rhinos' }
-        end
+    @customerItems = Item.customer_items(params[:id])
+    respond_to do |format|  ## Add this
+      format.html { render :'customers/Items', notice: 'Showing rhinos' }
+      end
   end
 
   # GET /customers

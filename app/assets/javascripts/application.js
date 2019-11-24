@@ -106,6 +106,22 @@ $(document).ready(function(){
 		]
 	});
 
+	$('#customerItemsDataTable').DataTable({
+		"pageLength":10,
+		"lengthMenu": [ 10, 25, 50 ],
+		"dom": "Bfrtip",
+		"columns": [
+			{"width": "30px"},		// item id
+			{"width": "15px"},		// gender
+			{"width": "15px"},		// size
+			{"width": "15px"},		// type
+			{"width": "125px"},		// description
+			{"width": "100px"},    // price
+			{"width": "50px"},    // edit button
+			{"width": "50px"}     // delete button
+		]
+	});
+
 	$('#configsDataTable').DataTable({
 		"pageLength":10,
 		"lengthMenu": [ 10, 25, 50 ],

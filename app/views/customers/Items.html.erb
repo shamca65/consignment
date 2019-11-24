@@ -1,60 +1,91 @@
-<br />
-<div class="card-group">
-  <div class="card">
+<!-- Card deck -->
+<div class="card-deck">
+
+  <div class="card mb-4">
+    <div class="view overlay">
+      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <!--Card content-->
     <div class="card-body">
-      <h5 class="card-title">Panel title</h5>
+      <h4 class="card-title">Customer Profile</h4>
       <p class="card-text"><%=@customer.id %></p>
       <p class="card-text"><%=@customer.email%></p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Panel title</h5>
-      <p class="card-text"><%=@customer.full_name%></p>
-      <p class="card-text"><%=@customer.phone%></p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title"></h5>
-      <p class="card-text text-center"></p>
-      <div class="text-center">
-      <%= button_to 'Take In New Item',
-                    takein_customers_path(:id => @customer.id),
-                    type: "button", class: "btn-outline-secondary btn-lg waves-effect" %>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
       </div>
     </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
+
+  </div>
+  <!-- Card -->
+
+  <!-- Card -->
+  <div class="card mb-4">
+    <!--Card image-->
+    <div class="view overlay">
+      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+
+    <!--Card content-->
+    <div class="card-body">
+      <!--Title-->
+      <h4 class="card-title">Contact Information</h4>
+      <p class="card-text"><%=@customer.full_name%></p>
+      <p class="card-text"><%=@customer.phone%></p>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
     </div>
   </div>
-</div>
-<br />
+  <!-- Card -->
 
-<table id="appDataTable" class="table table-striped ordering" cellspacing="0" width="100%">
+  <!-- Card -->
+  <div class="card mb-4">
+    <!--Card image-->
+    <div class="view overlay">
+      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap">
+      <a href="#!">
+        <div class="mask rgba-white-slight"></div>
+      </a>
+    </div>
+    <!--Card content-->
+    <div class="card-body">
+      <br>
+      <%= button_to 'Take In New Item',
+              takein_customers_path(:id => @customer.id),
+              type: "button", class: "btn-outline-secondary btn-lg waves-effect" %>
+      <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+    </div>
+  </div>
+  <!-- Card -->
+</div>
+<!-- Card deck -->
+
+<table id="customerItemsDataTable" class="table table-striped ordering" cellspacing="0" width="100%">
   <thead>
   <tr>
-    <th class="text-center h5"">
+    <th class="text-center h5">
       id
     </th>
-    <th class="text-center h5"">
+    <th class="text-center h5">
       Description
     </th>
-    <th  class="text-center h5"">
+    <th  class="text-center h5">
       Size
     </th>
-    <th  class="text-center h5"">
+    <th  class="text-center h5">
       Price
     </th>
-    <th  class="text-center h5"">
+    <th  class="text-center h5">
     </th>
-    <th  class="text-center h5"">
+    <th  class="text-center h5">
     </th>
   </tr>
   </thead>

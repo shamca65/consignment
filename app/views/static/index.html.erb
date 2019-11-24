@@ -40,20 +40,19 @@
       </div>
     </div>
 
-        <div class="card border-dark mb-3" style="width:400px">
+    <div class="card border-dark mb-3" style="width:400px">
       <div class="card-body">
-          <h2 class="card-header orange white-text text-center ">
-            <strong>Admin</strong>
-          </h2>    
-          
-        <%= link_to configs_path do %>
-          <h3 class="card-title">List of Configurations</h3>
-        <%end %>
-        
+        <h2 class="card-header black white-text text-center ">
+          <strong>Admin</strong>
+        </h2>
 
-        <%= link_to new_config_path do %>
-          <h3 class="card-title">Add New Configuration</h3>
-        <%end %>
+          <%= link_to configs_path do %>
+            <h3 class="card-title">List of Configurations</h3>
+          <%end %>
+        
+          <%= link_to new_config_path do %>
+            <h3 class="card-title">Add New Configuration</h3>
+          <%end %>
 
       </div>
       <div class="card-footer">
@@ -61,5 +60,24 @@
       </div>
     </div>
 
+    <div class="card border-dark mb-3" style="width:400px">
+      <div class="card-body">
+        <h2 class="card-header blue white-text text-center ">
+          <strong>Take In</strong>
+        </h2>
+
+          <%= link_to new_take_in_path do %>
+            <h3 class="card-title">New Take In</h3>
+          <%end %>
+        
+          <%= link_to new_config_path do %>
+            <h3 class="card-title">Search Take Ins</h3>
+          <%end %>
+
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
 
   </div>

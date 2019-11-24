@@ -1,0 +1,10 @@
+<%= semantic_form_for @take_in do |f| %>
+  <%= f.inputs do %>
+    <%= f.input :customer_id %>
+    <%= f.input :item_id %>
+  <% end %>
+
+  <%= f.actions do %>
+    <%= f.action :submit, :as => :input %>
+  <% end %>
+<% end %>
