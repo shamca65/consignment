@@ -60,7 +60,7 @@ class Customer < ApplicationRecord
   end
 
   def set_attr_for_update
-    # the customer has togged the agreement status one way or the other
+    # the customer has tagged the agreement status one way or the other
     if self.agreement_status_changed?
       self.trans_type = TRANS_TYPE[:AgreementUpdate]
       self.last_trans_date = Date.today

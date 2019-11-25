@@ -7,8 +7,14 @@ module ItemsHelper
 	def gender_label gender
 		gender_span_generator gender
 	end
+
 	def type_label type
 		type_span_generator type
+	end
+
+	def status_label status
+		puts "status was : " + status.to_s
+		status_span_generator status
 	end
 
 	def days_in_store takein_date
@@ -104,4 +110,26 @@ module ItemsHelper
 			content_tag(:span, 'Gloves', class: 'badge badge-pill badge-secondary')
 		end
 	end
+
+
+	def status_span_generator status
+		case status
+			
+		when 0
+			content_tag(:span, 'For Sale', class: 'badge badge-pill badge-info  ')
+
+		when 1
+			content_tag(:span, 'Sold', class: 'badge badge-pill badge-warning ')
+
+		when 2
+			content_tag(:span, 'Donated', class: 'badge badge-pill badge-info ')
+		
+		when 3
+			content_tag(:span, 'Paid Out', class: 'badge badge-pill badge-info ')
+		
+		when 4
+			content_tag(:span, 'Rtn to Cust.', class: 'badge badge-pill badge-info ')
+		end
+	end
+
 end

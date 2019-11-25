@@ -1,0 +1,39 @@
+<div class="card text-center">
+    <div class="card-header">
+      <h4>Sale Information</h4>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">
+        <div class="row">
+          <div class="col text-right">
+            <b>Payout Date:</b>
+          </div>
+          <div class="col text-left">
+            <%= @item.payout_date.nil? ? '-' : @item.payout_date.strftime("%d-%b-%Y") %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-right">
+            <b>Payout %:</b>
+          </div>
+          <div class="col text-left">
+            <%= @item.payout_pct.nil? ? '-' : @item.payout_pct %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-right">
+            <b>Payout Amount:</b>
+          </div>
+          <div class="col text-left">
+            <%= @item.payout_amount.nil? ? '-' : @item.payout_amount %>
+          </div>
+        </div>
+      </h5>
+      <p class="card-text">
+      </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-muted">
+      <em>Item last updated: <%= @item.updated_at.strftime("%d-%b")  %> </em>
+    </div>
+  </div>

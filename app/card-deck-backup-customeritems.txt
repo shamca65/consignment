@@ -3,7 +3,7 @@
 
   <div class="card mb-4">
     <div class="view overlay">
-      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+      <img class="card-img-top" src="<%=asset_path('trees.jpg')%>" alt="Card image cap">
       <a href="#!">
         <div class="mask rgba-white-slight"></div>
       </a>
@@ -26,7 +26,7 @@
   <div class="card mb-4">
     <!--Card image-->
     <div class="view overlay">
-      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
+      <img class="card-img-top" src="<%=asset_path('trees.jpg')%>" alt="Card image cap">
       <a href="#!">
         <div class="mask rgba-white-slight"></div>
       </a>
@@ -50,7 +50,7 @@
   <div class="card mb-4">
     <!--Card image-->
     <div class="view overlay">
-      <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap">
+      <img class="card-img-top" src="<%=asset_path('trees.jpg')%>" alt="Card image cap">
       <a href="#!">
         <div class="mask rgba-white-slight"></div>
       </a>
@@ -67,27 +67,3 @@
   <!-- Card -->
 </div>
 <!-- Card deck -->
-
-<table id="customerItemsDataTable" class="table table-striped ordering" cellspacing="0" width="100%">
-  <thead>
-  <tr>
-    <th class="text-center h5">
-      id
-    </th>
-    <th class="text-center h5">
-      Description
-    </th>
-    <th  class="text-center h5">
-      Size
-    </th>
-    <th  class="text-center h5">
-      Price
-    </th>
-    <th  class="text-center h5">
-    </th>
-    <th  class="text-center h5">
-    </th>
-  </tr>
-  </thead>
-  <tbody>
-  <%= render 'customerItems' %>
