@@ -4,7 +4,11 @@ module CustomersHelper
       ag_status_span_generator status
 		end
 
-    private
+  def customer_full_name
+    return (@customer.first_name + ' ' + @customer.last_name)
+  end
+
+  private
 
     def ag_status_span_generator status
       case status

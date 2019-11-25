@@ -39,11 +39,6 @@ ActiveRecord::Schema.define(version: 2019_11_22_223022) do
     t.text "notes"
   end
 
-  create_table "customers_items", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "customer_id", null: false
-    t.bigint "item_id", null: false
-  end
-
   create_table "event_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

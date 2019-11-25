@@ -1,0 +1,100 @@
+<div class="card text-center">
+  <div class="card-header">
+    <h4>Customer Profile</h4>
+  </div>
+  <div class="card-body >
+    <h5 class="card-title">
+
+      <div class="row">
+        <div class="col text-right">
+          <b>Full Name:</b>
+        </div>
+        <div class="col text-left">
+            <%= customer_full_name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-right">
+          <b>Customer id:</b>
+        </div>
+        <div class="col text-left">
+            <%= @customer.id.to_s %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-right">
+          <b>Phone:</b>
+        </div>
+        <div class="col text-left">
+            <%= @customer.phone%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-right">
+          <b>Email:</b>
+        </div>
+        <div class="col text-left">
+            <%= @customer.email%>
+        </div>
+
+        </div>
+        <br />
+        <div class="row">
+          <div class="col text-right">
+            <b>Street Address:</b>
+          </div>
+          <div class="col text-left">
+            <%= simple_txt(@customer.street_address)%>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-right">
+          <b>Street Address:</b>
+        </div>
+        <div class="col text-left">
+          <%= simple_txt(@customer.street_address2)%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-right">
+          <b>City:</b>
+        </div>
+        <div class="col text-left">
+          <%= simple_txt(@customer.city)%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-right">
+          <b>Province:</b>
+        </div>
+        <div class="col text-left">
+          <%= simple_txt(@customer.province)%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-right">
+          <b>Postal Code:</b>
+        </div>
+        <div class="col text-left">
+          <%= simple_txt(@customer.postal)%>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col text-left">
+          <b>Notes:</b>
+        </div>
+        <div class="red-border well well-lg shadow-textarea">
+          <%= @customer.notes%>
+          </div>
+      </div>
+  </div>
+
+</div>

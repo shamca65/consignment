@@ -1,58 +1,46 @@
-
-  <div class="card text-center">
+<div class="card text-center">
     <div class="card-header">
-      <h4>Item Status</h4>
+      <h4>Customer Account</h4>
     </div>
-    <div class="card-body >
+    <div class="card-body">
       <h5 class="card-title">
+
         <div class="row">
           <div class="col text-right">
-            <b>Clerk:</b>
+            <b>Agreement Status:</b>
           </div>
           <div class="col text-left">
-            
+            <%= status_label(@customer.agreement_status) %>
           </div>
         </div>
         <div class="row">
           <div class="col text-right">
-            <b>Take In Date:</b>
+            <b>Created on:</b>
           </div>
           <div class="col text-left">
-            
+            <%= simple_date(@customer.created_at) %>
           </div>
         </div>
         <div class="row">
           <div class="col text-right">
-            <b>Customer:</b>
+            <b>Active ?</b>
           </div>
           <div class="col text-left">
-            
+            <%= @customer.active ? 'Y' : 'N' %>
           </div>
         </div>
-        <br />
+
         <div class="row">
           <div class="col text-right">
-            <b>Item Pickup Date</b>
+            <b>Last Transaction Date:</b>
           </div>
           <div class="col text-left">
-            
+            <%= simple_date(@customer.last_trans_date) %>
           </div>
         </div>
-        <div class="row">
-          <div class="col text-right">
-            <b>Sold On:</b>
-          </div>
-          <div class="col text-left">
-            
-          </div>
-        </div>
-        <br />
-      </h5>
+
       <p class="card-text">
       </p>
       <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-    <div class="card-footer text-muted">
-      <em>Item last updated:  </em>
     </div>
   </div>

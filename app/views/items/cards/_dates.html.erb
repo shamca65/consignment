@@ -10,7 +10,7 @@
             <b>Clerk:</b>
           </div>
           <div class="col text-left">
-            <%= @item.clerk %>
+            <%= simple_txt(@item.clerk) %>
           </div>
         </div>
         <div class="row">
@@ -18,7 +18,7 @@
             <b>Take In Date:</b>
           </div>
           <div class="col text-left">
-            <%=  @item.takein_date.nil? ? 'Not Set' :  @item.takein_date.strftime("%d-%b-%Y") %>
+            <%=  simple_date(@item.takein_date) %>
           </div>
         </div>
         <div class="row">
@@ -26,7 +26,7 @@
             <b>Customer:</b>
           </div>
           <div class="col text-left">
-            <%= @item.customer.full_name %>
+            <%= simple_txt(@item.customer.full_name) %>
           </div>
         </div>
         <br />
@@ -35,7 +35,7 @@
             <b>Item Pickup Date</b>
           </div>
           <div class="col text-left">
-            <%= @item.pickup_date.nil? ? 'Not Set' : @item.pickup_date.strftime("%d-%b-%Y") %>
+            <%= simple_date(@item.pickup_date) %>
           </div>
         </div>
         <div class="row">
@@ -43,7 +43,7 @@
             <b>Sold On:</b>
           </div>
           <div class="col text-left">
-            <%= @item.sold_date.nil? ? 'Still for sale' : @item.sold_date.strftime("%d-%b-%Y") %>
+            <%= simple_date(@item.sold_date) %>
           </div>
         </div>
         <br />
@@ -53,6 +53,6 @@
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
     <div class="card-footer text-muted">
-      <em>Item last updated: <%= @item.updated_at.strftime("%d-%b")  %> </em>
+      <em>Item last updated: <%= simple_date(@item.updated_at.strftime("%d-%b"))  %> </em>
     </div>
   </div>
