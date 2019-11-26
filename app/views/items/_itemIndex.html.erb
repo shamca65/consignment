@@ -1,7 +1,7 @@
 <tbody>
 <% @items.each do |item| %>
   <tr >
-    <td class="text-center h5 align-middle"><%= item.id.to_s %></td>
+    <td class="text-center h5 align-middle"><%= item_id_badge(item.id.to_s) %></td>
     <td class="text-center align-middle h5"><%= gender_label(item.gender) %></td>
     <td class="text-center align-middle h5"><%= size_label(item.size) %></td>
     <td class="text-center align-middle h5"><%= type_label(item.item_type) %></td>

@@ -13,7 +13,6 @@ module ItemsHelper
 	end
 
 	def status_label status
-		puts "status was : " + status.to_s
 		status_span_generator status
 	end
 
@@ -35,25 +34,25 @@ module ItemsHelper
 		case size
 
 		when 'xs'
-			content_tag(:span, 'x-sm', class: 'badge badge-pill badge-default ')
+			content_tag(:span, 'x-sm', class: 'badge  badge-default ')
 
 		when 'sm'
-			content_tag(:span, 'small', class: 'badge badge-pill badge-success ')
+			content_tag(:span, 'small', class: 'badge  badge-success ')
 
 		when 'md'
-			content_tag(:span, 'med', class: 'badge badge-pill badge-secondary ')
+			content_tag(:span, 'med', class: 'badge  badge-secondary ')
 
 		when 'lg'
-			content_tag(:span, 'large', class: 'badge badge-pill badge-warning ')
+			content_tag(:span, 'large', class: 'badge  badge-warning ')
 
 		when 'xl'
-			content_tag(:span, 'x-lg', class: 'badge badge-pill badge-danger ')
+			content_tag(:span, 'x-lg', class: 'badge  badge-danger ')
 
 		when 'xx'
-			content_tag(:span, 'xx-lg', class: 'badge badge-pill badge-danger ')
+			content_tag(:span, 'xx-lg', class: 'badge  badge-danger ')
 
 		when 'na'
-			content_tag(:span, 'N/A', class: 'badge badge-pill badge-info ')
+			content_tag(:span, 'N/A', class: 'badge  badge-info ')
 		end
 	end
 
@@ -61,53 +60,53 @@ module ItemsHelper
 	def gender_span_generator gender
 		case gender
 		when 'man'
-			content_tag(:span, 'Men\'s', class: 'badge badge-pill badge-info  ')
+			content_tag(:span, 'Men\'s', class: 'badge  badge-info  ')
 
 		when 'woman'
-			content_tag(:span, 'Woman\'s', class: 'badge badge-pill badge-warning ')
+			content_tag(:span, 'Woman\'s', class: 'badge  badge-warning ')
 
 		when 'boy'
-			content_tag(:span, 'Boy\'s', class: 'badge badge-pill badge-info ')
+			content_tag(:span, 'Boy\'s', class: 'badge  badge-info ')
 
 		when 'girl'
-			content_tag(:span, 'Girl\'s', class: 'badge badge-pill badge-warning ')
+			content_tag(:span, 'Girl\'s', class: 'badge  badge-warning ')
 
 		when 'na'
-			content_tag(:span, 'N/A', class: 'badge badge-pill badge-danger ')
+			content_tag(:span, 'N/A', class: 'badge  badge-secondary ')
 		end
 	end
 
 	def type_span_generator type
 		case type
 		when 'sht'
-			content_tag(:span, 'Shirt', class: 'badge badge-pill badge-secondary ')
+			content_tag(:span, 'Shirt', class: 'badge  badge-secondary ')
 
 		when 'pnt'
-			content_tag(:span, 'Pants', class: 'badge badge-pill badge-secondary')
+			content_tag(:span, 'Pants', class: 'badge  badge-secondary')
 
 		when 'sho'
-			content_tag(:span, 'Shorts', class: 'badge badge-pill badge-secondary ')
+			content_tag(:span, 'Shorts', class: 'badge  badge-secondary ')
 
 		when 'hat'
-			content_tag(:span, 'Hat', class: 'badge badge-pill badge-secondary')
+			content_tag(:span, 'Hat', class: 'badge  badge-secondary')
 
 		when 'jckt'
-			content_tag(:span, 'Jacket', class: 'badge badge-pill badge-secondary ')
+			content_tag(:span, 'Jacket', class: 'badge  badge-secondary ')
 		
 		when 'skrt'
-			content_tag(:span, 'Skirt', class: 'badge badge-pill badge-secondary')
+			content_tag(:span, 'Skirt', class: 'badge  badge-secondary')
 		
 		when 'tsht'
-			content_tag(:span, 'T-Shirt', class: 'badge badge-pill badge-secondary ')
+			content_tag(:span, 'T-Shirt', class: 'badge  badge-secondary ')
 		
 		when 'blse'
-			content_tag(:span, 'Blouse', class: 'badge badge-pill badge-secondary ')
+			content_tag(:span, 'Blouse', class: 'badge  badge-secondary ')
 		
 		when 'acc'
-			content_tag(:span, 'Accessory', class: 'badge badge-pill badge-secondary ')
+			content_tag(:span, 'Accessory', class: 'badge  badge-secondary ')
 		
 		when 'glv'
-			content_tag(:span, 'Gloves', class: 'badge badge-pill badge-secondary')
+			content_tag(:span, 'Gloves', class: 'badge  badge-secondary')
 		end
 	end
 
@@ -116,19 +115,19 @@ module ItemsHelper
 		case status
 			
 		when 0
-			content_tag(:span, 'For Sale', class: 'badge badge-pill badge-info  ')
+			content_tag(:span, 'For Sale', class: 'badge  badge-primary  ')
 
 		when 1
-			content_tag(:span, 'Sold', class: 'badge badge-pill badge-warning ')
+			content_tag(:span, 'Sold', class: 'badge  badge-warning ')
 
 		when 2
-			content_tag(:span, 'Donated', class: 'badge badge-pill badge-info ')
+			content_tag(:span, 'Donated', class: 'badge  badge-info ')
 		
 		when 3
-			content_tag(:span, 'Paid Out', class: 'badge badge-pill badge-info ')
+			content_tag(:span, 'Paid Out', class: 'badge  badge-danger ')
 		
 		when 4
-			content_tag(:span, 'Rtn to Cust.', class: 'badge badge-pill badge-info ')
+			content_tag(:span, 'Rtn to Cust.', class: 'badge  badge-danger ')
 		end
 	end
 

@@ -10,7 +10,7 @@
             <b>Agreement Status:</b>
           </div>
           <div class="col text-left">
-            <%= status_label(@customer.agreement_status) %>
+            <%= ag_status_label(@customer.agreement_status) %>
           </div>
         </div>
         <div class="row">
@@ -38,9 +38,5 @@
             <%= simple_date(@customer.last_trans_date) %>
           </div>
         </div>
-
-      <p class="card-text">
-      </p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
   </div>

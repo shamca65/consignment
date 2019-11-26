@@ -1,7 +1,7 @@
 <tbody>
 <% @customers.each do |customer| %>
   <tr class="h3">
-    <td class="text-center h5 align-middle" ><%= customer.id %></td>
+    <td class="text-center h5 align-middle" ><%= customer_id_badge(customer.id) %></td>
     <td class="text-left h5 align-middle">
       <%= link_to edit_customer_path(customer.id) do %>
         <%= customer.full_name %>

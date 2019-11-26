@@ -8,11 +8,15 @@
   </tr>
 </thead>
   <tr>
+    <td></td>
+    <td class="card-text h2 text-left"><%= @customer.full_name%></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
   <td style="width: 5%;">
-   
     </td >
-    
-    <td style="width: 50%;">
+    <td style="width: 50%;" valign="top">
      <table id="customerItemsDataTable" class="table table-striped ordering" cellspacing="0" >
       <thead>
         <tr>
@@ -37,7 +41,7 @@
         <tbody>
             <% @customerItems.each do |item| %>
               <tr class="h5" cellpadding="0">
-                <td style="text-center align-middle"><%= item.id %></td>
+                <td style="text-center align-middle"><%= item_id_badge(item.id) %></td>
                 <td style="text-center align-middle"><%= item.description %></td>
                 <td style="text-center align-middle"><%= size_label (item.size) %></td>
                 <td style="text-center align-middle"><%= number_to_currency(item.price)%></td>
@@ -54,7 +58,8 @@
      <%= render 'customers/partials/customerAcctInfo' %>
     </td>
     
-    <td style="width: 5%;">cell4_2
+    <td style="width: 5%;">
+    cell4_2
     </td>
   </tr>
   
