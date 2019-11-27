@@ -1,4 +1,4 @@
-<table class="blueTable">
+<table>
 <thead>
   <tr>
     <th></th>
@@ -9,30 +9,41 @@
 </thead>
   <tr>
     <td></td>
-    <td class="card-text h2 text-left"><%= @customer.full_name%></td>
+      <td class="card-text h2 text-left">
+          <div class="row">
+            <div class="col text-left">
+              <%= @customer.full_name%>
+            </div>
+            <div class="col text-right">
+              <div class="text-center">
+                <button class="btn btn-outline-primary waves-light" type="submit" >Take In Items</button>
+              </div>
+            </div>
+          </div>
+      </td>
     <td></td>
     <td></td>
   </tr>
   <tr>
-  <td style="width: 5%;">
+  <td>
     </td >
-    <td style="width: 50%;" valign="top">
-     <table id="customerItemsDataTable" class="table table-striped ordering" cellspacing="0" >
+    <td valign="top">
+     <table id="customerItemsDataTable" class="table table-striped ordering" style="width:100%" >
       <thead>
         <tr>
-          <th class="text-center h5">
+          <th>
             Item id
           </th>
-          <th class="text-center h5">
+          <th >
             Description
           </th>
-          <th  class="text-center h5">
+          <th >
             Size
           </th>
-          <th  class="text-center h5">
+          <th>
             Price
           </th>
-          <th  class="text-center h5">
+          <th>
           Status
           </th>
         </tr>
@@ -57,7 +68,6 @@
      <br>
      <%= render 'customers/partials/customerAcctInfo' %>
     </td>
-    
     <td style="width: 5%;">
     cell4_2
     </td>
@@ -69,6 +79,6 @@
     <td></td>
     <td></td>
   </tr>
-</tbody>
+  </tbody>
   </tr>
 </table>

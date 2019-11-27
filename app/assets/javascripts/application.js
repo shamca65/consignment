@@ -17,13 +17,15 @@
 //= require bootstrap/bootstrap
 //= require jquery/jquery.gritter
 //= require mdb/mdb
-//= require mdb/material-select
-//= require jquery/jquery.dataTables.min
-//= require datatables/dataTables.bootstrap.min
+//= require datatables/dataTables.bootstrap4
+//= require jquery/jquery.dataTables
 //= require protip.min
 //= require fa/js/all
 //= require activestorage
 //= require misc/fstdropdown
+//= require misc/picker.js
+//= require misc/picker.date
+//= require misc/picker.time
 
 
 $(document).ready(function(){
@@ -34,8 +36,6 @@ $(document).ready(function(){
 		fade_out_speed: 1000, // how fast the notices fade out
 		time: 2000 // hang on the screen for...
 	});
-
-	$('.md-select').materialSelect();
 	
 	// set tooltip defaults
 	$.protip({
@@ -58,24 +58,12 @@ $(document).ready(function(){
 	}
 	});
 
-	// Data Picker Initialization
-    $('.datepicker').pickadate({
-        today: '',
-        clear: '',
-        close: ''
-    });
-	// Extend the default picker options for all instances.
-	$.extend($.fn.pickadate.defaults, {
-		formatSubmit: 'yyyy-mm-dd'
-	});
-
 	$.extend($.fn.dataTableExt.oStdClasses, {
 		"sWrapper": "dataTables_wrapper"
 	});
 
 	$('#customersDataTable').DataTable({
 		"pageLength":10,
-		"lengthMenu": [ 10, 25, 50 ],
 		"dom": "Bfrtip",
 		"columns": [
 			{"width": "50px"},    // customer id
@@ -90,7 +78,6 @@ $(document).ready(function(){
 
 	$('#itemsDataTable').DataTable({
 		"pageLength":10,
-		"lengthMenu": [ 10, 25, 50 ],
 		"dom": "Bfrtip",
 		"columns": [
 			{"width": "30px"},		// item id
@@ -108,8 +95,7 @@ $(document).ready(function(){
 
 	$('#customerItemsDataTable').DataTable({
 		"pageLength":10,
-		"lengthMenu": [ 10, 25, 50 ],
-		"dom": "Bfrtip",
+		"dom": '<"toolbar"> Bfrtip',
 		"columns": [
 			{"width": "30px"},		// item id
 			{"width": "15px"},		// gender
@@ -120,11 +106,12 @@ $(document).ready(function(){
 			{"width": "50px"},    // edit button
 			{"width": "50px"}     // delete button
 		]
-	});
+	}
+		
+	);
 
 	$('#configsDataTable').DataTable({
 		"pageLength":10,
-		"lengthMenu": [ 10, 25, 50 ],
 		"dom": "Bfrtip",
 		"columns": [
 			{"width": "15px"},		// id
@@ -134,7 +121,7 @@ $(document).ready(function(){
 	});
 
 	$('.DataTables_filter input').attr('data-toggle', 'tooltip')
-		.attr('data-placement', 'right')
+		.attr('data-placement', 'left')
 		.attr('title', 'Search by any term')
 		.tooltip();
 
@@ -269,5 +256,12 @@ $(document).ready(function(){
 	window.onload = function() {
 		cleanUpTable2();
 	};
+
+	$('.datepicker').pickadate({
+		today: '',
+		clear: 'Clear selection',
+		close: 'Cancel',
+		formatSubmit: 'yyyy/mm/dd'
+	});
 
 });

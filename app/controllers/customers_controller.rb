@@ -21,14 +21,13 @@ class CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     respond_to do |format|  ## Add this
       format.html { render :'customers/customerItems', notice: 'Showing rhinos' }
-      end
+    end
   end
 
   # GET /customers
   # GET /customers.json
   #
   def index
-    add_breadcrumb "Customer List", customers_url
     @customers = Customer.all
   end
 

@@ -15525,6 +15525,7 @@ var WOW;
 });
 
 //Initialization
+
 Waves.attach('.btn:not(.btn-flat), .btn-floating', ['waves-light']);
 Waves.attach('.btn-flat', ['waves-effect']);
 Waves.attach('.chip', ['waves-effect']);
@@ -15534,6 +15535,8 @@ Waves.attach('.navbar-nav a:not(.navbar-brand), .nav-icons li a, .nav-tabs .nav-
 Waves.attach('.pager li a', ['waves-light']);
 Waves.attach('.pagination .page-item .page-link', ['waves-effect']);
 Waves.init();
+
+
 "use strict";
 
 var _this = void 0;
