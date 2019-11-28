@@ -1,0 +1,127 @@
+ <div class="card border-primary mb-3" style="max-width: 20rem;">
+      <div class="container">
+        <div >
+          <div id="one" class="col-lg-4 item grey-border">
+            <br />
+            <p class="title">Type</p>
+            <div class="funkyradio">
+
+              <div class="funkyradio-info">
+                <input type="radio" name="type" value="0" id="radio1" checked/>
+                <label for="radio1">Ladie's</label>
+              </div>
+
+              <div class="funkyradio-info">
+                <input type="radio" name="type" value="1" id="radio2"/>
+                <label for="radio2">Men's</label>
+              </div>
+
+              <div class="funkyradio-default">
+                <input type="radio" name="type" value="2"  id="radio3"/>
+                <label for="radio3">Boy's</label>
+              </div>
+
+              <div class="funkyradio-warning ">
+                <input type="radio" name="type" value="3"  id="radio4"/>
+                <label for="radio4">Girl's</label>
+              </div>
+
+              <div class="funkyradio-danger">
+                <input type="radio" name="type"  value="4"  id="radio5"/>
+                <label for="radio5">Other</label>
+              </div>
+            </div>
+
+            <br /><br />
+
+          </div>
+
+           <div id="two" class="col-lg-4 item grey-border">
+             <br />
+              <p class="title">Size</p>
+
+             <div class="funkyradio">
+
+               <div class="funkyradio-success">
+                 <input type="radio" name="size" value="0"  id="radio6"/>
+                 <label for="radio6">XS</label>
+               </div>
+
+               <div class="funkyradio-success">
+                 <input type="radio" name="size" value="1"  id="radio7"/>
+                 <label for="radio7">Small</label>
+               </div>
+
+               <div class="funkyradio-success">
+                 <input type="radio" name="size" value="2"  id="radio8"/>
+                 <label for="radio8">Medium</label>
+               </div>
+
+               <div class="funkyradio-success">
+                 <input type="radio" name="size" value="3"  id="radio9" checked/>
+                 <label for="radio9">Large</label>
+               </div>
+
+               <div class="funkyradio-success">
+                 <input type="radio" name="size" value="4"  id="radio10" />
+                 <label for="radio10">XL</label>
+               </div>
+
+
+               <div class="funkyradio-success">
+                 <input type="radio" name="size" value="5"  id="radio11"/>
+                 <label for="radio11">XXL</label>
+               </div>
+
+               <div class="funkyradio-danger">
+                 <input type="radio" name="size"  value="6"  id="radio12"/>
+                 <label for="radio12">N/A</label>
+               </div>
+             </div>
+
+             <br /><br />
+
+            </div>
+
+            <div id="three" class="col-lg-4 item grey-border">
+              <br />
+              <p class="title">Description</p>
+              <br />
+
+
+              <div class="form-group form-control-lg">
+                <%= item_fields.text_field :description, id: 'description', autofocus: true, autocomplete: "description", class: "form-control", placeholder: "Enter Description"  %>
+              </div>
+              <div class="form-group">
+                <%= item_fields.number_field :price, id: 'itemPrice',
+                                             autofocus: true, autocomplete: "price",
+                                             class: "form-control", placeholder: "Enter Price"%>
+              </div>
+              <div class="form-group">
+                <%= text_area(:items, :notes, cols: 20, rows: 5, class: 'form-control', placeholder: "Enter Notes") %>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-*">
+                  <div id="one" class="col-lg-*">
+                    <p class="title"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-*">
+                  <div id="one" class="col-lg-*">
+                    <div class="actions">
+                      <br />
+                        <%= f.submit 'Save Item', class: 'btn btn-primary' %>
+                      <br />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+      </div>
