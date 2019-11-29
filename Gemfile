@@ -18,6 +18,8 @@ group :development, :test do
 end
 
 group :development do
+  gem 'better_errors', '~> 2.5', '>= 2.5.1'
+  gem "binding_of_caller"
   gem 'solargraph'
   gem 'fastri', '~> 0.3.1.1'
   gem 'meta_request', '~> 0.6.0'

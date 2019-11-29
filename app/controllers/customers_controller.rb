@@ -12,7 +12,12 @@ class CustomersController < ApplicationController
     end
   end
 
-  def customerItems
+  def takein 
+    @item = 3.times { @customer.items.build } #here
+  end
+
+
+  def items
     @customerItems = Item.customer_items(params[:id])
     @customer = Customer.find(params[:id])
     respond_to do |format|  ## Add this

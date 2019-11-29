@@ -1,24 +1,25 @@
-<div class="card w-50 border-dark mb-3">
+<div class="d-flex justify-content-center align-items-center">
+<div class="card w-25 border-dark mb-3 h3">
   <div class="card-body">
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
+      <div class="field h4">
         <%= f.label :email %><br />
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
 
-      <div class="field">
+      <div class="field h4">
         <%= f.label :password %><br />
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
       <div>
         <% if devise_mapping.rememberable? %>
-          <div class="field">
+          <div class="field h4">
             <%= f.check_box :remember_me %>
             <%= f.label :remember_me %>
           </div>
         <% end %>
-        <div class="actions" >
+        <div class="actions h5" >
           <%= f.submit "Log in" %>
         </div>
       </div>
@@ -27,4 +28,5 @@
   <div class="card-footer">
     <small class="text-muted">Last updated 3 mins ago</small>
   </div>
+</div>
 </div>

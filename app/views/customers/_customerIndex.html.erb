@@ -20,7 +20,7 @@
     <td class="text-center h5 align-middle"><%= customer.email %></td>
     <td class="text-center h5 align-middle"><%= customer.province %></td>
     <td style="text-align: center">
-      <%= link_to  customer_items_customers_path(customer.id) do %>
+      <%= link_to  items_customers_path(customer.id) do %>
         <i class="fal fa-tshirt fa-2x text-info"></i>
       <% end %>
     </td>

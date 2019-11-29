@@ -5,13 +5,6 @@ class ItemsController < ApplicationController
 	skip_before_action :verify_authenticity_token
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-
-  def takein
-    puts "@ takein action"
-    @item = Item.new
-    3.times { @customer.item.build }
-  end
-
 	def pickups
 		@pickupItems = Item.pickup_items
 		respond_to do |format|
