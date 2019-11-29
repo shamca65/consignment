@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   include EventLogger
-	self.to_json(:root => false)
+  self.to_json(:root => false)
 
   belongs_to :customer, optional: true
   has_many :photos

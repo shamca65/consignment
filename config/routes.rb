@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   resources :items do
   	collection do
   		get 'pickups' => 'items#pickups', as: :pickups
-			post 'updatepickups' => 'items#updatepickups', as: :updatepickups
+      post 'updatepickups' => 'items#updatepickups', as: :updatepickups
+      get  'itemtakein' => 'items#takein', as: :takein
 		end
 	end
 
@@ -23,8 +24,7 @@ Rails.application.routes.draw do
     collection do
       get :search
       get 'search_results' => 'customers#search_results', as: :search_results
-      get '/items/:id', to: 'customers#items', as: 'items'
-      get 'takein/:id', to: 'customers#takein', as: 'takein'
+      get '/customer-items/:id', to: 'customers#customerItems', as: 'customer-items'
     end
   end
 

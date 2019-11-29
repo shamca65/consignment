@@ -15388,30 +15388,30 @@ var WOW;
             }
         }
     }
+	
+		Waves.init = function(options) {
+			var body = document.body;
 
-    Waves.init = function(options) {
-        var body = document.body;
+			options = options || {};
 
-        options = options || {};
+			if ('duration' in options) {
+				Effect.duration = options.duration;
+			}
 
-        if ('duration' in options) {
-            Effect.duration = options.duration;
-        }
+			if ('delay' in options) {
+				Effect.delay = options.delay;
+			}
 
-        if ('delay' in options) {
-            Effect.delay = options.delay;
-        }
+			if (isTouchAvailable) {
+				//body.addEventListener('touchstart', showEffect, false);
+				//body.addEventListener('touchcancel', TouchHandler.registerEvent, false);
+				//body.addEventListener('touchend', TouchHandler.registerEvent, false);
+			}
 
-        if (isTouchAvailable) {
-            body.addEventListener('touchstart', showEffect, false);
-            body.addEventListener('touchcancel', TouchHandler.registerEvent, false);
-            body.addEventListener('touchend', TouchHandler.registerEvent, false);
-        }
-
-        // body.addEventListener('mousedown', showEffect, false);
-    };
-
-
+			// body.addEventListener('mousedown', showEffect, false);
+		};
+	
+	
     /**
      * Attach Waves to dynamically loaded inputs, or add .waves-effect and other
      * waves classes to a set of elements. Set drag to true if the ripple mouseover

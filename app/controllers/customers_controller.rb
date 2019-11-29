@@ -4,10 +4,6 @@ class CustomersController < ApplicationController
 
   before_action :set_customer, only: [:show, :edit, :update, :destroy, :items, :takein ]
 
-  def takein
-    @item = @customer.items.new
-  end
-
   def search_results
     query = params[:search_customers].presence && params[:search_customers][:query]
 
@@ -16,7 +12,7 @@ class CustomersController < ApplicationController
     end
   end
 
-  def items
+  def customerItems
     @customerItems = Item.customer_items(params[:id])
     @customer = Customer.find(params[:id])
     respond_to do |format|  ## Add this

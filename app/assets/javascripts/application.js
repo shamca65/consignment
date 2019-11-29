@@ -17,8 +17,8 @@
 //= require bootstrap/bootstrap
 //= require jquery/jquery.gritter
 //= require mdb/mdb
-//= require datatables/dataTables.bootstrap4
 //= require jquery/jquery.dataTables
+//= require datatables/dataTables.bootstrap4
 //= require protip.min
 //= require fa/js/all
 //= require activestorage
