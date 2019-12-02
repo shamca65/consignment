@@ -1,0 +1,13 @@
+{
+"Rails/Bootstrap Button": {
+	"prefix": "prefix",
+	"body": "
+			<div class="btn btn-outline-black no-hover">
+				<%= link_to 'Save & Next >>', takein_customers_path %>
+				<i class="fas fas fa-plus pl-1"></i>
+			</div>
+		",
+		"description": "Rails/Bootstrap Button w/icon"
+	}
+}
+

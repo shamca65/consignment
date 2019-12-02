@@ -68,9 +68,9 @@ class Customer < ApplicationRecord
     end
   end
 
-  def full_name
-    myName = last_name.titleize + ", " + first_name.titleize
-    myName ||= 'not provided'
-  end
+  	def full_name
+			myName = last_name.titleize + ", " + first_name.titleize
+			myName ||= 'not provided'
+  	end
 
 end

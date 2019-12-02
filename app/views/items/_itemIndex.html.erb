@@ -11,25 +11,19 @@
       <%end%>
     </td>
     <td class="text-left h5 align-middle">
-      <%= link_to edit_customer_path(item.customer.id) do %>
+      <%= link_to items_customers_path(item.customer.id) do %>
         <%= item.customer.full_name.truncate(50) %></span>
         <% end %>
     </td>
 
 
     <td class="text-left h5 align-middle"><%= item.customer.phone %></td>
-    <td class="text-right h5 align-left"><%= number_to_currency(item.price) %></td>
-    <td class="text-center h5 align-middle">
-    <div class="itemDeleteIcon protip " data-pt-title="Edit item"
-                                         data-pt-position="bottom"
-                                         data-pt-scheme="aqua"
-                                         data-pt-icon="info-circled"
-                                         data-pt-size="large"
-                                          data-pt-arrow="false">
-      <%= link_to edit_item_path(item) do %>
-        <i class="fal fa-edit fa-2x text-info"></i>
-      <% end %>
-    </div>
+    <td class="text-center h5 align-middle"><%= number_to_currency(item.price, precision:2) %></td>
+    <td class="text-center h5 align-middel">
+        <%= link_to edit_item_path(item) do %>
+          <i class="fal fa-edit fa-2x text-info"></i>
+        <% end %>
+      </div>
     </td>
     <td class="text-center h5 align-middle">
       <div class="itemDeleteIcon protip " data-pt-title="Delete this item"

@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+include ActionView::Helpers::NumberHelper
+
   add_flash_types :success, :info, :warning, :error, :savedRecord
   add_breadcrumb "home", :root_path
 

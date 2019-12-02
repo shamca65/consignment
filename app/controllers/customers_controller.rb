@@ -12,13 +12,9 @@ class CustomersController < ApplicationController
     end
   end
 
-  def takein 
-    @item = 3.times { @customer.items.build } #here
-  end
-
-
   def items
     @customerItems = Item.customer_items(params[:id])
+    puts "customer items: " + @customerItems.inspect
     @customer = Customer.find(params[:id])
     respond_to do |format|  ## Add this
       format.html { render :'customers/customerItems', notice: 'Showing rhinos' }

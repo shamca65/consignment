@@ -1,0 +1,48 @@
+{
+	"Console Log": {
+		"prefix": "rlog",
+		"body": "Rails.logger.info $1",
+		"description": "Rails logger"
+	}
+
+	"Rails/Bootstrap link": {
+		"prefix": "rbl",
+		"body": [
+			"<td style=\"text-align: center\">",
+			"  <%= link_to $1:pathName($2:param) do %>",
+			"    <i class=\"fal fa-tshirt fa-2x text-info\"></i>",
+			"  <% end %>",
+			"</td>"
+		],
+		"description": "Rails/Bootstrap link"
+	}
+
+	"BS - Center": {
+		"prefix": "bjcent",
+		"body": [
+			"<div class=\"d-flex justify-content-center\">"
+		],
+		"description": "BS - Center"
+	}
+
+	"Rails - Scope Example": {
+		"prefix": "rscp",
+		"body": [
+			"scope :pickup_items, -> {where(\"pickup_date <= ? and owner != 'store'\", '2019-12-31')}"
+		],
+		"description": "Rails - Scope Example"
+	}
+
+	"Rails-Drop Down with Data ": {
+		"prefix": "rdd",
+		"body": [
+			"<div class=\"md-form mt-5 w-50\">",
+			"  <%= f.select  :province, options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},@customer.province),",
+			"   {:include_blank => \"Select Province\"},{class: \"browser-default md-select\"} %>",
+			" <label class=\"active\">Province</label>",
+			"</div>"
+		],
+		"description": "Rails-Drop Down with Data "
+	}
+
+}
