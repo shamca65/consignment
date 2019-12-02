@@ -19,7 +19,7 @@
       <div class="navbar-right">
         <% if user_signed_in? %>
           <div class="text-md-center">
-          <%= button_to('Sign out', destroy_user_session_path, method: :delete, class: "btn btn-lg btn-outline-warning") %>
+          <%= button_to('Sign out', destroy_user_session_path, method: :delete, class: "nav-item btn btn-outline-warning") %>
           </div>
         <% end %>
       </div>

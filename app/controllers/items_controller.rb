@@ -11,7 +11,11 @@ class ItemsController < ApplicationController
 			format.html { render :pickups }
 			format.json {render :json => indexJSON}
 		end
-	end
+  end
+  
+  def takein
+    puts "items take in action: "
+  end
 
 	def updatepickups
 		json_root = '_json'

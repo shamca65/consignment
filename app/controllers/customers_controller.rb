@@ -14,11 +14,14 @@ class CustomersController < ApplicationController
 
   def items
     @customerItems = Item.customer_items(params[:id])
-    puts "customer items: " + @customerItems.inspect
     @customer = Customer.find(params[:id])
     respond_to do |format|  ## Add this
       format.html { render :'customers/customerItems', notice: 'Showing rhinos' }
     end
+  end
+
+  def takein
+    puts "customer take in"
   end
 
   # GET /customers
