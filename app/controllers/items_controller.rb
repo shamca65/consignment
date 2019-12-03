@@ -14,12 +14,12 @@ class ItemsController < ApplicationController
   end
   
   def takein
+    @item = Item.new
     puts "hidden field value: " + params[:id]
-    @takeinItem = Item.new
   end
 
   def addtakein
-    if @takeinitem.save!
+    if @item.save!
     	respond_to do |format|
 			 format.html { render :takein }
       end
