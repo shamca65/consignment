@@ -20,10 +20,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  def takein
-    puts "customer take in"
-  end
-
   # GET /customers
   # GET /customers.json
   #
