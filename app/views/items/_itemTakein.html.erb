@@ -6,7 +6,6 @@
       </div>
         <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
-
           <div class="row d-flex justify-content-center">
           
           <%-# left column -%>
@@ -27,7 +26,6 @@
                 </div>
               </div>
           </div>
-
 
           <%-# right column -%>
           <div class="col-4-lg">
@@ -55,14 +53,15 @@
           <div class="col-2-lg">
           <div class="card-body">
             <div class="text-center">
-              <div class="btn btn-outline-black no-hover">
-                <%= link_to 'Save & Next >>', takein_items_path %>
-                <i class="fas fas fa-plus pl-1"></i>
+              <div class="btn btn-primary">
+                <%= link_to "Save & Next", addtakein_items_path %>
+              
               </div>
+              
             </div>
             </div>
           </div>
-     
+          
         <%#row%>
       </div>
 

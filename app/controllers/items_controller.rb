@@ -14,10 +14,16 @@ class ItemsController < ApplicationController
   end
   
   def takein
- 		@takeinItem = Item.new
-		respond_to do |format|
-			format.html { render :takein }
-		end
+    puts "hidden field value: " + params[:id]
+    @takeinItem = Item.new
+  end
+
+  def addtakein
+    if @takeinitem.save!
+    	respond_to do |format|
+			 format.html { render :takein }
+      end
+    end
   end
 
 	def updatepickups
@@ -67,10 +73,11 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
 
+    @item = Item.new(item_params)
+    puts "item_params: " + item_params.inspect
     respond_to do |format|
-      if @item.save
+      if @item.save!
         format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.js { redirect_to items_path, notice: 'Item was successfully jonified.' }
         format.json { render :show, status: :created, location: @item }

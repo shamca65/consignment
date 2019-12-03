@@ -13,12 +13,12 @@
           <div class="row">
             <div class="col text-left">
              <%= @customer.full_name%>
+              <%= hidden_field_tag 'customer_id',@customer.id%>
             </div>
             <div class="col text-right">
               <div class="text-center">
                 <div class="btn btn-outline-black">
-                  <%= link_to 'Take In Items', takein_items_path, :id => @customer.id %>
-              
+                  <%= link_to 'Take In Items', takein_items_path %>
                   <i class="fas fas fa-plus pl-1"></i>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 ---
 include:
 - "**/*.rb"
+-"**/*.html.erb"
 exclude:
 - spec/**/*
 - test/**/*
@@ -12,4 +13,4 @@ reporters:
 - rubocop
 - require_not_found
 require_paths: []
-max_files: 5000
+max_files: 7000
