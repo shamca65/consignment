@@ -14,7 +14,10 @@ class ItemsController < ApplicationController
   end
   
   def takein
-    puts "items take in action: "
+ 		@takeinItem = Item.new
+		respond_to do |format|
+			format.html { render :takein }
+		end
   end
 
 	def updatepickups

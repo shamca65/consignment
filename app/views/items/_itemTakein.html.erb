@@ -1,4 +1,4 @@
-<%= form_for @item do |i| %>
+<%= form_for @takeinItem do |i| %>
   <div class="row d-flex justify-content-center" >
     <div class="card rounded-sm" style="width: 70%;">
       <div class="card-header">
@@ -56,13 +56,13 @@
           <div class="card-body">
             <div class="text-center">
               <div class="btn btn-outline-black no-hover">
-                <%= link_to 'Save & Next >>', takein_customers_path %>
+                <%= link_to 'Save & Next >>', takein_items_path %>
                 <i class="fas fas fa-plus pl-1"></i>
               </div>
             </div>
             </div>
           </div>
-          <%= submit_tag "Submit", class: "btn btn-primary" %> <br>
+     
         <%#row%>
       </div>
 
@@ -73,4 +73,3 @@
     </div>
     </div>
   <% end %>
-<% end %>
