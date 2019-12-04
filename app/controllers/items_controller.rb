@@ -12,13 +12,14 @@ class ItemsController < ApplicationController
 			format.json {render :json => indexJSON}
 		end
   end
-  
+
   def takein
     @item = Item.new
     puts "hidden field value: " + params[:id]
   end
 
   def addtakein
+   
     if @item.save!
     	respond_to do |format|
 			 format.html { render :takein }
@@ -73,7 +74,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-
+    puts "items/takein...trying to save"
     @item = Item.new(item_params)
     puts "item_params: " + item_params.inspect
     respond_to do |format|
