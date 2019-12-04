@@ -97,22 +97,29 @@ $(document).ready(function(){
 		]
 	});
 
+	
+
 	$('#customerItemsDataTable').DataTable({
 		"pageLength":10,
 		"dom": '<"toolbar"> Bfrtip',
+		"buttons": [{
+			extend: 'print',
+			footer: true
+		}],
 		"columns": [
-			{"width": "30px"},		// item id
-			{"width": "15px"},		// gender
-			{"width": "15px"},		// size
-			{"width": "15px"},		// type
+			{"width": "20px"},		// item id
 			{"width": "125px"},		// description
+			{ "width": "20px" },		// take in date
+			{ "width": "20px" },		// take in date
+			{ "width": "20px" },		// take in date
 			{"width": "100px"},    // price
 			{"width": "50px"},    // edit button
 			{"width": "50px"}     // delete button
 		]
-	}
 		
-	);
+	});
+
+	$('#customerItemsDataTable').append('<tfoot><th></th></tfoot>');
 
 	$('#configsDataTable').DataTable({
 		"pageLength":10,

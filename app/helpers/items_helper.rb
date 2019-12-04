@@ -121,10 +121,10 @@ module ItemsHelper
 			content_tag(:span, 'Sold', class: 'badge  badge-warning ')
 
 		when 2
-			content_tag(:span, 'Donated', class: 'badge  badge-info ')
+			content_tag(:span, 'Donated', class: 'badge  badge-secondary ')
 		
 		when 3
-			content_tag(:span, 'Paid Out', class: 'badge  badge-danger ')
+			content_tag(:span, 'Paid Out', class: 'badge  badge-success ')
 		
 		when 4
 			content_tag(:span, 'Rtn to Cust.', class: 'badge  badge-danger ')
