@@ -13,7 +13,7 @@ class CustomersController < ApplicationController
   end
 
   def items
-    @customerItems = Item.customer_items(params[:id])
+    @customerItems = Item.customer_items(params[:id]).order(takein_date: :desc)
     @customer = Customer.find(params[:id])
     respond_to do |format|  ## Add this
       format.html { render :'customers/customerItems', notice: 'Showing rhinos' }

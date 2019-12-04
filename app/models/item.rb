@@ -7,6 +7,8 @@ class Item < ApplicationRecord
 
   validates :description, :customer_id, :price, :item_type, :presence => true
 
+  before_create :set_attr_for_create
+  before_update :set_attr_for_update
   after_create  :log_create_event
   after_update :log_update_event
   after_destroy :log_destroy_event
@@ -52,6 +54,40 @@ class Item < ApplicationRecord
       :mtd => 'Moved To Donations',
       :rtc => 'Returned to Customer'
     }
+
+  def get_batch
+    # get the current hour and return it
+    t = Time.now
+    x = '%02d' % t.hour
+    return x.to_i
+  end
+
+  def set_attr_for_create
+    self.clerk = "admin"
+    self.status = 0 # for sale
+    self.takein_date = Date.today
+    self.customer ||= 'customer'
+    self.takein_batch_number = get_batch
+    log_event("Item", self.id, "Item Takein")
+  end
+
+  def set_attr_for_update
+    # the customer has tagged the agreement status one way or the other
+  end
+
+  # Logging
+  #-----------------------------------------------------------------
+  # Item
+  #
+  # Create
+  # - log insert
+  #
+  # Update
+  # - log update (field level?)
+  #
+  # Delete
+  # - mark record as inactive
+  #-----------------------------------------------------------------
 
   def log_create_event
     log_event("Item",self.id,"created")

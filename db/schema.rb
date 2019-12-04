@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_223022) do
+ActiveRecord::Schema.define(version: 2019_12_04_160943) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -73,7 +73,9 @@ ActiveRecord::Schema.define(version: 2019_11_22_223022) do
     t.string "chk", limit: 5
     t.string "owner", limit: 15
     t.text "item_note"
+    t.integer "takein_batch_number"
     t.index ["customer_id"], name: "index_items_on_customer_id"
+    t.index ["takein_batch_number"], name: "index_items_on_takein_batch_number"
   end
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

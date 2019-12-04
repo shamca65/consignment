@@ -1,22 +1,20 @@
 <tbody>
 <% @items.each do |item| %>
   <tr >
-    <td class="text-center h5 align-middle"><%= item_id_badge(item.id.to_s) %></td>
+    <td class="text-center h5 align-middle">
+      <%= link_to edit_item_path(item.id) do %>
+        <%= item_id_badge(item.id.to_s) %></td>
+      <%end%>
+    <td class="text-center h5 align-middle"><%= simple_date(item.takein_date) %></td>
     <td class="text-center align-middle h5"><%= gender_label(item.gender) %></td>
     <td class="text-center align-middle h5"><%= size_label(item.size) %></td>
     <td class="text-center align-middle h5"><%= type_label(item.item_type) %></td>
-    <td class="text-left h5 align-middle">
-      <%= link_to edit_item_path(item.id) do %>
-        <%= item.description.truncate(75) %>
-      <%end%>
-    </td>
+    <td class="text-left h5 align-middle"><%= item.description.truncate(75) %></td>
     <td class="text-left h5 align-middle">
       <%= link_to items_customers_path(item.customer.id) do %>
-        <%= item.customer.full_name.truncate(50) %></span>
-        <% end %>
+        <span><%= item.customer.full_name.truncate(50) %>  <i class="far fa-external-link fa-1x "></i></span>
+      <% end %>
     </td>
-
-
     <td class="text-left h5 align-middle"><%= item.customer.phone %></td>
     <td class="text-center h5 align-middle"><%= number_to_currency(item.price, precision:2) %></td>
     <td class="text-center h5 align-middel">

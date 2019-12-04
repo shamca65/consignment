@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.all.order(id: :desc)
   end
 
   # GET /items/1
@@ -75,13 +75,20 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     puts "items/takein...trying to save"
+    puts ">>>>>>>>>>>>>>> params[:mode] was: " + params[:mode].to_s
+
     @item = Item.new(item_params)
     puts "item_params: " + item_params.inspect
+
     respond_to do |format|
       if @item.save!
-        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
-        format.js { redirect_to items_path, notice: 'Item was successfully jonified.' }
-        format.json { render :show, status: :created, location: @item }
+        if params[:mode] == 'takein'
+          format.html { redirect_to takein_items_path, notice: 'Item was successfully created.' }
+        else
+          format.html { redirect_to items_path, notice: 'Item was successfully created.' }
+        end
+        #format.js { redirect_to items_path, notice: 'Item was successfully jonified.' }
+        #format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
         format.json { render json: @item.errors, status: :unprocessable_entity }
@@ -121,7 +128,7 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:size, :description, :price, :customer_id,
                                    :item_type, :pickup_date, :gender, :notes,
-                                   :owner, :item_status
+                                   :owner, :item_status, :item_note
       )
 		end
 

@@ -67,6 +67,8 @@ $(document).ready(function(){
 		"dom": "Bfrtip",
 		"columns": [
 			{"width": "50px"},    // customer id
+			{ "width": "30px" },    // last updated date
+			{ "width": "30px" },    // acct open date
 			{"width": "120px"},   // customer name link
 			{"width": "75px"},    // agreement status
 			{"width": "75px"},    // phone
@@ -77,10 +79,12 @@ $(document).ready(function(){
 	});
 
 	$('#itemsDataTable').DataTable({
+		"order": [[1, 'desc']],
 		"pageLength":15,
 		"dom": "Bfrtip",
 		"columns": [
 			{"width": "30px"},		// item id
+			{ "width": "30px"},		// take in date - ordered desc
 			{"width": "15px"},		// gender
 			{"width": "15px"},		// size
 			{"width": "15px"},		// type

@@ -1,27 +1,40 @@
 <tbody>
 <% @customers.each do |customer| %>
+
   <tr class="h3">
-    <td class="text-center h5 align-middle" ><%= customer_id_badge(customer.id) %></td>
-    <td class="text-left h5 align-middle">
+    <td class="text-center h5 align-middle">
       <%= link_to edit_customer_path(customer.id) do %>
-        <%= customer.full_name %>
+        <%= customer_id_badge(customer.id) %>
       <%end%>
+      </td>
+      
+    <td class="text-left h5 align-middle">
+      
+        <%= customer.full_name %>
+      
     </td>
+    <td class="text-left h5 text-center"><%= simple_date(customer.updated_at) %></td>
+    <td class="text-left h5 text-center"><%= simple_date(customer.acct_open_date) %></td>
     <td class="text-center align-middle">
       <%if customer.agreement_status  == 0 %>
-        <i class="fal fa-times fa-2x text-danger protip" ></i>
+        <i class="fal fa-times fa-3x text-danger protip" ></i>
       <% elsif customer.agreement_status == 1 %>
-          <i class="fal fa-check fa-2x text-success" ></i>
+          <i class="fal fa-check fa-3x text-success" ></i>
         <% else %>
-        <i class="fal fa-map-marker-question fa-2x text-info"></i>
+        <i class="fal fa-map-marker-question fa-3x text-info"></i>
+        
       <% end %>
     </td>
-    <td class="text-left h5 align-middle"><%= customer.phone.truncate(15) %></td>
-    <td class="text-center h5 align-middle"><%= customer.email %></td>
+    
+    <td class="text-left h5 align-left"><%= customer.phone.truncate(15) %></td>
+    
+    <td class="text-center h5 align-left"><%= customer.email %></td>
+    
     <td class="text-center h5 align-middle"><%= customer.province %></td>
+    
     <td style="text-align: center">
       <%= link_to  items_customers_path(customer.id) do %>
-        <i class="fal fa-tshirt fa-2x text-info"></i>
+        <i class="far fa-tags fa-3x "></i>
       <% end %>
     </td>
   </tr>
