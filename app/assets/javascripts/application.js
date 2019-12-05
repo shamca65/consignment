@@ -279,7 +279,7 @@ $(document).ready(function(){
 		formatSubmit: 'yyyy/mm/dd'
 	});
 
-	// You will need to require 'jquery-ui' for this to work
+	
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
 		callback();
 		if (element.data('valid') !== false) {
@@ -292,11 +292,6 @@ $(document).ready(function(){
 		// method so it is run after the animation is complete.
 		element.parent().find('.message').hide('slide', { direction: "left" }, 500, callback);
 	}
-
-	$('#itemPrice').focusout(function () {
-		var tmp = Dinero({ amount: 500 }).toFormat('$0,0.00')
-		alert(tmp);
-	})
 
 
 });

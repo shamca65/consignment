@@ -16,18 +16,25 @@
           <div class="col-4-lg">
             <div class="card bg-light mb-3 rounded-sm" style="max-width: 20rem;">
               <div class="card-header h4">Item Details</div>
-
-                <div class="card-body">
+                <div class="card-body h4">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><h5>$</h5></span>
+                    <%= i.text_field :price, id:"itemPrice",
+                      autofocus: true, style: "width:150px !important",
+                      class: "form-control ", placeholder: "Price" %>
+                  </div>
+                </div>
+                <div class="card-body h4">
                   <%= i.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}),
-                    {:include_blank => "Select Gender"},{class: "browser-default", id: "itemGender"} %>
+                    {:include_blank => "Select Gender"},{class: "browser-default h4", id: "itemGender"} %>
                 </div>
-                <div class="card-body">
+                <div class="card-body h4">
                   <%= i.select :item_type, options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}),
-                    {:include_blank => "Select Item Type"},{class: "browser-default md-select", id: "itemType"} %>
+                    {:include_blank => "Select Item Type"},{class: "browser-default md-select h4", id: "itemType"} %>
                 </div>
-                <div class="card-body">
+                <div class="card-body h4">
                   <%= i.select  :size, options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}),
-                        {:include_blank => "Select Item Size"},{class: "browser-default md-select", id: "itemSize"} %>
+                        {:include_blank => "Select Item Size"},{class: "browser-default md-select h4", id: "itemSize"} %>
                 </div>
               </div>
           </div>
@@ -36,17 +43,12 @@
           <div class="col-4-lg">
             <div class="card bg-light mb-3 rounded-sm" style="max-width: 20rem;">
               <div class="card-header h4">Item Details</div>
-                <div class="card-body">
-                  <%= i.text_field :price, id:"itemPrice",
-                    autofocus: true, style: "width:150px !important",
-                    class: "form-control ", placeholder: "Price" %>
-                </div>
-                <div class="card-body">
+                <div class="card-body h4">
                 <%= i.text_field :description, id: 'itemDescription',
                                           autofocus: true,
                                           class: "form-control", placeholder: "Description"%>
                 </div>
-                <div class="card-body">
+                <div class="card-body h4">
                   <%= i.text_area :item_note, id: 'itemNotes', class: 'form-control',
                     cols: "10", rows: "5", placeholder: "Private Item Notes" %>              
                 </div>
@@ -55,10 +57,7 @@
           <div class="col-2-lg">
           <div class="card-body">
             <div class="text-center">
-              <div class="btn btn-primary">
                 <button class="btn btn-primary waves-effect" type="submit">Add Item Record</button>
-              </div>
-              
             </div>
             </div>
           </div>
@@ -67,9 +66,9 @@
       </div>
 
       </div>
-      <div class="card-footer text-muted">
+      <div class="card-footer text-muted text-right">
         <div class="card-body">
-
+            <%=link_to 'Cancel', items_customers_path, class:"btn btn-secondary" %>
         </div>
       </div>
     </div>
