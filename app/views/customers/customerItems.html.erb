@@ -1,7 +1,17 @@
-<div class="text-center h2 secondary">
-  Customer Item List
-</div>
-  <table id="customerItemsDataTable" class="table table-striped ordering" style="width:100%" >
+  <div class="row h3">
+    <div class="col text-left">
+      <b>Customer Item List</b>
+    </div>
+    <div class="col text-left">
+      <div class="btn btn-outline-black">
+          <%= link_to 'Take In Items', takein_items_path %>
+          <i class="fas fas fa-plus pl-1"></i>
+      </div>
+    </div>
+  </div>
+
+
+  <table id="customerItemsDataTable" class="table table-striped ordering footer" style="width:100%" >
     <thead>
       <tr>
         <th class="h5 text-center">

@@ -26,6 +26,10 @@
 //= require misc/picker.js
 //= require misc/picker.date
 //= require misc/picker.time
+//= require jquery-ui/jquery-ui
+//= require rails.validations
+//= require dinero/umd/dinero
+//= require rails.validations
 
 
 $(document).ready(function(){
@@ -274,5 +278,25 @@ $(document).ready(function(){
 		close: 'Cancel',
 		formatSubmit: 'yyyy/mm/dd'
 	});
+
+	// You will need to require 'jquery-ui' for this to work
+	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
+		callback();
+		if (element.data('valid') !== false) {
+			element.parent().find('.message').hide().show('slide', { direction: "left", easing: "easeOutBounce" }, 500);
+		}
+	}
+
+	window.ClientSideValidations.callbacks.element.pass = function (element, callback) {
+		// Take note how we're passing the callback to the hide()
+		// method so it is run after the animation is complete.
+		element.parent().find('.message').hide('slide', { direction: "left" }, 500, callback);
+	}
+
+	$('#itemPrice').focusout(function () {
+		var tmp = Dinero({ amount: 500 }).toFormat('$0,0.00')
+		alert(tmp);
+	})
+
 
 });

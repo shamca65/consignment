@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :customer, optional: true
   has_many :photos
 
-  validates :description, :customer_id, :price, :item_type, :presence => true
+  validates :description, :customer_id, :price, :item_type, :gender, :size, :presence => true
 
   before_create :set_attr_for_create
   before_update :set_attr_for_update

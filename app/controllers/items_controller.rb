@@ -74,24 +74,22 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    puts "items/takein...trying to save"
-    puts ">>>>>>>>>>>>>>> params[:mode] was: " + params[:mode].to_s
 
     @item = Item.new(item_params)
-    puts "item_params: " + item_params.inspect
 
     respond_to do |format|
       if @item.save!
-        if params[:mode] == 'takein'
-          format.html { redirect_to takein_items_path, notice: 'Item was successfully created.' }
+        if params[:mode] == 'takein' && params[:customer_id].present?
+          t_path = "/items/takein/"+ params[:customer_id].to_s          
+          format.html { redirect_to t_path, notice: 'Item was successfully created.' }
         else
-          format.html { redirect_to items_path, notice: 'Item was successfully created.' }
+          format.html { redirect_to customers_path, notice: 'The Customer ID was missing - takein could not be saved' }
         end
         #format.js { redirect_to items_path, notice: 'Item was successfully jonified.' }
         #format.json { render :show, status: :created, location: @item }
       else
+        #creating an item record unrelated to a takein
         format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
