@@ -1,8 +1,8 @@
  <!-- Modal -->
- <%= form_with model: @pickupdates, url: date do |d| %>
-  <div class="md-form form-group">
-    <%= f.select  :size, 
-          options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size),
-          {:include_blank => "Select Item Size"},{class: "browser-default md-select"} %>
-      <label class="active">Item Size</label>
-  </div>
+ <%= form_with model: @pickupdates do |d| %>
+   <div class="md-form h3">
+     <input placeholder="Selected date" type="text" id="datepicker"
+            class="form-control datepicker h3"
+            name="pickupdates[:current]">
+   </div>
+ <% end %>

@@ -23,9 +23,6 @@
 //= require fa/js/all
 //= require activestorage
 //= require misc/fstdropdown
-//= require misc/picker.js
-//= require misc/picker.date
-//= require misc/picker.time
 //= require jquery-ui/jquery-ui
 //= require rails.validations
 //= require dinero/umd/dinero
@@ -278,7 +275,6 @@ $(document).ready(function(){
 		formatSubmit: 'yyyy/mm/dd'
 	});
 
-	
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
 		callback();
 	
