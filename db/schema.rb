@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_04_160943) do
+ActiveRecord::Schema.define(version: 2019_12_06_184342) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -80,6 +80,12 @@ ActiveRecord::Schema.define(version: 2019_12_04_160943) do
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "pickup_dates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "current"
+    t.datetime "created_at", default: "2019-12-06 18:47:55", null: false
     t.datetime "updated_at", null: false
   end
 

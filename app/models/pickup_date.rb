@@ -1,0 +1,2 @@
+class PickupDate < ApplicationRecord
+end

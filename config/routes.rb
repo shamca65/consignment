@@ -2,6 +2,7 @@
 #
 Rails.application.routes.draw do
 
+  resources :pickup_dates
   resources :take_ins
   resources :configs
   resources :photos
