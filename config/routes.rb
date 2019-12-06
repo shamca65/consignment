@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :event_logs
 
+  get '/static/new' => 'static#new', as: :new
+
   resources :items do
   	collection do
   		get 'pickups' => 'items#pickups', as: :pickups

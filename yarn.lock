@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@client-side-validations/client-side-validations/-/client-side-validations-0.1.0.tgz#1a568fd65a79b89414b2e3e173087f56cf5bf2e6"
   integrity sha512-F2rrep4WOnac55REFBeGEvcvmCqoTgoUrq6aDDwV2L2cOoxJ1K3T0y5mQxWpBgd/B+0AjPo4iCbrhhj0t9Xm7w==
 
+micromodal@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/micromodal/-/micromodal-0.4.2.tgz#8ca34f3d5b2f6f43df173bcdc98af20256a4f07a"
+  integrity sha512-tL8Z6Vi72haNUNlkhLjJJv1Q16eqUWMPAGT4RF7mwDM5DNyJXC67Yj8jw/yVgGYdhnCEBBf3X5JM3d/MpXSEKg==
+
 popper.js@1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"

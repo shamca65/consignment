@@ -1,13 +1,10 @@
 class StaticController < ApplicationController
 
   def index
-  end
-
-  def item_takein
+  puts "static index controller"
     respond_to do |format|
       format.html
       format.js
     end
-	end
-
+  end
 end

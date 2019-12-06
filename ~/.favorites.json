@@ -9,14 +9,6 @@
     },
     {
         "type": "File",
-        "name": "/Users/smcarthur/projects/consignment/app/assets/stylesheets/application.css.scss",
-        "parent_id": null,
-        "workspaceRoot": "/Users/smcarthur/projects/consignment",
-        "workspacePath": "app/assets/stylesheets/application.css.scss",
-        "id": "Ak3hlsUoRarm79gI"
-    },
-    {
-        "type": "File",
         "name": "/Users/smcarthur/projects/consignment/app/controllers/customers_controller.rb",
         "parent_id": null,
         "workspaceRoot": "/Users/smcarthur/projects/consignment",
@@ -54,5 +46,13 @@
         "workspaceRoot": "/Users/smcarthur/projects/consignment",
         "workspacePath": "app/controllers/items_controller.rb",
         "id": "4dsR28x7btzl0A16"
+    },
+    {
+        "type": "File",
+        "name": "/Users/smcarthur/projects/consignment/app/assets/stylesheets/application.scss",
+        "parent_id": null,
+        "workspaceRoot": "/Users/smcarthur/projects/consignment",
+        "workspacePath": "app/assets/stylesheets/application.scss",
+        "id": "KqCIr9UVA2oMwDxO"
     }
 ]

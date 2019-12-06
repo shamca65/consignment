@@ -31,9 +31,8 @@
 //= require dinero/umd/dinero
 //= require rails.validations
 
-
 $(document).ready(function(){
-	
+
 	$.extend($.gritter.options, { 
 		position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
 		fade_in_speed: 'medium', // how fast notifications fade in (string or int)
@@ -282,6 +281,7 @@ $(document).ready(function(){
 	
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
 		callback();
+	
 		if (element.data('valid') !== false) {
 			element.parent().find('.message').hide().show('slide', { direction: "left", easing: "easeOutBounce" }, 500);
 		}
@@ -292,6 +292,5 @@ $(document).ready(function(){
 		// method so it is run after the animation is complete.
 		element.parent().find('.message').hide('slide', { direction: "left" }, 500, callback);
 	}
-
 
 });

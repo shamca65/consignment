@@ -225,6 +225,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rcodetools (0.8.5.0)
     regexp_parser (1.6.0)
     regexp_property_values (1.0.0)
     responders (3.0.0)
@@ -335,6 +336,7 @@ DEPENDENCIES
   mysql2
   puma (~> 3.11)
   rails (~> 5.2, >= 5.2.1)
+  rcodetools (~> 0.8.5.0)
   sass-rails (~> 5.0)
   selenium-webdriver
   solargraph
