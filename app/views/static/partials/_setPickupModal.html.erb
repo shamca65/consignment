@@ -1,19 +1,8 @@
  <!-- Modal -->
-  <div class="modal fade" id="testModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Modal Header</h4>
-        </div>
-        <div class="modal-body">
-          <p>Some text in the modal.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-      
-    </div>
+ <%= form_with model: @pickupdates, url: date do |d| %>
+  <div class="md-form form-group">
+    <%= f.select  :size, 
+          options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size),
+          {:include_blank => "Select Item Size"},{class: "browser-default md-select"} %>
+      <label class="active">Item Size</label>
   </div>

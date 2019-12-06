@@ -15,6 +15,10 @@ class ConfigsController < ApplicationController
   # GET /configs/new
   def new
     @config = Config.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /configs/1/edit
