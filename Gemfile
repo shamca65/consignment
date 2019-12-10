@@ -23,7 +23,6 @@ group :development do
   gem 'better_errors', '~> 2.5', '>= 2.5.1'
   gem "binding_of_caller"
   gem 'solargraph'
-  gem 'fastri', '~> 0.3.1.1'
   gem 'meta_request', '~> 0.6.0'
   gem 'xray-rails', '~> 0.3.1'
   gem 'web-console', '>= 3.3.0'
@@ -50,3 +49,4 @@ gem "gritter", "1.2.0"
 gem 'jbuilder', '~> 2.8'
 gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
 gem 'client_side_validations', '~> 16.0', '>= 16.0.3'
+gem 'pickadate-rails'

@@ -1,8 +1,8 @@
  <!-- Modal -->
- <%= form_with model: @pickupdates do |d| %>
+ <%= form_with model: @pickupdates, url: '/pickupdates/new' do |d| %>
    <div class="md-form h3">
      <input placeholder="Selected date" type="text" id="datepicker"
             class="form-control datepicker h3"
-            name="pickupdates[:current]">
+            name="pickupdate[:current]">
    </div>
  <% end %>

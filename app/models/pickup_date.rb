@@ -1,2 +1,0 @@
-class PickupDate < ApplicationRecord
-end

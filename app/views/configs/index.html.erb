@@ -1,4 +1,13 @@
-<% content_for :title, "Configurations" %>
+<% content_for :title, "Configuration" %>
 <div class="text-center h2 secondary">
-Configuration Values
+  List of Configurations
 </div>
+<table id="configsDataTable" class="table table-striped dataTable_index_tables" cellspacing="0">
+  <thead>
+    <tr>
+      <th class="text-center h5">
+        <b>Config ID</b>
+      </th>
+    </tr>
+  </thead>
+  <%= render 'configIndex' %>

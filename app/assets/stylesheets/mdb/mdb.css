@@ -16174,7 +16174,7 @@ button.toast-close-button {
 .picker--opened .picker__holder {
   top: 0;
   background: transparent;
-  zoom: 1;
+  zoom: 1.1;
   background: rgba(0, 0, 0, 0.32);
   -webkit-transition: background 0.15s ease-out;
   -o-transition: background 0.15s ease-out;

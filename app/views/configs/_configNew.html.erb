@@ -1,4 +1,4 @@
-<%= form_with model: @config, url: config do |f| %>
+<%= form_with model: @config  do |f| %>
 <!-- Notifications -->
 <!-- Grid row -->
 <div class="d-flex justify-content-center">
@@ -11,34 +11,32 @@
     <div class="card-body px-lg-5 pt-0">
       <br>
       <!-- Row 1 -->
-      <div class="form-row">
+      <div class="row">
         <!-- Left column --> 
         <div class="col-lg-6 ">
           <!-- Gender -->
           <div class="md-form form-group ">
-            <%= f.text_field :key, id: 'configKey',
-                                      autofocus: true, autocomplete: "configKey",
-                                      class: "form-control", placeholder: "Key"%>
-              <label class="active">Key</label>
+            <%= f.text_field :slug, id: 'configSlug',
+                             autofocus: true, autocomplete: "configSlug",
+                             class: "form-control", placeholder: "Slug"%>
           </div>
         </div>
-
         <!-- Right column --> 
         <div class="col-lg-6">
-          <!-- config Type -->
-          <div class="md-form form-group">
-            <%= f.text_field :value, id: 'configValue',
-                                      autofocus: true, autocomplete: "configValue",
-                                      class: "form-control", placeholder: "Value"%>
-              <label class="active">Value</label>
-          </div>
+            <div class="md-form form-control-lg">
+              <%= f.text_field :current_pickup_date, {class: "datepicker"}%>
         </div>
+        <!-- Row -->
+      </div>
+      <div class="row">
+        <!-- Row -->
       </div>
 
-      <% end %>
       </div>
       <br>
-          <div class="text-center">
-      <button class="btn btn-primary waves-effect "type="submit" >Add New Config</button>
+      <div class="text-center">
+        <%= f.submit :Submit, class: 'btn btn-success' %>
     </div>
+    <% end %>
+  <br>
 </div>

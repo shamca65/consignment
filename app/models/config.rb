@@ -1,7 +1,7 @@
 class Config < ApplicationRecord
     include EventLogger
 
-    validates :key, :value, :presence => true
+    validates :current_pickup_date, :slug, :presence => true
 
     def log_create_event
         log_event("Config",self.id,"created")

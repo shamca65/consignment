@@ -15,28 +15,19 @@ class ConfigsController < ApplicationController
   # GET /configs/new
   def new
     @config = Config.new
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
 
   # GET /configs/1/edit
   def edit
   end
 
-  # POST /configs
-  # POST /configs.json
   def create
     @config = Config.new(config_params)
-
     respond_to do |format|
       if @config.save
-        format.html { redirect_to @config, notice: 'Config was successfully created.' }
-        format.json { render :show, status: :created, location: @config }
+        format.html { render :'configs/index', notice: 'Config was successfully created.' }
       else
-        format.html { render :new }
-        format.json { render json: @config.errors, status: :unprocessable_entity }
+        format.html { render :new, notice: 'There was an error saving the configuration data.'}
       end
     end
   end
@@ -49,7 +40,7 @@ class ConfigsController < ApplicationController
         format.html { redirect_to configs_path, notice: 'Config was successfully updated.' }
         format.json { render :show, status: :ok, location: @config }
       else
-        format.html { render :edit }
+        format.html { render :edit, notice: 'Value was NOT successfully updated.'  }
         format.json { render json: @config.errors, status: :unprocessable_entity }
       end
     end
@@ -73,7 +64,7 @@ class ConfigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def config_params
-      params.require(:config).permit(:key, :value)
+      params.require(:config).permit(:current_pickup_date, :slug)
     end
 
 end

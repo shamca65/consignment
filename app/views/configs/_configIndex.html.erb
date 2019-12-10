@@ -1,14 +1,13 @@
 <tbody>
-    <% @configs.each do |config| %>
+  <% @configs.each do |c| %>
     <tr >
-        <td class="text-center h5 align-middle">
-            <%= link_to edit_config_path(config.id) do %>
-                <%= config.id.to_s %>
-            <%end%>
+        <td class="text-left h5 align-middle">
+          <%= link_to edit_configs_path(config.slug) do %>
+            <span><%= config.slug.to_s %>
+              <i class="far fa-external-link fa-1x "></i></span>
+          <% end %>
         </td>
-        <td class="text-center align-middle h5"><%= config.key %></td>
-        <td class="text-center align-middle h5"><%= config.value %></td>
     </tr>
-    <% end %>
-    </tbody>
+  <% end %>
+</tbody>
 </table>

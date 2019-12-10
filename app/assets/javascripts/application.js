@@ -30,6 +30,9 @@
 
 $(document).ready(function(){
 
+    // Data Picker Initialization
+    $('.datepicker').pickadate();
+
 	$.extend($.gritter.options, { 
 		position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
 		fade_in_speed: 'medium', // how fast notifications fade in (string or int)
@@ -122,12 +125,10 @@ $(document).ready(function(){
 	$('#customerItemsDataTable').append('<tfoot><th></th></tfoot>');
 
 	$('#configsDataTable').DataTable({
-		"pageLength":10,
+		"pageLength":5,
 		"dom": "Bfrtip",
 		"columns": [
-			{"width": "15px"},		// id
-			{"width": "30px"},		// key
-			{"width": "50px"},		// value
+			{"width": "15px"}		// current pickup date
 		]
 	});
 
@@ -267,13 +268,6 @@ $(document).ready(function(){
 	window.onload = function() {
 		cleanUpTable2();
 	};
-
-	$('.datepicker').pickadate({
-		today: '',
-		clear: 'Clear selection',
-		close: 'Cancel',
-		formatSubmit: 'yyyy/mm/dd'
-	});
 
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
 		callback();

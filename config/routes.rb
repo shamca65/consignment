@@ -2,11 +2,6 @@
 #
 Rails.application.routes.draw do
 
-  resources :pickup_dates
-  resources :take_ins
-  resources :configs
-  resources :photos
-  
   devise_for :users, controllers: {sessions: 'users/sessions'}
 
   root to: 'static#index'
@@ -14,6 +9,12 @@ Rails.application.routes.draw do
   resources :event_logs
 
   get '/static/new' => 'static#new', as: :new
+
+  resources :configs do
+    collection do
+      post 'new' => 'configs#new', as: :new
+    end
+  end
 
   resources :items do
   	collection do

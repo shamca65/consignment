@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_06_185457) do
+ActiveRecord::Schema.define(version: 2019_12_09_192433) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "key"
-    t.string "value"
+    t.string "slug", limit: 15
+    t.datetime "current_pickup_date"
+    t.index ["slug"], name: "index_configs_on_slug"
   end
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,12 +81,6 @@ ActiveRecord::Schema.define(version: 2019_12_06_185457) do
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "pickup_dates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "current"
-    t.datetime "created_at", default: "2019-12-06 18:47:55", null: false
     t.datetime "updated_at", null: false
   end
 
