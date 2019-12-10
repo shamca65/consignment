@@ -12,26 +12,24 @@
 //
 //	note 'all.js' = font awesome
 //
-//= require jquery/jquery-3.3.1.min
-//= require umd/popper.min
-//= require bootstrap/bootstrap
+//= require jquery/jquery-3.4.1.min
+//= require mdb/popper
+//= require mdb/bootstrap
 //= require jquery/jquery.gritter
 //= require mdb/mdb
 //= require jquery/jquery.dataTables
-//= require datatables/dataTables.bootstrap4
-//= require protip.min
+//= require datatables/datatables
+//= require misc/protip.min
 //= require fa/js/all
 //= require activestorage
 //= require misc/fstdropdown
 //= require jquery-ui/jquery-ui
-//= require rails.validations
 //= require dinero/umd/dinero
 //= require rails.validations
 
 $(document).ready(function(){
 
     // Data Picker Initialization
-    $('.datepicker').pickadate();
 
 	$.extend($.gritter.options, { 
 		position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
@@ -282,5 +280,7 @@ $(document).ready(function(){
 		// method so it is run after the animation is complete.
 		element.parent().find('.message').hide('slide', { direction: "left" }, 500, callback);
 	}
+
+    $('.datepicker').pickadate();
 
 });
