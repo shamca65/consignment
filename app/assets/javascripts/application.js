@@ -119,7 +119,6 @@ $(document).ready(function(){
 			{"width": "50px"},    // edit button
 			{"width": "50px"}     // delete button
 		]
-		
 	});
 
 	$('#customerItemsDataTable').append('<tfoot><th></th></tfoot>');
@@ -128,7 +127,8 @@ $(document).ready(function(){
 		"pageLength":5,
 		"dom": "Bfrtip",
 		"columns": [
-			{"width": "15px"}		// current pickup date
+			{"width": "15px"},		// slug
+            {"width": "15px"}		// current pickup date
 		]
 	});
 

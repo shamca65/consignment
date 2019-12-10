@@ -18,22 +18,17 @@
       <!-- Material input -->
 
       <div class="md-form form-group ">
-        <%= f.text_field :key, id: 'key', 
-                         autofocus: true, autocomplete: "key",
-                         class: "form-control", placeholder: "Key",
+        <%= f.text_field :slug, id: 'configsSlug',
+                         autofocus: true,
+                         class: "form-control disabled", placeholder: "Key",
                           style: "font-size: medium" %>
       </div>
     </div>
     <!-- Grid column -->
-
-    <!-- Grid column -->
     <div class="col-md-6">
       <!-- Material input -->
-      <div class="md-form form-group">
-        <%= f.text_field :value, id: 'inputValue',
-                         autofocus: true, autocomplete: "value",
-                         class: "form-control", placeholder: "Value",
-                         style: "font-size: medium" %>
+      <div class="md-form form-control">
+          <%= f.text_field :current_pickup_date, {class: "datepicker"}%>
       </div>
     </div>
     <!-- Grid column -->

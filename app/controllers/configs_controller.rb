@@ -1,5 +1,5 @@
 class ConfigsController < ApplicationController
-  before_action :set_config, only: [:show, :edit, :update, :destroy]
+  #before_action :set_config, only: [:show, :edit, :update, :destroy]
 
   # GET /configs
   # GET /configs.json
@@ -19,13 +19,22 @@ class ConfigsController < ApplicationController
 
   # GET /configs/1/edit
   def edit
+    @config = get_by_slug(params[:id])
+    puts " >>>>>>>>>>>> @config : " + @config.inspect
+    respond_to do |format|
+      if @config
+        format.html { render :edit, notice: 'Config was successfully created.' }
+      else
+        format.html { render :new, notice: 'There was an error saving the configuration data.'}
+      end
+    end
   end
 
   def create
     @config = Config.new(config_params)
     respond_to do |format|
       if @config.save
-        format.html { render :'configs/index', notice: 'Config was successfully created.' }
+        format.html { redirect_to configs_path, notice: 'Config was successfully created.' }
       else
         format.html { render :new, notice: 'There was an error saving the configuration data.'}
       end
@@ -61,6 +70,10 @@ class ConfigsController < ApplicationController
     def set_config
       @config = Config.find(params[:id])
     end
+
+  def get_by_slug slug
+    Config.find_by_slug slug
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def config_params

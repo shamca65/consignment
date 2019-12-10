@@ -1,13 +1,18 @@
 <tbody>
+<% if @configs %>
   <% @configs.each do |c| %>
     <tr >
-        <td class="text-left h5 align-middle">
-          <%= link_to edit_configs_path(config.slug) do %>
-            <span><%= config.slug.to_s %>
+        <td class="text-center h5 align-middle">
+          <%= link_to edit_config_path(c.slug) do %>
+            <span><%= c.slug.to_s %>
               <i class="far fa-external-link fa-1x "></i></span>
           <% end %>
         </td>
+      <td class="text-center h5 align-middle">
+        <%= simple_date(c.current_pickup_date) %>
+      </td>
     </tr>
+  <% end %>
   <% end %>
 </tbody>
 </table>

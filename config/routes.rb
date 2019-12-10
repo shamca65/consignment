@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :configs do
     collection do
       post 'new' => 'configs#new', as: :new
+      get '/edit/:slug' => 'configs#edit', as: :edit
     end
   end
 
