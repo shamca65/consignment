@@ -3,7 +3,7 @@ include ActionView::Helpers::NumberHelper
 
   add_flash_types :success, :info, :warning, :error, :savedRecord
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :load_configs
 
   layout :layout_by_resource
 
@@ -17,4 +17,8 @@ include ActionView::Helpers::NumberHelper
     end
   end
 
+  def load_configs
+    my_config = Config.select('current_pickup_date').where('slug = "pudate-current" ').first
+    $current_pickup_date = my_config.current_pickup_date
+  end
 end

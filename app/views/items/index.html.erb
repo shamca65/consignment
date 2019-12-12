@@ -1,6 +1,7 @@
 <% content_for :title, "Items" %>
-<div class="text-center h2 secondary">
-Item List
+<div class="d-inline h2 secondary">
+    Item List<br>
+    <%= render 'shared/pickupDateNotice' %>
 </div>
 <table id="itemsDataTable" class="table table-striped dataTable_index_tables" cellspacing="0">
   <thead>
@@ -14,7 +15,6 @@ Item List
     <th class="text-center no-sort h5">
       <b>Gender</b>
     </th>
-
     <th class="text-center no-sort h5">
       <b>Size</b>
     </th>

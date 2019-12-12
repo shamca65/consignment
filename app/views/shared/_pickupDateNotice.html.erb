@@ -1,0 +1,13 @@
+<div class="d-inline-block">
+  <% if !pickup_date_expired %>
+    <div class="d-inline h5">
+      Current Pickup Date: <b><%= get_current_pickup_date %></b>
+    </div>
+  <% else %>
+    <div class="d-inline h4">
+      Pickup date has expired. (<b><%= get_current_pickup_date %></b>)
+      <br>
+      <%= link_to("Update Pickup Date", configs_path) %>
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,5 @@
 class ConfigsController < ApplicationController
-  #before_action :set_config, only: [:show, :edit, :update, :destroy]
+  before_action :set_config, only: [:show, :update, :destroy]
 
   # GET /configs
   # GET /configs.json
@@ -20,7 +20,6 @@ class ConfigsController < ApplicationController
   # GET /configs/1/edit
   def edit
     @config = get_by_slug(params[:id])
-    puts " >>>>>>>>>>>> @config : " + @config.inspect
     respond_to do |format|
       if @config
         format.html { render :edit, notice: 'Config was successfully created.' }

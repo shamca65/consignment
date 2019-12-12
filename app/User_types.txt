@@ -1,0 +1,23 @@
+For Trial Users (content unlocks) it’s set to ‘Content Unlock’ unless the customer request is to ‘book-appointment’… and then it’s set to  'Content Unlock with Appointment'.
+ 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+1. Subscription type = ‘Demo’
+       - Created by a pat code sent from Account Management
+       - Also created ad hoc by sales ops manually
+       - Reps are notified via SF alert for the first case
+ 
+2. Subscription type = ‘Limited Trial’
+       - created by content unlock
+       - this is a “trial user”
+      -  requests by Pardot to https://go.pardot.com/l/131451/2017-01-05/k1vy9
+ 
+3. Subscription type = ‘Full Trial’
+       - created by Rep and/or SalesOps manually
+       - no known notifications
+ 
+4. Content Unlocks
+	- Created by unlock content bar
+	- Also created by ‘Forward to colleague’ (does not create a lead?)
+	- 3 access tokens provided
+ 

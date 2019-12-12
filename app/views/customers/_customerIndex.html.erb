@@ -11,7 +11,12 @@
     <td class="text-left h5 align-middle">
         <%= customer.full_name %>
     </td>
-    <td class="text-left h5 text-center"><%= simple_date(customer.updated_at) %></td>
+    <td style="text-align: center">
+      <%= link_to  items_customers_path(customer.id) do %>
+        <i class="far fa-tags fa-3x "></i>
+      <% end %>
+    </td>
+    <td class="text-left h4 text-center"><%= simple_date(customer.updated_at) %></td>
     <td class="text-left h5 text-center"><%= simple_date(customer.acct_open_date) %></td>
     <td class="text-center align-middle">
       <%if customer.agreement_status  == 0 %>
@@ -19,22 +24,15 @@
       <% elsif customer.agreement_status == 1 %>
           <i class="fal fa-check fa-3x text-success" ></i>
         <% else %>
-        <i class="fal fa-map-marker-question fa-3x text-info"></i>
+        <i class="fal fa-question-square fa-3x "></i>
         
       <% end %>
     </td>
     
     <td class="text-left h5 align-left"><%= customer.phone.truncate(15) %></td>
-    
-    <td class="text-center h5 align-left"><%= customer.email %></td>
-    
+    <td class="text-left h5 align-left"><%= customer.email %></td>
     <td class="text-center h5 align-middle"><%= customer.province %></td>
-    
-    <td style="text-align: center">
-      <%= link_to  items_customers_path(customer.id) do %>
-        <i class="far fa-tags fa-3x "></i>
-      <% end %>
-    </td>
+
   </tr>
 <% end %>
 </tbody>

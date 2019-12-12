@@ -30,6 +30,10 @@
 $(document).ready(function(){
 
     // Data Picker Initialization
+    $('.datepicker').pickadate({
+        // Escape any “rule” characters with an exclamation mark (!).
+        //formatSubmit: 'dd/mm/yyyy'
+    });
 
 	$.extend($.gritter.options, { 
 		position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
@@ -118,8 +122,6 @@ $(document).ready(function(){
 			{"width": "50px"}     // delete button
 		]
 	});
-
-	$('#customerItemsDataTable').append('<tfoot><th></th></tfoot>');
 
 	$('#configsDataTable').DataTable({
 		"pageLength":5,
@@ -280,7 +282,5 @@ $(document).ready(function(){
 		// method so it is run after the animation is complete.
 		element.parent().find('.message').hide('slide', { direction: "left" }, 500, callback);
 	}
-
-    $('.datepicker').pickadate();
 
 });

@@ -1,0 +1,23 @@
+SELECT 
+    m.member_id, 
+    m.name member, 
+    c.committee_id, 
+    c.name committee
+FROM
+    members m
+INNER JOIN committees c 
+    ON c.name = m.name;
+
+select s.name "Student", c.name "Course"
+from student s, bridge b, course c
+where b.sid = s.sid and b.cid = c.cid 
+
+SELECT 
+    u.id, 
+    u.first_name, 
+    z.unlockable_id, 
+    z.unlocker_type
+FROM
+    users u
+INNER JOIN unlocks z 
+    ON u.id = z.unlocker_id;
