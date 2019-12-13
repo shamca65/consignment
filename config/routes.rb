@@ -3,12 +3,11 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: {sessions: 'users/sessions'}
-
   root to: 'static#index'
-
   resources :event_logs
 
   get '/static/new' => 'static#new', as: :new
+  get '/search(.:format)' => 'items#search'
 
   resources :configs do
     collection do

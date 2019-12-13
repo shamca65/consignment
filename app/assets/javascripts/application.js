@@ -138,7 +138,7 @@ $(document).ready(function(){
 		.tooltip();
 
 	//var selectedRows = leftGrid.rows({ selected: true }).ids(true);
-	var table = $('#example').DataTable({
+	var table = $('#leftGrid').DataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
@@ -171,15 +171,15 @@ $(document).ready(function(){
 		order: [[ 1, 'asc' ]]
 	});
 
-	var table2 = $('#example2').DataTable({
+	var table2 = $('#rightGrid').DataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
 		"rowId": 'id',
-		"ajax":{
-			"url" : "/items/updatepickups",
-			"type" : "POST"
-		},
+		//"ajax":{
+		//	"url" : "/items/updatepickups",
+		//	"type" : "POST"
+		//},
 		"search": {
 			"caseInsensitive": true
 		},

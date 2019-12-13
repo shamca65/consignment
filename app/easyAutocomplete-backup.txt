@@ -1,0 +1,21 @@
+   $input = $("[data-behaviour]='autocomplete']");
+    var options = {
+        getValue: "item",
+        url: function(phrase) {
+            return "/search.json?q=" + phrase;
+        },
+        categories: [
+            {
+                listLocation: "items",
+                header: "<strong>Items</strong>"
+            }
+        ],
+        list: {
+            onChooseEvent: function() {
+                var url = $input.getSelectedItemData().url;
+                console.log(url);
+                //here's where you'll add items to the sale list
+            }
+        }
+        $input.easyAutocomplete(options);
+    };

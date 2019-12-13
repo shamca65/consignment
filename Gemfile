@@ -22,7 +22,7 @@ group :development do
   gem 'fastri', '~> 0.3.1.1'
   gem 'better_errors', '~> 2.5', '>= 2.5.1'
   gem "binding_of_caller"
-  gem 'solargraph'
+
   gem 'meta_request', '~> 0.6.0'
   gem 'xray-rails', '~> 0.3.1'
   gem 'web-console', '>= 3.3.0'
@@ -38,7 +38,6 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 4.5'
@@ -50,3 +49,5 @@ gem 'jbuilder', '~> 2.8'
 gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
 gem 'client_side_validations', '~> 16.0', '>= 16.0.3'
 gem 'pickadate-rails'
+gem 'ransack', '~> 2.3'
+

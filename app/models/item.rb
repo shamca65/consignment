@@ -17,7 +17,7 @@ class Item < ApplicationRecord
 
 # TODO - need dynamic pickup date
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
-  scope :pickup_items, -> {where("pickup_date <= ? and owner != 'store'", '2019-12-31')}
+  scope :pickup_items, -> {where("id > 0")}
 
   ITEM_SIZES = {
   :na => 'Not Applicable',

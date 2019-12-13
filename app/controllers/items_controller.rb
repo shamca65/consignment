@@ -3,10 +3,24 @@ class ItemsController < ApplicationController
   include EventLogger
 
 	skip_before_action :verify_authenticity_token
+
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+
+  def search
+    @items = Item.ransack(id_cont: params[:q]).result(distinct: true)
+
+    respond_to do |format|
+      format.html {}
+      format.json {
+        @movies = @movies.limit(5)
+      }
+    end
+  end
 
 	def pickups
 		@pickupItems = Item.pickup_items
+    puts "pickup items: " + @pickupItems.inspect
+    puts "pickup items size: " + @pickupItems.size.to_s
 		respond_to do |format|
 			format.html { render :pickups }
 			format.json {render :json => indexJSON}
@@ -19,7 +33,6 @@ class ItemsController < ApplicationController
   end
 
   def addtakein
-   
     if @item.save!
     	respond_to do |format|
 			 format.html { render :takein }
@@ -46,9 +59,7 @@ class ItemsController < ApplicationController
 				end
 			end
 		end
-
 		MovePickupsService.new(pickup_ids).call
-
 	end
 
   # GET /items
@@ -74,7 +85,6 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-
     @item = Item.new(item_params)
 
     respond_to do |format|
