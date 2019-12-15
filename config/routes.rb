@@ -2,6 +2,7 @@
 #
 Rails.application.routes.draw do
 
+  resources :sale_items
   devise_for :users, controllers: {sessions: 'users/sessions'}
   root to: 'static#index'
   resources :event_logs
