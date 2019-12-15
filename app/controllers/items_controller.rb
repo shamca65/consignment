@@ -19,8 +19,6 @@ class ItemsController < ApplicationController
 
 	def pickups
 		@pickupItems = Item.pickup_items
-    puts "pickup items: " + @pickupItems.inspect
-    puts "pickup items size: " + @pickupItems.size.to_s
 		respond_to do |format|
 			format.html { render :pickups }
 			format.json {render :json => indexJSON}
@@ -29,7 +27,6 @@ class ItemsController < ApplicationController
 
   def takein
     @item = Item.new
-    puts "hidden field value: " + params[:id]
   end
 
   def addtakein
@@ -90,7 +87,7 @@ class ItemsController < ApplicationController
     respond_to do |format|
       if @item.save!
         if params[:mode] == 'takein' && params[:customer_id].present?
-          t_path = "/items/takein/"+ params[:customer_id].to_s          
+          t_path = "/items/takein/"+ params[:customer_id].to_s
           format.html { redirect_to t_path, notice: 'Item was successfully created.' }
         else
           format.html { redirect_to customers_path, notice: 'The Customer ID was missing - takein could not be saved' }
