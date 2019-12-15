@@ -1,6 +1,7 @@
 <% content_for :title, "Configuration" %>
 <div class="d-flex justify-content-center align-items-center">
 <div class="card-deck card-deck-center">
+
   <div class="row">
     <div class="card border-secondary mb-3" style="width:400px">
       <div class="card-body">
@@ -56,21 +57,10 @@
       </div>
       <div class="card-footer">
         <small class="text-muted"
-          <%= render 'shared/pickupDateNotice' %>
         </small>
       </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-    <% render 'shared/pickupDateNotice' %>
     <div class="card border-dark mb-3" style="width:400px">
       <div class="card-body">
         <h2 class="card-header blue white-text text-center ">
@@ -96,10 +86,38 @@
             </div>
           </div>
         </div>
-
       <div class="card-footer">
         <small class="text-muted">Last updated 3 mins ago</small>
       </div>
-
+    </div>
   </div>
+      <div class="row">
+        <div class="card border-secondary mb-3" style="width:400px">
+          <div class="card-body">
+            <h2 class="card-header purple white-text text-center ">
+              <strong>Stuff</strong>
+            </h2>
+            <%= link_to pickups_items_path do %>
+              <h3 class="card-title">Manage Donations</h3>
+            <%end %>
+
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">
+              <%= render 'shared/pickupDateNotice' %>
+
+            </small>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+</div>
 </div>

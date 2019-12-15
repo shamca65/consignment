@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2019_12_15_202611) do
     t.string "city"
     t.string "postal"
     t.text "notes"
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_customers_on_customer_id"
   end
 
   create_table "customers_items", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,7 +82,11 @@ ActiveRecord::Schema.define(version: 2019_12_15_202611) do
     t.string "owner", limit: 15
     t.text "item_note"
     t.integer "takein_batch_number"
+    t.bigint "item_id_id"
+    t.bigint "item_id"
     t.index ["customer_id"], name: "index_items_on_customer_id"
+    t.index ["item_id"], name: "index_items_on_item_id"
+    t.index ["item_id_id"], name: "index_items_on_item_id_id"
     t.index ["takein_batch_number"], name: "index_items_on_takein_batch_number"
   end
 
@@ -124,5 +130,7 @@ ActiveRecord::Schema.define(version: 2019_12_15_202611) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "customers", "customers"
   add_foreign_key "items", "customers"
+  add_foreign_key "items", "items"
 end

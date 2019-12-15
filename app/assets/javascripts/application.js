@@ -19,6 +19,7 @@
 //= require mdb/mdb
 //= require jquery/jquery.dataTables
 //= require datatables/datatables
+//= require datatables/dataTables.select
 //= require misc/protip.min
 //= require fa/js/all
 //= require activestorage
@@ -176,18 +177,18 @@ $(document).ready(function(){
 		"sort": false,
 		"bInfo": false,
 		"rowId": 'id',
-		//"ajax":{
-		//	"url" : "/items/updatepickups",
-		//	"type" : "POST"
-		//},
+		"ajax":{
+			"url" : "/items/updatepickups",
+			"type" : "POST"
+		},
 		"search": {
 			"caseInsensitive": true
 		},
 		"initComplete": function(settings, json) {
-			console.log('init is complete')
+		    //
 		},
 		"columns": [
-			{item: "","width": "50px"},
+			{item: "","width": "50px"}, // check box
 			{item: "ID","width": "50px"},	// item id
 			{item: "Name","width": "225px"}, // customer name
 			{item: "Description","width": "200px"},	// description

@@ -19,5 +19,6 @@ For Trial Users (content unlocks) it’s set to ‘Content Unlock’ unless the 
 4. Content Unlocks
 	- Created by unlock content bar
 	- Also created by ‘Forward to colleague’ (does not create a lead?)
+		- generates a 'cat' code
 	- 3 access tokens provided
  
