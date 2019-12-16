@@ -100,13 +100,27 @@
             <%= link_to pickups_items_path do %>
               <h3 class="card-title">Manage Donations</h3>
             <%end %>
-
-          </div>
           <div class="card-footer">
             <small class="text-muted">
               <%= render 'shared/pickupDateNotice' %>
-
             </small>
+          </div>
+          </div>
+        </div>
+
+          <div class="card border-secondary mb-3" style="width:400px">
+            <div class="card-body">
+              <h2 class="card-header green white-text text-center ">
+                <strong>Sales</strong>
+              </h2>
+              <%= link_to sale_items_path do %>
+                <h3 class="card-title">Sell Something</h3>
+              <%end %>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">
+              </small>
+            </div>
           </div>
         </div>
 

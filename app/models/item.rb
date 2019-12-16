@@ -2,12 +2,11 @@ class Item < ApplicationRecord
   include EventLogger
   self.to_json(:root => false)
 
-  belongs_to :customer, optional: true
+  belongs_to :customer, optional: false
   has_many :photos
 
   validates :price, :presence => true, numericality: { :greater_than_or_equal_to => 0 }
   validates :description, :customer_id, :item_type, :gender, :size, :presence => true
-
 
   before_create :set_attr_for_create
   before_update :set_attr_for_update

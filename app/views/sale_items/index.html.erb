@@ -1,27 +1,9 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Sale Items</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @sale_items.each do |sale_item| %>
-      <tr>
-        <td><%= sale_item.price %></td>
-        <td><%= link_to 'Show', sale_item %></td>
-        <td><%= link_to 'Edit', edit_sale_item_path(sale_item) %></td>
-        <td><%= link_to 'Destroy', sale_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Sale Item', new_sale_item_path %>
+<% content_for :title, "Sell Items" %>
+<title>Sell Items</title>
+<h2>Sell Items</h2>
+<style>
+  .no-sort::after { display: none!important; }
+  .no-sort::before { display: none!important; }
+  .no-sort { pointer-events: none!important; cursor: default!important; }
+</style>
+<%= render 'saleItemsIndex' %>

@@ -2,9 +2,13 @@
 #
 Rails.application.routes.draw do
 
-  resources :sale_items
-  devise_for :users, controllers: {sessions: 'users/sessions'}
   root to: 'static#index'
+
+  devise_for :users, controllers: {sessions: 'users/sessions'}
+
+  resources :sale_items
+  resources :sales
+
   resources :event_logs
 
   get '/static/new' => 'static#new', as: :new
