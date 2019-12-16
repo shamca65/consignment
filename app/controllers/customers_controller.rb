@@ -50,12 +50,10 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     respond_to do |format|
       if @customer.save
-        puts ">>> Saved"
         format.html { redirect_to customers_path }
         format.json { render :show, status: :ok, location: @customer }
         format.json { render :json => @objects.map(&:attributes) }
       else
-        puts ">>>> not saved"
         format.html { render :new, warning: "Customer record was NOT saved."}
         format.json { render json: @customer.errors, status: :unprocessable_entity }
       end
@@ -65,7 +63,6 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/1
   # PATCH/PUT /customers/1.json
   def update
-    puts "************************ updating record"
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to customers_path, success: "Customer record updated"}

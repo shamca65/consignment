@@ -4,7 +4,7 @@ class SaleItemsController < ApplicationController
   # GET /sale_items
   # GET /sale_items.json
   def index
-    @sale_items = SaleItem.for_sale
+    @sale_items = Item.items_for_sale
   end
 
   # GET /sale_items/1

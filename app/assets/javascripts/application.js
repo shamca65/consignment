@@ -31,10 +31,7 @@
 $(document).ready(function(){
 
     // Data Picker Initialization
-    $('.datepicker').pickadate({
-        // Escape any “rule” characters with an exclamation mark (!).
-        //formatSubmit: 'dd/mm/yyyy'
-    });
+    $('.datepicker').pickadate({});
 
 	$.extend($.gritter.options, { 
 		position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
@@ -42,8 +39,7 @@ $(document).ready(function(){
 		fade_out_speed: 1000, // how fast the notices fade out
 		time: 2000 // hang on the screen for...
 	});
-	
-	// set tooltip defaults
+
 	$.protip({
 	defaults: {
 		trigger: 'hover',
@@ -68,7 +64,7 @@ $(document).ready(function(){
 		"sWrapper": "dataTables_wrapper"
 	});
 
-	$('#customersDataTable').DataTable({
+    $('#customersDataTable').DataTable({
 		"pageLength":10,
 		"dom": "Bfrtip",
 		"columns": [
@@ -103,8 +99,6 @@ $(document).ready(function(){
 		]
 	});
 
-	
-
 	$('#customerItemsDataTable').DataTable({
 		"pageLength":10,
 		"dom": '<"toolbar"> Bfrtip',
@@ -138,8 +132,8 @@ $(document).ready(function(){
 		.attr('title', 'Search by any term')
 		.tooltip();
 
-	//var selectedRows = leftGrid.rows({ selected: true }).ids(true);
-	var table = $('#leftGrid').DataTable({
+// ---------------------------- Move to Donations --------------------------
+	var leftDonationsTable = $('#leftDonationsTable').DataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
@@ -170,17 +164,17 @@ $(document).ready(function(){
 			selector: 'td:first-child'
 		},
 		order: [[ 1, 'asc' ]]
-	});
+	}); // was 'Table'
 
-	var table2 = $('#rightGrid').DataTable({
+	var rightDonationsTable = $('#rightDonationsTable').DataTable({
 		"paginate": false,
 		"sort": false,
 		"bInfo": false,
 		"rowId": 'id',
-		"ajax":{
-			"url" : "/items/updatepickups",
-			"type" : "POST"
-		},
+		//"ajax":{
+		//	"url" : "/items/updatepickups",
+		//	"type" : "POST"
+		//},
 		"search": {
 			"caseInsensitive": true
 		},
@@ -211,7 +205,7 @@ $(document).ready(function(){
 		},
 
 		order: [[ 1, 'asc' ]]
-	});
+	}); // was 'Table2'
 
 	var locateCustomer = $('#customerLocateTable').DataTable({
 		"paginate": true,
@@ -228,14 +222,12 @@ $(document).ready(function(){
 		]
 	});
 
-	$.fn.dataTable.ext.errMode = 'throw';
-
 	var commitItems = function(table) {
-		var rows = table2.rows().remove().draw();
+		var rows = rightDonationsTable.rows().remove().draw();
 	};
 
 	var moveItems = function(grid) {
-		to_table = ((grid == table) ? table2 : table);
+		to_table = ((grid == leftDonationsTable) ? rightDonationsTable : leftDonationsTable);
 		// get selected rows with the cell data
 		var arrayID = grid.rows( { selected: true }).data().toArray();
 		// duplicate each selected row to the other grid
@@ -244,17 +236,15 @@ $(document).ready(function(){
 		to_table.rows().select();
 	};
 
-	var postPickups = function(){
-
-	};
+	var postPickups = function(){};
 
 	var cleanUpTable2 = function() {
 		// remove the default row
-		table2.rows().remove().draw();
+        rightDonationsTable.rows().remove().draw();
 	};
 
 	$('#btnMoveToStoreStock').click(function () {
-		moveItems(table);
+		moveItems(leftDonationsTable);
 	});
 
 	$('#btnCommit').click(function () {
@@ -263,13 +253,84 @@ $(document).ready(function(){
 	});
 
 	$('#btnReturn').click(function () {
-		moveItems(table2);
+		moveItems(rightDonationsTable);
 	});
 
 	window.onload = function() {
 		cleanUpTable2();
 	};
 
+    // ---------------------------- Sell an Item --------------------------
+    var leftSalesItemstable = $('#leftSaleItemsTable').DataTable({
+        "pageLength":20,
+        "dom": "Bfrtip",
+        "rowId": 'id',
+        "search": {
+            "caseInsensitive": true
+        },
+        "columns": [
+            {item: "","width": "40px"},
+            {item: "ID","width": "50px"},	            // item id
+            {item: "Description","width": "200px"},	    // description
+            {item: "Size","width": "60px"},	            // size
+            {item: "Price","width": "75px"},	        // real price
+        ],
+        columnDefs: [
+            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
+            {name: "id", data: "id", orderable: false, targets:   1},
+            {name: "description", data: "description", orderable: false, targets:   2},
+            {name: "size", data: "size", orderable: false, targets:   3},
+            {name: "price", data: "price", orderable: false, targets:   4}
+        ],
+        select: {
+            style:    'multi',
+            selector: 'td:first-child'
+        },
+        order: [[ 1, 'asc' ]]
+    });
+
+    var rightsalesItemstable = $('#rightSaleItemsTable').DataTable({
+        "dom": "Brtip",
+        "bFilter": false,
+        "paginate": false,
+        "rowId": 'id',
+        "columns": [
+            {item: "","width": "40px"},
+            {item: "ID","width": "50px"},	// item id
+            {item: "Description","width": "200px"},	// description
+            {item: "Size","width": "60px"},	// size
+            {item: "Price","width": "75px"},	// real price
+        ],
+        columnDefs: [
+            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
+            {name: "id", data: "id", orderable: false, targets:   1},
+            {name: "description", data: "description", orderable: false, targets:   2},
+            {name: "size", data: "size", orderable: false, targets:   3},
+            {name: "price", data: "price", orderable: false, targets:   4}
+        ],
+        select: {
+            style:    'multi',
+            selector: 'td:first-child'
+        },
+        order: [[ 1, 'asc' ]]
+    });
+
+
+    var moveSalesItems = function(grid) {
+        to_table = ((grid == table) ? rightSalesItemsTable : leftSalesItemsTable);
+        // get selected rows with the cell data
+        var arrayID = grid.rows( { selected: true }).data().toArray();
+        // duplicate each selected row to the other grid
+        to_table.rows.add(arrayID).draw();
+        grid.rows({ selected: true }).remove(arrayID).draw();
+        to_table.rows().select();
+    };
+    
+
+    $.fn.dataTable.ext.errMode = 'throw';
+
+
+// ---------------------------- Client side validations --------------------------
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
 		callback();
 	

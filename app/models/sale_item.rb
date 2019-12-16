@@ -1,8 +1,6 @@
 class SaleItem < ApplicationRecord
   include EventLogger
-  belongs_to :item, optional: false
-
-  scope :for_sale, -> {where("id > 0 AND owner = 'customer'")}
+  has_many :items, optional: false
 
   def log_create_event
     log_event("Sale Item",self.id,"created")

@@ -1,11 +1,9 @@
 class Customer < ApplicationRecord
-
+  include EventLogger
   has_many :items, dependent: :destroy
 
   validates :first_name, :last_name, :phone, :presence => true
   validates :email, :email_format => {:message => 'Email format is incorrect - record was not saved.'}
-
-  include EventLogger
 
   accepts_nested_attributes_for :items
 

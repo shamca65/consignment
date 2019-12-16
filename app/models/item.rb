@@ -4,6 +4,7 @@ class Item < ApplicationRecord
 
   belongs_to :customer, optional: false
   has_many :photos
+  has_many :sale_items
 
   validates :price, :presence => true, numericality: { :greater_than_or_equal_to => 0 }
   validates :description, :customer_id, :item_type, :gender, :size, :presence => true
@@ -16,7 +17,9 @@ class Item < ApplicationRecord
 
 # TODO - need dynamic pickup date
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
-  scope :pickup_items, -> {where("pickup_date <= ? and owner = 'customer'", '2019-12-31')}
+  scope :pickup_items, -> {where("pickup_date <= ? and owner = 'customer'", $current_pickup_date)}
+# TODO - consider archiving of sold/donated items
+  scope :items_for_sale, -> {where("item_status = 'fs'")}
 
   ITEM_SIZES = {
   :na => 'Not Applicable',
