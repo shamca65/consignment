@@ -261,7 +261,7 @@ $(document).ready(function(){
 	};
 
     // ---------------------------- Sell an Item --------------------------
-    var leftSalesItemstable = $('#leftSaleItemsTable').DataTable({
+    var leftSaleItemstable = $('#leftSaleItemsTable').DataTable({
         "pageLength":20,
         "dom": "Bfrtip",
         "rowId": 'id',
@@ -289,7 +289,7 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]]
     });
 
-    var rightsalesItemstable = $('#rightSaleItemsTable').DataTable({
+    var rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
         "dom": "Brtip",
         "bFilter": false,
         "paginate": false,
@@ -315,8 +315,8 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]]
     });
 
-    var moveSalesItems = function(grid) {
-        to_table = ((grid == leftSalesItemstable) ? rightSalesItemsTable : leftSalesItemstable);
+    var moveSaleItems = function(grid) {
+        to_table = ((grid == leftSaleItemstable) ? rightsaleItemstable: leftSaleItemstable);
         // get selected rows with the cell data
         var arrayID = grid.rows( { selected: true }).data().toArray();
         // duplicate each selected row to the other grid
@@ -326,7 +326,7 @@ $(document).ready(function(){
     };
 
     $('#btnAddToSale').click(function () {
-        moveItems(leftSalesItemstable);
+        moveSaleItems(leftSaleItemstable);
     });
 
 
