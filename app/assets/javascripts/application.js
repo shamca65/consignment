@@ -329,8 +329,6 @@ $(document).ready(function(){
         moveSaleItems(leftSaleItemstable);
     });
 
-
-
     $.fn.dataTable.ext.errMode = 'throw';
 
 

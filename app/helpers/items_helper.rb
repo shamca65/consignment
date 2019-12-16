@@ -12,8 +12,8 @@ module ItemsHelper
 		type_span_generator type
 	end
 
-	def status_label status
-		status_span_generator status
+	def status_label item_status
+		status_span_generator item_status
 	end
 
 	def days_in_store takein_date
@@ -111,22 +111,22 @@ module ItemsHelper
 	end
 
 
-	def status_span_generator status
-		case status
+	def status_span_generator item_status
+		case item_status
 			
-		when 0
+		when :fs
 			content_tag(:span, 'For Sale', class: 'badge  badge-primary  ')
 
-		when 1
+		when :sold
 			content_tag(:span, 'Sold', class: 'badge  badge-warning ')
 
-		when 2
+		when :mtd
 			content_tag(:span, 'Donated', class: 'badge  badge-secondary ')
 		
-		when 3
+		when :po
 			content_tag(:span, 'Paid Out', class: 'badge  badge-success ')
 		
-		when 4
+		when :rtc
 			content_tag(:span, 'Rtn to Cust.', class: 'badge  badge-danger ')
 		end
 	end
