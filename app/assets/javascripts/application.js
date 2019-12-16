@@ -226,7 +226,7 @@ $(document).ready(function(){
 		var rows = rightDonationsTable.rows().remove().draw();
 	};
 
-	var moveItems = function(grid) {
+	var moveDonationItems = function(grid) {
 		to_table = ((grid == leftDonationsTable) ? rightDonationsTable : leftDonationsTable);
 		// get selected rows with the cell data
 		var arrayID = grid.rows( { selected: true }).data().toArray();
@@ -244,7 +244,7 @@ $(document).ready(function(){
 	};
 
 	$('#btnMoveToStoreStock').click(function () {
-		moveItems(leftDonationsTable);
+		moveDonationItems(leftDonationsTable);
 	});
 
 	$('#btnCommit').click(function () {
@@ -315,9 +315,8 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]]
     });
 
-
     var moveSalesItems = function(grid) {
-        to_table = ((grid == table) ? rightSalesItemsTable : leftSalesItemsTable);
+        to_table = ((grid == leftSalesItemstable) ? rightSalesItemsTable : leftSalesItemstable);
         // get selected rows with the cell data
         var arrayID = grid.rows( { selected: true }).data().toArray();
         // duplicate each selected row to the other grid
@@ -325,7 +324,12 @@ $(document).ready(function(){
         grid.rows({ selected: true }).remove(arrayID).draw();
         to_table.rows().select();
     };
-    
+
+    $('#btnAddToSale').click(function () {
+        moveItems(leftSalesItemstable);
+    });
+
+
 
     $.fn.dataTable.ext.errMode = 'throw';
 
