@@ -17,9 +17,7 @@
 //= require mdb/bootstrap
 //= require jquery/jquery.gritter
 //= require mdb/mdb
-//= require jquery/jquery.dataTables
 //= require datatables/datatables
-//= require datatables/dataTables.select
 //= require misc/protip.min
 //= require fa/js/all
 //= require activestorage
@@ -238,9 +236,9 @@ $(document).ready(function(){
 
 	var postPickups = function(){};
 
-	var cleanUpTable2 = function() {
+	var cleanUpTable = function(grid) {
 		// remove the default row
-        rightDonationsTable.rows().remove().draw();
+        grid.rows().remove().draw();
 	};
 
 	$('#btnMoveToStoreStock').click(function () {
@@ -248,7 +246,7 @@ $(document).ready(function(){
 	});
 
 	$('#btnCommit').click(function () {
-		cleanUpTable2();
+		cleanUpTable(rightDonationsTable);
 		commitItems();
 	});
 
@@ -257,7 +255,7 @@ $(document).ready(function(){
 	});
 
 	window.onload = function() {
-		cleanUpTable2();
+		cleanUpTable(rightDonationsTable);
 	};
 
     // ---------------------------- Sell an Item --------------------------
