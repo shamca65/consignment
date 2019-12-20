@@ -3,7 +3,7 @@
   <!-- Grid row -->
   <!-- Material form register -->
   <div class="d-flex justify-content-center">
-  <div class="card w-75 mb-3" >
+  <div class="card w-50 mb-3" >
 
     <h2 class="card-header secondary-color white-text text-center py-4">
       <strong>Update Customer</strong>
@@ -123,7 +123,6 @@
       <div class="md-form mt-5 w-50">
         <%= f.select  :province, options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},@customer.province),
             {:include_blank => "Select Province"},{class: "browser-default md-select"} %>
-        <label class="active">Province</label>
       </div>
 
     </div>

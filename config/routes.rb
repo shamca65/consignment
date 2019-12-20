@@ -23,8 +23,8 @@ Rails.application.routes.draw do
 
   resources :items do
   	collection do
-  		get 'pickups' => 'items#pickups', as: :pickups
-      post 'updatepickups' => 'items#updatepickups', as: :updatepickups
+  		get 'donations' => 'items#donations', as: :donations
+      post 'updatedonations' => 'items#updatedonations', as: :updatedonations
       get '/takein/:id' => 'items#takein', as: :takein
       get '/addtakein/:id' => 'items#addtakein', as: :addtakein
 		end

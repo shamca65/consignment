@@ -40,7 +40,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/1/edit
   def edit
-    add_breadcrumb "edit", edit_customer_path
+
   end
 
   # POST /customers

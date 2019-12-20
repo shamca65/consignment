@@ -12,17 +12,38 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html {}
       format.json {
-        @movies = @movies.limit(5)
+        @items = @items.limit(5)
       }
     end
   end
 
-	def pickups
-		@pickupItems = Item.pickup_items
+	def donations
+		@donationItems = Item.donation_items
 		respond_to do |format|
 			format.html { render :pickups }
 			format.json {render :json => indexJSON}
 		end
+  end
+
+  def updatedonations
+    puts ">>>>>>>> at update donations"
+    json_root = '_json'
+    json_id_field = 'Item No.'
+    pickup_ids = []
+    respond_to do |format|
+      format.json {render :json => @pickupMoveIDs, :status => 200}
+    end
+    # traverse json from the root to pick out item IDs to update
+    params[json_root].each do |k|
+      k.each do |l, m|
+        if l == json_id_field
+          if m.present?
+            pickup_ids.push(m.to_i)
+          end
+        end
+      end
+    end
+    MoveToDonationsService.new(pickup_ids).call
   end
 
   def takein
@@ -36,28 +57,6 @@ class ItemsController < ApplicationController
       end
     end
   end
-
-	def updatepickups
-		json_root = '_json'
-		json_id_field = 'Item No.'
-		pickup_ids = []
-
-		respond_to do |format|
-			format.json {render :json => @pickupMoveIDs, :status => 200}
-		end
-
-		# traverse json from the root to pick out item IDs to update
-		params[json_root].each do |k|
-			k.each do |l, m|
-				if l == json_id_field
-						if m.present?
-							pickup_ids.push(m.to_i)
-						end
-				end
-			end
-		end
-		MovePickupsService.new(pickup_ids).call
-	end
 
   # GET /items
   # GET /items.json

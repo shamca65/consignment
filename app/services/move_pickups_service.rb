@@ -1,4 +1,4 @@
-class MovePickupsService
+class MoveToDonationsService
 
 	def initialize(param)
 		@param = param

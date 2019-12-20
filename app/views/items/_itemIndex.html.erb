@@ -24,12 +24,7 @@
       </div>
     </td>
     <td class="text-center h5 align-middle">
-      <div class="itemDeleteIcon protip " data-pt-title="Delete this item"
-                                        data-pt-position="right"
-                                        data-pt-scheme="red"
-                                        data-pt-icon="info-circled"
-                                        data-pt-size="large"
-                                        data-pt-arrow="false">
+      <div class="itemDeleteIcon" >
       <%= link_to 'Delete', @item, method: :delete, data: { confirm: 'Are you sure?' } do %>
         <i class="fal fa-layer-minus fa-2x text-danger " ></i>
       <% end %>

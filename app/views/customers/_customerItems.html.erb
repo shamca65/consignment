@@ -1,14 +1,18 @@
 <tbody>
     <% @customerItems.each do |item| %>
-      <tr class="h5" cellpadding="0">
-        <td style="text-center align-middle" class="h5 text-center"><%= item_id_badge(item.id) %></td>
+      <tr cellpadding="0">
+        <td style="text-center align-middle" class="h5 text-center">
+          <%= link_to edit_item_path(item.id) do %>
+            <%= item_id_badge(item.id.to_s) %>
+          <% end %>
+        </td>
         <td style="text-center align-middle" class="h5 text-center"><%= simple_date(item.takein_date) %></td>
         <td class="text-left h5 align-middle"><%= item.description.truncate(75) %></td>
         <td class="text-center align-middle h5"><%= gender_label(item.gender) %></td>
         <td class="text-center align-middle h5"><%= type_label(item.item_type) %></td>
         <td class="text-center align-middle h5"><%= size_label(item.size) %></td>
         <td style="text-center align-middle" class="h5 text-center"><%= number_to_currency(item.price)%></td>
-        <td style="text-center align-middle" class="h5 text-center"><%= status_label(item.status) %></td>
+        <td style="text-center align-middle" class="h5 text-center"><%= status_label(item.item_status) %></td>
       </tr>
     <% end %>
 </tbody>

@@ -18,11 +18,11 @@
  *= require mdb/bootstrap
  *= require bootstrap/cards-extended
  *= require mdb/mdb
- *= require misc/protip
  *= require misc/animate
  *= require Montserrat
  *= require jquery/jquery.gritter
- *= require datatables/datatables
+ *= require datatables/bootstrap
+ *= require datatables/dataTables.bootstrap4.min
  *= require fa/css/all
  *= require misc/fstdropdown
  *= require jquery-ui/jquery-ui
@@ -30,9 +30,13 @@
  */
 
 //sass imports
-@import "bootstrap-sprockets";
+
 @import "bootstrap";
 @import "gritter";
+
+* {
+  font-family: "Montserrat";
+}
 
 .message {
   background-color: rgba(255, 0, 157, 0.452);
@@ -145,4 +149,48 @@ table.blueTable tfoot .links a{
   color: #FFFFFF;
   padding: 2px 8px;
   border-radius: 5px;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Pro';
+  src: url('<%= asset_path('fa-brands-400') %>');
+  src: url('<%= asset_path('fa-brands-400')%>') format('embedded-opentype'),
+url('<%= asset_path('fa-brands-400')%>') format('woff'),
+url('<%= asset_path('fa-brands-400')%>') format('truetype'),
+url('<%= asset_path('fa-brands-400')%>') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Pro';
+  src: url('<%= asset_path('fa-light-300') %>');
+  src: url('<%= asset_path('fa-light-300')%>') format('embedded-opentype'),
+url('<%= asset_path('fa-light-300')%>') format('woff'),
+url('<%= asset_path('fa-light-300')%>') format('truetype'),
+url('<%= asset_path('fa-light-300')%>') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Pro';
+  src: url('<%= asset_path('fa-regular-400') %>');
+  src: url('<%= asset_path('fa-regular-400')%>') format('embedded-opentype'),
+url('<%= asset_path('fa-regular-400')%>') format('woff'),
+url('<%= asset_path('fa-regular-400')%>') format('truetype'),
+url('<%= asset_path('fa-regular-400')%>') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Pro';
+  src: url('<%= asset_path('fa-solid-900') %>');
+  src: url('<%= asset_path('fa-solid-900')%>') format('embedded-opentype'),
+url('<%= asset_path('fa-solid-900')%>') format('woff'),
+url('<%= asset_path('fa-solid-900')%>') format('truetype'),
+url('<%= asset_path('fa-solid-900')%>') format('svg');
+  font-weight: 900;
+  font-style: normal;
 }

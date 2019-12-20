@@ -18,7 +18,6 @@
 //= require jquery/jquery.gritter
 //= require mdb/mdb
 //= require datatables/datatables
-//= require misc/protip.min
 //= require fa/js/all
 //= require activestorage
 //= require misc/fstdropdown
@@ -36,26 +35,6 @@ $(document).ready(function(){
 		fade_in_speed: 'medium', // how fast notifications fade in (string or int)
 		fade_out_speed: 1000, // how fast the notices fade out
 		time: 2000 // hang on the screen for...
-	});
-
-	$.protip({
-	defaults: {
-		trigger: 'hover',
-		delayIn: 500,
-		delayOut: 1500,
-		interactive: 'false',
-		arrow: false,
-		size: 'normal',
-		animate: 'fadeIn',
-		title: 'Required field',
-		gravity: false,
-		placement: 'outside',
-		width: 700,
-		observer: false,
-		skin: 'default',
-		scheme: 'red',
-		autoHide: 2500
-	}
 	});
 
 	$.extend($.fn.dataTableExt.oStdClasses, {
@@ -107,9 +86,9 @@ $(document).ready(function(){
 		"columns": [
 			{"width": "20px"},		// item id
 			{"width": "125px"},		// description
-			{ "width": "20px" },		// take in date
-			{ "width": "20px" },		// take in date
-			{ "width": "20px" },		// take in date
+			{"width": "20px" },		// take in date
+			{"width": "20px" },		// take in date
+			{"width": "20px" },		// take in date
 			{"width": "100px"},    // price
 			{"width": "50px"},    // edit button
 			{"width": "50px"}     // delete button
@@ -169,10 +148,6 @@ $(document).ready(function(){
 		"sort": false,
 		"bInfo": false,
 		"rowId": 'id',
-		//"ajax":{
-		//	"url" : "/items/updatepickups",
-		//	"type" : "POST"
-		//},
 		"search": {
 			"caseInsensitive": true
 		},

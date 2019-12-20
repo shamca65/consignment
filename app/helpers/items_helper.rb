@@ -114,19 +114,19 @@ module ItemsHelper
 	def status_span_generator item_status
 		case item_status
 			
-		when :fs
+		when 'fs'
 			content_tag(:span, 'For Sale', class: 'badge  badge-primary  ')
 
-		when :sold
+		when 'sold'
 			content_tag(:span, 'Sold', class: 'badge  badge-warning ')
 
-		when :mtd
+		when 'mtd'
 			content_tag(:span, 'Donated', class: 'badge  badge-secondary ')
 		
-		when :po
+		when 'po'
 			content_tag(:span, 'Paid Out', class: 'badge  badge-success ')
 		
-		when :rtc
+		when 'rtc'
 			content_tag(:span, 'Rtn to Cust.', class: 'badge  badge-danger ')
 		end
 	end
