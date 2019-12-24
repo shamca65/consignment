@@ -2,8 +2,7 @@ class ItemsController < ApplicationController
 	require 'json'
   include EventLogger
 
-	skip_before_action :verify_authenticity_token
-
+  skip_before_action :verify_authenticity_token
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def search
@@ -21,14 +20,14 @@ class ItemsController < ApplicationController
 		@donationItems = Item.donation_items
 		respond_to do |format|
 			format.html { render :pickups }
-			format.json {render :json => indexJSON}
+        #format.json {render :json => indexJSON}
 		end
   end
 
   def updatedonations
     puts ">>>>>>>> at update donations"
     json_root = '_json'
-    json_id_field = 'Item No.'
+    json_id_field = 'id'
     pickup_ids = []
     respond_to do |format|
       format.json {render :json => @pickupMoveIDs, :status => 200}
@@ -43,7 +42,8 @@ class ItemsController < ApplicationController
         end
       end
     end
-    MoveToDonationsService.new(pickup_ids).call
+    #puts "pickup_ids: " + pickup_ids.to_s
+    Item.where(:id =>pickup_ids).update_all(owner: 'store', item_status: 'mtd')
   end
 
   def takein
@@ -61,12 +61,14 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    set_item
     @items = Item.all.order(id: :desc)
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    set_item
   end
 
   # GET /items/new
@@ -76,6 +78,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1/edit
   def edit
+    set_item
   end
 
   # POST /items
@@ -139,10 +142,7 @@ class ItemsController < ApplicationController
 	def indexJSON
 		return @pickupItems.as_json(
 				only: [
-						:id,
-						:description,
-						:size,
-						:gender
+						:id
 				])
 	end
 end
