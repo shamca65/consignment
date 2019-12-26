@@ -28,6 +28,7 @@ module ItemsHelper
 		return options_from_collection_for_select(Customer.all, :id, :first_name)
 	end
 
+
 	private
 
 	def size_span_generator size

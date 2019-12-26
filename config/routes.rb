@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   get '/static/new' => 'static#new', as: :new
   get '/search(.:format)' => 'items#search'
+  post '/sale_items/commit_sale' => 'sale_items#commit_sale', as: :commit_sale
 
   resources :configs do
     collection do

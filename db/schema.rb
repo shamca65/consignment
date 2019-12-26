@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_15_203807) do
+ActiveRecord::Schema.define(version: 2019_12_25_123333) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -94,6 +94,9 @@ ActiveRecord::Schema.define(version: 2019_12_15_203807) do
     t.decimal "price", precision: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_no"
+    t.bigint "item_id"
+    t.index ["item_id"], name: "index_sale_items_on_item_id"
   end
 
   create_table "take_ins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

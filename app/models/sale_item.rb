@@ -1,6 +1,6 @@
 class SaleItem < ApplicationRecord
   include EventLogger
-  has_many :items, optional: false
+  has_many :items
 
   def log_create_event
     log_event("Sale Item",self.id,"created")

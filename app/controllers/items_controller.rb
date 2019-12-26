@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 	require 'json'
   include EventLogger
+  include TableTools
 
   skip_before_action :verify_authenticity_token
   before_action :set_item, only: [:show, :edit, :update, :destroy]
@@ -25,25 +26,11 @@ class ItemsController < ApplicationController
   end
 
   def updatedonations
-    puts ">>>>>>>> at update donations"
-    json_root = '_json'
-    json_id_field = 'id'
-    pickup_ids = []
     respond_to do |format|
       format.json {render :json => @pickupMoveIDs, :status => 200}
     end
-    # traverse json from the root to pick out item IDs to update
-    params[json_root].each do |k|
-      k.each do |l, m|
-        if l == json_id_field
-          if m.present?
-            pickup_ids.push(m.to_i)
-          end
-        end
-      end
-    end
-    #puts "pickup_ids: " + pickup_ids.to_s
-    Item.where(:id =>pickup_ids).update_all(owner: 'store', item_status: 'mtd')
+    donated_item_ids = extract_ids(params)
+    Item.where(:id =>donated_item_ids).update_all(owner: 'store', item_status: 'mtd')
   end
 
   def takein

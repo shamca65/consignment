@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//	note 'all.js' = font awesome
 //
 //= require jquery/jquery-3.4.1.min
 //= require mdb/popper
@@ -27,19 +26,28 @@
 //= require dinero/umd/dinero
 //= require rails.validations
 
+
+// TODO refactor similar functions such as selecting, moving etc
+
 $(document).ready(function(){
 
-    // Data Picker Initialization
     $('.datepicker').pickadate({});
 
     $.fn.dataTable.ext.errMode = 'throw';
 
-	$.extend($.gritter.options, { 
-		position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
-		fade_in_speed: 'medium', // how fast notifications fade in (string or int)
-		fade_out_speed: 1000, // how fast the notices fade out
-		time: 2000 // hang on the screen for...
-	});
+    $('.DataTables_filter input').attr('data-toggle', 'tooltip')
+        .attr('data-placement', 'left')
+        .attr('title', 'Search by any term')
+        .tooltip();
+
+    $.extend($.gritter.options, {
+        position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
+        fade_in_speed: 'medium', // how fast notifications fade in (string or int)
+        fade_out_speed: 1000, // how fast the notices fade out
+        time: 2000 // hang on the screen for...
+    });
+
+// ---------------------------- Move to Donations --------------------------
 
 	$.extend($.fn.dataTableExt.oStdClasses, {
 		"sWrapper": "dataTables_wrapper"
@@ -108,61 +116,7 @@ $(document).ready(function(){
 		]
 	});
 
-	$('.DataTables_filter input').attr('data-toggle', 'tooltip')
-		.attr('data-placement', 'left')
-		.attr('title', 'Search by any term')
-		.tooltip();
-
 // ---------------------------- Move to Donations --------------------------
-    
-	var rightDonationsTable = $('#rightDonationsTable').DataTable({
-		"paginate": false,
-		"sort": false,
-		"bInfo": false,
-		"rowId": 'id',
-        "dom": 'Bi',
-		"search": {
-			"caseInsensitive": true
-		},
-        "buttons": {
-                buttons: [
-                    {
-                        text: 'Commit to Donations',
-                        action: function ( ) {
-                        let donatedIDs = getGridItems(rightDonationsTable);
-                        commitDonations(donatedIDs);
-                        }
-                    }
-                ]
-            },
-		"initComplete": function(settings, json) {
-		    //
-		},
-		"columns": [
-			{item: "","width": "50px"}, // check box
-			{item: "ID","width": "50px"},	// item id
-			{item: "Name","width": "225px"}, // customer name
-			{item: "Description","width": "200px"},	// description
-			{item: "Size","width": "60px"},	// size
-			{item: "Price","width": "75px"},	// real price
-			{item: "Days","width": "75px"}	// days in store
-		],
-		columnDefs: [
-			{title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
-			{name: "id", data: "id", orderable: false, targets:   1},
-			{name: "name", data: "name", type: "string", orderable: false, targets:   2},
-			{name: "description", data: "description", orderable: false, targets:   3},
-			{name: "size", data: "size", orderable: false, targets:   4},
-			{name: "price", data: "price", orderable: false, targets:   5},
-			{name: "days", data: "days", orderable: false, targets: 6}
-		],
-		select: {
-			style:    'multi',
-			selector: 'td:first-child'
-		},
-
-		order: [[ 1, 'asc' ]]
-	}); // was 'Table2'
 
     var leftDonationsTable = $('#leftDonationsTable').DataTable({
         "paginate": false,
@@ -208,24 +162,73 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]]
     }); // was 'Table'
 
-    var locateCustomer = $('#customerLocateTable').DataTable({
-		"paginate": true,
-		"sort": false,
-		"columns": [
-			{item: "ID","width": "75px"},		// item id
-			{item: "Name","width": "100px"}, 	// customer name,
-			{item: "","width": "50px"} 		// link 
-		],
-		columnDefs: [
-			{name: "id", data: "id", orderable: false, targets:   0},
-			{name: "name", data: "name", orderable: false, targets:   1},
-			{name: "", data: "", orderable: false, targets:   2}
-		]
-	});
+    var rightDonationsTable = $('#rightDonationsTable').DataTable({
+        "paginate": false,
+        "sort": false,
+        "bInfo": false,
+        "rowId": 'id',
+        "dom": 'Bi',
+        "search": {
+            "caseInsensitive": true
+        },
+        "buttons": {
+            buttons: [
+                {
+                    text: 'Commit to Donations',
+                    action: function ( ) {
+                        let donatedIDs = getGridItems(rightDonationsTable);
+                        commitDonations(donatedIDs);
+                    }
+                }
+            ]
+        },
+        "initComplete": function(settings, json) {
+            //
+        },
+        "columns": [
+            {item: "","width": "50px"}, // check box
+            {item: "ID","width": "50px"},	// item id
+            {item: "Name","width": "225px"}, // customer name
+            {item: "Description","width": "200px"},	// description
+            {item: "Size","width": "60px"},	// size
+            {item: "Price","width": "75px"},	// real price
+            {item: "Days","width": "75px"}	// days in store
+        ],
+        columnDefs: [
+            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
+            {name: "id", data: "id", orderable: false, targets:   1},
+            {name: "name", data: "name", type: "string", orderable: false, targets:   2},
+            {name: "description", data: "description", orderable: false, targets:   3},
+            {name: "size", data: "size", orderable: false, targets:   4},
+            {name: "price", data: "price", orderable: false, targets:   5},
+            {name: "days", data: "days", orderable: false, targets: 6}
+        ],
+        select: {
+            style:    'multi',
+            selector: 'td:first-child'
+        },
 
-	var commitItems = function(table) {
-		var rows = rightDonationsTable.rows().remove().draw();
-	};
+        order: [[ 1, 'asc' ]]
+    }); // was 'Table2'
+
+    var locateCustomer = $('#customerLocateTable').DataTable({
+        "paginate": true,
+        "sort": false,
+        "columns": [
+            {item: "ID","width": "75px"},		// item id
+            {item: "Name","width": "100px"}, 	// customer name,
+            {item: "","width": "50px"} 		// link
+        ],
+        columnDefs: [
+            {name: "id", data: "id", orderable: false, targets:   0},
+            {name: "name", data: "name", orderable: false, targets:   1},
+            {name: "", data: "", orderable: false, targets:   2}
+        ]
+    });
+
+    var commitItems = function(table) {
+        var rows = rightDonationsTable.rows().remove().draw();
+    };
 
     var moveDonationItems = function(grid) {
         to_table = ((grid == leftDonationsTable) ? rightDonationsTable : leftDonationsTable);
@@ -264,19 +267,36 @@ $(document).ready(function(){
         }
     }
 
-	var cleanUpTable = function(grid) {
-		// remove the default row
+    var cleanUpTable = function(grid) {
+        // remove the default row
         grid.rows().remove().draw();
-	};
+    };
 
-	window.onload = function() {
-		cleanUpTable(rightDonationsTable);
-	};
+    window.onload = function() {
+        cleanUpTable(rightDonationsTable);
+    };
 
     // ---------------------------- Sell an Item --------------------------
-    var leftSaleItemstable = $('#leftSaleItemsTable').DataTable({
-        "pageLength":20,
-        "dom": "Bfrtip",
+
+   let leftSaleItemstable = $('#leftSaleItemsTable').DataTable({
+        "paginate": false,
+        "sort": false,
+        "dom": 'Bftip',
+        "bInfo": false,
+        "rowId": 'id',
+        "search": {
+            "caseInsensitive": true
+        },
+        "buttons": {
+            buttons: [
+                {
+                    text: 'Add to Sale',
+                    action: function ( ) {
+                        addItemsToSale(leftSaleItemstable);
+                    }
+                }
+            ]
+        },
         "rowId": 'id',
         "search": {
             "caseInsensitive": true
@@ -302,11 +322,21 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]]
     });
 
-    var rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
-        "dom": "Brtip",
-        "bFilter": false,
+    let rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
+        "dom": "Bi",
         "paginate": false,
         "rowId": 'id',
+        "buttons": {
+            buttons: [
+                {
+                    text: 'Complete Sale',
+                    action: function ( ) {
+                        let sellingIDs = getGridItems(rightsaleItemstable);
+                        commitSale(sellingIDs);
+                    }
+                }
+            ]
+        },
         "columns": [
             {item: "","width": "40px"},
             {item: "ID","width": "50px"},	// item id
@@ -328,24 +358,57 @@ $(document).ready(function(){
         order: [[ 1, 'asc' ]]
     });
 
-    var getGridItems = function(grid) {
-        // get selected rows with the cell data
-        let arrayID = grid.rows( { selected: true }).data().toArray();
-        // duplicate each selected row to the other grid
-        grid.rows({ selected: true }).remove(arrayID).draw();
-        return JSON.stringify(arrayID, null, 4);
+    let getGridItems = function(grid) {
+        let rowData = grid.rows( { selected: true }).data().toArray();
+        grid.rows({ selected: true }).remove(rowData).draw();
+        // extract item ids
+        let n = 0;
+        let idArray = [];
+            while (n < rowData.length) {
+                idArray[n] = rowData[n]['id'];
+                n++; }
+        return idArray
     };
 
-    var moveSaleItems = function(grid) {
+    let addItemsToSale = function(grid) {
         to_table = ((grid == leftSaleItemstable) ? rightsaleItemstable: leftSaleItemstable);
-        // get selected rows with the cell data
         var arrayID = grid.rows( { selected: true }).data().toArray();
-            // duplicate each selected row to the other grid
-        to_table.rows.add(arrayID).draw();
-        grid.rows({selected: true}).remove(arrayID).draw();
-        to_table.rows().select();
+
+        if ( arrayID.length > 0 ) {
+            to_table.rows.add(arrayID).draw();
+            grid.rows({selected: true}).remove(arrayID).draw();
+            to_table.rows().select();
+        } else {
+            Swal.fire(
+                'No items are selected',
+                'Select one or more items first.',
+                'warning'
+            )
+        }
     };
 
+    let commitSale = function(idArray) {
+        let convertedArray = JSON.stringify(idArray, null, 4);
+        if (idArray.toString().length <= 2 ) {
+            Swal.fire (
+                'No items were added!',
+                'Add one or more items to sale first.',
+                'error'
+            )
+        } else {
+            $.ajax({
+                type: "POST",
+                url: "/sale_items/commit_sale",
+                data: convertedArray,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            })
+        }
+    };
+
+    window.onload = function() {
+        cleanUpTable(rightsaleItemstable);
+    };
 // ---------------------------- Client side validations --------------------------
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
 		callback();
