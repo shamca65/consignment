@@ -367,7 +367,7 @@ $(document).ready(function(){
             while (n < rowData.length) {
                 idArray[n] = rowData[n]['id'];
                 n++; }
-        return idArray
+        return idArray;
     };
 
     let addItemsToSale = function(grid) {
@@ -389,6 +389,7 @@ $(document).ready(function(){
 
     let commitSale = function(idArray) {
         let convertedArray = JSON.stringify(idArray, null, 4);
+
         if (idArray.toString().length <= 2 ) {
             Swal.fire (
                 'No items were added!',
@@ -399,9 +400,15 @@ $(document).ready(function(){
             $.ajax({
                 type: "POST",
                 url: "/sale_items/commit_sale",
-                data: convertedArray,
+                data:convertedArray,
                 contentType: "application/json; charset=utf-8",
-                dataType: "json"
+                dataType: "json",
+                success:function(data){
+                    console.log("successfully posted sale items")
+                },
+                error:function(data){
+                    alert("things are broken : "  + JSON.stringify(data, null, 4));
+                }
             })
         }
     };

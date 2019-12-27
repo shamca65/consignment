@@ -26,42 +26,41 @@ class SaleItemsController < ApplicationController
   end
 
   def commit_sale
+    # TODO wrap in try/catch
 
-    puts ">>>>>>>>>>>>>> commit_sale "
+    sale_items_array = params['_json']
+
+    puts("sale_items_array[0] " + sale_items_array[0])
+
+    sale_item_recs = []
+    num_items = sale_items_array.length
+    this_order_no = get_order_no
+    sale_date = Date.today
+    sale_clerk = 'sale clerk'
+    n = 0
+
+    while n < num_items
+      @item_rec = Item.find sale_items_array[n]
+      puts ("item price: " + @item_rec.price.to_s)
+      item_data = {
+          :item_id => @item_rec.id,
+          :item_price => @item_rec.price,
+          :order_no => this_order_no,
+          :sale_date => sale_date,
+          :clerk => sale_clerk
+      }
+      @item_rec = nil
+
+      sale_item_recs[n] = item_data
+      n = n+1
+    end
+
+    SaleItem.create(sale_item_recs)
 
     respond_to do |format|
       format.json {render :json => @sale_items, :status => 200}
     end
 
-    puts "selling_ids : " + params.inspect
-
-    #myHash = JSON.parse(params, symbolize_names: true) #=> {key: :value}
-    # puts ">>>>>>>>>>>>> params_list : " + params.inspect
-    #------------------------
-    # sale_items:
-    #   item_id
-    #   item_price
-    #   order_no
-    #   sale_date
-    #   clerk
-
-    #puts "blanked params : " + params.inspect
-    #item_ids = extract_ids(params)
-    #
-    #
-    # order no (julian timestamp?), payouts, item status, transactions
-    # save sale item record
-    this_order_no = get_order_no
-    #puts (">>>>>>>>>>>>>>>>Order no : " + get_order_no.to_s)
-    #puts (">>>>> num of items : " + item_ids.length.to_s)
-
-    #@sale_item = SaleItem.new(sale_item_params)
-    #@sale_item.save!
-    #Item.where(:id =>item_ids).update_all(
-    #    owner: 'end-user',
-    #    order_no: '',
-    #    item_status: 'sold',
-    #)
   end
 
   # POST /sale_items
@@ -110,7 +109,7 @@ class SaleItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_item_params
-      params.require(:sale_item).permit(:price).merge(order_no: this_order_no)
+      params.require('sale_items').permit(:p1)
     end
 
 end

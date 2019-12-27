@@ -20,7 +20,7 @@ include ActionView::Helpers::NumberHelper
   def load_configs
     my_config = Config.select('current_pickup_date').where('slug = "pudate-current" ').first
     $current_pickup_date = my_config.current_pickup_date
-    $json_root = '_json'
-    $json_id_field = 'id'
+    $json_root ||= '_json'
+    $json_id_field ||= 'id'
   end
 end
