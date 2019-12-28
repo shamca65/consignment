@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   resources :sale_items
   resources :sales
-
   resources :event_logs
 
   get '/static/new' => 'static#new', as: :new

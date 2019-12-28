@@ -4,19 +4,19 @@
     <% if controller_name != 'sessions' %>
     <div class="navbar-collapse mx-auto " id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item btn btn-outline-primary  <%= active?(root_path) %>">
+        <li class="nav-item btn btn-outline-primary waves-teal <%= active?(root_path) %>">
           <a class="nav-link " href="<%= root_path %>">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item btn btn-outline-secondary <%= active?(customers_path) %>">
+        <li class="nav-item btn btn-outline-secondary waves-purple <%= active?(customers_path) %>">
           <a class="nav-link " href="<%= customers_path %>">Customers</a>
         </li>
-        <li class="nav-item btn btn-outline-orange <%= active?(items_path) %>">
+        <li class="nav-item btn btn-outline-orange  waves-orange <%= active?(items_path) %>">
           <a class="nav-link " href="<%= items_path %>">Items</a>
         </li>
-        <li class="nav-item btn btn-outline-info <%= active?(configs_path) %>">
+        <li class="nav-item btn btn-outline-info  waves-teal <%= active?(configs_path) %>">
           <a class="nav-link " href="<%= configs_path %>">Configuration</a>
         </li>
-        <li class="nav-item btn btn-outline-danger <%= active?(configs_path) %>">
+        <li class="nav-item btn btn-outline-danger  waves-red <%= active?(configs_path) %>">
           <a class="nav-link " href="<%= sale_items_path %>">Sell</a>
         </li>
       </ul>

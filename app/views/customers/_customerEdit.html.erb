@@ -120,14 +120,35 @@
   <div class="form-row">
     <!-- Grid column -->
     <div class="col-md-6">
-      <div class="md-form mt-5 w-50">
+      <div class="mt-5 w-50">
         <%= f.select  :province, options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},@customer.province),
-            {:include_blank => "Select Province"},{class: "browser-default md-select"} %>
+            {:include_blank => "Select Province"},{class: "fstdropdown-select"} %>
       </div>
 
     </div>
+
+    <div class="col-md-6">
+      <select class="fstdropdown-select" id="example" data-searchdisable="true">
+        <option value="">Agreement Status</option>
+        <option value="1">First</option>
+        <option value="2">Second</option>
+        <option value="3">Third</option>
+      </select>
+
+    </div>
+
   </div>
   <!-- Grid column -->
+
+
+
+
+
+
+
+
+
+
 
   <!-- row 6  -->
   <br />

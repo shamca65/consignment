@@ -35,11 +35,23 @@ $(document).ready(function(){
 
     $.fn.dataTable.ext.errMode = 'throw';
 
-
     $('.DataTables_filter input').attr('data-toggle', 'tooltip')
         .attr('data-placement', 'left')
         .attr('title', 'Search by any term')
         .tooltip();
+
+    jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
+        return this.flatten().reduce( function ( a, b ) {
+            if ( typeof a === 'string' ) {
+                a = a.replace(/[^\d.-]/g, '') * 1;
+            }
+            if ( typeof b === 'string' ) {
+                b = b.replace(/[^\d.-]/g, '') * 1;
+            }
+
+            return a + b;
+        }, 0 );
+    } );
 
     $.extend($.gritter.options, {
         position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
@@ -284,7 +296,8 @@ $(document).ready(function(){
     // ---------------------------- Sell an Item --------------------------
 
    let leftSaleItemstable = $('#leftSaleItemsTable').DataTable({
-        "paginate": false,
+        "paginate": true,
+       "pageLength":10,
         "sort": false,
         "dom": 'Bftip',
         "bInfo": false,
@@ -328,9 +341,9 @@ $(document).ready(function(){
     });
 
     let rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
-        dom: '<"toolbar">Brtip',
+        dom: '<"toolbar">Brtp',
         fnInitComplete: function(){
-            $('div.toolbar').html('<h3>Custom tool bar!</h3>');
+            $('div.toolbar').html('<h4>Order Total : $0.00 </h4>');
         },
         "paginate": false,
         "rowId": 'id',
@@ -378,6 +391,12 @@ $(document).ready(function(){
         return idArray;
     };
 
+    let updateSalesItemsTotals = function(v){
+        let priceTotal = rightsaleItemstable.column( 4 ).data().sum();
+        let totalStr = "<h4>Order Total is : $" + priceTotal.toString() + "</h4>";
+        $( "div.toolbar").html(totalStr);
+    };
+
     let addItemsToSale = function(grid) {
         to_table = ((grid == leftSaleItemstable) ? rightsaleItemstable: leftSaleItemstable);
         var arrayID = grid.rows( { selected: true }).data().toArray();
@@ -386,6 +405,7 @@ $(document).ready(function(){
             to_table.rows.add(arrayID).draw();
             grid.rows({selected: true}).remove(arrayID).draw();
             to_table.rows().select();
+            updateSalesItemsTotals();
         } else {
             Swal.fire(
                 'No items are selected',
@@ -397,7 +417,6 @@ $(document).ready(function(){
 
     let commitSale = function(idArray) {
         let convertedArray = JSON.stringify(idArray, null, 4);
-        $( "div.toolbar").html('this has been updated');
         // empty string will be '[]'
         if (idArray.toString().length < 2 ) {
             Swal.fire (
@@ -413,6 +432,7 @@ $(document).ready(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success:function(data){
+                    updateSalesItemsHeader();
                     console.log("successfully posted sale items")
                 },
                 error:function(data){

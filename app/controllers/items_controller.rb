@@ -48,7 +48,6 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    set_item
     @items = Item.all.order(id: :desc)
   end
 

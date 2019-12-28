@@ -29,8 +29,8 @@
                 <!-- Gender -->
                 <div class="md-form form-group ">
                 <%= f.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]},@item.gender),
-                      {:include_blank => "Select Gender"},{class: "browser-default"} %>
-                  <label class="active">Gender</label>
+                      {:include_blank => "Select Gender"},{class: "browser-default md-select h4"} %>
+
                 </div>
               </div>
   
@@ -40,8 +40,8 @@
                 <div class="md-form form-group">
                 <%= f.select :item_type, 
                       options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}, selected: item.item_type),
-                      {:include_blank => "Select Item Type"},{class: "browser-default md-select"} %>
-                  <label class="active">Item Type</label>
+                      {:include_blank => "Select Item Type"},{class: "browser-default md-select h4"} %>
+
                 </div>
               </div>
             </div>
@@ -53,8 +53,8 @@
                 <div class="md-form form-group">
                   <%= f.select  :size, 
                         options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}, selected: item.size),
-                        {:include_blank => "Select Item Size"},{class: "browser-default md-select"} %>
-                    <label class="active">Item Size</label>
+                        {:include_blank => "Select Item Size"},{class: "browser-default md-select h4"} %>
+
                 </div>
               </div>
 
@@ -63,8 +63,8 @@
                 <div class="md-form form-group">
                     <%= f.text_field :description, id: 'itemDescription',
                                             autofocus: true, autocomplete: "itemDescription",
-                                            class: "form-control", placeholder: "Description"%>
-                    <label class="active">Short Description</label>
+                                            class: "form-control h3", placeholder: "Description"%>
+
                 </div>
               </div>
             </div>
@@ -74,9 +74,11 @@
               <!-- Left  -->
               <div class="col-lg-6">
                 <div class="md-form form-group">
+                  <div class="h2">
                   <%= f.text_field :price, id: "itemPrice",
                     autofocus: true, autocomplete: "itemPrice",style: "width:150px !important",
-                    class: "form-control ", placeholder: "Item Price" %>
+                    class: "form-control", placeholder: "Item Price" %>
+                  </div>
                 <label class="active">Price</label>
                 </div>
               </div>

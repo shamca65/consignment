@@ -62,12 +62,9 @@ class SaleItemsController < ApplicationController
     if sale_created
       # TODO move to sale completion
       Item.where(:id =>sale_items_array).update_all(item_status: 'sold', sale_date: Date.today)
-      # create sale record with aggregates
-      puts("This order no: " + this_order_no.to_s)
-
       this_sale_total = SaleItem.where({ order_no: this_order_no }).sum(:item_price)
       this_sale_rec = SaleSummary.create(:sale_date => sale_date, :order_no=>this_order_no, :sale_total=>this_sale_total)
-      log_event("Sale record",this_sale_rec.id,"added " + this_order_no.to_s)
+      log_event("Sale record",this_sale_rec.id,this_order_no.to_s)
     end
 
 
