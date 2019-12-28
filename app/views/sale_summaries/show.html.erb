@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sale total:</strong>
+  <%= @sale_summary.sale_total %>
+</p>
+
+<p>
+  <strong>Order no:</strong>
+  <%= @sale_summary.order_no %>
+</p>
+
+<p>
+  <strong>Sale date:</strong>
+  <%= @sale_summary.sale_date %>
+</p>
+
+<%= link_to 'Edit', edit_sale_summary_path(@sale_summary) %> |
+<%= link_to 'Back', sale_summaries_path %>

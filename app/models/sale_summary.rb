@@ -1,0 +1,2 @@
+class SaleSummary < ApplicationRecord
+end

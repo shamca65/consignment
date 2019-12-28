@@ -91,19 +91,26 @@ $(document).ready(function(){
 	$('#customerItemsDataTable').DataTable({
 		"pageLength":10,
 		"dom": '<"toolbar"> Bfrtip',
-		"buttons": [{
-			extend: 'print',
-			footer: true
-		}],
+        "buttons": {
+            buttons: [
+                {
+                    text: 'Takein Items',
+                    action: function ( ) {
+                       alert("take in some items");
+                    }
+                }
+            ]
+        },
 		"columns": [
 			{"width": "20px"},		// item id
-			{"width": "125px"},		// description
-			{"width": "20px" },		// take in date
-			{"width": "20px" },		// take in date
-			{"width": "20px" },		// take in date
-			{"width": "100px"},    // price
-			{"width": "50px"},    // edit button
-			{"width": "50px"}     // delete button
+			{"width": "125px"},		// take in
+			{"width": "20px" },		// description
+			{"width": "20px" },		// gender
+			{"width": "20px" },		// type
+			{"width": "100px"},    // size
+			{"width": "50px"},    // price
+			{"width": "50px"},     // status
+            {"width": "20px"}     // history
 		]
 	});
 
@@ -181,9 +188,6 @@ $(document).ready(function(){
                     }
                 }
             ]
-        },
-        "initComplete": function(settings, json) {
-            //
         },
         "columns": [
             {item: "","width": "50px"}, // check box
@@ -323,7 +327,7 @@ $(document).ready(function(){
     });
 
     let rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
-        "dom": "Bi",
+        "dom": 'Bi',
         "paginate": false,
         "rowId": 'id',
         "buttons": {
@@ -390,7 +394,8 @@ $(document).ready(function(){
     let commitSale = function(idArray) {
         let convertedArray = JSON.stringify(idArray, null, 4);
 
-        if (idArray.toString().length <= 2 ) {
+        // empty string will be '[]'
+        if (idArray.toString().length < 2 ) {
             Swal.fire (
                 'No items were added!',
                 'Add one or more items to sale first.',

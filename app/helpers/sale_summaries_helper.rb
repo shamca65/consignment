@@ -1,0 +1,2 @@
+module SaleSummariesHelper
+end

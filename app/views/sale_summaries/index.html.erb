@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sale Summaries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sale total</th>
+      <th>Order no</th>
+      <th>Sale date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sale_summaries.each do |sale_summary| %>
+      <tr>
+        <td><%= sale_summary.sale_total %></td>
+        <td><%= sale_summary.order_no %></td>
+        <td><%= sale_summary.sale_date %></td>
+        <td><%= link_to 'Show', sale_summary %></td>
+        <td><%= link_to 'Edit', edit_sale_summary_path(sale_summary) %></td>
+        <td><%= link_to 'Destroy', sale_summary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sale Summary', new_sale_summary_path %>

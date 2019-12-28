@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_193437) do
+ActiveRecord::Schema.define(version: 2019_12_27_220345) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_12_27_193437) do
     t.integer "takein_batch_number"
     t.bigint "item_id_id"
     t.bigint "item_id"
+    t.datetime "sale_date"
     t.index ["customer_id"], name: "index_items_on_customer_id"
     t.index ["item_id"], name: "index_items_on_item_id"
     t.index ["item_id_id"], name: "index_items_on_item_id_id"
@@ -99,6 +100,14 @@ ActiveRecord::Schema.define(version: 2019_12_27_193437) do
     t.datetime "sale_date"
     t.string "clerk", limit: 15
     t.index ["item_id"], name: "index_sale_items_on_item_id"
+  end
+
+  create_table "sale_summaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "sale_total", precision: 10
+    t.bigint "order_no"
+    t.datetime "sale_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "take_ins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

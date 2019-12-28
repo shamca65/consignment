@@ -2,6 +2,7 @@
 #
 Rails.application.routes.draw do
 
+  resources :sale_summaries
   root to: 'static#index'
 
   devise_for :users, controllers: {sessions: 'users/sessions'}

@@ -55,7 +55,19 @@ class SaleItemsController < ApplicationController
       n = n+1
     end
 
-    SaleItem.create(sale_item_recs)
+    sale_created = false
+    sale_created = SaleItem.create(sale_item_recs)
+
+    if sale_created
+      # TODO move to sale completion
+      Item.where(:id =>sale_items_array).update_all(item_status: 'sold', sale_date: Date.today)
+      # create sale record with aggregates
+      puts("This order no: " + this_order_no.to_s)
+
+      this_sale_total = SaleItem.where({ order_no: this_order_no }).sum(:item_price)
+      SaleSummary.create(:sale_date => sale_date, :order_no=>this_order_no, :sale_total=>this_sale_total)
+    end
+
 
     respond_to do |format|
       format.json {render :json => @sale_items, :status => 200}
