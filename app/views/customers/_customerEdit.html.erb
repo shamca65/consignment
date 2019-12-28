@@ -119,39 +119,21 @@
   <!-- Grid row -->
   <div class="form-row">
     <!-- Grid column -->
-    <div class="col-md-6">
-      <div class="mt-5 w-50">
-        <%= f.select  :province, options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},@customer.province),
-            {:include_blank => "Select Province"},{class: "fstdropdown-select"} %>
+    <div class="col-md-6" >
+        <%= label_tag(:province, "Province:") %>
+        <%= f.select  :province, options_for_select(Customer::PROVINCES.map {|k,v| [v,k]},@customer.province),{},{class: "fstdropdown-select"} %>
+    </div>
+
+    <div class="col-md-6" >
+        <%= label_tag(:agreement_status, "Agreement Status:") %>
+          <%= f.select  :agreement_status,
+                        options_for_select([["Unsigned","0"], ["Signed","1"], ["Under Review","2"]], @customer.agreement_status),{},{class: "fstdropdown-select", id:"custAS", "data-searchdisable":true} %>
       </div>
-
-    </div>
-
-    <div class="col-md-6">
-      <select class="fstdropdown-select" id="example" data-searchdisable="true">
-        <option value="">Agreement Status</option>
-        <option value="1">First</option>
-        <option value="2">Second</option>
-        <option value="3">Third</option>
-      </select>
-
-    </div>
-
+    <!-- row  -->
   </div>
   <!-- Grid column -->
-
-
-
-
-
-
-
-
-
-
-
+<br>
   <!-- row 6  -->
-  <br />
   <div class="form-row" >
     <div class="col-md-12 text-center">
       <div class="form-group red-border well shadow-textarea">
