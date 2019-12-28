@@ -35,6 +35,7 @@ $(document).ready(function(){
 
     $.fn.dataTable.ext.errMode = 'throw';
 
+
     $('.DataTables_filter input').attr('data-toggle', 'tooltip')
         .attr('data-placement', 'left')
         .attr('title', 'Search by any term')
@@ -174,7 +175,7 @@ $(document).ready(function(){
         "sort": false,
         "bInfo": false,
         "rowId": 'id',
-        "dom": 'Bi',
+        "dom": '<"toolbar"> Bfrtip',
         "search": {
             "caseInsensitive": true
         },
@@ -327,7 +328,10 @@ $(document).ready(function(){
     });
 
     let rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
-        "dom": 'Bi',
+        dom: '<"toolbar">Brtip',
+        fnInitComplete: function(){
+            $('div.toolbar').html('<h3>Custom tool bar!</h3>');
+        },
         "paginate": false,
         "rowId": 'id',
         "buttons": {
@@ -393,7 +397,7 @@ $(document).ready(function(){
 
     let commitSale = function(idArray) {
         let convertedArray = JSON.stringify(idArray, null, 4);
-
+        $( "div.toolbar").html('this has been updated');
         // empty string will be '[]'
         if (idArray.toString().length < 2 ) {
             Swal.fire (

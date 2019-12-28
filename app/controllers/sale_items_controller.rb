@@ -1,5 +1,6 @@
 class SaleItemsController < ApplicationController
   include TableTools
+  include EventLogger
   require 'json'
 
   skip_before_action :verify_authenticity_token
@@ -65,7 +66,8 @@ class SaleItemsController < ApplicationController
       puts("This order no: " + this_order_no.to_s)
 
       this_sale_total = SaleItem.where({ order_no: this_order_no }).sum(:item_price)
-      SaleSummary.create(:sale_date => sale_date, :order_no=>this_order_no, :sale_total=>this_sale_total)
+      this_sale_rec = SaleSummary.create(:sale_date => sale_date, :order_no=>this_order_no, :sale_total=>this_sale_total)
+      log_event("Sale record",this_sale_rec.id,"added " + this_order_no.to_s)
     end
 
 
