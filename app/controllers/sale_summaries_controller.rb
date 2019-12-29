@@ -4,7 +4,8 @@ class SaleSummariesController < ApplicationController
   # GET /sale_summaries
   # GET /sale_summaries.json
   def index
-    @sale_summaries = SaleSummary.all
+
+    @sale_summaries = SaleSummary.joins(:sale_items)
   end
 
   # GET /sale_summaries/1

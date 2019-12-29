@@ -27,51 +27,19 @@ class SaleItemsController < ApplicationController
   end
 
   def commit_sale
-    # TODO wrap in try/catch
-
     sale_items_array = params['_json']
+    this_order_num = get_order_no
 
-    puts("sale_items_array[0] " + sale_items_array[0])
-
-    sale_item_recs = []
-    num_items = sale_items_array.length
-    this_order_no = get_order_no
-    sale_date = Date.today
-    sale_clerk = 'sale clerk'
-    n = 0
-
-    while n < num_items
-      @item_rec = Item.find sale_items_array[n]
-      puts ("item price: " + @item_rec.price.to_s)
-      item_data = {
-          :item_id => @item_rec.id,
-          :item_price => @item_rec.price,
-          :order_no => this_order_no,
-          :sale_date => sale_date,
-          :clerk => sale_clerk
-      }
-      @item_rec = nil
-
-      sale_item_recs[n] = item_data
-      n = n+1
-    end
-
-    sale_created = false
-    sale_created = SaleItem.create(sale_item_recs)
-
-    if sale_created
-      # TODO move to sale completion
+    if sale_items_array.length > 0
+      sale_item_recs = build_sale_item_recs(sale_items_array, this_order_num)
+      SaleItem.create(sale_item_recs)
+      #
       Item.where(:id =>sale_items_array).update_all(item_status: 'sold', sale_date: Date.today)
-      this_sale_total = SaleItem.where({ order_no: this_order_no }).sum(:item_price)
-      this_sale_rec = SaleSummary.create(:sale_date => sale_date, :order_no=>this_order_no, :sale_total=>this_sale_total)
-      log_event("Sale record",this_sale_rec.id,this_order_no.to_s)
     end
-
 
     respond_to do |format|
       format.json {render :json => @sale_items, :status => 200}
     end
-
   end
 
   # POST /sale_items
@@ -112,7 +80,43 @@ class SaleItemsController < ApplicationController
     end
   end
 
+  def create_sale_record(this_order_num)
+    sale_rec  = SaleSummary.create(:order_no=>this_order_num)
+    return sale_rec.id
+  end
+
   private
+
+  def build_sale_item_recs(sale_items_array, this_order_num)
+    # build an array of sale_items records
+    num_items = sale_items_array.length
+    sale_item_recs = []
+    sale_date = Date.today
+    sale_clerk = 'sales clerk'
+    sale_summary = create_sale_record(this_order_num)
+    n = 0
+
+    while n < num_items
+      @item_rec = nil
+      @item_rec = Item.find sale_items_array[n]
+      item_data = {
+          :sale_summaries_id=> sale_summary,
+          :item_id => @item_rec.id,
+          :item_price => @item_rec.price,
+          :order_no => this_order_num,
+          :sale_date => sale_date,
+          :clerk => sale_clerk
+      }
+      sale_item_recs[n] = item_data
+      n = n+1
+    end
+    #
+    this_sale_total = SaleItem.where({ order_no: this_order_num }).sum(:item_price)
+    SaleSummary.where(:id=>sale_summary).update(:sale_total=>this_sale_total, :sale_date=>sale_date)
+    log_event("Sale record",sale_summary,this_order_num.to_s)
+    #
+    return sale_item_recs
+  end
     # Use callbacks to share common setup or constraints between actions.
     def set_sale_item
       @sale_item = SaleItem.find(params[:id])
@@ -120,7 +124,10 @@ class SaleItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sale_item_params
-      params.require('sale_items').permit(:p1)
+      params.require('sale_items').permit(:p1,
+                                          :sale_summaries_id, :item_id,
+                                          :item_price, :order_no, :sale_date,
+                                          :clerk)
     end
 
 end

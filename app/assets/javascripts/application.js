@@ -445,6 +445,50 @@ $(document).ready(function(){
     window.onload = function() {
         cleanUpTable(rightsaleItemstable);
     };
+// ---------------------------- Sale Summary --------------------------
+
+    let saleSummarytable = $('#saleSummaryTable').DataTable({
+        dom: '<"toolbar">Brtp',
+        fnInitComplete: function(){
+            $('div.toolbar').html('<h4>Order Total : $0.00 </h4>');
+        },
+        "paginate": false,
+        "rowId": 'id',
+        "buttons": {
+            buttons: [
+                {
+                    text: 'Complete Sale',
+                    action: function ( ) {
+                        let sellingIDs = getGridItems(rightsaleItemstable);
+                        commitSale(sellingIDs);
+                    }
+                }
+            ]
+        },
+        "columns": [
+            {item: "","width": "40px"},
+            {item: "ID","width": "50px"},	// item id
+            {item: "Description","width": "200px"},	// description
+            {item: "Size","width": "60px"},	// size
+            {item: "Price","width": "75px"},	// real price
+        ],
+        columnDefs: [
+            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
+            {name: "id", data: "id", orderable: false, targets:   1},
+            {name: "description", data: "description", orderable: false, targets:   2},
+            {name: "size", data: "size", orderable: false, targets:   3},
+            {name: "price", data: "price", orderable: false, targets:   4}
+        ],
+        select: {
+            style:    'multi',
+            selector: 'td:first-child'
+        },
+        order: [[ 1, 'asc' ]]
+    });
+
+
+
+
 // ---------------------------- Client side validations --------------------------
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
 		callback();
