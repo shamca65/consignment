@@ -22,5 +22,7 @@ include ActionView::Helpers::NumberHelper
     $current_pickup_date = my_config.current_pickup_date
     $json_root ||= '_json'
     $json_id_field ||= 'id'
+    $cash_clerk ||= 'cash_clerk'
+    $takein_clerk ||= 'takein_clerk'
   end
 end
