@@ -34,13 +34,14 @@ class SaleItemsController < ApplicationController
 
     if sale_items_array.length > 0
       sale_item_recs = build_sale_item_recs(sale_items_array)
-      SaleItem.create(sale_item_recs)
       #
-      Item.where(:id =>sale_items_array).update_all(item_status: 'sold', sale_date: @sale_date)
+      SaleItem.transaction do
+        SaleItem.create(sale_item_recs)
+        Item.where(:id =>sale_items_array).update_all(item_status: 'sold', sale_date: @sale_date)
+        this_sale_total = SaleItem.where({ order_no: @this_order_num }).sum(:item_price)
+        SaleSummary.where(:order_no=>@this_order_num).update(:sale_total=>this_sale_total, :sale_date=>@sale_date)
+      end
       #
-      this_sale_total = SaleItem.where({ order_no: @this_order_num }).sum(:item_price)
-      #
-      SaleSummary.where(:order_no=>@this_order_num).update(:sale_total=>this_sale_total, :sale_date=>@sale_date)
       log_event("Sale record",@sale_summary,@this_order_num.to_s)
     end
 

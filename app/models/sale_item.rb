@@ -2,6 +2,12 @@ class SaleItem < ApplicationRecord
   include EventLogger
   has_many :items
 
+  after_rollback :show_error
+
+  def show_error
+    add_gritter("SaleItem rollback occured")
+  end
+
   def log_create_event
     log_event("Sale Item",self.id,"created")
   end

@@ -26,7 +26,6 @@
 //= require dinero/umd/dinero
 //= require rails.validations
 
-
 // TODO refactor similar functions such as selecting, moving etc
 
 $(document).ready(function(){
@@ -393,7 +392,8 @@ $(document).ready(function(){
 
     let updateSalesItemsTotals = function(v){
         let priceTotal = rightsaleItemstable.column( 4 ).data().sum();
-        let totalStr = "<h4>Order Total is : $" + priceTotal.toString() + "</h4>";
+        let numStr = parseFloat(priceTotal).toFixed(2)
+        let totalStr = "<h4>Order Total is : $" + numStr.toString() + "</h4>";
         $( "div.toolbar").html(totalStr);
     };
 
@@ -432,7 +432,7 @@ $(document).ready(function(){
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success:function(data){
-                    updateSalesItemsHeader();
+                    updateSalesItemsTotals();
                     console.log("successfully posted sale items")
                 },
                 error:function(data){
@@ -485,9 +485,6 @@ $(document).ready(function(){
         },
         order: [[ 1, 'asc' ]]
     });
-
-
-
 
 // ---------------------------- Client side validations --------------------------
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
