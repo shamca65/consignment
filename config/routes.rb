@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :event_logs
 
   get '/static/new' => 'static#new', as: :new
-  get '/search(.:format)' => 'items#search'
+  get '/search(.:format)' => 'sale_items#search'
   post '/sale_items/commit_sale' => 'sale_items#commit_sale', as: :commit_sale
 
   resources :configs do

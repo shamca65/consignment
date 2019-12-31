@@ -22,6 +22,7 @@
 //= require misc/sweetalert2.all.min
 //= require activestorage
 //= require misc/fstdropdown
+//= require easy-autocomplete/jquery.easy-autocomplete
 //= require jquery-ui/jquery-ui
 //= require dinero/umd/dinero
 //= require rails.validations
@@ -30,6 +31,28 @@
 // TODO refactor similar functions such as selecting, moving etc
 
 $(document).ready(function(){
+
+    $('#autosearch').easyAutocomplete({
+        getValue: "id",
+        url: function(phrase)
+        {
+            return "/search.json?q=" + phrase;
+        },
+        categories: [
+            {
+                listLocation: "items",
+                header: "<b>Item List</b>"
+            }
+        ],
+        list: {
+            onChooseEvent: function() {
+                var url = $input.getSelectedItemData().url
+                console.log(url)
+
+            }
+        }
+
+    });
 
     $('.datepicker').pickadate({});
 

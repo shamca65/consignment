@@ -6,17 +6,6 @@ class ItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
-  def search
-    @items = Item.ransack(id_cont: params[:q]).result(distinct: true)
-
-    respond_to do |format|
-      format.html {}
-      format.json {
-        @items = @items.limit(5)
-      }
-    end
-  end
-
 	def donations
 		@donationItems = Item.donation_items
 		respond_to do |format|
