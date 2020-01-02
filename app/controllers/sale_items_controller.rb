@@ -4,11 +4,11 @@ class SaleItemsController < ApplicationController
   require 'json'
 
   skip_before_action :verify_authenticity_token
-  #before_action :set_sale_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_sale_item, only: [:show, :edit, :update, :destroy]
+  before_action :force_json, only: :search
 
   def search
     @items = Item.ransack(id_cont: params[:q]).result(distinct: true)
-
     respond_to do |format|
       format.html {}
       format.json {
@@ -140,7 +140,11 @@ class SaleItemsController < ApplicationController
       params.require('sale_items').permit(:p1,
                                           :sale_summaries_id, :item_id,
                                           :item_price, :order_no, :sale_date,
-                                          :clerk)
+                                          :clerk, :q)
     end
+
+  def force_json
+    request.format = :json
+  end
 
 end

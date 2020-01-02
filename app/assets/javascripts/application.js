@@ -22,7 +22,7 @@
 //= require misc/sweetalert2.all.min
 //= require activestorage
 //= require misc/fstdropdown
-//= require easy-autocomplete/jquery.easy-autocomplete
+//= require easy-autocomplete/jquery.easy-autocomplete.min
 //= require jquery-ui/jquery-ui
 //= require dinero/umd/dinero
 //= require rails.validations
@@ -32,27 +32,34 @@
 
 $(document).ready(function(){
 
-    $('#autosearch').easyAutocomplete({
-        getValue: "id",
-        url: function(phrase)
-        {
-            return "/search.json?q=" + phrase;
+
+    var options = {
+
+        url: function(phrase) {
+            return "/search.json?id=" + phrase;
         },
-        categories: [
-            {
-                listLocation: "items",
-                header: "<b>Item List</b>"
-            }
-        ],
-        list: {
-            onChooseEvent: function() {
-                var url = $input.getSelectedItemData().url
-                console.log(url)
 
-            }
-        }
+        getValue: function(element) {
+            return element.name;
+        },
 
-    });
+        ajaxSettings: {
+            dataType: "json",
+            method: "GET",
+            data: {
+                dataType: "json"
+            }
+        },
+
+        preparePostData: function(data) {
+            data.phrase = $("#example-ajax-post").val();
+            return data;
+        },
+
+        requestDelay: 400
+    };
+
+    $("#example-ajax-post").easyAutocomplete(options);
 
     $('.datepicker').pickadate({});
 

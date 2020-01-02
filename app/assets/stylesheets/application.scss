@@ -26,7 +26,8 @@
  *= require datatables/select.bootstrap4.min
  *= require fa/css/all
  *= require misc/fstdropdown
- *= require easy-autocomplete/easy-autocomplete
+  *= require easy-autocomplete/easy-autocomplete.min
+ *= require easy-autocomplete/easy-autocomplete.themes.min
  *= require jquery-ui/jquery-ui
  *= require_self
  */
