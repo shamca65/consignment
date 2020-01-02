@@ -1,21 +1,11 @@
 class SaleItemsController < ApplicationController
   include TableTools
   include EventLogger
-  require 'json'
+
 
   skip_before_action :verify_authenticity_token
   before_action :set_sale_item, only: [:show, :edit, :update, :destroy]
-  before_action :force_json, only: :search
 
-  def search
-    @items = Item.ransack(id_cont: params[:q]).result(distinct: true)
-    respond_to do |format|
-      format.html {}
-      format.json {
-        @items = @items.limit(5)
-      }
-    end
-  end
 
   # GET /sale_items
   # GET /sale_items.json
@@ -143,8 +133,6 @@ class SaleItemsController < ApplicationController
                                           :clerk, :q)
     end
 
-  def force_json
-    request.format = :json
-  end
+
 
 end

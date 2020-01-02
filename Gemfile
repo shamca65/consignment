@@ -39,6 +39,7 @@ group :test do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'turbolinks', '~> 5.2', '>= 5.2.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 4.5'
 gem 'bootsnap', '~> 1.3', '>= 1.3.2'

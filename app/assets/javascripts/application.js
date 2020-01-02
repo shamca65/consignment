@@ -11,6 +11,8 @@
 // about supported directives.
 //
 //
+//= require rails-ujs
+//= require turbolinks
 //= require jquery/jquery-3.4.1.min
 //= require mdb/popper
 //= require mdb/bootstrap
@@ -35,31 +37,20 @@ $(document).ready(function(){
 
     var options = {
 
-        url: function(phrase) {
-            return "/search.json?id=" + phrase;
-        },
+        url: "/search.json",
 
-        getValue: function(element) {
-            return element.name;
-        },
+        getValue: "name",
 
-        ajaxSettings: {
-            dataType: "json",
-            method: "GET",
-            data: {
-                dataType: "json"
+        list: {
+            match: {
+                enabled: true
             }
         },
 
-        preparePostData: function(data) {
-            data.phrase = $("#example-ajax-post").val();
-            return data;
-        },
-
-        requestDelay: 400
+        theme: "square"
     };
 
-    $("#example-ajax-post").easyAutocomplete(options);
+    $("#countries").easyAutocomplete(options);
 
     $('.datepicker').pickadate({});
 
