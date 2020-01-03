@@ -60,7 +60,7 @@ class Item < ApplicationRecord
     }
 
   ransacker :id do
-    Arel.sql("CONVERT(#{item}.id, CHAR(8))")
+    Arel.sql("items.id")
   end
 
   def get_batch

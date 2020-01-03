@@ -34,16 +34,31 @@
 
 $(document).ready(function(){
 
-
     var options = {
 
-        url: "/search.json?q=23",
-        getValue: "id",
-        list: {
-            match: {
-                enabled: true
+        url: function(phrase) {
+            return "/search.json?q=" + phrase;
+        },
+
+        getValue: function(element) {
+            return element.id;
+        },
+        listLocation: "items",
+
+        ajaxSettings: {
+            method: "GET",
+            dataType: "json",
+            data: {
+                dataType: "json"
             }
         },
+
+        preparePostData: function(data) {
+            data.phrase = $("#countries").val();
+            return data;
+        },
+
+        requestDelay: 400,
         theme: "square"
     };
 

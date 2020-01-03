@@ -2,18 +2,14 @@ class SalesController < ApplicationController
   require 'json'
 
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-  before_action :force_json, only: :search
 
   def search
-    @items = Item.ransack(id_cont: params[:q]).result(distinct: true)
+    @items = Item.ransack(id_cont: params[:q]).result(distinct: false)
 
-    #@items = Item.ransack(id_cont: params[:q]).result(distinct: true)
-    #respond_to do |format|
-    #  format.html {}
-    #  format.json {
-    #    @items = @items.limit(5)
-    #  }
-    #end
+    respond_to do |format|
+      format.html {}
+      format.json { @items }
+    end
   end
 
   # GET /sales
@@ -86,9 +82,5 @@ class SalesController < ApplicationController
     def sale_params
       params.require(:sale).permit(:price, :price)
     end
-
-  def force_json
-    request.format = :json
-  end
 
 end
