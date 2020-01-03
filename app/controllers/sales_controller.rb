@@ -5,7 +5,7 @@ class SalesController < ApplicationController
   before_action :force_json, only: :search
 
   def search
-    @items = Item.ransack(description_cont: params[:q]).result(distinct: false)
+    @items = Item.ransack(id_cont: params[:q]).result(distinct: true)
 
     #@items = Item.ransack(id_cont: params[:q]).result(distinct: true)
     #respond_to do |format|

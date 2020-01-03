@@ -37,16 +37,13 @@ $(document).ready(function(){
 
     var options = {
 
-        url: "/search.json",
-
-        getValue: "name",
-
+        url: "/search.json?q=23",
+        getValue: "id",
         list: {
             match: {
                 enabled: true
             }
         },
-
         theme: "square"
     };
 

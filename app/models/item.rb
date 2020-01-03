@@ -59,6 +59,10 @@ class Item < ApplicationRecord
       :rtc => 'Returned to Customer'
     }
 
+  ransacker :id do
+    Arel.sql("CONVERT(#{item}.id, CHAR(8))")
+  end
+
   def get_batch
     # get the current hour and return it
     t = Time.now
