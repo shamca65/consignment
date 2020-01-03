@@ -29,12 +29,9 @@
 //= require dinero/umd/dinero
 //= require rails.validations
 
-
-// TODO refactor similar functions such as selecting, moving etc
-
 $(document).ready(function(){
 
-    var options = {
+    var autoCompleteOptions = {
 
         url: function(phrase) {
             return "/search.json?q=" + phrase;
@@ -43,7 +40,22 @@ $(document).ready(function(){
         getValue: function(element) {
             return element.id;
         },
+        template: {
+            type: "description",
+            fields: {
+                description: "size"
+            }
+        },
+        list: {
+            onClickEvent: function() {
+                let idx =  $("#item_auto_complete").getSelectedItemIndex();
+                let val0 = $("#item_auto_complete").getSelectedItemData(idx);
+
+                addItemToSale(val0);
+            }
+        },
         listLocation: "items",
+        placeholder: "Search by Item ID",
 
         ajaxSettings: {
             method: "GET",
@@ -54,7 +66,7 @@ $(document).ready(function(){
         },
 
         preparePostData: function(data) {
-            data.phrase = $("#countries").val();
+            data.phrase = $("#item_auto_complete").val();
             return data;
         },
 
@@ -62,7 +74,7 @@ $(document).ready(function(){
         theme: "square"
     };
 
-    $("#countries").easyAutocomplete(options);
+    $("#item_auto_complete").easyAutocomplete(autoCompleteOptions);
 
     $('.datepicker').pickadate({});
 
@@ -430,14 +442,9 @@ $(document).ready(function(){
         $( "div.toolbar").html(totalStr);
     };
 
-    let addItemsToSale = function(grid) {
-        to_table = ((grid == leftSaleItemstable) ? rightsaleItemstable: leftSaleItemstable);
-        var arrayID = grid.rows( { selected: true }).data().toArray();
-
-        if ( arrayID.length > 0 ) {
-            to_table.rows.add(arrayID).draw();
-            grid.rows({selected: true}).remove(arrayID).draw();
-            to_table.rows().select();
+    let addItemToSale = function(itemData) {
+        if ( itemData.length > 0 ) {
+            saleSummarytable.rows.add(itemData).draw();
             updateSalesItemsTotals();
         } else {
             Swal.fire(

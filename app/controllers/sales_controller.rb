@@ -8,7 +8,7 @@ class SalesController < ApplicationController
 
     respond_to do |format|
       format.html {}
-      format.json { @items }
+      format.json { @items.limit(5) }
     end
   end
 
