@@ -1,31 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>sale_summary_table</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
     <div class="row" style="margin: 10px;">
         <div class="col" style="margin: 10px;">
             <div class="row" style="margin: 15px;">
                 <div class="col">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input id="item_auto_complete"/>
-                    </form>
+                    <div class="dropdown" id="item_autoselect"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">Dropdown </button>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="#">First Item</a><a class="dropdown-item" role="presentation" href="#">Second Item</a><a class="dropdown-item" role="presentation" href="#">Third Item</a></div>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col" style="background-color: #ffffff;">
                     <div class="table-responsive" id="saleItemsTable">
-                        <table id="rightSaleItemsTable" class="table table-striped table-bordered" cellspacing="0">
+                        <table class="table">
                             <thead>
-                            <tr>
-                                <th class="text-center h5"><b>Item ID</b></th>
-                                <th class="text-left no-sort h5"><b>Description</b></th>
-                                <th class="text-center no-sort h5"><b>Size</b></th>
-                                <th class="text-center h5"><b>price</b></th>
-                            </tr>
+                                <tr>
+                                    <th>Column 1</th>
+                                    <th>Column 2</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr >
-                                <td class="text-center h5 align-middle" ></td>
-                                <td class="text-left h5 align-middle" ></td>
-                                <td class="text-left h5 align-middle" ></td>
-                                <td class="text-center h5 align-middle" ></td>
-                            </tr>
+                                <tr>
+                                    <td>Cell 1</td>
+                                    <td>Cell 2</td>
+                                </tr>
+                                <tr>
+                                    <td>Cell 3</td>
+                                    <td>Cell 4</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -114,3 +126,8 @@
             </div>
         </div>
     </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
