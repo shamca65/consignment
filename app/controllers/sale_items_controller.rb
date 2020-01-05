@@ -2,10 +2,17 @@ class SaleItemsController < ApplicationController
   include TableTools
   include EventLogger
 
-
   skip_before_action :verify_authenticity_token
   before_action :set_sale_item, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @items = Item.ransack(id_cont: params[:q]).result(distinct: false)
+
+    respond_to do |format|
+      format.html {}
+      format.json { @items.limit(5) }
+    end
+  end
 
   # GET /sale_items
   # GET /sale_items.json

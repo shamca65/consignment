@@ -35,7 +35,6 @@ $(document).ready(function(){
         url: function(phrase) {
             return "/search.json?q=" + phrase;
         },
-
         getValue: function(element) {
             return element.id;
         },
@@ -48,7 +47,6 @@ $(document).ready(function(){
         },
         list: {
             onClickEvent: function() {
-                let dataArray = [];
                 let idx =  $("#item_auto_complete").getSelectedItemIndex();
                 let itemData = $("#item_auto_complete").getSelectedItemData(idx);
                 itemData["0"] = "0";
@@ -57,10 +55,9 @@ $(document).ready(function(){
                 itemData["description"] = "short sheeted bed";
                 itemData["size"] = "sm";
                 itemData["price"] = "12.78";
+                dataArray = [];
                 dataArray[0] = itemData;
-                console.log("about to add row");
-                rightsaleItemstable.rows.add(dataArray).draw();
-                //addItemToSale(dataArray);
+                addItemToSale(dataArray);
             }
         },
         listLocation: "items",
@@ -84,10 +81,10 @@ $(document).ready(function(){
 
     $("#item_auto_complete").easyAutocomplete(autoCompleteOptions);
 
-    let addItemToSale = function(itemData) {
+    function addItemToSale(itemData) {
         if ( 1<2) {
             console.log("about to add row");
-            rightsaleItemstable.rows.add().draw();
+            rightsaleItemstable.rows.add(itemData).draw();
             console.log("4");
             updateSalesItemsTotals();
             console.log("5");
@@ -415,8 +412,7 @@ $(document).ready(function(){
     };
 
     let updateSalesItemsTotals = function(v){
-        console.log("5");
-        let priceTotal = rightsaleItemstable.column( 4 ).data().sum();
+        let priceTotal = rightsaleItemstable.column( 3 ).data().sum();
         let totalStr = "<h4>Order Total is : $" + priceTotal.toString() + "</h4>";
         $( "div.toolbar").html(totalStr);
     };

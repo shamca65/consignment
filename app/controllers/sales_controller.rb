@@ -3,15 +3,6 @@ class SalesController < ApplicationController
 
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
 
-  def search
-    @items = Item.ransack(id_cont: params[:q]).result(distinct: false)
-
-    respond_to do |format|
-      format.html {}
-      format.json { @items.limit(5) }
-    end
-  end
-
   # GET /sales
   # GET /sales.json
   def index
