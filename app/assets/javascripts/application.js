@@ -10,7 +10,6 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//
 //= require rails-ujs
 //= require turbolinks
 //= require jquery/jquery-3.4.1.min
@@ -24,7 +23,7 @@
 //= require misc/sweetalert2.all.min
 //= require activestorage
 //= require misc/fstdropdown
-//= require easy-autocomplete/jquery.easy-autocomplete.min
+//= require easy-autocomplete/jquery.easy-autocomplete
 //= require jquery-ui/jquery-ui
 //= require dinero/umd/dinero
 //= require rails.validations
@@ -43,20 +42,29 @@ $(document).ready(function(){
         template: {
             type: "description",
             fields: {
-                description: "size"
+                description: "description",
+                size: "size"
             }
         },
         list: {
             onClickEvent: function() {
+                let dataArray = [];
                 let idx =  $("#item_auto_complete").getSelectedItemIndex();
-                let val0 = $("#item_auto_complete").getSelectedItemData(idx);
-
-                addItemToSale(val0);
+                let itemData = $("#item_auto_complete").getSelectedItemData(idx);
+                itemData["0"] = "0";
+                itemData["id"] = "11";
+                itemData["name"] = "Shaun";
+                itemData["description"] = "short sheeted bed";
+                itemData["size"] = "sm";
+                itemData["price"] = "12.78";
+                dataArray[0] = itemData;
+                console.log("about to add row");
+                rightsaleItemstable.rows.add(dataArray).draw();
+                //addItemToSale(dataArray);
             }
         },
         listLocation: "items",
         placeholder: "Search by Item ID",
-
         ajaxSettings: {
             method: "GET",
             dataType: "json",
@@ -70,11 +78,27 @@ $(document).ready(function(){
             return data;
         },
 
-        requestDelay: 400,
+        requestDelay: 300,
         theme: "square"
     };
 
     $("#item_auto_complete").easyAutocomplete(autoCompleteOptions);
+
+    let addItemToSale = function(itemData) {
+        if ( 1<2) {
+            console.log("about to add row");
+            rightsaleItemstable.rows.add().draw();
+            console.log("4");
+            updateSalesItemsTotals();
+            console.log("5");
+        } else {
+            Swal.fire(
+                'No items are selected',
+                'Select one or more items first.',
+                'warning'
+            )
+        }
+    };
 
     $('.datepicker').pickadate({});
 
@@ -298,6 +322,7 @@ $(document).ready(function(){
         var arrayID = grid.rows( { selected: true }).data().toArray();
         if ( arrayID.length > 0 ){
             // duplicate each selected row to the other grid
+            console.log('data format: ' + JSON.stringify(arrayID,null, 4));
             to_table.rows.add(arrayID).draw();
             grid.rows({selected: true}).remove(arrayID).draw();
             to_table.rows().select();
@@ -340,52 +365,7 @@ $(document).ready(function(){
 
     // ---------------------------- Sell an Item --------------------------
 
-   let leftSaleItemstable = $('#leftSaleItemsTable').DataTable({
-        "paginate": true,
-       "pageLength":10,
-        "sort": false,
-        "dom": 'Bftip',
-        "bInfo": false,
-        "rowId": 'id',
-        "search": {
-            "caseInsensitive": true
-        },
-        "buttons": {
-            buttons: [
-                {
-                    text: 'Add to Sale',
-                    action: function ( ) {
-                        addItemsToSale(leftSaleItemstable);
-                    }
-                }
-            ]
-        },
-        "rowId": 'id',
-        "search": {
-            "caseInsensitive": true
-        },
-        "columns": [
-            {item: "","width": "40px"},
-            {item: "ID","width": "50px"},	            // item id
-            {item: "Description","width": "200px"},	    // description
-            {item: "Size","width": "60px"},	            // size
-            {item: "Price","width": "75px"},	        // real price
-        ],
-        columnDefs: [
-            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
-            {name: "id", data: "id", orderable: false, targets:   1},
-            {name: "description", data: "description", orderable: false, targets:   2},
-            {name: "size", data: "size", orderable: false, targets:   3},
-            {name: "price", data: "price", orderable: false, targets:   4}
-        ],
-        select: {
-            style:    'multi',
-            selector: 'td:first-child'
-        },
-        order: [[ 1, 'asc' ]]
-    });
-
-    let rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
+    var rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
         dom: '<"toolbar">Brtp',
         fnInitComplete: function(){
             $('div.toolbar').html('<h4>Order Total : $0.00 </h4>');
@@ -404,18 +384,16 @@ $(document).ready(function(){
             ]
         },
         "columns": [
-            {item: "","width": "40px"},
             {item: "ID","width": "50px"},	// item id
             {item: "Description","width": "200px"},	// description
             {item: "Size","width": "60px"},	// size
             {item: "Price","width": "75px"},	// real price
         ],
         columnDefs: [
-            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
-            {name: "id", data: "id", orderable: false, targets:   1},
-            {name: "description", data: "description", orderable: false, targets:   2},
-            {name: "size", data: "size", orderable: false, targets:   3},
-            {name: "price", data: "price", orderable: false, targets:   4}
+            {name: "id", data: "id", orderable: false, targets:   0},
+            {name: "description", data: "description", orderable: false, targets:   1},
+            {name: "size", data: "size", orderable: false, targets:   2},
+            {name: "price", data: "price", orderable: false, targets:   3},
         ],
         select: {
             style:    'multi',
@@ -437,22 +415,10 @@ $(document).ready(function(){
     };
 
     let updateSalesItemsTotals = function(v){
+        console.log("5");
         let priceTotal = rightsaleItemstable.column( 4 ).data().sum();
         let totalStr = "<h4>Order Total is : $" + priceTotal.toString() + "</h4>";
         $( "div.toolbar").html(totalStr);
-    };
-
-    let addItemToSale = function(itemData) {
-        if ( itemData.length > 0 ) {
-            saleSummarytable.rows.add(itemData).draw();
-            updateSalesItemsTotals();
-        } else {
-            Swal.fire(
-                'No items are selected',
-                'Select one or more items first.',
-                'warning'
-            )
-        }
     };
 
     let commitSale = function(idArray) {
@@ -485,49 +451,6 @@ $(document).ready(function(){
     window.onload = function() {
         cleanUpTable(rightsaleItemstable);
     };
-// ---------------------------- Sale Summary --------------------------
-
-    let saleSummarytable = $('#saleSummaryTable').DataTable({
-        dom: '<"toolbar">Brtp',
-        fnInitComplete: function(){
-            $('div.toolbar').html('<h4>Order Total : $0.00 </h4>');
-        },
-        "paginate": false,
-        "rowId": 'id',
-        "buttons": {
-            buttons: [
-                {
-                    text: 'Complete Sale',
-                    action: function ( ) {
-                        let sellingIDs = getGridItems(rightsaleItemstable);
-                        commitSale(sellingIDs);
-                    }
-                }
-            ]
-        },
-        "columns": [
-            {item: "","width": "40px"},
-            {item: "ID","width": "50px"},	// item id
-            {item: "Description","width": "200px"},	// description
-            {item: "Size","width": "60px"},	// size
-            {item: "Price","width": "75px"},	// real price
-        ],
-        columnDefs: [
-            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
-            {name: "id", data: "id", orderable: false, targets:   1},
-            {name: "description", data: "description", orderable: false, targets:   2},
-            {name: "size", data: "size", orderable: false, targets:   3},
-            {name: "price", data: "price", orderable: false, targets:   4}
-        ],
-        select: {
-            style:    'multi',
-            selector: 'td:first-child'
-        },
-        order: [[ 1, 'asc' ]]
-    });
-
-
-
 
 // ---------------------------- Client side validations --------------------------
 	window.ClientSideValidations.callbacks.element.fail = function (element, message, callback) {
