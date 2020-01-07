@@ -1,0 +1,57 @@
+Jenkins - Ruby 2.6.5 & Rails 5.2
+
+
+Notifications
+-----------------
+Test Server: https://infotech-qa.itrgdev.com/
+Github PR:  https://github.com/InfoTech/www.infotech.com/pull/5811
+Jira Ticket: https://info-tech.atlassian.net/browse/MEM-5722
+Log on as provided user in buildIT
+Navigate to account management
+Select and copy PAT code
+Open an incognito window and paste the link (testing new user)
+Check mail trap for attempted activation email
+Using the incognito window Log in as any other user and use the same link
+Check mail trap again. (Message has more information when using CAC code)
+Repeat steps but select CAC code this time through
+Users: 
+grood@treees.com
+bob@nbc.com
+
+
+The PAT email sends "Activation: Successful" which is tracking the success of the PAT link for the user. There may be a better name for this to get across to the rep what it actually means. I'll set the password for bobs user to 'pwd' so you can login with regular sign in (edited) 
+
+
+QA STEPS
+Test Server: https://infotech-qa.itrgdev.com/
+Github PR:   https://github.com/InfoTech/www.infotech.com/pull/5788
+Jira Ticket:  https://info-tech.atlassian.net/browse/MEM-4764
+1. Log into IT as user and navigate to /account/settings
+2. Change some user information and press the submit button (first name is a good option)
+3. Changes should take effect without requiring a password after clicking submit
+4. Navigate back to /account/settings
+5. Enter a new password in all lowercase letters and shorter than 8 characters
+6. You should see an error message under the new password field outlining new requirements
+7. Test a password for each case. (Old password should be required for password updates)
+8. The password is too short error should disappear when length is 8 chars or longer
+9. I will provide a user where a password change is required
+10. Login as provided user and you should be redirected to create a new password
+11. Repeat steps 5 through 7 here
+12. If old pwd is invalid under new complexity the user will be validated on next pwd change
+13. A user will be provided that requires re-onboarding. Password change not required here
+14. A user will be provided with terms acceptance required.
+15. Enter any other infotech URL into address bar using provided user.
+16. Terms should appear on every page until closed, declined, or accepted.
+17. Terms modal should not reappear after acceptance has completed. (No pwd required)
+18. Test the same on HR
+PASSWORD CHANGE REQUIRED
+login: "bruno.scalera@dentons.com"
+RE-ONBOARDING REQUIRED IT
+login: "lisa.karsten@dentons.com"
+RE-ONBOARDING REQUIRED HR
+login: "jonathon.bond@dentons.com"
+TERMS REQUIRED IT
+login: "william.daniels@dentons.com"
+TERMS REQUIRED HR
+login: "serge.lavictoire@canada.ca"
+

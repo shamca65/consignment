@@ -1,74 +1,79 @@
 <%= form_for @item, validate: true do |i| %>
 <%= hidden_field_tag 'mode','takein'%>
 <%= hidden_field_tag 'customer_id',params[:id]%>
-  <div class="row d-flex justify-content-center" >
-    <div class="card rounded-sm" style="width: 70%;">
-      <div class="card-header">
-        Take In Items
-      </div>
-        <div class="card-body">
-          <h5 class="card-title">Special title treatment</h5>
-          <div class="row d-flex justify-content-center">
-          <%= i.text_field :customer_id, id:'itemCustomerID',autofocus: false, 
-                                      class: "form-control disabled readonly border-0 text-muted bg-light hidden",
-                                      value:params[:id]%>
-          <%-# left column -%>
-          <div class="col-4-lg">
-            <div class="card bg-light mb-3 rounded-sm" style="max-width: 20rem;">
-              <div class="card-header h4">Item Details</div>
-                <div class="card-body h4">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><h5>$</h5></span>
-                    <%= i.text_field :price, id:"itemPrice",
-                      autofocus: true, style: "width:150px !important",
-                      class: "form-control ", placeholder: "Price" %>
-                  </div>
-                </div>
-                <div class="card-body h4">
-                  <%= i.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}),
-                    {:include_blank => "Select Gender"},{class: "browser-default h4", id: "itemGender"} %>
-                </div>
-                <div class="card-body h4">
-                  <%= i.select :item_type, options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}),
-                    {:include_blank => "Select Item Type"},{class: "browser-default md-select h4", id: "itemType"} %>
-                </div>
-                <div class="card-body h4">
-                  <%= i.select  :size, options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}),
-                        {:include_blank => "Select Item Size"},{class: "browser-default md-select h4", id: "itemSize"} %>
-                </div>
-              </div>
-          </div>
 
-          <%-# right column -%>
-          <div class="col-4-lg">
-            <div class="card bg-light mb-3 rounded-sm" style="max-width: 20rem;">
-              <div class="card-header h4">Item Details</div>
-                <div class="card-body h4">
-                <%= i.text_field :description, id: 'itemDescription',
-                                          autofocus: true,
-                                          class: "form-control", placeholder: "Description"%>
+    <div class="container">
+        <%= i.text_field :customer_id, id:'itemCustomerID',autofocus: false,
+        class: "form-control disabled readonly border-0 text-muted bg-light hidden", value:params[:id]%>
+        <div class="card">
+            <div class="card-header orange">
+                <h5 class="mb-0 h3">New Item</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="card"></div>
                 </div>
-                <div class="card-body h4">
-                  <%= i.text_area :item_note, id: 'itemNotes', class: 'form-control',
-                    cols: "10", rows: "5", placeholder: "Private Item Notes" %>              
+                <div class="col">
+                    <div class="card"></div>
                 </div>
-              </div>
+                <div class="col">
+                    <div class="card"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><h5>$</h5></span>
+                                    <%= i.text_field :price, id:"itemPrice",
+                                    autofocus: true, style: "width:150px !important",class: "form-control ", placeholder: "Price" %>
+                            </div>
+                        </span></li>
+                        <li class="list-group-item"><span>Tax Exempt?
+                          []
+                        </span></li>
+                        <li class="list-group-item"><span>Gender
+                            <%= i.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}),
+                                {:include_blank => "Select Gender"},{class: "browser-default h4", id: "itemGender"} %>
+                        </span></li>
+                        <li class="list-group-item"><span>Type
+                            <%= i.select :item_type, options_for_select(Item::ITEM_TYPES.map {|v, k| [k, v]}),
+                                {:include_blank => "Select Type"},{class: "browser-default md-select h4", id: "itemType"} %>
+                        </span></li>
+                        <li class="list-group-item"><span>Size
+                            <%= i.select  :size, options_for_select(Item::ITEM_SIZES.map {|v, k| [k, v]}),
+                                {:include_blank => "Select Size"},{class: "browser-default md-select h4", id: "itemSize"} %>
+                        </span></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-group">
+                        <li class="list-group-item"><span>List Group Item 1
+                        <%= i.text_field :description, id: 'itemDescription',autofocus: true,class: "form-control", placeholder: "Description"%>
+                        </span></li>
+                        <li class="list-group-item"><span>
+                          <%= i.text_area :item_note, id: 'itemNotes', rows: "10", class: 'form-control w-80', placeholder: "Private Item Notes" %>
+                        </span></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center">
+              <div class="col">
+
+              </span></li>
+            </div>
           </div>
-          <div class="col-2-lg">
-          <div class="card-body">
-            <div class="text-center">
+            <div class="row text-right" style="height: 4em; margin-top: .5em;">
+              <div class="col">
                 <button class="btn btn-primary waves-effect" type="submit">Add Item Record</button>
+                <%=link_to 'Cancel', items_customers_path, class:" text-right btn btn-outline-primary btn-rounded waves-effect" %>
             </div>
             </div>
-          </div>
-        <%#row%>
-      </div>
-      </div>
-      <div class="card-footer text-muted text-right">
-        <div class="card-body">
-            <%=link_to 'Cancel', items_customers_path, class:"btn btn-outline-primary btn-rounded waves-effect" %>
         </div>
-      </div>
     </div>
-    </div>
-  <% end %>
+<% end %>

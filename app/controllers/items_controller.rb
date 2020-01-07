@@ -110,7 +110,7 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:size, :description, :price, :customer_id,
                                    :item_type, :pickup_date, :gender, :notes,
-                                   :owner, :item_status, :item_note
+                                   :owner, :item_status, :item_note, :tax_exempt
       )
 		end
 

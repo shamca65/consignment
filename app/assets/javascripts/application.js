@@ -50,11 +50,6 @@ $(document).ready(function(){
                 let idx =  $("#item_auto_complete").getSelectedItemIndex();
                 let itemData = $("#item_auto_complete").getSelectedItemData(idx);
                 itemData["0"] = "0";
-                itemData["id"] = "11";
-                itemData["name"] = "Shaun";
-                itemData["description"] = "short sheeted bed";
-                itemData["size"] = "sm";
-                itemData["price"] = "12.78";
                 dataArray = [];
                 dataArray[0] = itemData;
                 addItemToSale(dataArray);
@@ -175,7 +170,6 @@ $(document).ready(function(){
                 {
                     text: 'Takein Items',
                     action: function ( ) {
-                       alert("take in some items");
                     }
                 }
             ]
@@ -358,15 +352,13 @@ $(document).ready(function(){
 
     window.onload = function() {
         cleanUpTable(rightDonationsTable);
+
     };
 
     // ---------------------------- Sell an Item --------------------------
 
     var rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
-        dom: '<"toolbar">Brtp',
-        fnInitComplete: function(){
-            $('div.toolbar').html('<h4>Order Total : $0.00 </h4>');
-        },
+        dom: 'rtp',
         "paginate": false,
         "rowId": 'id',
         "buttons": {
@@ -414,7 +406,7 @@ $(document).ready(function(){
     let updateSalesItemsTotals = function(v){
         let priceTotal = rightsaleItemstable.column( 3 ).data().sum();
         let totalStr = "<h4>Order Total is : $" + priceTotal.toString() + "</h4>";
-        $( "div.toolbar").html(totalStr);
+        $( "#order-total-panel").html(totalStr);
     };
 
     let commitSale = function(idArray) {
@@ -446,6 +438,7 @@ $(document).ready(function(){
 
     window.onload = function() {
         cleanUpTable(rightsaleItemstable);
+        updateSalesItemsTotals();
     };
 
 // ---------------------------- Client side validations --------------------------

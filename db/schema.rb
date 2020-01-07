@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_29_154832) do
+ActiveRecord::Schema.define(version: 2020_01_05_232217) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -38,11 +38,8 @@ ActiveRecord::Schema.define(version: 2019_12_29_154832) do
     t.string "city"
     t.string "postal"
     t.text "notes"
-  end
-
-  create_table "customers_items", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "customer_id", null: false
-    t.bigint "item_id", null: false
+    t.bigint "customer_id"
+    t.index ["customer_id"], name: "index_customers_on_customer_id"
   end
 
   create_table "event_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -80,21 +77,19 @@ ActiveRecord::Schema.define(version: 2019_12_29_154832) do
     t.string "owner", limit: 15
     t.text "item_note"
     t.integer "takein_batch_number"
+    t.bigint "item_id_id"
+    t.bigint "item_id"
     t.datetime "sale_date"
+    t.boolean "tax_exempt"
     t.index ["customer_id"], name: "index_items_on_customer_id"
+    t.index ["item_id"], name: "index_items_on_item_id"
+    t.index ["item_id_id"], name: "index_items_on_item_id_id"
     t.index ["takein_batch_number"], name: "index_items_on_takein_batch_number"
   end
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "pickup_dates", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "current", limit: 45
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "current_pickup_date"
   end
 
   create_table "sale_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -114,14 +109,6 @@ ActiveRecord::Schema.define(version: 2019_12_29_154832) do
     t.decimal "sale_total", precision: 10
     t.bigint "order_no"
     t.datetime "sale_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "price", precision: 10, scale: 2
-    t.integer "item_id"
-    t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -154,6 +141,8 @@ ActiveRecord::Schema.define(version: 2019_12_29_154832) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "customers", "customers"
   add_foreign_key "items", "customers"
+  add_foreign_key "items", "items"
   add_foreign_key "sale_items", "sale_summaries", column: "sale_summaries_id"
 end
