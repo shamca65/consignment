@@ -72,10 +72,10 @@ class Item < ApplicationRecord
 
   def set_attr_for_create
     self.clerk = "admin"
-    self.status = 0 # for sale
+    self.item_status = 'fs' # for sale
     self.takein_date ||= Date.today
     self.customer ||= 'customer'
-    self.takein_batch_number ||= get_batch
+    self.takein_batch_number = get_batch
   end
 
   def set_attr_for_update

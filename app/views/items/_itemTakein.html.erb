@@ -10,19 +10,11 @@
                 <h5 class="mb-0 h3">New Item</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="card"></div>
-                </div>
-                <div class="col">
-                    <div class="card"></div>
-                </div>
-                <div class="col">
-                    <div class="card"></div>
+                <div class="card-text text-right">
+                  <h4>Today: <%= simple_date(Date.today) %></h4>
                 </div>
             </div>
+
             <div class="row">
                 <div class="col">
                     <ul class="list-group">
@@ -34,7 +26,7 @@
                             </div>
                         </span></li>
                         <li class="list-group-item"><span>Tax Exempt?
-                          []
+                          <%= i.select  :tax_exempt, options_for_select({ "No" => 0, "Yes" => 1 },0), {class: "browser-default md-select h4", id: "taxExempt"} %>
                         </span></li>
                         <li class="list-group-item"><span>Gender
                             <%= i.select  :gender, options_for_select(Item::ITEM_GENDERS.map {|v, k| [k, v]}),
@@ -52,11 +44,11 @@
                 </div>
                 <div class="col">
                     <ul class="list-group">
-                        <li class="list-group-item"><span>List Group Item 1
+                        <li class="list-group-item"><span>Item Description
                         <%= i.text_field :description, id: 'itemDescription',autofocus: true,class: "form-control", placeholder: "Description"%>
                         </span></li>
                         <li class="list-group-item"><span>
-                          <%= i.text_area :item_note, id: 'itemNotes', rows: "10", class: 'form-control w-80', placeholder: "Private Item Notes" %>
+                          <%= i.text_area :item_note, id: 'itemNotes', rows: "10", class: 'form-control w-80', placeholder: "Private Notes" %>
                         </span></li>
 
                     </ul>

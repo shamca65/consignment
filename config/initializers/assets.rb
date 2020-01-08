@@ -23,3 +23,9 @@ Rails.application.config.assets.paths << Rails.root.join('app','assets','images'
 Rails.application.config.assets.paths << Rails.root.join('app','assets','fa')
 
 Rails.application.config.assets.precompile += %w(.svg .eot .woff .woff2 .ttf)
+
+Rails.application.config.assets.precompile += %w( sale_items.js )
+Rails.application.config.assets.precompile += %w( donations.js )
+Rails.application.config.assets.precompile += %w( customers.js )
+Rails.application.config.assets.precompile += %w( items.js )
+Rails.application.config.assets.precompile += %w( customer_items.js )
