@@ -41,18 +41,7 @@ $(document).ready(function(){
         .attr('title', 'Search by any term')
         .tooltip();
 
-    jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
-        return this.flatten().reduce( function ( a, b ) {
-            if ( typeof a === 'string' ) {
-                a = a.replace(/[^\d.-]/g, '') * 1;
-            }
-            if ( typeof b === 'string' ) {
-                b = b.replace(/[^\d.-]/g, '') * 1;
-            }
 
-            return a + b;
-        }, 0 );
-    } );
 
     $.extend($.gritter.options, {
         position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
