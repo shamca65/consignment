@@ -4,5 +4,6 @@ json.items do
     json.description item.description
     json.size item.size
     json.price item.price
+    json.dummy item.id
   end
 end

@@ -79,18 +79,21 @@ $(document).ready(function() {
             {item: "Description", "width": "200px"},	// description
             {item: "Size", "width": "60px"},	// size
             {item: "Price", "width": "75px"},	// real price
+            {item: "", "width": "50px"},	//
         ],
         columnDefs: [
             {name: "id", data: "id", orderable: false, targets: 0},
             {name: "description", data: "description", orderable: false, targets: 1},
             {name: "size", data: "size", orderable: false, targets: 2},
             {name: "price", data: "price", orderable: false, targets: 3},
+            {name: "dummy",
+                "mData": null,
+                "bSortable": false,
+                "mRender": function(data, type, full) {
+                    return '<a class="btn btn-info btn-sm" href=#/' + full[0] + '>' + 'Edit' + '</a>';
+                }, targets: 4}
         ],
-        select: {
-            style: 'multi',
-            selector: 'td:first-child'
-        },
-        order: [[1, 'asc']]
+        order: [[1, 'desc']]
     });
 
     let getGridItems = function (grid) {
