@@ -90,11 +90,15 @@ $(document).ready(function() {
                 "mData": null,
                 "bSortable": false,
                 "mRender": function(data, type, full) {
-                    return '<a class="btn btn-info btn-sm" href=#/' + full[0] + '>' + 'Edit' + '</a>';
+                    return '<Button type="button" class="btn btn-info btn-sm" onclick="myAlertCall();"' + '>' + 'Alert' + '</Button>';
                 }, targets: 4}
         ],
         order: [[1, 'desc']]
     });
+
+    function myAlertCall (){
+        alert('here we are');
+    }
 
     let getGridItems = function (grid) {
         let rowData = grid.rows({selected: true}).data().toArray();
