@@ -60,45 +60,53 @@ $(document).ready(function() {
     $("#item_auto_complete").easyAutocomplete(autoCompleteOptions);
 
     var rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
-        dom: 'rtp',
+        dom: 'Brtp',
         "paginate": false,
         "rowId": 'id',
         "buttons": {
             buttons: [
                 {
-                    text: 'Complete Sale',
+                    text: 'Delete Seleted Item(s)',
                     action: function () {
-                        let sellingIDs = getGridItems(rightsaleItemstable);
-                        commitSale(sellingIDs);
+                        let arrayID = this.rows( { selected: true }).data().toArray();
+                        deleteItems(arrayID);
                     }
                 }
             ]
         },
         "columns": [
+            {item: "","width": "50px"}, // check box
             {item: "ID", "width": "50px"},	// item id
             {item: "Description", "width": "200px"},	// description
             {item: "Size", "width": "60px"},	// size
-            {item: "Price", "width": "75px"},	// real price
-            {item: "", "width": "50px"},	//
+            {item: "Price", "width": "75px"}	// real price
         ],
         columnDefs: [
-            {name: "id", data: "id", orderable: false, targets: 0},
-            {name: "description", data: "description", orderable: false, targets: 1},
-            {name: "size", data: "size", orderable: false, targets: 2},
-            {name: "price", data: "price", orderable: false, targets: 3},
-            {name: "dummy",
-                "mData": null,
-                "bSortable": false,
-                "mRender": function(data, type, full) {
-                    return '<Button type="button" class="btn btn-info btn-sm" onclick="myAlertCall();"' + '>' + 'Alert' + '</Button>';
-                }, targets: 4}
-        ],
+            {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
+            {name: "id", data: "id", orderable: false, targets: 1},
+            {name: "description", data: "description", orderable: false, targets: 2},
+            {name: "size", data: "size", orderable: false, targets: 3},
+            {name: "price", data: "price", orderable: false, targets: 4}
+            ],
+            select: {
+                style:    'multi',
+                selector: 'td:first-child'
+            },
         order: [[1, 'desc']]
     });
 
-    function myAlertCall (){
-        alert('here we are');
-    }
+    function deleteItems(rowID) {
+        if ( rowID != null) {
+            rightsaleItemstable.rows({selected: true}).remove(rowID).draw();
+            updateSalesItemsTotals();
+        } else {
+            Swal.fire(
+                'No items are selected',
+                'Select one or more items first.',
+                'warning'
+            )
+        }
+    };
 
     let getGridItems = function (grid) {
         let rowData = grid.rows({selected: true}).data().toArray();
@@ -115,11 +123,8 @@ $(document).ready(function() {
 
     function addItemToSale(itemData) {
         if ( 1<2) {
-            console.log("about to add row");
             rightsaleItemstable.rows.add(itemData).draw();
-            console.log("4");
             updateSalesItemsTotals();
-            console.log("5");
         } else {
             Swal.fire(
                 'No items are selected',
