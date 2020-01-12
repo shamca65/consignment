@@ -64,9 +64,9 @@ $(document).ready(function() {
         "buttons": {
             buttons: [
                 {
-                    text: 'Delete Seleted Item(s)',
+                    text: 'Delete Selected Item(s)',
                     action: function () {
-                        let arrayID = this.rows( { selected: true }).data().toArray();
+                        let arrayID = rightsaleItemstable.rows( { selected: true }).data().toArray();
                         deleteItems(arrayID);
                     }
                 }
@@ -88,7 +88,13 @@ $(document).ready(function() {
                 data: "price",
                 render: $.fn.dataTable.render.number( ',', '.', 2, '$' ),
                 orderable: false,
-                targets: 4}
+                targets: 4},
+            {name: "extended",
+                data: "",
+                render: $.fn.dataTable.render.number( ',', '.', 2, '$' ),
+                orderable: false,
+                targets: 5}
+        ],
             ],
             select: {
                 style:    'multi',
@@ -97,9 +103,10 @@ $(document).ready(function() {
         order: [[1, 'asc']]
     });
 
-    function deleteItems(rowID) {
+    let deleteItems = function(rowID) {
         if ( rowID != null) {
             rightsaleItemstable.rows({selected: true}).remove(rowID).draw();
+
             updateSalesItemsTotals();
         } else {
             Swal.fire(
@@ -170,8 +177,14 @@ $(document).ready(function() {
         }
     };
 
-    window.onload = function () {
-        rightsaleItemstable.rows().remove().draw();
-        updateSalesItemsTotals();
+
+    let myVar = function () {
+        rightsaleItemstable.rows({selected: false}).remove(0).draw();
+        //updateSalesItemsTotals();
     };
+
+    $(document).ready(myVar);
+    $(document).on('turbolinks:loaded', myVar);
+
 });
+
