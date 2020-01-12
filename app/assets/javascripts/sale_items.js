@@ -8,7 +8,6 @@ $(document).ready(function() {
             if ( typeof b === 'string' ) {
                 b = b.replace(/[^\d.-]/g, '') * 1;
             }
-
             return a + b;
         }, 0 );
     } );
@@ -52,7 +51,6 @@ $(document).ready(function() {
             data.phrase = $("#item_auto_complete").val();
             return data;
         },
-
         requestDelay: 300,
         theme: "square"
     };
@@ -60,7 +58,7 @@ $(document).ready(function() {
     $("#item_auto_complete").easyAutocomplete(autoCompleteOptions);
 
     var rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
-        dom: 'Brtp',
+        "dom": 'Btip',
         "paginate": false,
         "rowId": 'id',
         "buttons": {
@@ -86,13 +84,17 @@ $(document).ready(function() {
             {name: "id", data: "id", orderable: false, targets: 1},
             {name: "description", data: "description", orderable: false, targets: 2},
             {name: "size", data: "size", orderable: false, targets: 3},
-            {name: "price", data: "price", orderable: false, targets: 4}
+            {name: "price",
+                data: "price",
+                render: $.fn.dataTable.render.number( ',', '.', 2, '$' ),
+                orderable: false,
+                targets: 4}
             ],
             select: {
                 style:    'multi',
                 selector: 'td:first-child'
             },
-        order: [[1, 'desc']]
+        order: [[1, 'asc']]
     });
 
     function deleteItems(rowID) {
@@ -135,8 +137,9 @@ $(document).ready(function() {
     };
 
     let updateSalesItemsTotals = function (v) {
-        let priceTotal = rightsaleItemstable.column(3).data().sum();
-        let totalStr = "<h4>Order Total is : $" + priceTotal.toString() + "</h4>";
+        let priceTotal = rightsaleItemstable.column(4).data().sum();
+        let priceTotal_curr = currency(priceTotal);
+        let totalStr = "<h4>Order Total is : $" + priceTotal_curr.toString() + "</h4>";
         $("#order-total-panel").html(totalStr);
     };
 

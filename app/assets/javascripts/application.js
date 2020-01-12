@@ -16,16 +16,16 @@
 //= require mdb/popper
 //= require mdb/bootstrap
 //= require jquery/jquery.gritter
-//= require mdb/mdb
-//= require datatables/datatables
-//= require datatables/select.bootstrap4
-//= require fa/js/all
+//= require mdb/mdb.min
+//= require datatables/datatables.min
+//= require datatables/select.bootstrap4.min
+//= require fa/js/all.min
 //= require misc/sweetalert2.all.min
 //= require activestorage
-//= require misc/fstdropdown
+//= require misc/fstdropdown.min
 //= require easy-autocomplete/jquery.easy-autocomplete
 //= require jquery-ui/jquery-ui
-//= require dinero/umd/dinero
+//= require misc/currency.min
 //= require rails.validations
 
 // TODO - evaluate use of browser cache
@@ -40,8 +40,6 @@ $(document).ready(function(){
         .attr('data-placement', 'left')
         .attr('title', 'Search by any term')
         .tooltip();
-
-
 
     $.extend($.gritter.options, {
         position: 'top-middle', // defaults to 'top-right' but can be 'bottom-left', 'bottom-right', 'top-left', 'top-right' (added in 1.7.1)
