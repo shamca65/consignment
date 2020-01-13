@@ -9,7 +9,10 @@
           <% end %>
         </td>
       <td class="text-center h5 align-middle">
-        <%= simple_date(c.current_pickup_date) %>
+        <%= simple_date(c.date) %>
+      </td>
+      <td class="text-center h5 align-middle">
+        <%= simple_date(c.value) %>
       </td>
     </tr>
   <% end %>

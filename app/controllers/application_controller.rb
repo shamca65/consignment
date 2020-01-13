@@ -18,8 +18,10 @@ include ActionView::Helpers::NumberHelper
   end
 
   def load_configs
-    my_config = Config.select('current_pickup_date').where('slug = "pudate-current" ').first
-    $current_pickup_date = my_config.current_pickup_date
+    pud_config = Config.select('date').where('slug = "pudate-current" ').first
+    $current_pickup_date = pud_config.date
+    tr_config = Config.select('value').where('slug = "tax-rate" ').first
+    $tax_rate01 = tr_config.value.to_f
     $json_root ||= '_json'
     $json_id_field ||= 'id'
     $cash_clerk ||= 'cash_clerk'

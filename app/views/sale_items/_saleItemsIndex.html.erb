@@ -18,7 +18,7 @@
                                 <th class="text-left no-sort h5"><b>Description</b></th>
                                 <th class="text-center no-sort h5"><b>Size</b></th>
                                 <th class="text-center no-sort h5"><b>Price</b></th>
-                                <th class="text-center no-sort h5"><b>Extended</b></th>
+                                <th class="text-center no-sort h5"><b>Price</b></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -28,7 +28,7 @@
                                 <td class="text-left h5" ></td>
                                 <td class="text-center h5" ></td>
                                 <td class="text-center h5" ></td>
-                                <th class="text-center h5"></th>
+                                <td class="text-center h5" ></td>
                             </tr>
                             </tbody>
                         </table>
@@ -36,15 +36,14 @@
                 </div>
             </div>
         </div>
-        <div class="col" style="margin: 18px;height: 100pc;">
-            <div class="row" style="height: 40px;">
+        <div class="col" style="margin: 18px;height: 100%;">
+            <div class="row" style="height: 100px;">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header">
-                            <h4 id="order-total-panel" class="mb-0 text-right">Order Total is : $</h4>
+                        <div class="card-header orange">
                         </div>
                         <div class="card-body">
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                            <p class="card-text"><h2>Totals</h2></p>
                         </div>
                     </div>
                 </div>
@@ -53,9 +52,11 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body" id="topCard">
-                            <h4 class="card-title">Totals</h4>
-                            <h6 class="text-muted card-subtitle mb-2">Subtitle goes here</h6>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                            <h6 class="text-muted card-subtitle mb-2"></h6>
+                          <h5 id="item-total-panel" class="mb-0">Items: $</h5>
+                          <h5 id="tax-total-panel" class="mb-0">Taxes: $</h5>
+                          <h5 id="order-total-panel" class="mb-0">Order Total: $</h5>
+                            <p class="card-text"></p>
                         </div>
                     </div>
                 </div>
@@ -95,9 +96,8 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Totals</h4>
-                            <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                          <h4 class="card-title">Totals</h4>
+                          <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
                         </div>
                     </div>
                 </div>
@@ -120,4 +120,6 @@
             </div>
         </div>
     </div>
+    <div id="tax_rate01" data-var="<%= $tax_rate01%>"></div>
+    <div id="tax_rate02" data-var="<%= $tax_rate02%>"></div>
     <%= javascript_include_tag 'sale_items.js'%>

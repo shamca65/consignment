@@ -28,5 +28,19 @@ module ApplicationHelper
 			$current_pickup_date < Date.today
 		end
 
+    def get_tax01_rate
+			if ($tax_rate01 > 0)
+				number_to_percentage($tax_rate01,precision: 1)
+			else
+				"not set"
+			end
+		end
 
+		def get_tax02_rate
+			if ($tax_rate02 > 0)
+				number_to_percentage($tax_rate02,precision: 1)
+			else
+				"not set"
+			end
+		end
 	end
