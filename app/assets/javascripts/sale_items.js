@@ -1,7 +1,8 @@
 $(document).ready(function() {
 
-    let tax_rate01;
-    let tax_rate02;
+    let tax_rate_a;
+    let tax_rate_b;
+    let dt_ready = false;
 
     jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
         return this.flatten().reduce( function ( a, b ) {
@@ -74,6 +75,9 @@ $(document).ready(function() {
                 }
             ]
         },
+        "initComplete": function(settings, json) {
+            dt_ready = true;
+        },
         "columns": [
             {item: "","width": "50px"}, // check box
             {item: "ID", "width": "50px"},	// item id
@@ -91,7 +95,26 @@ $(document).ready(function() {
                 data: "price",
                 render: $.fn.dataTable.render.number( ',', '.', 2, '$' ),
                 orderable: false,
-                targets: 4}
+                targets: 4},
+            {name: "TaxA",
+                data: null,
+                orderable: false,
+                render: function ( data, type, row ) {
+
+                        var tmpTotal = Number(row.price) + Number(row.price * tax_rate_a);
+                        return '$' + tmpTotal.toFixed(2);
+                },
+                targets: 5
+                },
+            {name: "TaxB",
+                data: null,
+                orderable: false,
+                render: function ( data, type, row ) {
+                    var tmpTotal = Number(row.price) + Number(row.price * tax_rate_b);
+                    return '$' + tmpTotal.toFixed(2);
+                },
+                targets: 6
+                },
             ],
             select: {
                 style:    'multi',
@@ -99,6 +122,10 @@ $(document).ready(function() {
             },
         order: [[1, 'asc']]
     });
+
+    let ten_oclock = function (val){
+        alert('this val is : ' + val.toString());
+    }
 
     let deleteItems = function(rowID) {
         if ( rowID != null) {
@@ -128,10 +155,8 @@ $(document).ready(function() {
 
     function addItemToSale(itemData) {
         if ( 1<2) {
-            alert("tax rate 02" + tax_rate02);
             rightsaleItemstable.rows.add(itemData).draw();
             updateSalesItemsTotals();
-
         } else {
             Swal.fire(
                 'No items are selected',
@@ -177,8 +202,8 @@ $(document).ready(function() {
 
     let pageInit = function () {
         rightsaleItemstable.rows({selected: false}).remove(0).draw();
-        tax_rate01 = $("#tax_rate01").data('var');
-        tax_rate02 = $("#tax_rate02").data('var');
+        tax_rate_a = $("#tax_rate_a").data('var');
+        tax_rate_b = $("#tax_rate_b").data('var');
     };
 
     $(document).ready(pageInit);

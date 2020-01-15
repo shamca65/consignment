@@ -18,7 +18,8 @@
                                 <th class="text-left no-sort h5"><b>Description</b></th>
                                 <th class="text-center no-sort h5"><b>Size</b></th>
                                 <th class="text-center no-sort h5"><b>Price</b></th>
-                                <th class="text-center no-sort h5"><b>Price</b></th>
+                                <th class="text-center no-sort h5"><b><%= $tax_rate_a_name %></b></th>
+                              <th class="text-center no-sort h5"><b><%= $tax_rate_b_name %></b></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -26,6 +27,7 @@
                                 <td class="text-center h5"></td>
                                 <td class="text-center h5" ></td>
                                 <td class="text-left h5" ></td>
+                                <td class="text-center h5" ></td>
                                 <td class="text-center h5" ></td>
                                 <td class="text-center h5" ></td>
                                 <td class="text-center h5" ></td>
@@ -65,11 +67,13 @@
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Payment Method</h4>
-                            <h6 class="text-muted card-subtitle mb-2">Select One</h6>
-                            <div class="form-check" type="radio"><input class="form-check-input" type="radio" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Cash</label></div>
-                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-6"><label class="form-check-label" for="formCheck-6">Debit</label></div>
-                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Credit</label></div>
+                          <h4 class="card-title">Payment Method</h4>
+                          <h6 class="text-muted card-subtitle mb-2">Select One</h6>
+                          <div class="form-check" type="radio"><input class="form-check-input" type="radio" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Cash</label></div>
+                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Mastercard</label></div>
+                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Visa</label></div>
+                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Debit</label></div>
+                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash</label></div>
                         </div>
                     </div>
                 </div>
@@ -77,13 +81,21 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Owing</h4>
-                            <h6 class="text-muted card-subtitle mb-2">Subtitle</h6><label>Payment Received:</label><input type="number" id="paymentReceived"></div>
+                            <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
+                            <label>Owing:</label>
+                            <input type="number" id="paymentReceived">
+                          <label>Payment Received:</label>
+                          <input type="number" id="paymentReceived">
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><button class="btn btn-primary" type="button">Button 2</button></div>
+                    <div class="btn-group" role="group">
+                      <button id="btn-cancel-sale" class="btn btn-primary" type="button">Cancel</button>
+                      <button id="btn-complete-sale" class="btn btn-primary" type="button">Complete Sale</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,32 +106,18 @@
             <div class="row" style="height: 40px;"></div>
             <div class="row">
                 <div class="col">
-                    <div class="card">
-                        <div class="card-body">
-                          <h4 class="card-title">Totals</h4>
-                          <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                <div class="form-control">
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Mastercard</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Visa</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Debit</label></div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash</label></div>
-                </div>
-                </div>
-                <div class="col"><label>Payment Due :&nbsp;</label><input type="number"><label>Payment Received :&nbsp;</label><input type="number"></div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="btn-group" role="group"><button class="btn btn-primary" type="button">Button 1</button><button class="btn btn-primary" type="button">Button 2</button></div>
+
                 </div>
             </div>
         </div>
     </div>
-    <div id="tax_rate01" data-var="<%= $tax_rate01%>"></div>
-    <div id="tax_rate02" data-var="<%= $tax_rate02%>"></div>
+    <div id="tax_rate_a" data-var="<%= $tax_rate_a%>"></div>
+    <div id="tax_rate_b" data-var="<%= $tax_rate_b%>"></div>
     <%= javascript_include_tag 'sale_items.js'%>

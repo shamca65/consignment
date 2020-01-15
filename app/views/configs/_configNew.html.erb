@@ -1,42 +1,47 @@
 <%= form_with model: @config  do |f| %>
-<!-- Notifications -->
-<!-- Grid row -->
 <div class="d-flex justify-content-center">
   <div class="card mb-3 " style="width: 50%;" >
     <h2 class="card-header warning-color-dark white-text text-center py-4">
       <strong>Add Config</strong>
     </h2>
-
     <!-- Left page -->
     <div class="card-body px-lg-5 pt-0">
-      <br>
-      <!-- Row 1 -->
+
       <div class="row">
-        <!-- Left column --> 
         <div class="col-lg-6 ">
-          <!-- Gender -->
           <div class="md-form form-group ">
             <%= f.text_field :slug, id: 'configSlug',
                              autofocus: true, autocomplete: "configSlug",
-                             class: "form-control", placeholder: "Slug"%>
+                             class: "h4", placeholder: "Slug"%>
           </div>
         </div>
-        <!-- Right column --> 
         <div class="col-lg-6">
             <div class="md-form form-control-lg">
-              <%= f.text_field :current_pickup_date, {class: "datepicker"}%>
+              <%= f.text_field :current_pickup_date, id: 'configDate',
+                               autofocus: true, autocomplete: "configDate",
+                                class: "datepicker", placeholder: "Date Value"%>
             </div>
-        <!-- Row -->
+        </div>
       </div>
+      <!-- End row -->
       <div class="row">
-        <!-- Row -->
-      </div>
-
+        <div class="col-lg-6 ">
+          <div class="md-form form-group ">
+            <%= f.text_field :value, id: 'configValue',
+                             autofocus: true, autocomplete: "configValue",
+                             class: "h4", placeholder: "Value"%>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="md-form form-control-lg">
+            <%= f.text_field :name, id: 'configDate',
+                             autofocus: true, autocomplete: "configDate",
+                             class: "h4", placeholder: "Display Name"%>
+          </div>
+        </div>
       </div>
       <br>
       <div class="text-center">
-        <%= f.submit :Submit, class: 'btn btn-success' %>
+        <%= f.submit :Submit, url: new_config_path, class: 'btn btn-success' %>
     </div>
     <% end %>
-  <br>
-</div>

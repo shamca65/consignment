@@ -2,17 +2,20 @@
 <% if @configs %>
   <% @configs.each do |c| %>
     <tr >
-        <td class="text-center h5 align-middle">
-          <%= link_to edit_config_path(c.slug) do %>
-            <span><%= c.slug.to_s %>
-              <i class="far fa-external-link fa-1x "></i></span>
-          <% end %>
-        </td>
+      <td class="text-center h5 align-middle">
+        <%= link_to edit_config_path(c.slug) do %>
+          <span><%= c.slug.to_s %>
+            <i class="far fa-external-link fa-1x "></i></span>
+        <% end %>
+      </td>
       <td class="text-center h5 align-middle">
         <%= simple_date(c.date) %>
       </td>
       <td class="text-center h5 align-middle">
-        <%= simple_date(c.value) %>
+        <%= c.value %>
+      </td>
+      <td class="text-center h5 align-middle">
+        <%= c.name %>
       </td>
     </tr>
   <% end %>

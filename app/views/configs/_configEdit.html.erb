@@ -16,7 +16,6 @@
     <!-- Grid column -->
     <div class="col-md-6 ">
       <!-- Material input -->
-
       <div class="md-form form-group ">
         <%= f.text_field :slug, id: 'configsSlug',
                          autofocus: true,
@@ -28,7 +27,7 @@
     <div class="col-lg-6">
       <!-- Material input -->
       <div class="md-form">
-          <%= f.text_field :current_pickup_date, {class: "datepicker h4"}%>
+          <%= f.text_field :date, {class: "datepicker h4"}%>
       </div>
     </div>
     <!-- Grid column -->
@@ -39,7 +38,7 @@
     <div class="col-md-6">
       <!-- Material input -->
       <div class="md-form form-group">
-
+        <%= f.text_field :value, {class: "h4"}%>
       </div>
     </div>
     <!-- Grid column -->
@@ -48,7 +47,7 @@
     <div class="col-md-6">
       <!-- Material input -->
       <div class="md-form form-group">
-
+        <%= f.text_field :name, {class: "h4"}%>
       </div>
     </div>
     <!-- Grid column -->

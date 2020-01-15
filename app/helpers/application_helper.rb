@@ -29,7 +29,7 @@ module ApplicationHelper
 		end
 
     def get_tax01_rate
-			if ($tax_rate01 > 0)
+			if ($tax_rate_a > 0)
 				number_to_percentage($tax_rate01,precision: 1)
 			else
 				"not set"
@@ -37,7 +37,7 @@ module ApplicationHelper
 		end
 
 		def get_tax02_rate
-			if ($tax_rate02 > 0)
+			if ($tax_rate_b > 0)
 				number_to_percentage($tax_rate02,precision: 1)
 			else
 				"not set"

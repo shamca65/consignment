@@ -76,7 +76,7 @@ class ConfigsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def config_params
-      params.require(:config).permit(:current_pickup_date, :slug)
+      params.require(:config).permit(:date, :value, :name, :slug)
     end
 
 end
