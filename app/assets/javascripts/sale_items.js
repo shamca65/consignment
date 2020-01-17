@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     let tax_rate_a;
     let tax_rate_b;
-    let dt_ready = false;
+    let tax_calc_a;
 
     jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
         return this.flatten().reduce( function ( a, b ) {
@@ -83,8 +83,9 @@ $(document).ready(function() {
             {item: "ID", "width": "50px"},	// item id
             {item: "Description", "width": "200px"},	// description
             {item: "Size", "width": "60px"},	// size
-            {item: "Price", "width": "75px"},	// real price
-            {item: "Line Total", "width": "75px"}	// real price
+            {item: "Price", "width": "50px"},	// real price
+            {item: "TaxA", "width": "50px"},	// real price
+            {item: "TaxB", "width": "50px"}	// real price
         ],
         columnDefs: [
             {title: "Select", orderable: false, className: 'select-checkbox', targets:   0},
@@ -93,25 +94,24 @@ $(document).ready(function() {
             {name: "size", data: "size", orderable: false, targets: 3},
             {name: "price",
                 data: "price",
-                render: $.fn.dataTable.render.number( ',', '.', 2, '$' ),
+                render: $.fn.dataTable.render.number( ',', '.', 2, '' ),
                 orderable: false,
                 targets: 4},
-            {name: "TaxA",
+            {name: "tax_a",
                 data: null,
                 orderable: false,
                 render: function ( data, type, row ) {
-
-                        var tmpTotal = Number(row.price) + Number(row.price * tax_rate_a);
-                        return '$' + tmpTotal.toFixed(2);
+                        var tmpTotal =  Number(row.price * tax_rate_a);
+                        return tmpTotal.toFixed(2);
                 },
                 targets: 5
                 },
-            {name: "TaxB",
+            {name: "tax_b",
                 data: null,
                 orderable: false,
                 render: function ( data, type, row ) {
-                    var tmpTotal = Number(row.price) + Number(row.price * tax_rate_b);
-                    return '$' + tmpTotal.toFixed(2);
+                    var tmpTotal = Number(row.price * tax_rate_b);
+                    return tmpTotal.toFixed(2);
                 },
                 targets: 6
                 },
@@ -168,9 +168,15 @@ $(document).ready(function() {
 
     let updateSalesItemsTotals = function (v) {
         let priceTotal = rightsaleItemstable.column(4).data().sum();
+        let tax_total_a = rightsaleItemstable.column(5).data().sum();
+        let tax_total_b = rightsaleItemstable.column(6).data().sum();
         let priceTotal_curr = currency(priceTotal);
-        let totalStr = "<h4>Order Total is : $" + priceTotal_curr.toString() + "</h4>";
-        $("#order-total-panel").html(totalStr);
+        let taxTotal_curr = currency(tax_total_a + tax_total_b);
+        let totalStr = "<h4>Item Total is : $" + priceTotal_curr.toString() + "</h4>";
+        let taxTotalStr = "<h4>Tax Total is : $" + taxTotal_curr.toString() + "</h4>";
+        $("#item-total-panel").html(totalStr);
+        $("#tax-total-panel").html(taxTotalStr);
+        alert('tax_total_b ' + JSON.stringify(tax_total_a.val().toString(),null, 4));
     };
 
     let commitSale = function (idArray) {

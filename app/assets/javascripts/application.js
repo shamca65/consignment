@@ -26,6 +26,7 @@
 //= require easy-autocomplete/jquery.easy-autocomplete
 //= require jquery-ui/jquery-ui
 //= require misc/currency.min
+//= require misc/math.min
 //= require rails.validations
 
 // TODO - evaluate use of browser cache

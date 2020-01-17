@@ -16,6 +16,7 @@ include ActionView::Helpers::NumberHelper
       "application"
     end
   end
+
   # TODO fix tax rate b
   def load_configs
     pud_config = Config.select('date').where('slug = "pudate-current" ').first
@@ -26,13 +27,15 @@ include ActionView::Helpers::NumberHelper
     tmp_tax_a = tra_config.value.to_f ||= 0
     if tmp_tax_a > 1
       $tax_rate_a = (tmp_tax_a/100)
-      puts("tax_rate_a : " + $tax_rate_a.to_s)
     end
-    $tax_rate_a_name = tra_config.name ||= 'Tax A'
+    $tax_rate_a_name = tra_config.name
 
     trb_config = Config.select('value','name').where('slug = "tax-rate-b" ').first
-    #$tax_rate_b = trb_config.value.to_f ||= 0
-    $tax_rate_b_name = 'Tax Rate Bee'
+    tmp_tax_b = trb_config.value.to_f
+    if tmp_tax_b > 1
+      $tax_rate_b = (tmp_tax_b/100)
+    end
+    $tax_rate_b_name = trb_config.name
 
     $json_root ||= '_json'
     $json_id_field ||= 'id'
