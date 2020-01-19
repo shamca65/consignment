@@ -64,33 +64,35 @@
                     <div class="card">
                         <div class="card-body">
                           <h4 class="card-title">Payment Method</h4>
-                          <h6 class="text-muted card-subtitle mb-2">Select One</h6>
-                          <div class="form-check" type="radio"><input class="form-check-input" type="radio" id="formCheck-5"><label class="form-check-label" for="formCheck-5">Cash</label></div>
-                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Mastercard</label></div>
-                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Visa</label></div>
-                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Debit</label></div>
-                          <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4"><label class="form-check-label" for="formCheck-4">Cash</label></div>
+                          <h6 class="text-muted card-subtitle mb-2">Select Payment Type:</h6>
+                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-0"><label class="form-check-label" for="formCheck-0">Cash</label></div>
+                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Mastercard</label></div>
+                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Visa</label></div>
+                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Debit</label></div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Owing</h4>
-                            <h6 class="text-muted card-subtitle mb-2">Subtitle</h6>
-                            <label>Owing:</label>
-                            <input type="number" id="paymentReceived">
-                          <label>Payment Received:</label>
-                          <input type="number" id="paymentReceived">
+                          <h4 class="card-title">Remittance</h4>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                              <label>Cash Received:</label>
+                              <input type="number" id="cashPortion">
+                            </li>
+                            <li class="list-group-item">
+                              <label>Balance owing:</label>
+                              $<input type="number" id="paymentBalance">
+                            </li>
+                            <li class="list-group-item">Vestibulum at eros
+                              <div class="btn-group" role="group" >
+                                <button id="btn-cancel-sale" class="btn btn-primary" type="button">Cancel</button>
+                                <button id="btn-complete-sale" class="btn btn-primary" type="button">Complete Sale</button>
+                              </div>
+                            </li>
+                          </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="btn-group" role="group">
-                      <button id="btn-cancel-sale" class="btn btn-primary" type="button">Cancel</button>
-                      <button id="btn-complete-sale" class="btn btn-primary" type="button">Complete Sale</button>
                     </div>
                 </div>
             </div>
@@ -102,14 +104,12 @@
             <div class="row" style="height: 40px;"></div>
             <div class="row">
                 <div class="col">
-
                 </div>
             </div>
             <div class="row">
             </div>
             <div class="row">
                 <div class="col">
-
                 </div>
             </div>
         </div>

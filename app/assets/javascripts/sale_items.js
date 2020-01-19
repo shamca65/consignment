@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     let tax_rate_a;
     let tax_rate_b;
-    let global_order_total;
+    let global_order_total = 0;
 
     jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
         return this.flatten().reduce( function ( a, b ) {
@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     $("#item_auto_complete").easyAutocomplete(autoCompleteOptions);
 
-    var rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
+    let rightsaleItemstable = $('#rightSaleItemsTable').DataTable({
         "dom": 'Btip',
         "paginate": false,
         "rowId": 'id',
@@ -103,9 +103,15 @@ $(document).ready(function() {
         order: [[1, 'asc']]
     });
 
-    let ten_oclock = function (val){
-        alert('this val is : ' + val.toString());
-    }
+    let managePaymentControls = function(){
+            let controlEnabled = (global_order_total <= 0);
+            $("#paymentReceived").prop("disabled", controlEnabled);
+            $("#paymentBalance").prop("disabled", controlEnabled);
+            $("#btn-complete-sale").prop("disabled", controlEnabled);
+            $("#paymentReceived").prop("disabled", controlEnabled);
+            $("#btn-cancel-sale").prop("disabled", controlEnabled);
+            $("#btn-complete-sale").prop("disabled", controlEnabled);
+    };
 
     let deleteItems = function(rowID) {
         if ( rowID != null) {
@@ -133,7 +139,7 @@ $(document).ready(function() {
         return idArray;
     };
 
-    function addItemToSale(itemData) {
+    let addItemToSale = function (itemData) {
         if ( 1<2) {
             rightsaleItemstable.rows.add(itemData).draw();
             updateSalesItemsTotals();
@@ -146,14 +152,19 @@ $(document).ready(function() {
         }
     };
 
+    let calculateTaxes = function(itemTotal) {
+        let taxCalc_a = (itemTotal * (tax_rate_a));
+        let taxCalc_b = (itemTotal * (tax_rate_b));
+        return (taxCalc_a + taxCalc_b);
+    };
+
     let updateSalesItemsTotals = function (v) {
        let itemTotal = rightsaleItemstable.column(4).data().sum();
+       let taxTotal = calculateTaxes(itemTotal);
+        //
        let itemTotalStr = "<h5>Item Total is : $" + currency(itemTotal).toString() + "</h5>";
        $("#item-total-panel").html(itemTotalStr);
        //
-        let taxCalc_a = (itemTotal * (tax_rate_a));
-        let taxCalc_b = (itemTotal * (tax_rate_b));
-        let taxTotal = (taxCalc_a+ taxCalc_b);
         let orderTotal = (taxTotal + itemTotal);
         let taxTotalStr = "<h5>Taxes : $" + currency(taxTotal).toString() + "</h5>";
         $("#tax-total-panel").html(taxTotalStr);
@@ -161,46 +172,68 @@ $(document).ready(function() {
         global_order_total = orderTotal;
         let orderTotalStr = "<h4>Order Total : $" + currency(orderTotal).toString() + "</h4>";
         $("#order-total-panel").html(orderTotalStr);
+        //
+        $("#paymentBalance").val(global_order_total.toFixed(2));
+        managePaymentControls();
+    };
 
-     //   let totalStr = "<h4>Order Total is : $" + priceTotal_curr.toString() + "</h4>";
-       // $("#order-total-panel").html(totalStr);
-       // let taxTotal_curr = currency(tax_total_a + tax_total_b);
-       // let totalStr = "<h4>Item Total is : $" + priceTotal_curr.toString() + "</h4>";
-       // let taxTotalStr = "<h4>Tax Total is : $" + taxTotal_curr.toString() + "</h4>";
-        //$("#tax-total-panel").html(taxTotalStr);
+    function isFloat(n){
+        return Number(n) === n ;
+    };
+
+    $("#cashPortion").focusout(function(){
+        let cashPortion = $("#cashPortion").val();
+      
+        $("#paymentBalance").css("background-color", "pink");
+
+    });
+
+    let saleCanProceed = function(){
+        // remittance amount must be > global_order_total
+        let received = $("#paymentReceived").val();
+        return (received > global_order_total);
     };
 
     let commitSale = function (idArray) {
-        let convertedArray = JSON.stringify(idArray, null, 4);
-        // empty string will be '[]'
-        if (idArray.toString().length < 2) {
+
+        if (saleCanProceed) {
+            let convertedArray = JSON.stringify(idArray, null, 4);
+            // empty string will be '[]'
+            if (idArray.toString().length < 2) {
+                Swal.fire(
+                    'No items were added!',
+                    'Add one or more items to sale first.',
+                    'error'
+                )
+            } else {
+                $.ajax({
+                    type: "POST",
+                    url: "/sale_items/commit_sale",
+                    data: convertedArray,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (data) {
+                        console.log("successfully posted sale items")
+                    },
+                    error: function (data) {
+                        alert("things are broken : " + JSON.stringify(data, null, 4));
+                    }
+                })
+        };
+        } else {
             Swal.fire(
-                'No items were added!',
-                'Add one or more items to sale first.',
+                'Insufficient Payment',
+                'Payment must be the same or greater than amount owing.',
                 'error'
             )
-        } else {
-            $.ajax({
-                type: "POST",
-                url: "/sale_items/commit_sale",
-                data: convertedArray,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function (data) {
-                    updateSalesItemsHeader();
-                    console.log("successfully posted sale items")
-                },
-                error: function (data) {
-                    alert("things are broken : " + JSON.stringify(data, null, 4));
-                }
-            })
-        }
+        };
     };
 
     let pageInit = function () {
         rightsaleItemstable.rows({selected: false}).remove(0).draw();
         tax_rate_a = $("#tax_rate_a").data('var');
         tax_rate_b = $("#tax_rate_b").data('var');
+        managePaymentControls();
     };
 
     $(document).ready(pageInit);

@@ -54,11 +54,13 @@ $(document).ready(function(){
 	});
 
 	$('#configsDataTable').DataTable({
-		"pageLength":5,
+		"pageLength":7,
 		"dom": "Bfrtip",
 		"columns": [
 			{"width": "15px"},		// slug
-            {"width": "15px"}		// current pickup date
+            {"width": "15px"},	// date
+            {"width": "15px"},		// value
+            {"width": "15px"}		// name
 		]
 	});
 
