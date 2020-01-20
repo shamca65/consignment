@@ -109,7 +109,6 @@ $(document).ready(function() {
             $("#paymentBalance").prop("disabled", controlEnabled);
             $("#btn-complete-sale").prop("disabled", controlEnabled);
             $("#paymentReceived").prop("disabled", controlEnabled);
-            $("#btn-cancel-sale").prop("disabled", controlEnabled);
             $("#btn-complete-sale").prop("disabled", controlEnabled);
     };
 
@@ -162,15 +161,15 @@ $(document).ready(function() {
        let itemTotal = rightsaleItemstable.column(4).data().sum();
        let taxTotal = calculateTaxes(itemTotal);
         //
-       let itemTotalStr = "<h5>Item Total is : $" + currency(itemTotal).toString() + "</h5>";
+       let itemTotalStr = "<h5>Item Total is : $<b>" + currency(itemTotal).toString() + "</b></h5>";
        $("#item-total-panel").html(itemTotalStr);
        //
         let orderTotal = (taxTotal + itemTotal);
-        let taxTotalStr = "<h5>Taxes : $" + currency(taxTotal).toString() + "</h5>";
+        let taxTotalStr = "<h5>Taxes : $<b>" + currency(taxTotal).toString() + "</b></h5>";
         $("#tax-total-panel").html(taxTotalStr);
         //
         global_order_total = orderTotal;
-        let orderTotalStr = "<h4>Order Total : $" + currency(orderTotal).toString() + "</h4>";
+        let orderTotalStr = "<h4>Order Total : $<b>" + currency(orderTotal).toString() + "</b></h4>";
         $("#order-total-panel").html(orderTotalStr);
         //
         $("#paymentBalance").val(global_order_total.toFixed(2));
@@ -183,8 +182,17 @@ $(document).ready(function() {
 
     $("#cashPortion").focusout(function(){
         let cashPortion = $("#cashPortion").val();
-      
-        $("#paymentBalance").css("background-color", "pink");
+        let paymentBalance = $("#paymentBalance").val();
+
+        if (cashPortion > 0) {
+            paymentBalance = global_order_total-cashPortion;
+        }
+        if (paymentBalance < 0) {
+            $("#paymentLabel").html("<label>Change owing:</label>")
+        } else {
+            $("#paymentLabel").html("<label>Balance owing:</label>")
+        }
+        $("#paymentBalance").val(paymentBalance.toFixed(2));
 
     });
 

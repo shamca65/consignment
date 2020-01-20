@@ -38,37 +38,31 @@
             <div class="row" style="height: 100px;">
                 <div class="col">
                     <div class="card">
-                        <div class="card-header orange">
-                        </div>
+                        <div class="card-header orange"></div>
                         <div class="card-body">
-                            <p class="card-text"><h2>Totals</h2></p>
+                          <div class="card-text"><h2>Totals</h2></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="card">
-                        <div class="card-body" id="topCard">
-                            <h6 class="text-muted card-subtitle mb-2"></h6>
-                          <h5 id="item-total-panel" class="mb-0">Items: $</h5>
-                          <h5 id="tax-total-panel" class="mb-0">Taxes: $</h5>
-                          <h5 id="order-total-panel" class="mb-0">Order Total: $</h5>
-                            <p class="card-text"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
+                  <div class="card">
+                  <div class="card-body" id="topCard">
+                    <h6 class="text-muted card-subtitle mb-2"></h6>
+                    <h5 id="item-total-panel" class="mb-0">Items: $</h5>
+                    <h5 id="tax-total-panel" class="mb-0">Taxes: $</h5>
+                    <h5 id="order-total-panel" class="mb-0">Order Total: $</h5>
+                    <p class="card-text"></p>
+                  </div>
+                  </div>
                     <div class="card">
                         <div class="card-body">
                           <h4 class="card-title">Payment Method</h4>
-                          <h6 class="text-muted card-subtitle mb-2">Select Payment Type:</h6>
+                          <h6 class="text-muted card-subtitle mb-2">Select:</h6>
                           <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-0"><label class="form-check-label" for="formCheck-0">Cash</label></div>
-                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Mastercard</label></div>
-                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Visa</label></div>
-                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-3"><label class="form-check-label" for="formCheck-3">Debit</label></div>
+                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Visa/Mastercard</label></div>
+                          <div class="form-check"><input class="form-check-input" name="pay_radios" type="radio" id="formCheck-3" checked><label class="form-check-label" for="formCheck-3">Debit</label></div>
                         </div>
                     </div>
                 </div>
@@ -78,12 +72,22 @@
                           <h4 class="card-title">Remittance</h4>
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item">
-                              <label>Cash Received:</label>
-                              <input type="number" id="cashPortion">
+                              <label>Cash Recieved :</label>
+                              <div class="input-group-prepend">
+                                <span class="input-group-text h4" id="basic-addon1">$
+                                <input type="number" id="cashPortion" class="h4">
+                                  </span>
+                              </div>
                             </li>
                             <li class="list-group-item">
-                              <label>Balance owing:</label>
-                              $<input type="number" id="paymentBalance">
+                              <div id="paymentLabel">
+                                <label>Balance owing:</label>
+                              </div>
+                              <div class="input-group-prepend">
+                                <span class="input-group-text h4" id="basic-addon1">$
+                                <input type="number" id="paymentBalance" class="h4" readonly>
+                                </span>
+                              </div>
                             </li>
                             <li class="list-group-item">Vestibulum at eros
                               <div class="btn-group" role="group" >
