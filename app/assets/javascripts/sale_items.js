@@ -107,8 +107,8 @@ $(document).ready(function() {
             let controlEnabled = (global_order_total <= 0);
             $("#paymentReceived").prop("disabled", controlEnabled);
             $("#paymentBalance").prop("disabled", controlEnabled);
+            $("#cashPortion").prop("disabled", controlEnabled);
             $("#btn-complete-sale").prop("disabled", controlEnabled);
-            $("#paymentReceived").prop("disabled", controlEnabled);
             $("#btn-complete-sale").prop("disabled", controlEnabled);
     };
 
@@ -139,6 +139,7 @@ $(document).ready(function() {
     };
 
     let addItemToSale = function (itemData) {
+        // TODO fix this ...
         if ( 1<2) {
             rightsaleItemstable.rows.add(itemData).draw();
             updateSalesItemsTotals();
@@ -161,7 +162,7 @@ $(document).ready(function() {
        let itemTotal = rightsaleItemstable.column(4).data().sum();
        let taxTotal = calculateTaxes(itemTotal);
         //
-       let itemTotalStr = "<h5>Item Total is : $<b>" + currency(itemTotal).toString() + "</b></h5>";
+       let itemTotalStr = "<h5>Items : $<b>" + currency(itemTotal).toString() + "</b></h5>";
        $("#item-total-panel").html(itemTotalStr);
        //
         let orderTotal = (taxTotal + itemTotal);
@@ -176,8 +177,47 @@ $(document).ready(function() {
         managePaymentControls();
     };
 
-    function isFloat(n){
-        return Number(n) === n ;
+    $("#btn-complete-sale").click(function(){
+       askForSale();
+    });
+
+    let askForSale = function(){
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+            icon: 'warning',
+            html:
+                '<h3>Accept payment and then press Finish to complete the sale</h3>',
+            showCancelButton: true,
+            confirmButtonText: '<i class="fal fa-check-circle"></i>  Finish',
+            cancelButtonText: '<i class="fal fa-window-close"></i>  Cancel',
+            cancelButtonAriaLabel: 'Thumbs down',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                commitSale();
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'No sale has been recorded',
+                    'error'
+                )
+            }
+        })
     };
 
     $("#cashPortion").focusout(function(){
@@ -188,23 +228,15 @@ $(document).ready(function() {
             paymentBalance = global_order_total-cashPortion;
         }
         if (paymentBalance < 0) {
-            $("#paymentLabel").html("<label>Change owing:</label>")
+            $("#paymentLabel").html("<label>Change owing:</label>");
         } else {
-            $("#paymentLabel").html("<label>Balance owing:</label>")
+            $("#paymentLabel").html("<label>Balance owing:</label>");
         }
         $("#paymentBalance").val(paymentBalance.toFixed(2));
-
     });
-
-    let saleCanProceed = function(){
-        // remittance amount must be > global_order_total
-        let received = $("#paymentReceived").val();
-        return (received > global_order_total);
-    };
 
     let commitSale = function (idArray) {
 
-        if (saleCanProceed) {
             let convertedArray = JSON.stringify(idArray, null, 4);
             // empty string will be '[]'
             if (idArray.toString().length < 2) {
@@ -228,17 +260,11 @@ $(document).ready(function() {
                     }
                 })
         };
-        } else {
-            Swal.fire(
-                'Insufficient Payment',
-                'Payment must be the same or greater than amount owing.',
-                'error'
-            )
-        };
     };
 
     let pageInit = function () {
         rightsaleItemstable.rows({selected: false}).remove(0).draw();
+        $("#paymentLabel").html("<label>Balance owing:</label>");
         tax_rate_a = $("#tax_rate_a").data('var');
         tax_rate_b = $("#tax_rate_b").data('var');
         managePaymentControls();
