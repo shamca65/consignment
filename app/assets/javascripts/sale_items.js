@@ -3,6 +3,9 @@ $(document).ready(function() {
     let tax_rate_a;
     let tax_rate_b;
     let global_order_total = 0;
+    let itemTotalStr = "<h5>Items : $<b>" + "</b></h5>";
+    let taxTotalStr = "<h5>Taxes : $<b>" + "</b></h5>";
+    let orderTotalStr = "<h4>Order Total : $<b>" + "</b></h4>";
 
     jQuery.fn.dataTable.Api.register( 'sum()', function ( ) {
         return this.flatten().reduce( function ( a, b ) {
@@ -104,12 +107,29 @@ $(document).ready(function() {
     });
 
     let managePaymentControls = function(){
-            let controlEnabled = (global_order_total <= 0);
-            $("#paymentReceived").prop("disabled", controlEnabled);
-            $("#paymentBalance").prop("disabled", controlEnabled);
-            $("#cashPortion").prop("disabled", controlEnabled);
-            $("#btn-complete-sale").prop("disabled", controlEnabled);
-            $("#btn-complete-sale").prop("disabled", controlEnabled);
+        let controlEnabled = (global_order_total <= 0);
+        $("#paymentReceived").prop("disabled", controlEnabled);
+        $("#paymentBalance").prop("disabled", controlEnabled);
+        $("#cashPortion").prop("disabled", controlEnabled);
+        $("#btn-complete-sale").prop("disabled", controlEnabled);
+        $("#btn-complete-sale").prop("disabled", controlEnabled);
+    };
+
+    let setTotals = function(){
+        $("#item-total-panel").html(itemTotalStr);
+        $("#tax-total-panel").html(taxTotalStr);
+        $("#order-total-panel").html(orderTotalStr);
+    };
+
+    let unsetElements = function() {
+        $("#item_auto_complete").val("");
+        $("#paymentReceived").val("");
+        $("#cashPortion").val("");
+        $("#paymentBalance").val("");
+        taxTotalStr = "<h5>Taxes : $<b>" + "</b></h5>";
+        itemTotalStr = "<h5>Items : $<b>" + "</b></h5>";
+        orderTotalStr = "<h4>Order Total : $<b>" + "</b></h4>";
+        setTotals();
     };
 
     let deleteItems = function(rowID) {
@@ -123,19 +143,6 @@ $(document).ready(function() {
                 'warning'
             )
         }
-    };
-
-    let getGridItems = function (grid) {
-        let rowData = grid.rows({selected: true}).data().toArray();
-        grid.rows({selected: true}).remove(rowData).draw();
-        // extract item ids
-        let n = 0;
-        let idArray = [];
-        while (n < rowData.length) {
-            idArray[n] = rowData[n]['id'];
-            n++;
-        }
-        return idArray;
     };
 
     let addItemToSale = function (itemData) {
@@ -161,20 +168,70 @@ $(document).ready(function() {
     let updateSalesItemsTotals = function (v) {
        let itemTotal = rightsaleItemstable.column(4).data().sum();
        let taxTotal = calculateTaxes(itemTotal);
+       let orderTotal = (taxTotal + itemTotal);
+       global_order_total = orderTotal;
         //
-       let itemTotalStr = "<h5>Items : $<b>" + currency(itemTotal).toString() + "</b></h5>";
-       $("#item-total-panel").html(itemTotalStr);
-       //
-        let orderTotal = (taxTotal + itemTotal);
-        let taxTotalStr = "<h5>Taxes : $<b>" + currency(taxTotal).toString() + "</b></h5>";
-        $("#tax-total-panel").html(taxTotalStr);
-        //
-        global_order_total = orderTotal;
-        let orderTotalStr = "<h4>Order Total : $<b>" + currency(orderTotal).toString() + "</b></h4>";
-        $("#order-total-panel").html(orderTotalStr);
-        //
-        $("#paymentBalance").val(global_order_total.toFixed(2));
-        managePaymentControls();
+       itemTotalStr = "<h5>Items : $<b>" + currency(itemTotal).toString() + "</b></h5>";
+       taxTotalStr = "<h5>Taxes : $<b>" + currency(taxTotal).toString() + "</b></h5>";
+       orderTotalStr = "<h4>Order Total : $<b>" + currency(orderTotal).toString() + "</b></h4>";
+       $("#paymentBalance").val(global_order_total.toFixed(2));
+       setTotals();
+       managePaymentControls();
+    };
+
+    let getGridItems = function (grid) {
+        let rowData = grid.rows().data().toArray();
+        grid.rows().remove(rowData).draw();
+        // extract item ids
+        let n = 0;
+        let idArray = [];
+        while (n < rowData.length) {
+            idArray[n] = rowData[n]['id'];
+            n++;
+        }
+        return idArray;
+    };
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+    });
+
+    let notifySaleComplete = function(){
+        swalWithBootstrapButtons.fire(
+            'Sale Complete!',
+            'Click OK.',
+            'success'
+        );
+    };
+
+    let notifySaleError = function(){
+        swalWithBootstrapButtons.fire(
+            'There was an error completing the sale.!',
+            'Click OK.',
+            'error'
+        );
+    };
+
+    let commitSale = function () {
+        let idArray = getGridItems(rightsaleItemstable);
+        let convertedArray = JSON.stringify(idArray, null, 4);
+        $.ajax({
+            type: "POST",
+            url: "/sale_items/commit_sale",
+            data: convertedArray,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                notifySaleComplete();
+            },
+            error: function (data) {
+                notifySaleError();
+            }
+        });
     };
 
     $("#btn-complete-sale").click(function(){
@@ -182,14 +239,6 @@ $(document).ready(function() {
     });
 
     let askForSale = function(){
-        const swalWithBootstrapButtons = Swal.mixin({
-            customClass: {
-                confirmButton: 'btn btn-success',
-                cancelButton: 'btn btn-danger'
-            },
-            buttonsStyling: false
-        })
-
         swalWithBootstrapButtons.fire({
             icon: 'warning',
             html:
@@ -202,11 +251,7 @@ $(document).ready(function() {
         }).then((result) => {
             if (result.value) {
                 commitSale();
-                swalWithBootstrapButtons.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
+                unsetElements();
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
@@ -232,41 +277,15 @@ $(document).ready(function() {
         } else {
             $("#paymentLabel").html("<label>Balance owing:</label>");
         }
-        $("#paymentBalance").val(paymentBalance.toFixed(2));
+        //$("#paymentBalance").val(paymentBalance.toFixed(2));
     });
-
-    let commitSale = function (idArray) {
-
-            let convertedArray = JSON.stringify(idArray, null, 4);
-            // empty string will be '[]'
-            if (idArray.toString().length < 2) {
-                Swal.fire(
-                    'No items were added!',
-                    'Add one or more items to sale first.',
-                    'error'
-                )
-            } else {
-                $.ajax({
-                    type: "POST",
-                    url: "/sale_items/commit_sale",
-                    data: convertedArray,
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (data) {
-                        console.log("successfully posted sale items")
-                    },
-                    error: function (data) {
-                        alert("things are broken : " + JSON.stringify(data, null, 4));
-                    }
-                })
-        };
-    };
 
     let pageInit = function () {
         rightsaleItemstable.rows({selected: false}).remove(0).draw();
         $("#paymentLabel").html("<label>Balance owing:</label>");
         tax_rate_a = $("#tax_rate_a").data('var');
         tax_rate_b = $("#tax_rate_b").data('var');
+        unsetElements();
         managePaymentControls();
     };
 

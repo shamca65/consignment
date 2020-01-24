@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_14_180822) do
+ActiveRecord::Schema.define(version: 2020_01_23_173920) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2020_01_14_180822) do
   end
 
   create_table "sale_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "item_price", precision: 10
+    t.decimal "item_price", precision: 8, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "order_no"
@@ -103,8 +103,9 @@ ActiveRecord::Schema.define(version: 2020_01_14_180822) do
     t.datetime "sale_date"
     t.string "clerk", limit: 15
     t.bigint "sale_summaries_id"
-    t.decimal "tax01", precision: 8, scale: 2
-    t.decimal "tax02", precision: 8, scale: 2
+    t.decimal "tax_rate_a", precision: 8, scale: 2
+    t.decimal "tax_rate_b", precision: 8, scale: 2
+    t.decimal "item_total", precision: 8, scale: 2
     t.index ["item_id"], name: "index_sale_items_on_item_id"
     t.index ["sale_summaries_id"], name: "index_sale_items_on_sale_summaries_id"
   end
