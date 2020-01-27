@@ -11,9 +11,11 @@ Rails.application.routes.draw do
   resources :sales
   resources :event_logs
 
+
   get '/static/new' => 'static#new', as: :new
   get '/search(.:format)' => 'sale_items#search', as: :search_sale_items
   post '/sale_items/commit_sale' => 'sale_items#commit_sale', as: :commit_sale
+  post '/sale_summaries/show' => 'sale_summaries#show', as: :receipt
 
   resources :configs do
     collection do

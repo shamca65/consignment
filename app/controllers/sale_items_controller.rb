@@ -40,14 +40,16 @@ class SaleItemsController < ApplicationController
     @sale_date = Date.today
 
     if sale_items_array.length > 0
-      sale_item_recs = build_sale_item_recs(sale_items_array)
-      SaleItem.create(sale_item_recs)
       Item.where(:id =>sale_items_array).update_all(item_status: 'sold', sale_date: @sale_date)
-      create_sale_summary_record(@this_order_num)
+      sale_summary_rec  = SaleSummary.create(:order_no=>@this_order_num, :sale_date=>@sale_date)
+      sale_item_recs = build_sale_item_recs(sale_items_array, sale_summary_rec.id)
+      SaleItem.create(sale_item_recs)
+      SaleSummary.where(:order_no => @this_order_num).update(:sale_total => get_sale_total(@this_order_num))
     end
+    data = { :order_no => @this_order_num }
 
     respond_to do |format|
-      format.json {render :json => @sale_items, :status => 200}
+      format.json {render :json => data, :status => 200}
     end
   end
 
@@ -91,25 +93,25 @@ class SaleItemsController < ApplicationController
 
   private
 
-  def create_sale_summary_record(this_order_num)
-    @sale_summary = nil
-    #totals will be calculated in model
-    sale_summary_rec  = SaleSummary.create(:order_no=>this_order_num)
-    return sale_summary_rec.id
+  def get_sale_total(order_no)
+    sale_item = SaleItem.find_by_order_no order_no
+    tax_rate_a = sale_item.tax_rate_a
+    tax_rate_b = sale_item.tax_rate_b
+    item_total = SaleItem.where({ order_no: order_no}).sum(:item_price)
+    this_sale_total = item_total + (item_total * tax_rate_a) + (item_total * tax_rate_b)
+    return this_sale_total
   end
 
-  def build_sale_item_recs(sale_items_array)
+  def build_sale_item_recs(sale_items_array, sale_summaries_id)
       # build an array of sale_items records
       num_items = sale_items_array.length
       sale_item_recs = []
-      @sale_summary = create_sale_summary_record(@this_order_num)
       n = 0
-
       while n < num_items
         @item_rec = nil
         @item_rec = Item.find sale_items_array[n]
           item_data = {
-            :sale_summaries_id=> @sale_summary,
+            :sale_summaries_id=> sale_summaries_id,
             :item_id => @item_rec.id,
             :item_price => @item_rec.price,
             :order_no => @this_order_num,

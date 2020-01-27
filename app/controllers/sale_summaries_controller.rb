@@ -1,16 +1,23 @@
 class SaleSummariesController < ApplicationController
-  before_action :set_sale_summary, only: [:show, :edit, :update, :destroy]
+  before_action :set_sale_summary, only: [:edit, :update, :destroy]
 
   # GET /sale_summaries
   # GET /sale_summaries.json
   def index
-
     @sale_summaries = SaleSummary.joins(:sale_items)
   end
 
   # GET /sale_summaries/1
   # GET /sale_summaries/1.json
   def show
+    order_no = params['order_no']
+    @sale_summary = SaleSummary.find_by_order_no order_no
+
+    respond_to do |format|
+        format.pdf {render pdf: "test"}
+        format.html { render :show, notice: 'Sale summary was successfully created.' }
+        format.json { render :show, status: :created, location: @sale_summary }
+    end
   end
 
   # GET /sale_summaries/new
@@ -26,7 +33,6 @@ class SaleSummariesController < ApplicationController
   # POST /sale_summaries.json
   def create
     @sale_summary = SaleSummary.new(sale_summary_params)
-
     respond_to do |format|
       if @sale_summary.save
         format.html { redirect_to @sale_summary, notice: 'Sale summary was successfully created.' }
@@ -65,7 +71,7 @@ class SaleSummariesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sale_summary
-      @sale_summary = SaleSummary.find(params[:id])
+      @sale_summary = SaleSummary.find(params[:order_no])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

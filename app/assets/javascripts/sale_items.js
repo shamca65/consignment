@@ -200,12 +200,15 @@ $(document).ready(function() {
         buttonsStyling: false
     });
 
-    let notifySaleComplete = function(){
+    let notifySaleComplete = function(data){
+        let order_url = '/sale_summaries/show?order_no=' + data['order_no'];
         swalWithBootstrapButtons.fire(
             'Sale Complete!',
             'Click OK.',
             'success'
         );
+
+        window.location.replace(order_url);
     };
 
     let notifySaleError = function(){
@@ -226,7 +229,7 @@ $(document).ready(function() {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
-                notifySaleComplete();
+                notifySaleComplete(data);
             },
             error: function (data) {
                 notifySaleError();
@@ -239,10 +242,16 @@ $(document).ready(function() {
     });
 
     let askForSale = function(){
+        let paymentBalance = $("#paymentBalance").val();
+        let cashPortion = $("#cashPortion").val();
+        let messageStr = '<h3>Accept payment and then press Finish to complete the sale</h3><br>'
+        if (cashPortion > 0) {
+            messageStr = messageStr + '<h4>Partial cash payment: $' + cashPortion.toString() + '</h4><p>';
+        }
+        messageStr = messageStr + '<h4>Balance Remaining: $' + paymentBalance.toString() + '</h4></p>';
         swalWithBootstrapButtons.fire({
-            icon: 'warning',
-            html:
-                '<h3>Accept payment and then press Finish to complete the sale</h3>',
+            icon: 'info',
+            html: messageStr,
             showCancelButton: true,
             confirmButtonText: '<i class="fal fa-check-circle"></i>  Finish',
             cancelButtonText: '<i class="fal fa-window-close"></i>  Cancel',
@@ -277,11 +286,11 @@ $(document).ready(function() {
         } else {
             $("#paymentLabel").html("<label>Balance owing:</label>");
         }
-        //$("#paymentBalance").val(paymentBalance.toFixed(2));
+        $("#paymentBalance").val(paymentBalance.toFixed(2));
     });
 
     let pageInit = function () {
-        rightsaleItemstable.rows({selected: false}).remove(0).draw();
+        rightsaleItemstable.rows({selected: false}).remove().draw();
         $("#paymentLabel").html("<label>Balance owing:</label>");
         tax_rate_a = $("#tax_rate_a").data('var');
         tax_rate_b = $("#tax_rate_b").data('var');

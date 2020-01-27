@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_23_173920) do
+ActiveRecord::Schema.define(version: 2020_01_25_232202) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_01_23_173920) do
   end
 
   create_table "sale_summaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "sale_total", precision: 10
+    t.decimal "sale_total", precision: 8, scale: 2
     t.bigint "order_no"
     t.datetime "sale_date"
     t.datetime "created_at", null: false

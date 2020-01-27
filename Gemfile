@@ -51,4 +51,6 @@ gem 'validates_email_format_of', '~> 1.6', '>= 1.6.3'
 gem 'client_side_validations', '~> 16.0', '>= 16.0.3'
 gem 'pickadate-rails'
 gem 'ransack', '~> 2.3'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
