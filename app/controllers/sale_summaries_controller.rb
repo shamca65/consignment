@@ -10,13 +10,19 @@ class SaleSummariesController < ApplicationController
   # GET /sale_summaries/1
   # GET /sale_summaries/1.json
   def show
-    order_no = params['order_no']
-    @sale_summary = SaleSummary.find_by_order_no order_no
-
+    @sale_summary = SaleSummary.find_by_order_no params['order_no']
     respond_to do |format|
-        format.pdf {render pdf: "test"}
-        format.html { render :show, notice: 'Sale summary was successfully created.' }
-        format.json { render :show, status: :created, location: @sale_summary }
+      format.html
+      format.pdf do
+        render pdf: "Invoice No. #{@sale_summary.order_no}",
+               page_size: 'A4',
+               template: "sale_summaries/show.html.erb",
+               layout: "cash_receipt.html.erb",
+               orientation: "Landscape",
+               lowquality: false,
+               zoom: 1.5,
+               dpi: 75
+      end
     end
   end
 
