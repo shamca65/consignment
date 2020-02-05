@@ -6,10 +6,10 @@ class SaleItemsController < ApplicationController
   before_action :set_sale_item, only: [:show, :edit, :update, :destroy]
 
   def search
-    @items = Item.ransack(id_cont: params[:q]).result(distinct: false)
+    @items = Item.ransack(id_str_cont: params[:q]).result(distinct: false)
     respond_to do |format|
       format.html {}
-      format.json { @items.limit(5) }
+      format.json { @items.limit(10) }
     end
   end
 
@@ -44,8 +44,15 @@ class SaleItemsController < ApplicationController
       sale_summary_rec  = SaleSummary.create(:order_no=>@this_order_num, :sale_date=>@sale_date)
       sale_item_recs = build_sale_item_recs(sale_items_array, sale_summary_rec.id)
       SaleItem.create(sale_item_recs)
-      SaleSummary.where(:order_no => @this_order_num).update(:sale_total => get_sale_total(@this_order_num))
+      @totals_data = get_item_subtotals(sale_items_array)
+      SaleSummary.where(:order_no => @this_order_num).update(
+          :sale_total => @totals_data[:sale_total_extended],
+          :tax_a_total => @totals_data[:tax_extended_a],
+          :tax_b_total => @totals_data[:tax_extended_b],
+          :items_total => @totals_data[:items_total],
+      )
     end
+
     data = { :order_no => @this_order_num }
 
     respond_to do |format|
@@ -81,8 +88,10 @@ class SaleItemsController < ApplicationController
     end
   end
 
-  # DELETE /sale_items/1
-  # DELETE /sale_items/1.json
+  def clean_up_bad_sale
+
+  end
+
   def destroy
     @sale_item.destroy
     respond_to do |format|
@@ -92,6 +101,24 @@ class SaleItemsController < ApplicationController
   end
 
   private
+
+  def get_item_subtotals(sale_items_array)
+    @item_recs = nil
+    @item_recs = Item.find sale_items_array
+    tax_rate_a = $tax_rate_a
+    tax_rate_b = $tax_rate_b
+    items_total = @item_recs.sum {|h| h[:price]}
+    tax_extended_a = items_total * tax_rate_a
+    tax_extended_b = items_total * tax_rate_b
+    sale_total_extended = items_total + tax_extended_a + tax_extended_b
+    totals_data = {
+        :sale_total_extended=> sale_total_extended,
+        :tax_extended_a => tax_extended_a,
+        :tax_extended_b => tax_extended_b,
+        :items_total => items_total,
+      }
+    return totals_data
+  end
 
   def get_sale_total(order_no)
     sale_item = SaleItem.find_by_order_no order_no
@@ -138,6 +165,4 @@ class SaleItemsController < ApplicationController
                                         :item_price, :order_no, :sale_date,
                                         :clerk, :q)
   end
-
-
 end

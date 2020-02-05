@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "@client-side-validations/client-side-validations": "^0.1.0",
+    "@sweetalert2/themes": "^3.1.0",
     "micromodal": "^0.4.2",
-    "popper.js": "1.16.0"
+    "popper.js": "1.16.0",
+    "sweetalert2": "^9.7.1"
   }
 }

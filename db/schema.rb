@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_195120) do
+ActiveRecord::Schema.define(version: 2020_02_01_220606) do
 
   create_table "configs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -79,14 +79,13 @@ ActiveRecord::Schema.define(version: 2020_01_28_195120) do
     t.string "owner", limit: 15
     t.text "item_note"
     t.integer "takein_batch_number"
-    t.bigint "item_id_id"
-    t.bigint "item_id"
     t.datetime "sale_date"
     t.boolean "tax_exempt"
     t.string "id_str"
+    t.bigint "sale_item_id"
     t.index ["customer_id"], name: "index_items_on_customer_id"
-    t.index ["item_id"], name: "index_items_on_item_id"
-    t.index ["item_id_id"], name: "index_items_on_item_id_id"
+    t.index ["id_str"], name: "index_items_on_id_str", unique: true
+    t.index ["sale_item_id"], name: "sale_item_id_UNIQUE", unique: true
     t.index ["takein_batch_number"], name: "index_items_on_takein_batch_number"
   end
 
@@ -107,7 +106,9 @@ ActiveRecord::Schema.define(version: 2020_01_28_195120) do
     t.decimal "tax_rate_a", precision: 8, scale: 2
     t.decimal "tax_rate_b", precision: 8, scale: 2
     t.decimal "item_total", precision: 8, scale: 2
+    t.bigint "items_id"
     t.index ["item_id"], name: "index_sale_items_on_item_id"
+    t.index ["items_id"], name: "index_sale_items_on_items_id"
     t.index ["sale_summaries_id"], name: "index_sale_items_on_sale_summaries_id"
   end
 
@@ -117,6 +118,9 @@ ActiveRecord::Schema.define(version: 2020_01_28_195120) do
     t.datetime "sale_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "tax_a_total", precision: 8, scale: 2
+    t.decimal "tax_b_total", precision: 8, scale: 2
+    t.decimal "items_total", precision: 8, scale: 2
     t.index ["order_no"], name: "index_sale_summaries_on_order_no"
   end
 
@@ -150,6 +154,5 @@ ActiveRecord::Schema.define(version: 2020_01_28_195120) do
 
   add_foreign_key "customers", "customers"
   add_foreign_key "items", "customers"
-  add_foreign_key "items", "items"
   add_foreign_key "sale_items", "sale_summaries", column: "sale_summaries_id"
 end

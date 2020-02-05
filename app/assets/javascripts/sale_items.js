@@ -57,7 +57,7 @@ $(document).ready(function() {
             data.phrase = $("#item_auto_complete").val();
             return data;
         },
-        requestDelay: 300,
+        requestDelay: 100,
         theme: "square"
     };
 
@@ -201,14 +201,26 @@ $(document).ready(function() {
     });
 
     let notifySaleComplete = function(data){
-        let order_url = '/sale_summaries/show?order_no=' + data['order_no'];
-        swalWithBootstrapButtons.fire(
-            'Sale Complete!',
-            'Click OK.',
-            'success'
-        );
-
-        window.location.replace(order_url);
+        let messageStr = '<h3>OK to Return Home, <em>Show Receipt</em> to generate a receipt</h3><br>';
+        swalWithBootstrapButtons.fire({
+            icon: 'question',
+            html: messageStr,
+            showCancelButton: true,
+            confirmButtonText: '<i class="fal fa-home"></i>  Home',
+            cancelButtonText: '<i class="fal fa-print"></i>  Show Receipt',
+            reverseButtons: false
+        }).then((result) => {
+            if (result.value) {
+                //home button
+                window.location.replace('/');
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                //print receipt button
+                let order_url = '/sale_summaries/show?order_no=' + data['order_no'];
+                window.location.replace(order_url);
+            }
+        });
     };
 
     let notifySaleError = function(){
@@ -221,11 +233,11 @@ $(document).ready(function() {
 
     let commitSale = function () {
         let idArray = getGridItems(rightsaleItemstable);
-        let convertedArray = JSON.stringify(idArray, null, 4);
+        let JSON_idArray = JSON.stringify(idArray, null, 4);
         $.ajax({
             type: "POST",
             url: "/sale_items/commit_sale",
-            data: convertedArray,
+            data: JSON_idArray,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data) {
@@ -244,7 +256,7 @@ $(document).ready(function() {
     let askForSale = function(){
         let paymentBalance = $("#paymentBalance").val();
         let cashPortion = $("#cashPortion").val();
-        let messageStr = '<h3>Accept payment and then press Finish to complete the sale</h3><br>'
+        let messageStr = '<h3>Accept payment and then press Finish to complete the sale</h3><br>';
         if (cashPortion > 0) {
             messageStr = messageStr + '<h4>Partial cash payment: $' + cashPortion.toString() + '</h4><p>';
         }
@@ -254,8 +266,7 @@ $(document).ready(function() {
             html: messageStr,
             showCancelButton: true,
             confirmButtonText: '<i class="fal fa-check-circle"></i>  Finish',
-            cancelButtonText: '<i class="fal fa-window-close"></i>  Cancel',
-            cancelButtonAriaLabel: 'Thumbs down',
+            cancelButtonText: '<i class="fal fa-window-close"></i>  Cancel Sale',
             reverseButtons: true
         }).then((result) => {
             if (result.value) {

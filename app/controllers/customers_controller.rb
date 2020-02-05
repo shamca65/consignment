@@ -43,10 +43,7 @@ class CustomersController < ApplicationController
 
   end
 
-  # POST /customers
-  # POST /customers.json
   def create
-    # whitelist params
     @customer = Customer.new(customer_params)
     respond_to do |format|
       if @customer.save
@@ -60,8 +57,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /customers/1
-  # PATCH/PUT /customers/1.json
   def update
     respond_to do |format|
       if @customer.update(customer_params)
@@ -72,8 +67,6 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /customers/1
-  # DELETE /customers/1.json
   def destroy
     @customer.destroy
     respond_to do |format|

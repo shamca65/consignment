@@ -1,9 +1,11 @@
 class SaleItem < ApplicationRecord
   include EventLogger
-  has_many :item
+  belongs_to :item
 
   before_create :set_attr_for_create
   before_update :set_attr_for_update
+
+  scope :order_sale_items, -> (order_no){where("order_no = ?", order_no)}
 
   def set_attr_for_create
     self.tax_rate_a = $tax_rate_a

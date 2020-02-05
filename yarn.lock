@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@client-side-validations/client-side-validations/-/client-side-validations-0.1.0.tgz#1a568fd65a79b89414b2e3e173087f56cf5bf2e6"
   integrity sha512-F2rrep4WOnac55REFBeGEvcvmCqoTgoUrq6aDDwV2L2cOoxJ1K3T0y5mQxWpBgd/B+0AjPo4iCbrhhj0t9Xm7w==
 
+"@sweetalert2/themes@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@sweetalert2/themes/-/themes-3.1.0.tgz#2c3eee9991b2f2f04e385ec5269fd902e143b019"
+  integrity sha512-KukdD1MIHNkU+pz1R70Xlk68j/ZeCdNXfGeX1ErhCoVEx9T9U3DoU9yGjfahszLrYbpityZGhFI1YEHKTN05oA==
+
 micromodal@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/micromodal/-/micromodal-0.4.2.tgz#8ca34f3d5b2f6f43df173bcdc98af20256a4f07a"
@@ -16,3 +21,8 @@ popper.js@1.16.0:
   version "1.16.0"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.0.tgz#2e1816bcbbaa518ea6c2e15a466f4cb9c6e2fbb3"
   integrity sha512-+G+EkOPoE5S/zChTpmBSSDYmhXJ5PsW8eMhH8cP/CQHMFPBG/kC9Y5IIw6qNYgdJ+/COf0ddY2li28iHaZRSjw==
+
+sweetalert2@^9.7.1:
+  version "9.7.1"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.7.1.tgz#10a6aeb8516c6d55f6fb931cf6b595d007a65e54"
+  integrity sha512-ytBEyqRmZQsEFuPsYcuEXpruj9AgT32ELEBWGnioflsqbxHMMM8/Ghm1+hi4hsZ1PU7cp9TFFWe06WveGfwWKw==

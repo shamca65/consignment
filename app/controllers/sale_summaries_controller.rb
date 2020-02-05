@@ -10,11 +10,19 @@ class SaleSummariesController < ApplicationController
   # GET /sale_summaries/1
   # GET /sale_summaries/1.json
   def show
-    @sale_summary = SaleSummary.find_by_order_no params['order_no']
+    # TODO - reverse a sale
+    #
+    @sale_summary = SaleSummary.find_by_order_no  params['order_no']
+    sql = "SELECT * FROM consignment_development.sale_items si"
+    sql = sql + " JOIN items i ON i.id = si.item_id"
+    sql = sql + " WHERE order_no = '" + params['order_no'] + "'"
+
+    @order_sale_items = SaleItem.find_by_sql(sql)
+    
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "Invoice No. #{@sale_summary.order_no}",
+        render pdf: "Invoice No. #{@order_sale_items.order_no}",
                page_size: 'A4',
                template: "sale_summaries/show.html.erb",
                layout: "cash_receipt.html.erb",

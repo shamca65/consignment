@@ -1,20 +1,53 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Sale total:</strong>
-  <%= @sale_summary.sale_total %>
-  Params <%= params['order_no'] %>
-</p>
-
-<p>
-  <strong>Order no:</strong>
-  <%= @sale_summary.order_no %>
-</p>
-
-<p>
-  <strong>Sale date:</strong>
-  <%= @sale_summary.sale_date %>
-</p>
-<%= link_to 'Create PDF document', sale_summary_url(@sale_summary, :format => :pdf, :order_no => params['order_no']) %>
-<%= link_to 'Edit', edit_sale_summary_path(@sale_summary) %> |
-<%= link_to 'Back', sale_summaries_path %>
+<div class="card">
+  <div class="card-body">
+     <div class="row">
+          <div class="col">
+            <h2>Sales Receipt</h2>
+          </div>
+          <div class="col">
+            <h2>Order No.: <%= @sale_summary.order_no.to_s %></h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p><b>Date:</b> <%= simple_date(Date.today) %></p>
+            <p></p>
+          </div>
+          <div class="col">
+            <p><b>Item Total:</b> $<%= @sale_summary.items_total %></p>
+            <p><b><%= $tax_rate_a_name %> total:</b> $<%= @sale_summary.tax_a_total.to_s %></p>
+            <p><b><%= $tax_rate_b_name %> total:</b> $<%= @sale_summary.tax_a_total.to_s %></p>
+            <p><b>Grand Total:</b> $<%= @sale_summary.sale_total %></p>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col" style="background-color: #ffffff;">
+            <table id="saleSummaryTable" class="table table-striped ordering footer">
+              <thead>
+              <tr>
+                <th class="h5">Description</th>
+                <th class="text-center no-sort h5"><b>Gender</b></th>
+                <th class="text-center no-sort h5"><b>Type</b></th>
+                <th class="text-center no-sort h5"><b>Size</b></th>
+                <th class="text-center h5">Price</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @order_sale_items.each do |sale_item| %>
+              <tr>
+                <td class="text-left h5 align-middle"><%= sale_item.description.truncate(75) %></td>
+                <td class="text-center align-middle h5"><%= gender_label(sale_item.gender) %></td>
+                <td class="text-center align-middle h5"><%= type_label(sale_item.item_type) %></td>
+                <td class="text-center align-middle h5"><%= size_label(sale_item.size) %></td>
+                <td style="text-center align-middle" class="h5 text-center"><%= sale_item.price %></td>
+              </tr>
+              <% end %>
+             </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<%= javascript_include_tag 'sale_summary.js' %>

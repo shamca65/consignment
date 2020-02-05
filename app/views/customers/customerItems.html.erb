@@ -1,10 +1,9 @@
   <div class="row h3">
     <div class="col text-left">
-      <b>Customer Item List</b>
+      <b>Customer Items - <%= @customer.full_name %></b>
+      <h4><em>Account ID: <%=@customer.id.to_s %></em></h4>
     </div>
     <div class="btn btn-outline-black">
-      <%= link_to 'Take In Items', takein_items_path %>
-      <i class="fas fas fa-plus pl-1"></i>
     </div>
     <div class="float-left">
       <% render 'shared/pickupDateNotice' %>

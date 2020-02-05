@@ -116,7 +116,6 @@ $(document).ready(function() {
         var arrayID = grid.rows( { selected: true }).data().toArray();
         if ( arrayID.length > 0 ){
             // duplicate each selected row to the other grid
-            console.log('data format: ' + JSON.stringify(arrayID,null, 4));
             to_table.rows.add(arrayID).draw();
             grid.rows({selected: true}).remove(arrayID).draw();
             to_table.rows().select();

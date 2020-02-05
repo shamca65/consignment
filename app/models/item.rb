@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 
   belongs_to :customer, optional: false
   has_many :photos
-  has_many :sale_items
+  has_one :sale_item
 
   validates :price, :presence => true, numericality: { :greater_than_or_equal_to => 0 }
   validates :description, :customer_id, :item_type, :gender, :size, :presence => true
@@ -15,12 +15,12 @@ class Item < ApplicationRecord
   after_update :log_update_event
   after_destroy :log_destroy_event
 
-# TODO - need dynamic pickup date
   scope :customer_items, -> (id ){where("customer_id = ?", id)}
   scope :donation_items, -> {where("pickup_date <= ? and owner = 'customer'", $current_pickup_date)}
 # TODO - consider archiving of sold/donated items
   scope :items_for_sale, -> {where("item_status = 'fs'")}
 
+# TODO - move these to a table
   ITEM_SIZES = {
   :na => 'Not Applicable',
   :xs => 'Extra Small',
@@ -38,6 +38,7 @@ class Item < ApplicationRecord
   :na => 'Not Applicable'
   }
 
+# TODO - move these to a table
   ITEM_TYPES = {
       :sht => 'Shirt',
       :pnt => 'Pants',
@@ -60,7 +61,7 @@ class Item < ApplicationRecord
     }
 
   ransacker :id do
-    Arel.sql("items.id")
+    Arel.sql("items.id_str")
   end
 
   def get_batch
@@ -76,6 +77,7 @@ class Item < ApplicationRecord
     self.takein_date ||= Date.today
     self.customer ||= 'customer'
     self.takein_batch_number = get_batch
+    self.id_str = self.id.to_s
   end
 
   def set_attr_for_update
