@@ -20,7 +20,7 @@ end
 group :development do
   gem 'rcodetools', '~> 0.8.5.0'
   gem 'fastri', '~> 0.3.1.1'
-  gem 'better_errors', '~> 2.5', '>= 2.5.1'
+  gem 'better_errors', '~> 2.8'
   gem "binding_of_caller"
 
   gem 'meta_request', '~> 0.6.0'
